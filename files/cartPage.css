@@ -40,7 +40,7 @@ github.com/t1m0n/air-datepicker
 .formfast .fields.deliveryConvenientDate,
 .formfast .fields.deliveryConvenientTime {width: calc(50% - 7px);margin: 0}
 .formfast .quickform-select-convenient {font-size: 16px}
-#deliveryConvenientDate {font-family: 'Open Sans',sans-serif}
+#deliveryConvenientDate {font-family: 'Roboto Condensed',sans-serif}
 #quickDeliveryCountry-styler {flex-wrap: wrap;}
 .formfast .contactWantRegister {margin-bottom: 10px}
 .formfast .contactRegisterNeedElement {margin-top: 10px}
@@ -95,7 +95,7 @@ github.com/t1m0n/air-datepicker
 .coupons .couponBlock .coupon_clear.active {opacity: 1;visibility: visible}
 .coupons .couponBlockSale {text-align: left;color: #b5b6b7;-webkit-transition: color .3s;transition: color .3s;padding-top: 10px}
 .coupons .couponBlockSale.active {color: #2e2e2e}
-.coupons .couponBlockSale .couponNum {font-family: 'Open Sans';font-weight: 700}
+.coupons .couponBlockSale .couponNum {font-family: 'Roboto Condensed';font-weight: 700}
 .coupons .couponBlocLabel {font-size: 12px}
 .coupons .couponBlockPrice .couponNum:after {content: "руб.";display: inline-block;margin-left: 5px;line-height: 1.1;font-weight: 600;font-size: 14px}
 .coupons .coupon-btn {margin: 0;margin-left: 15px;-ms-flex-negative: 0;flex-shrink: 0}
@@ -131,7 +131,7 @@ github.com/t1m0n/air-datepicker
 /*! Корзина ***/
 .cartTable {width: 100%;border-collapse: collapse}
 .cartTable #closeOrder {display: none}
-.cartTable .cartTable-cart-count span {font-family: 'Open Sans'}
+.cartTable .cartTable-cart-count span {font-family: 'Roboto Condensed'}
 .cartTable tbody tr {border: 1px solid #f2f2f2;border-top: 0}
 .cartTable tbody tr td,
 .cartTable thead tr td {line-height: 18px;padding: 15px 10px;text-align: center;border: 1px solid #f2f2f2}

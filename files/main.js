@@ -233,35 +233,6 @@ function mainFunctions() {
         $(this).toggleClass('active').next('.block-content').slideToggle();
       }
     })
-    // Раскрытие корзины на сайте
-    $(document).on('click', function (e) {
-      var $this  = $(e.target)
-      if(!$this.closest('.header-tools').length){
-          $('.header-tools, .header-toolsCol, .header-toolsLink').removeClass('_active')
-        }
-    })
-    $('.header-toolsLink').on('click', function(e){
-      if(getClientWidth() < 992){
-        return (true)
-      }
-      e.preventDefault();
-      if($(this).hasClass('_active')) {
-        $('.header .header-tools').removeClass('_active');
-        $(this).removeClass('_active')
-        return
-      }
-      $('.header .header-tools').addClass('_active')
-
-      $('.header-tools').find('.header-toolsLink').removeClass('_active')
-      $(this).addClass('_active')
-
-      $('.header-tools').find('.dropdown').removeClass('_active')
-      $(this).parent().find('.dropdown').addClass('_active')
-
-      $('.header-tools').find('.header-toolsCol').removeClass('_active')
-      $(this).closest('.header-toolsCol').addClass('_active')
-    })
-
 
   tippy('.selectBox', {
     theme: 'material',
@@ -430,6 +401,7 @@ function AddCart() {
 
           // Обновляем данные корзины
           $('.header .cart .count').html($(data).filter('#newCartCount').html());
+          $('.header .cart .header-toolsContent').html($(data).filter('#newCartContent').html());
           $('.header .cart .dropdown').html($(data).filter('#newCartData').html());
           // Анимация на кнопках
           hoverAnimBtn()

@@ -21,6 +21,18 @@
 <div style="display:none;" id="newCartCount">
   {CART_COUNT_TOTAL}
 </div>
+<div style="display:none;" id="newCartContent">
+  <span class="header-toolsContent">
+    <strong class="title">Корзина</strong>
+    {% IF CART_SUM_NOW %}
+      <span class="price {CURRENCY_CHAR_CODE}">{CART_SUM_NOW | money_format}</span>
+    {% ELSE %}
+      <span class="price">
+        0 руб.
+      </span>
+    {% ENDIF %}                        
+  </span>
+</div>
 <div style="display:none;" id="newCartData">
   <!-- Выпадающая корзина-->
   <div class="cart-content">
@@ -60,6 +72,7 @@
 <!-- Обновление данных корзины -->
 <script>
 $('.header .cart .count').html($('#newCartCount').html());
+$('.header .cart .header-toolsContent').html($('#newCartContent').html());
 $('.header .cart .dropdown').html($('#newCartData').html());
 $('.fancyModalClose').click(function(){$.fancybox.close();});
 </script>

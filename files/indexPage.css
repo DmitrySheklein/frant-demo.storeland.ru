@@ -1,5 +1,5 @@
 /*! Слайдер ***/
-#slideshow {position: relative;min-height: 70px;padding-top: 30px;background: #f9f9fa}
+#slideshow {position: relative;min-height: 70px;padding-top: 30px;}
 #slideshow .slider {border-radius: 5px;overflow: hidden}
 #slideshow .slider-item {width: 100%;position: relative}
 #slideshow .slider-item:not(:first-child) {display: none}
@@ -42,7 +42,7 @@
   #slideshow .owl-dots {bottom: 0}
 }
 /*! Преимущества ***/
-#features {background: #f9f9fa;border-bottom: 1px solid #f0f0f0}
+#features {border-bottom: 1px solid #f0f0f0}
 #features .main-featuresItem {display: block;margin-bottom: 4px;text-align: center}
 #features .main-featuresInner {height: 100%;padding: 15px 10px;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center}
 #features .main-featuresContent {padding-left: 15px;text-align: left}
