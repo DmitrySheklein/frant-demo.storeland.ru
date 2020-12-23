@@ -9,6 +9,13 @@ $(function(){
   $(".mouseHoverImgCarousel").HoverMouseCarousel().on('click', function (e) {if(getClientWidth() <= 991) {e.preventDefault()}});
 })
 // Fancybox default
+$.fancybox.defaults.beforeShow = function () {
+  $('.wrapper').addClass('_blur')
+}
+$.fancybox.defaults.beforeClose = function () {
+  $('.wrapper').removeClass('_blur')
+}
+$.fancybox.defaults.btnTpl.smallBtn = '<button data-fancybox-close class="fancybox-button fancybox-close-small" title="{{CLOSE}}"><i class="material-icons">close</i></button>'
 $.fancybox.defaults.lang = "ru";
 $.fancybox.defaults.i18n = {
     ru: {
