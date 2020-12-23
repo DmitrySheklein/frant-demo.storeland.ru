@@ -42,13 +42,13 @@
   #slideshow .owl-dots {bottom: 0}
 }
 /*! Преимущества ***/
-#features {border-bottom: 1px solid #f0f0f0}
+#features .container {border-bottom: 1px solid #575454;border-top: 1px solid #575454}
 #features .main-featuresItem {display: block;margin-bottom: 4px;text-align: center}
-#features .main-featuresInner {height: 100%;padding: 15px 10px;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center}
+#features .main-featuresInner {height: 100%;padding: 40px 10px;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;}
 #features .main-featuresContent {padding-left: 15px;text-align: left}
-#features .main-featuresTitle {font-size: 16px;font-weight: 700;margin-bottom: 2px}
-#features .main-featuresIcon {width: 80px;height: 80px;font-size: 35px;line-height: 80px;color: #404040;background: #fff;border-radius: 50%;-ms-flex-negative: 0;flex-shrink: 0;-webkit-transition: all .3s ease;transition: all .3s ease}
-#features .main-featuresItem:hover .main-featuresIcon {-webkit-box-shadow: 0 20px 60px rgba(156,158,158,.5);box-shadow: 0 20px 60px rgba(156,158,158,.5)}
+#features .main-featuresTitle {font-size: 16px;font-weight: 300;margin-bottom: 2px}
+#features .main-featuresIcon {width: 65px;height: 65px;-ms-flex-negative: 0;flex-shrink: 0;-webkit-transition: all .3s ease;transition: all .3s ease;}
+
 #features .features-list .owl-stage {display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap}
 #features .features-list .owl-stage-outer {overflow: visible}
 #features .features-list .main-featuresItem {margin-bottom: 0;height: 100%}

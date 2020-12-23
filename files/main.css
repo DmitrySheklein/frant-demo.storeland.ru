@@ -455,7 +455,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   .header-contacts .header-phoneCallback {display: none;}
 }
 /*! Избранное Сравнение Корзина */
-.header .header-tools {display: -webkit-box;display: -ms-flexbox;display: flex;flex-direction: row;-webkit-transition: right .3s ease-in-out;transition: right .3s ease-in-out;}
+.header .header-tools {display: -webkit-box;display: -ms-flexbox;display: flex;flex-direction: row;-webkit-transition: right .3s ease-in-out;transition: right .3s ease-in-out;font-family: 'Ubuntu', sans-serif;}
 
 .header-toolsCol._page {display: none}
 .header-toolsCol {display: inline-block;vertical-align: middle;margin-left: 20px;-webkit-transition: background .3s;transition: background .3s}
@@ -488,12 +488,13 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   margin-left: 10px;
   font-size: 14px;
 }
-.header-toolsLink._cart .price > span:after {font-weight: 300;}
+.header-toolsLink._cart .price > span:after {font-weight: 300;font-family: 'Ubuntu', sans-serif;}
 .header-toolsLink._cart .price {
   color: #cec5bf;
   font-weight: 300;
   font-size: 14px;
   line-height: 14px;
+  font-family: 'Ubuntu', sans-serif;
 }
 .header-toolsLink._cart .header-toolsContent .title {font-weight: 300;}
 
@@ -737,7 +738,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 #footer {padding-top: 30px;}
 #footer .container {position: relative;}
 #footer .block {margin-bottom: 20px;}
-#footer .block .title {position: relative;margin-bottom: 15px;font-size: 16px;font-weight: 600;color:#2e2e2e;text-transform: uppercase;}
+#footer .block .title {display: none;position: relative;margin-bottom: 15px;font-size: 16px;font-weight: 600;color:#2e2e2e;text-transform: uppercase;}
 #footer .block.collapse .title .title-navArrow {display:none;}
 #footer .block .block-content {background-color: transparent;padding: 0;}
 #footer .block .block-content > p {margin-bottom: 25px;}
