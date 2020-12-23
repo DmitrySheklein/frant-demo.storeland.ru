@@ -497,8 +497,9 @@ function Addto() {
               // Если на сравнении больше нет товаров
               // Указываем информацию о новом количестве товаров на сравнении
               // Блок обновления списка сравнения в каталога
-              sidecount.animate({opacity: 0,display: "none"},500,function(){
+              sidecount.animate({display: "none"},500,function(){
               sidecount.text(data.compare_goods_count);                 
+              sidecount.attr('data-count', data.compare_goods_count);                 
                 if(data.compare_goods_count > 0){
                   $('.compare').addClass('have-items');
                   $('.compare #compare-items .empty').hide();
@@ -508,7 +509,7 @@ function Addto() {
                   $('.compare #compare-items .empty').show();
                   $('.compare #compare-items .actions').hide();               
                 }
-              }).animate({display: "inline",opacity: 1} , 500 );
+              }).animate({display: "inline"} , 500 );
             }
             
             // Обновляем ссылку, на которую будет уходить запрос и информацию о ней
@@ -645,8 +646,9 @@ function Addto() {
               // Если на сравнении больше нет товаров
               // Указываем информацию о новом количестве товаров на сравнении
               // Блок обновления списка сравнения в каталога
-              sidecount.animate({opacity: 0,display: "none"},500,function(){
+              sidecount.animate({display: "none"},500,function(){
               sidecount.text(data.favorites_goods_count);                 
+              sidecount.attr('data-count', data.favorites_goods_count);                 
                 if(data.favorites_goods_count > 0){
                   $('.favorites').addClass('have-items');
                   $('.favorites #favorites-items .empty').hide();
@@ -656,7 +658,7 @@ function Addto() {
                   $('.favorites #favorites-items .empty').show();
                   $('.favorites #favorites-items .actions').hide();                   
                 }
-              }).animate({display: "inline",opacity: 1} , 500 );
+              }).animate({display: "inline"} , 500 );
             }
             
             // Обновляем ссылку, на которую будет уходить запрос и информацию о ней
@@ -870,7 +872,7 @@ function removeFromCompare(e){
     success: function(d){
       var oldCount = num;
       var newCount = oldCount - 1;
-      $('.compare .count').text(newCount);
+      $('.compare .count').text(newCount).attr('data-count', newCount);
       var flag = 0;
       
       if(newCount != 0){
@@ -922,7 +924,7 @@ function removeFromCompareAll(e){
       })
       
       $('.compare').removeClass('have-items');
-      $('.compare .count').text("0");
+      $('.compare .count').text("0").attr('data-count',"0");
       $('.compare .actions').hide();
       $('.compare #compare-items .item').remove();
       $('.compare #compare-items .empty').show();
@@ -945,7 +947,7 @@ function removeFromFavorites(e){
     success: function(d){
       var oldCount = $('.favorites .count').text();
       var newCount = oldCount - 1;
-      $('.favorites .count').text(newCount);
+      $('.favorites .count').text(newCount).attr('data-count', newCount);
       var flag = 0;
       
       if(newCount != 0){
@@ -997,7 +999,7 @@ function removeFromFavoritesAll(e){
       })    
       
       $('.favorites').removeClass('have-items');
-      $('.favorites .count').text("0");
+      $('.favorites .count').text("0").attr('data-count', '0');
       $('.favorites .actions').hide();
       $('.favorites #favorites-items .item').remove();
       $('.favorites #favorites-items .empty').show();

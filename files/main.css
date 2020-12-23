@@ -568,7 +568,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .dropdown-items-list {margin: 0;flex-grow: 1;padding: 0px;list-style: none;display: block;max-width: 330px;max-height: 320px;overflow-x: hidden;overflow-y: auto;}
 .dropdown-items-list .item {position: relative;padding: 15px;overflow: hidden;border-bottom: 1px solid #e0dbd7;}
 .dropdown-items-list .item:last-child {border-bottom: 0}
-.dropdown-items-list .item .item-remove {margin-left: auto;width: 14px;height: 14px;color: #2e2e2e;}
+.dropdown-items-list .item .item-remove {margin-left: auto;width: 14px;height: 14px;font-size: 14px;color: #2e2e2e;}
 .dropdown-items-list .item .item-remove:hover {color: #365e87;}
 .dropdown-items-list .item .product-image {display: block;position: relative;float: left;width: 60px;padding: 0;border-radius: 0;background-color: #fff;z-index: 1;text-align: center;}
 .dropdown-items-list .item .product-image img {max-width: 41px;max-height: 41px;}
@@ -579,8 +579,8 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .dropdown-items-list .item .product-details .properties {font-size: 14px;}
 .dropdown-items-list .item .product-details .header-toolsAmount {position: static;display: block;background: none;font-family: Roboto Condensed, sans-serif;color: #2e2e2e;}
 .dropdown-items-list .item .product-details .product-price {display: flex;}
-.dropdown-items-list .item .product-details .product-price .price {margin-left: auto;font-size: 16px;    font-weight: 700;    color: #2e2e2e;}
-.dropdown-items-list .item .product-details .product-price .price > span:after {font-size: 12px;}
+.dropdown-items-list .item .product-details .price {margin-left: auto;font-size: 16px;    font-weight: 300;    color: #2e2e2e;}
+.dropdown-items-list .item .product-details .price > span:after {font-size: 12px;font-weight: 300;}
 
 .dropdown-content .actions {width: 100%;padding: 15px;color: #fff;background-color: #e7e2df;}
 .dropdown-content .actions .button {margin: 0 auto;margin-top: 10px;}
