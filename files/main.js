@@ -1013,33 +1013,40 @@ function removeFromFavoritesAll(e){
 function removeFromCart(e){
   if(confirm('Вы точно хотите удалить товар из корзины?')){
   var del = e;  
-  e.parent().fadeOut().remove();
-  url = del.data('href');
-  quantity = del.data('count');
+  del.closest('.item').fadeOut().remove();
+  var url = del.data('href');
+  var quantity = del.data('count');
   
   $('.total-sum').animate({opacity: 0},500);
   $.ajax({
     cache   : false,
 		url		  : url,
     success: function(d){
-      var oldCount = $('.cart .count').text();
+      var oldCount = $('.cart .count').first().text();
       var oldQuantity = quantity;
       var newCount = oldCount - oldQuantity;
       
-      $('.cart .count').text(newCount);
+      $('.cart .count').text(newCount).attr('data-count',newCount);
+      $('.cart .header-toolsContent').find('.price').html($(d).find('.total-sum').html());
+      console.log(
+        $(d).find('.total-sum').html()
+      );
       $('.total-sum').animate({opacity: 1},500);
       $('.total-sum').html($(d).find('.total-sum').html());
         var flag = 0; 
         if(newCount != 0){
-        $('.cart-products-list li.item').each(function(){
+          $('.cart-products-list li.item').each(function(){
           if(flag == 0){
             if($(this).css('display') == 'none'){
               $(this).show();
             flag++;
             }
           }
-        })}else{
-          $('.header .cart .dropdown-content._cart .cart-products-list').hide();
+        })
+        }else{
+          $('.cart .header-toolsContent').find('.price .num').text("0");
+          $('.header .cart .dropdown-content._cart .dropdown-items-list').hide();
+          $('.header .cart  .dropdown-content._cart .cart-products-header').hide();
           $('.header .cart  .dropdown-content._cart .subtotal').hide();
           $('.header .cart  .dropdown-content._cart .actions').hide();
           $('.header .cart  .dropdown-content._cart .empty').show();
@@ -1059,9 +1066,11 @@ function removeFromCartAll(e){
   $.ajax({ 
     cache   : false,
     url		  : url,
-    success: function(d){
-      $('.cart .count').text("0");
-      $('.header .cart  .dropdown-content._cart .cart-products-list').hide();
+    success: function(){
+      $('.cart .count').first().text("0").attr('data-count', "0");
+      $('.cart .header-toolsContent').find('.price .num').text("0");
+      $('.header .cart  .dropdown-content._cart .dropdown-items-list').hide();
+      $('.header .cart  .dropdown-content._cart .cart-products-header').hide();
       $('.header .cart  .dropdown-content._cart .subtotal').hide();
       $('.header .cart  .dropdown-content._cart .actions').hide();
       $('.header .cart  .dropdown-content._cart .empty').show();
