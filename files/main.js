@@ -308,32 +308,7 @@ function tippyViewBtn() {
 
 // Hover эффект на кнопках
 function hoverAnimBtn() {
-  $(function () {
-    if(getClientWidth() <= 991) {
-      $(".add-cart, .button").find('.hover-anim').remove();
-      return;
-    };
-    $(".add-cart, .button")
-    .find('.hover-anim').remove()
-    .end()
-    .append('<i class="hover-anim"></i>')
-    .on("mouseenter", function(e) {
-      var parentOffset = $(this).offset(),
-        relX = e.pageX - parentOffset.left,
-        relY = e.pageY - parentOffset.top;
-      $(this)
-        .find(".hover-anim")
-        .css({ top: relY, left: relX });
-    })
-    .on("mouseout", function(e) {
-      var parentOffset = $(this).offset(),
-        relX = e.pageX - parentOffset.left,
-        relY = e.pageY - parentOffset.top;
-      $(this)
-        .find(".hover-anim")
-        .css({ top: relY, left: relX });
-    });    
-  })  
+  
 }
 $(window).on('resize', $.debounce(300, hoverAnimBtn))
 // Добавление товара в корзину
@@ -477,15 +452,17 @@ function Addto() {
         },
         success: function(data) {
           if(flag == 0){   
-            $('#compare-items .compare-items-list').prepend(
-                "<li class=\"item\" data-id=\"" + pDataid +  "\">" +
-                    "<a data-href=\"" + delUrl + "?id=" + pDataprice + "\" data-goods-mod-id=\"" + pDataprice + "\" class=\"remove item-remove\" title=\"Убрать товар из списка сравнения\" onclick=\"removeFromCompare($(this))\"></a>" +
+            $('#compare-items .dropdown-items-list').prepend(
+                "<li class=\"item\" data-id=\"" + pDataid +  "\">" +                    
                     "<a href=\"" + pUrl + "\" title=\"" + pName + "\" class=\"product-image\">" + 
                       "<img src=\"" + pImage + "\" alt=\"" + pName + "\" class=\"goods-image-icon\">" +
                     "</a>" + 
                     "<div class=\"product-details\">" + 
                       "<p class=\"product-name\">" + 
-                        "<a href=\"" + pUrl + "\" title=\"" + pName + "\">" + pName + "</a>" +
+                        "<a class=\"name\" href=\"" + pUrl + "\" title=\"" + pName + "\">" + pName + "</a>" +
+                        "<a data-href=\"" + delUrl + "?id=" + pDataprice + "\" data-goods-mod-id=\"" + pDataprice + "\" class=\"item-remove material-icons\" title=\"Убрать товар из списка сравнения\" onclick=\"removeFromCompare($(this))\">" +
+                          "close"+
+                        "</a>" +
                       "</p>" + 
                       "<span class=\"price RUB\" data-price=\"" + pPrice + "\"><span><span class=\"num\">" + addSpaces(String(pPrice)) + "&nbsp;</span></span></span>"+
                     "</div>"+
@@ -619,19 +596,21 @@ function Addto() {
         success: function(data) {
           if(data.status != 'error'){
             $('.favorites #favorites-items .empty').hide();
-            $('.favorites #compare-items .actions').show();            
+            $('.favorites #favorites-items .actions').show();            
           }
           
           if(flag == 0 && data.status != 'error'){   
-            $('#favorites-items .favorites-items-list').prepend(
-              "<li class=\"item\" data-id=\"" + pDataid +  "\">" + 
-                "<a data-href=\"" + delUrl + "?id=" + pDataprice + "\" data-goods-mod-id=\"" + pDataprice + "\" class=\"remove item-remove\" title=\"Убрать товар из списка сравнения\" onclick=\"removeFromFavorites($(this))\"></a>"+
+            $('#favorites-items .dropdown-items-list').prepend(
+              "<li class=\"item\" data-id=\"" + pDataid +  "\">" +                 
                 "<a href=\"" + pUrl + "\" title=\"" + pName + "\" class=\"product-image\">"+
                   "<img src=\"" + pImage + "\" alt=\"" + pName + "\" class=\"goods-image-icon\">"+
                 "</a>"+
                 "<div class=\"product-details\">"+
                   "<p class=\"product-name\">"+
-                    "<a href=\"" + pUrl + "\" title=\"" + pName + "\">" + pName + "</a>"+
+                    "<a class=\"name\" href=\"" + pUrl + "\" title=\"" + pName + "\">" + pName + "</a>"+
+                    "<a data-href=\"" + delUrl + "?id=" + pDataprice + "\" data-goods-mod-id=\"" + pDataprice + "\" class=\"item-remove material-icons\" title=\"Убрать товар из списка сравнения\" onclick=\"removeFromFavorites($(this))\">" +
+                      "close" +
+                    "</a>"+
                   "</p>"+
                   "<span class=\"price RUB\" data-price=\"" + pPrice + "\"><span><span class=\"num\">" + addSpaces(String(pPrice)) + "&nbsp;</span></span></span>"+
                 "</div>"+
@@ -882,7 +861,7 @@ function removeFromCompare(e){
   if(confirm('Вы точно хотите удалить товар из сравнения?')){
   var del = e;
   var num = $('.compare .count').text();
-  e.parent().fadeOut().remove();
+  del.closest('.item').fadeOut().remove();
   url = del.data('href');
   goodsModId = $(del).attr('data-goods-mod-id');
   $.ajax({ 
@@ -957,10 +936,9 @@ function removeFromCompareAll(e){
 function removeFromFavorites(e){
   if(confirm('Вы точно хотите удалить товар из избранного?')){
   var del = e;
-  var num = $('.favorites .count').text();
-  e.parent().fadeOut().remove();
-  url = del.data('href');
-  goodsModId = $(del).attr('data-goods-mod-id');
+  del.closest('.item').fadeOut().remove();
+  var url = del.data('href');
+  var goodsModId = $(del).attr('data-goods-mod-id');
   $.ajax({ 
     cache    : false,
     url		  : url,
@@ -975,7 +953,7 @@ function removeFromFavorites(e){
           if(flag == 0){
             if($(this).css('display') == 'none'){
               $(this).show();
-            flag++;
+              flag++;
             }
           }
         })}else{
@@ -999,7 +977,7 @@ function removeFromFavorites(e){
 function removeFromFavoritesAll(e){
   if(confirm('Вы точно хотите очистить избранное?')){
   var del = e;
-  url = del.data('href');
+  var url = del.data('href');
   
   $.ajax({ 
     cache   : false,
@@ -1059,10 +1037,10 @@ function removeFromCart(e){
             }
           }
         })}else{
-          $('.header .cart .cart-content .cart-products-list').hide();
-          $('.header .cart  .cart-content .subtotal').hide();
-          $('.header .cart  .cart-content .actions').hide();
-          $('.header .cart  .cart-content .empty').show();
+          $('.header .cart .dropdown-content._cart .cart-products-list').hide();
+          $('.header .cart  .dropdown-content._cart .subtotal').hide();
+          $('.header .cart  .dropdown-content._cart .actions').hide();
+          $('.header .cart  .dropdown-content._cart .empty').show();
         }
       }
     })
@@ -1081,10 +1059,10 @@ function removeFromCartAll(e){
     url		  : url,
     success: function(d){
       $('.cart .count').text("0");
-      $('.header .cart  .cart-content .cart-products-list').hide();
-      $('.header .cart  .cart-content .subtotal').hide();
-      $('.header .cart  .cart-content .actions').hide();
-      $('.header .cart  .cart-content .empty').show();
+      $('.header .cart  .dropdown-content._cart .cart-products-list').hide();
+      $('.header .cart  .dropdown-content._cart .subtotal').hide();
+      $('.header .cart  .dropdown-content._cart .actions').hide();
+      $('.header .cart  .dropdown-content._cart .empty').show();
 		}
   })
   }

@@ -40,17 +40,25 @@
     {% IF cart_count_empty %}
     <div class="empty">Корзина покупок пуста.<br/> Вы можете выбрать товар из <a href="{CATALOG_URL}" title="Перейти в каталог">Каталога</a>.</div>
     {% ELSE %}
+    <div class="cart-products-header">
+      В корзине <span class="count">{CART_COUNT_TOTAL}</span> товар{CART_COUNT_TOTAL | gen_word_end("","а","ов")}
+    </div>
     <ul class="cart-products-list">
       {% FOR cart_items %}
       <li class="item">
-        <a data-href="{cart_items.ORDER_LINE_DELETE_URL}" data-count="{cart_items.ORDER_LINE_QUANTITY}" title="Удалить позицию" class="remove item-remove" onclick="removeFromCart($(this))"></a>
         <a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}" class="product-image">
-          <img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=neon{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" class="goods-image-icon">
+          <img class="" src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=neon{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" class="goods-image-icon">
         </a>
         <div class="product-details">
-          <div class="product-name"><a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">{cart_items.GOODS_NAME}</a></div>
+          <div class="product-name">
+            <a class="name" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">{cart_items.GOODS_NAME}</a>
+            <a class="item-remove material-icons" data-href="{cart_items.ORDER_LINE_DELETE_URL}" data-count="{cart_items.ORDER_LINE_QUANTITY}" title="Удалить позицию" onclick="removeFromCart($(this))">                                  
+                close                                  
+            </a>                                
+          </div>
+          {% IFNOT cart_items.distinctive_properties_empty %}<div class="properties">{% FOR distinctive_properties %}{cart_items.distinctive_properties.NAME}: {cart_items.distinctive_properties.VALUE}{% IFNOT cart_items.distinctive_properties.last %},<br> {% ENDIF %}{% ENDFOR %}</div>{% ENDIF %}
           <div class="product-price">
-            <span class="header-toolsAmount quantity">{cart_items.ORDER_LINE_QUANTITY}</span>
+            <span class="header-toolsAmount quantity">{cart_items.ORDER_LINE_QUANTITY} {cart_items.GOODS_MOD_MEASURE_NAME}</span>
             <span class="price {CURRENCY_CHAR_CODE}" data-price="{cart_items.GOODS_MOD_PRICE_NOW}">{cart_items.GOODS_MOD_PRICE_NOW | money_format}</span>
           </div>
         </div>
@@ -58,11 +66,11 @@
       {% ENDFOR %}
     </ul>
     <div class="subtotal">
-      <span class="label">Итого:</span>
+      <span class="label">Стоимость товаров:</span>
       <span class="price total-sum {CURRENCY_CHAR_CODE}">{CART_SUM_NOW | money_format}</span>
     </div>
     <div class="actions">
-      <a class="button _dropdown" title="Очистить корзину" href="{CART_TRUNCATE_URL}" data-href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))">Очистить</a>
+      <a class="button-link" href="{CART_TRUNCATE_URL}" data-href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))">Очистить корзину</a>
       <a class="button" title="Перейти к оформлению заказа" href="{CART_URL}">В корзину</a>
     </div>
     {% ENDIF %}
