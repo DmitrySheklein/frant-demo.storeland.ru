@@ -174,7 +174,7 @@
                     </a>
                     <div id="fancybox-callback" class="fancybox-callback" style="display:none">
                       <div class="fancybox-header">
-                        <strong class="title">Обратный звонок</strong>                   
+                        <strong class="title">Заказать звонок</strong>                   
                       </div>
                       <div class="fancybox-body">
                         <form method="post" action="{CALLBACK_URL}" class="callbackForm" enctype="multipart/form-data">
@@ -183,16 +183,16 @@
                           <!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
                           {ANTISPAM_CODE}
                           <div class="callback-input">
-                            <label class="callback-label required" for="callback_person_header">Ваше имя <em>*</em></label>
-                            <input id="callback_person_header" class="input callback_person required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}"  maxlength="50" title="Представьтесь, пожалуйста" autocomplete="off" required>
+                            <input id="callback_person_header" class="input input-material callback_person required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}"  maxlength="50" placeholder="Ваше имя" autocomplete="off" required>
+                            <label for="callback_person_header" class="input-material-label material-icons">person_outline</label>
                           </div>
-                          <div class="callback-input">
-                            <label class="callback-label required" for="callback_phone_header">Номер телефона <em>*</em></label>
-                            <input id="callback_phone_header" class="input callback_phone required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}"  maxlength="50" title="Введите номер телефона" autocomplete="off" required>
+                          <div class="callback-input">     
+                            <input id="callback_phone_header" class="input input-material callback_phone required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}"  maxlength="50" placeholder="Ваш телефон" autocomplete="off" required>
+                            <label for="callback_person_header" class="input-material-label material-icons">phone_in_talk</label> 
                           </div>
-                          <div class="callback-input" style="display:none">
-                            <label class="callback-label" for="callback_comment_header">Комментарий</label>
-                            <textarea id="callback_comment_header" class="input textarea" rows="7" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_COMMENT}]" placeholder="Ваш комментарий">{FORM_CALLBACK_COMMENT}</textarea>
+                          <div class="callback-input">   
+                            <textarea id="callback_comment_header" class="input input-material textarea" rows="7" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_COMMENT}]" placeholder="Ваш комментарий">{FORM_CALLBACK_COMMENT}</textarea>
+                            <label for="callback_comment_header" class="input-material-label material-icons">create</label>                           
                           </div>                      
                           <button type="submit" title="Отправить" class="callback-btn button button3">Отправить</button>
                           <div class="pp">
@@ -218,23 +218,31 @@
                   <div id="fancybox-login" class="fancybox-login" style="display:none">
                     <div class="fancybox-login-content">
                       <div class="fancybox-header">
-                        <strong class="title">Постоянным покупателям</strong>                     
+                        <strong class="title _first">Вход</strong>                     
+                        <strong class="title _second">Регистрация</strong>                     
                       </div>
-                      <div class="fancybox-body first">
-                        <form action="{USER_LOGIN_URL}" method="post" class="clientForm">
+                      <div class="fancybox-login-tumbler">
+                        <div class="fancybox-login-tumbler-inner">
+                          <button class="fancybox-login-tumbler__btn _active">У меня есть аккаунт</button>
+                          <button class="fancybox-login-tumbler__btn">Я новый пользователь</button>
+                        </div>
+                      </div>
+                      <div class="fancybox-body _first">
+                        <form action="{USER_LOGIN_URL}" method="post" class="clientForm _fancybox _login">
                           <input type="hidden" name="hash" value="{HASH}" />
                           <input type="hidden" name="from" value="{FROM}" />
                           <div class="form-list">
                             <div class="fields">
-                              <label for="email" class="required">E-mail: <em>*</em></label>
-                              <input type="text" name="form[sites_client_mail]" value="{FORM_SITES_CLIENT_MAIL}" id="email"  maxlength="255" class="input email" required />
+                              <input type="email" name="form[sites_client_mail]" value="{FORM_SITES_CLIENT_MAIL}" id="email-login"  maxlength="255" class="input-material" required placeholder="Ваш email"/>
+                              <label for="email-login" class="input-material-label material-icons-outlined">email</label>
                             </div>
-                            <div class="fields">
-                              <label for="sites_client_pass" class="required">Пароль: <em>*</em></label>
+                            <div class="fields">                              
                               <div class="input-box">
-                                <input type="password" id="sites_client_pass" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="input" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" required/>
+                                <input type="password" id="login-password" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="input-material" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" placeholder="Ваш пароль" required/>
+                                <label for="login-password" class="input-material-label material-icons">lock</label>
+
                                 {% IFNOT user_agent_ie %}
-                                  <div class="showPassBlock"><a href="#" rel="<i class='fal fa-eye-slash' aria-hidden='true'></i>" class="showPass"><i class="fal fa-eye" aria-hidden="true"></i></a></div>
+                                  <div class="showPassBlock"><a href="#" rel="<span class='material-icons'>visibility_off</span>" class="showPass"><span class="material-icons">visibility</span></a></div>
                                 {% ENDIF %}
                                 <div id="caps_lock"> 
                                   <span class="fal fa-warning"></span>
@@ -244,16 +252,99 @@
                             </div>
                           </div>
                           <div class="buttons">
-                            <button type="submit" class="button" title="Войти" name="send" id="send2">Войти</button>
-                            <a href="{USER_RECOVERY_URL}" class="blue-link">Забыли пароль?</a>
+                            <a href="{USER_RECOVERY_URL}" class="button-link" data-fancybox="" data-src="#fancybox-recovery">Забыли пароль?</a>
+                            <button type="submit" class="button" title="Войти">Войти</button>
                           </div>
                         </form>
                       </div>
-                      <div class="fancybox-body second">
-                        <p>Зарегистрировавшись в нашем магазине, Вы сможете оформлять заказы быстрее, просматривать и отслеживать Ваши заказы</p>
-                        <div class="buttons">
-                          <a href="{USER_REGISTER_URL}" class="button _outline">Зарегистрироваться</a>
-                        </div>
+                      <div class="fancybox-body _second">
+                        <form action="{USER_REGISTER_URL}" method="post" class="clientForm _fancybox _reg">
+                          <input type="hidden" name="hash" value="{HASH}" />
+                          <!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+                          {ANTISPAM_CODE}
+                          <input type="hidden" name="from" value="{FROM}" />
+                          <div class="form-list">
+                            <div class="fields">
+                              <input class="input-material" id="name-reg" placeholder="Представьтесь, пожалуйста" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_NAME}]"  value="{FORM_SITES_CLIENT_NAME}" maxlength="100" required/>
+                              <label for="name-reg" class="input-material-label material-icons">person_outline</label>
+                            </div>
+                            <div class="fields">
+                              <input  class="input-material" id="phone-reg" placeholder="Телефон для связи" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_PHONE}]"  value="{FORM_SITES_CLIENT_PHONE}" maxlength="255" required/>
+                              <label for="phone-reg" class="input-material-label material-icons">phone_in_talk</label> 
+                            </div>
+                            <div class="fields">
+                              <input  class="input-material" id="email-reg" placeholder="Ваш email" type="email" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_MAIL}]"  value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" required/>
+                              <label for="email-reg" class="input-material-label material-icons-outlined">email</label>
+                            </div>
+                            <div class="fields">
+                              <div class="input-box">
+                                <input  class="input-material" id="password-reg" placeholder="Придумайте пароль" type="password" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_PASS}]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" required/>
+                                <label for="password-reg" class="input-material-label material-icons">lock</label>
+
+                                {% IFNOT user_agent_ie %}
+                                <div class="showPassBlock"><a href="#" rel="<span class='material-icons'>visibility_off</span>" class="showPass"><span class="material-icons">visibility</span></a></div>
+                                {% ENDIF %}
+                                  <div id="caps_lock"> 
+                                    <span class="fal fa-warning"></span>
+                                    <strong>Caps Lock включен.</strong>
+                                  </div>              
+                              </div>
+                            </div>
+                          </div>
+                          <div class="buttons">
+                            <button type="submit" title="Зарегистрироваться" class="button">Зарегистрироваться</button>
+                          </div>
+                          <div class="pp">
+                            <input type="checkbox" id="pp-check" class="pp-checkbox checkbox-hidden" name="pp-check" required="" aria-required="true" checked>
+                            <label for="pp-check"  class="pp-label checkbox-name">
+                            Я согласен на <a class="blue-link" href="#" data-fancybox data-src="#fancybox-pp">обработку персональных данных</a>
+                            </label>
+                          </div>                          
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="fancybox-recovery" class="fancybox-login" style="display: none;">
+                    <div class="fancybox-login-content">
+                      <div class="fancybox-header">
+                        <strong class="title">Восстановление пароля</strong>                   
+                      </div>
+                      <div class="fancybox-body">
+                        <form action="{USER_RECOVERY_URL}" method="post" class="clientForm _fancybox _recovery"> 
+                          <input type="hidden" name="hash" value="{HASH}" />
+                          <div class="first">
+                              <p class="error-block">
+                                Забыли пароль?
+                                <br> 
+                                Укажите свою почту, на которую будет отправлена
+                                ссылка для активации аккаунта, и новый пароль,
+                                с которым Вы будете заходить на сайт.                                
+                              </p>
+                              <div class="form-list">
+                                <div class="fields">
+                                  <input type="email" name="form[sites_client_mail]" value="{FORM_SITES_CLIENT_MAIL}" id="email-rec"  maxlength="255" class="input-material" required placeholder="Ваш email"/>
+                                  <label for="email-rec" class="input-material-label material-icons-outlined">email</label>
+                                </div>
+                                <div class="fields">
+                                  <div class="input-box">
+                                    <input type="password" id="login-rec" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="input-material" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" placeholder="Ваш пароль" required/>
+                                    <label for="login-rec" class="input-material-label material-icons">lock</label>
+
+                                    {% IFNOT user_agent_ie %}
+                                    <div class="showPassBlock"><a href="#" rel="<span class='material-icons'>visibility_off</span>" class="showPass"><span class="material-icons">visibility</span></a></div>
+                                    {% ENDIF %}
+                                      <div id="caps_lock"> 
+                                        <span class="fal fa-warning"></span>
+                                        <strong>Caps Lock включен.</strong>
+                                      </div>              
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="buttons">
+                                <button type="submit" title="Восстановить" class="button">Восстановить</button>
+                              </div>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -3118,6 +3209,7 @@
   {% ENDIF %}
   <!-- Модальное окно уведомления при отправке сообщения -->
   {% IF FORM_NOTICE %}  
+  <div class="message {% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}" style="display: none;">{FORM_NOTICE | nl2br}</div>
   <script>
   window.addEventListener('load', function(){
     function generate(type) {

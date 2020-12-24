@@ -42,6 +42,41 @@ select.invalidInput + label {margin-top: 0;margin-bottom: 5px;}
 .input:-ms-input-placeholder {color: #b1bfc8}
 .input:-moz-placeholder {color: #b1bfc8}
 
+label.input-material-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #cec5bf;
+  color: #caa462;
+  order: -1;
+}
+.input-material:focus + label.input-material-label {
+  border-color: #caa462;
+}
+.input-material {
+  width: 100%;
+  height: 40px;
+  padding-left: 15px;
+  background: none;
+  border: none;
+  border-radius: 0;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #cec5bf;
+}
+.input-material.textarea {
+  height: 80px;
+}
+.input-material:focus {
+  box-shadow: none;  
+  border-color: #caa462;
+}
+.input-material::-webkit-input-placeholder {color: #cec5bf}
+.input-material::-moz-placeholder {color: #cec5bf}
+.input-material:-ms-input-placeholder {color: #cec5bf}
+.input-material:-moz-placeholder {color: #cec5bf}
 /*! Поле автозаполнения */
 .input:-webkit-autofill {
   -webkit-box-shadow: inset 0 0 0 50px #ffffff !important; /*! Цвет фона */
@@ -89,7 +124,7 @@ select.input {-webkit-appearance: menulist;cursor: pointer;}
 /*! Показать пароль */
 .showPassBlock {position: absolute;top: 0;right: 0;}
 .showPassBlock .showPass,
-.showPassBlock .OrderShowPass{display: block;padding: 8px 15px}
+.showPassBlock .OrderShowPass{display: block;padding: 6px 15px}
 /*! Заголовки */
 h1, h2, h3, h4, h5, h6 {text-rendering: optimizelegibility;line-height:1.3;margin:0;padding:0;font-family: 'Roboto Condensed',Arial, sans-serif;font-weight: 400;color: #2e2e2e;}
 h1 {font-size: 36px;}
@@ -216,6 +251,8 @@ label.invalidInput {color: #E80636;font-size: 90%;}
 .jq-selectbox__trigger-arrow {position: absolute;top: 11px;right: 12px;width: 12px;height: 12px;border: none;-webkit-transform: rotate(90deg);transform: rotate(90deg);background-size: cover;background-repeat: no-repeat}
 /**/
 .fancybox-callback {
+  max-width: 415px;
+  width: 100%;  
   padding: 0;
 }
 .fancybox-header {position: relative;width: 100%;padding: 21px 30px;background-position: center;background-color: #caa462;color: #fff;text-align: center;border-bottom: 0;text-transform: uppercase;font-size: 24px;}
@@ -801,9 +838,10 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .feedbackForm .form-list .fields:last-child {margin-bottom: 0;}
 .feedbackForm .form-list .fields > label {display: block;margin-bottom: 10px;text-align: left;}
 /*! Перезвоните мне */
-.callbackForm .callback-input {margin-bottom: 15px;}
+.callbackForm .callback-input {margin-bottom: 15px;display: flex;}
+
 .callbackForm .callback-input .callback-label {display:block;margin-bottom: 10px;cursor:pointer;}
-.callbackForm .callback-btn {display:block;margin: 0 auto 10px;}
+.callbackForm .callback-btn {display:block;margin: 30px auto 15px;}
 .callbackForm .name-error,.callbackForm .phone-error {display:none;}
 /*! Напишите нам */
 .feedbackForm-header .callback-input {margin-bottom: 15px;}
@@ -1164,12 +1202,40 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 
 /*! Личный кабинет (Всплывающее окно) ***/
 .fancybox-login {padding: 0}
-.fancybox-login-content {max-width: 420px;width: 100%;padding: 0}
-.fancybox-login .fancybox-body.first p {font-size: 15px}
-.fancybox-login .fancybox-body.first .buttons {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between}
-.fancybox-login .fancybox-body.second p {font-size: 12px;color: #999}
-.fancybox-login .fancybox-body.second {background: #f7f7f7;border-top: 1px solid #f2f2f2}
-.fancybox-login .fancybox-body.second .buttons {text-align: center;}
+.fancybox-login .title._second {display: none;}
+.fancybox-login-content {width: 420px;padding: 0}
+.fancybox-login-tumbler {
+  background: #e7e2df;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.fancybox-login-tumbler-inner {
+  display: flex;
+  height: 50px;
+  border: 1px solid #cec5bf;
+}
+.fancybox-login-tumbler__btn {
+  flex-grow: 1;
+  background: #fff;
+  font-size: 16px;
+}
+.fancybox-login-tumbler__btn._active {
+  background: #cec5bf;
+  color: #fff;
+}
+.fancybox-login .fancybox-body .error-block {
+  color: #1f1e22;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.fancybox-login .fancybox-body .buttons {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;margin-top: 30px;}
+.fancybox-login .fancybox-body .button {max-width: 167px;margin: auto}
+.fancybox-login .fancybox-body._first .button {margin-right: 0;}
+.fancybox-login .fancybox-body._second {display: none;}
+.fancybox-login .fancybox-body._second {background:#e7e2df;}
+.fancybox-login .fancybox-body._second .buttons {margin-bottom: 10px;}
+.fancybox-login .fancybox-body._second .button {margin: 0 auto}
 /*! Личный кабинет (Страницы) ***/
 .col-account {margin: 0;padding-bottom: 30px}
 .col-account h3 {padding: 0 0 10px;line-height: normal;margin-bottom: 10px;border-bottom: 1px solid transparent}
@@ -1188,10 +1254,28 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 .account .second .col-account {max-width: 450px}
 .clientForm .pp {margin-bottom: 10px}
 .clientForm .form-list {margin-bottom: 15px}
-.clientForm .form-list .fields {margin-bottom: 15px;max-width: 450px}
+.clientForm .form-list .fields { 
+  margin-bottom: 15px;
+  max-width: 450px
+}
 .clientForm .form-list .fields .input-box {position: relative}
 .clientForm .form-list .fields:last-child {margin-bottom: 0}
 .clientForm .form-list .fields > label {display: block;margin-bottom: 15px;text-align: left}
+.clientForm._fancybox .form-list .fields{
+  display: flex;
+}
+.clientForm._fancybox .fields > label{
+  display: flex;
+  margin-bottom: 0;
+}
+
+.clientForm._fancybox .form-list .fields .input-box {
+  display: flex;
+  width: 100%;
+}
+.clientForm._fancybox .form-list {
+  margin-bottom: 0;
+}
 /*! Личный кабинет (Избранное) ***/
 .account.cart-info .buttons .button {margin-right: 11px;margin-bottom:5px;}
 .account .favorites-empty{display:none;width:100%;height:38px;line-height:36px;white-space: nowrap;text-align:center;padding:0 10px;margin:0;font-size:13px;border:none;color:#2e2e2e;background-color:#f3f3f5;cursor:default;border-radius:5px}

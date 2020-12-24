@@ -10,7 +10,7 @@ $(function(){
 })
 // Fancybox default
 $.fancybox.defaults.beforeShow = function () {
-  $('.wrapper').addClass('_blur')
+  $('.wrapper').addClass('_blur');  
 }
 $.fancybox.defaults.beforeClose = function () {
   $('.wrapper').removeClass('_blur')
@@ -192,6 +192,9 @@ function RefreshImageAction(img,num,cnt) {
 function showPass(){
     $('.showPass').on('click', function(){
     ChangePasswordFieldType(this, $('#sites_client_pass'));
+    ChangePasswordFieldType(this, $('#login-password'));
+    ChangePasswordFieldType(this, $('#password-reg'));
+    ChangePasswordFieldType(this, $('#password-rec'));
     return false;
   });
 }
@@ -255,14 +258,69 @@ function mainFunctions() {
   });
 
   // Валидация формы на странице оформления заказа, а так же формы на страницы связи с администрацией
-  $("#myform, .feedbackForm, .clientForm, .goodsDataOpinionAddForm, .callbackForm").each(function(){
-    $(this).validate({
-      rules: {
-        reg_name: "required"
+  // $("#myform, .feedbackForm, .clientForm._login, .clientForm._reg, .goodsDataOpinionAddForm, .callbackForm").validate()
+  $("#myform, .feedbackForm, .clientForm._login, .clientForm._reg,.clientForm._recovery, .goodsDataOpinionAddForm, .callbackForm").each(function(){
+    $(this).validate()
+  }); 
+  $('.clientForm._login,.clientForm._reg, .clientForm._recovery').on('submit', function (e) {
+    e.preventDefault();
+
+
+    // Находим форму, которую отправляем на сервер
+    var $formBlock = $($(this).get(0));
+    if(!$formBlock.valid()){
+      return;
+    }
+    // Проверка на существование формы отправки запроса на добавление товара в корзину
+    if (1 > $formBlock.length || $formBlock.get(0).tagName != 'FORM') {
+      alert('Не удалось найти форму');
+      return false;
+    }
+      
+    // Получаем данные формы, которые будем отправлять на сервер
+    var formData = $formBlock.serializeArray();
+    // Сообщаем серверу, что мы пришли через ajax запрос
+    // formData.push({name: 'ajax_q', value: 1});
+    // formData.push({name: 'only_body', value: 1});
+
+    $.ajax({
+      type: "POST",
+      cache: false,
+      url: $formBlock.attr('action'),
+      data: formData,
+      success: function(data,textStatus, jqXHR) {
+        console.log(
+          textStatus, jqXHR
+        );
+        var msgText = $(data).find('.message').text();
+
+        if(msgText == 'Покупателя с таким emailом не существует'){
+          msgText = 'Пользователь с таким e-mail не найден.Проверьте правильность введенных данных или <a>зарегистрируйтесь</a>'
+        }
+        if(msgText == 'Указанный пароль для входа в личный кабинет покупателя не верен'){
+          msgText = 'Неверный пароль <br> Проверьте правильность введенных данных или <a>восстановите пароль</a>'
+        }
+        console.log(
+          $(data).find('.message').text()
+        );
+        // console.log(data);
+        var $errorBlock = $('<div>').addClass('error-block').html(msgText);
+        $formBlock.find('.error-block').remove()
+        $formBlock.prepend($errorBlock)
       }
     })
-  });
 
+  })
+  // Переключение логина/регистрации
+  $('.fancybox-login-tumbler').on('click', '.fancybox-login-tumbler__btn', function () {
+    if ($(this).hasClass('_active')) {
+      return;
+    }
+    
+    $(this).addClass('_active').siblings().removeClass('_active');
+    $(this).closest('.fancybox-login-content').find('.fancybox-body').toggle();
+    $('.fancybox-login .title').toggle();
+  })
   // Отправка формы по Ctrl+Enter
   $('form').bind('keypress', function(e){
     if((e.ctrlKey) && ((e.which==10)||(e.which==13))) {$(this).submit();}
