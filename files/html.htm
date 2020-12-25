@@ -2583,7 +2583,6 @@
             <div class="block-title">
               <div class="tabs-headerList">
                 <ul class="tabs-headerList-wrap unstyled">
-                  <li class="nav-splitter"></li>
                   {% IFNOT news_list_shop_empty %}
                   <li class="tabs-headerItem active">
                     <a class="tabs-headerLink" href="#news_list_shop" data-href="news_list_shop"> Новости магазина</a>
@@ -2669,7 +2668,7 @@
            <!-- Все новости-->
             <div class="block-title">
               <h2 class="title">
-                <a href="{NEWS_ALL_URL}" title="Список новостей магазина">Новости</a>
+                <a href="{NEWS_ALL_URL}" title="Список новостей магазина">Новости магазина</a>
               </h2>
             </div>
             <div class="preloader"><span class="content-loading"></span></div>
@@ -2683,7 +2682,7 @@
                       {% IF news_list_all.SHOW_TIME %}<div class="date">{news_list_all.TIME | date("d")}.{news_list_all.TIME | date("m")}.{news_list_all.TIME | date("Y")}</div>{% ENDIF %}
                       <div class="title"><a href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">{news_list_all.TITLE}</a></div>
                       <div class="description"><p>{news_list_all.TEXT_SHORT}</p></div> 
-                      <a href="{news_list_all.URL}" class="button button2">Подробнее</a>
+                      <a href="{news_list_all.URL}" class="news-button">Подробнее</a>
                     </div>
                   </div>
                 {% ENDFOR %}
@@ -2700,7 +2699,7 @@
     
     <!-- Вы смотрели -->
     {% IFNOT recently_viewed_goods_empty %}
-    <div id="viewed">
+    <div id="viewed" style="display: none;">
       <div class="container">
         <h3 class="title _main"><span class="text">Вы смотрели</span></h3>
         <div class="content">
@@ -2737,6 +2736,16 @@
     <div id="footer">
       <div class="container">
         <div class="row">
+          <div class="block col-lg-3 col-md-4 col-sm-12 col-xs-12">
+            <!-- Логотип -->
+            <div class="footer-logo">
+              <a href="{INDEX_PAGE_URL}" title="{SETTINGS_STORE_NAME}">
+                <img class="footer-logoImg" src="{ASSETS_IMAGES_PATH}logo.png" alt="{SETTINGS_STORE_NAME}">
+               </a>
+            </div>
+            <!-- /Лого -->            
+            {% IF SETTINGS_STORE_WORK_TIME %}<div></i><p>{SETTINGS_STORE_WORK_TIME | htmlspecialchars_decode}</p></div>{% ENDIF %}
+          </div>
           {% IFNOT menu_footer_links_empty %}
           <div class="block collapse col-lg-3 col-md-2 col-sm-12 col-xs-12">
             <div class="title"><span>Меню</span><span class="title-navArrow fal fa-angle-down"></span></div>
@@ -2753,49 +2762,52 @@
             </div>
           </div>
           {% ENDIF %}
-          <div class="block collapse col-lg-3 col-md-2 col-sm-12 col-xs-12">
-            <div class="title"><span>Мой кабинет</span><span class="title-navArrow fal fa-angle-down"></span></div>
-            <div class="block-content">
-              <ul class="links unstyled">
-                {% IFNOT CLIENT_IS_LOGIN %}
-                <li><a href="{USER_LOGIN_URL}" title="Вход в личный кабинет" rel="nofollow">Вход</a></li>
-                <li><a href="{USER_REGISTER_URL}" title="Регистрация" rel="nofollow">Регистрация</a></li>
-                {% ELSE %}
-                <li><a href="{USER_SETTINGS_URL}" title="Личный кабинет" rel="nofollow">Мой кабинет</a></li>
-                <li><a href="{USER_HISTORY_LIST_URL}" title="История заказов" rel="nofollow">История</a></li>
-                <li><a href="{FAVORITES_URL}" title="Избранные товары" rel="nofollow">Избранное</a></li>
-                {% IF TARIFF_FEATURE_GOODS_COMPARE && SETTINGS_COMPARE_DISABLE=0 %}<li><a href="{COMPARE_URL}" title="Сравнение" rel="nofollow">Сравнение</a></li>{% ENDIF %}
-                <li><a href="{USER_LOGOUT_URL}" title="Выход" rel="nofollow">Выход</a></li>
-                {% ENDIF %}
-              </ul>
-            </div>
-          </div> 
-          <div class="block col-lg-3 col-md-4 col-sm-12 col-xs-12">
-            <div class="title"><span>Мы в сети</span></div>
-            <div class="block-content">
-              <div class="social-links">
-                <a style="display:none" class="facebook" href="https://www.facebook.com/" title="FaceBook.com" target="_blank"><i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
-                <a style="display:none" class="twitter" href="https://twitter.com/" title="Twitter.com" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
-                <a class="vk" href="https://vk.com/" title="VK.com" target="_blank"><i class="fab fa-vk" aria-hidden="true"></i><span>ВКонтакте</span></a>
-                <a class="viber" href="https://viber.com/" title="Viber.com" target="_blank"><i class="fab fa-viber" aria-hidden="true"></i><span>Viber</span></a>
-                <a class="whatsapp" href="https://whatsapp.com/" title="Whatsapp.com" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i><span>Whatsapp</span></a>
-                <a class="odnoklassniki" href="https://ok.ru/" title="Odnoklassniki" target="_blank"><i class="fab fa-odnoklassniki" aria-hidden="true"></i><span>Odnoklassniki</span></a>
-                <a class="instagram" href="https://instagram.com/" title="Instagram.com" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
-                <a class="youtube" href="https://youtube.com/" title="YouTube.com" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i><span>Youtube</span></a>
-              </div>
-            </div>
-          </div>
+
           <div class="block col-lg-3 col-md-4 col-sm-12 col-xs-12">
             <!-- <div class="title"><span>Контакты</span></div> -->
             <div class="block-contact" itemscope itemtype="https://schema.org/Organization">
               <meta itemprop="name" content="{SETTINGS_STORE_ORG_NAME}"/>
-              {% IF SETTINGS_STORE_PHONE_NUMBER1 %}<div itemprop="telephone"><i class="fal fa-phone"></i><p><b>Телефон</b><br><a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}{SETTINGS_STORE_PHONE_CITY_CODE1}{SETTINGS_STORE_PHONE_NUMBER1}">{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</a></p></div>{% ENDIF %}
-              {% IF SETTINGS_STORE_PHONE_NUMBER2 %}<div itemprop="telephone"><i class="fal fa-phone"></i><p><b>Телефон</b><br><a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE2}{SETTINGS_STORE_PHONE_CITY_CODE2}{SETTINGS_STORE_PHONE_NUMBER2}">{SETTINGS_STORE_PHONE_COUNTRY_CODE2}({SETTINGS_STORE_PHONE_CITY_CODE2}){SETTINGS_STORE_PHONE_NUMBER2}</a></p></div>{% ENDIF %}
-              {% IF SETTINGS_STORE_PHONE_NUMBER3 %}<div itemprop="faxNumber"><i class="fal fa-fax" aria-hidden="true"></i><p><b>Факс</b><br><a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE3}{SETTINGS_STORE_PHONE_CITY_CODE3}{SETTINGS_STORE_PHONE_NUMBER3}">{SETTINGS_STORE_PHONE_COUNTRY_CODE3}({SETTINGS_STORE_PHONE_CITY_CODE3}){SETTINGS_STORE_PHONE_NUMBER3}</a></p></div>{% ENDIF %}
+              {% IF SETTINGS_STORE_PHONE_NUMBER1 %}<div itemprop="telephone"><p><b>Интернет-магазин</b><br><a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}{SETTINGS_STORE_PHONE_CITY_CODE1}{SETTINGS_STORE_PHONE_NUMBER1}">{SETTINGS_STORE_PHONE_COUNTRY_CODE1} ({SETTINGS_STORE_PHONE_CITY_CODE1}) {SETTINGS_STORE_PHONE_NUMBER1}</a></p></div>{% ENDIF %}
+              {% IF SETTINGS_STORE_PHONE_NUMBER2 %}<div itemprop="telephone"><p><b>Отдел доставки</b><br><a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE2}{SETTINGS_STORE_PHONE_CITY_CODE2}{SETTINGS_STORE_PHONE_NUMBER2}">{SETTINGS_STORE_PHONE_COUNTRY_CODE2} ({SETTINGS_STORE_PHONE_CITY_CODE2}) {SETTINGS_STORE_PHONE_NUMBER2}</a></p></div>{% ENDIF %}
+              {% IF SETTINGS_STORE_PHONE_NUMBER3 %}<div itemprop="telephone"><p><b>Звонок по России бесплатный</b><br><a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE3}{SETTINGS_STORE_PHONE_CITY_CODE3}{SETTINGS_STORE_PHONE_NUMBER3}">{SETTINGS_STORE_PHONE_COUNTRY_CODE3} ({SETTINGS_STORE_PHONE_CITY_CODE3}) {SETTINGS_STORE_PHONE_NUMBER3}</a></p></div>{% ENDIF %}
               {% IF SETTINGS_STORE_SKYPE %}<div><i class="fab fa-skype"></i><p><b>Skype</b><br><a href="skype:{SETTINGS_STORE_SKYPE}?call">{SETTINGS_STORE_SKYPE}</a></p></div>{% ENDIF %}
-              {% IF SETTINGS_STORE_WORK_TIME %}<div></i><p>{SETTINGS_STORE_WORK_TIME | htmlspecialchars_decode}</p></div>{% ENDIF %}
+              <!-- Обратный звонок -->
+              <a href="#" class="footer-phoneCallback" data-src="#fancybox-callback" data-fancybox="">
+                <span>
+                  Перезвоните мне
+                </span>
+              </a> 
               {% IF SETTINGS_STORE_EMAIL_MAIN %}<div itemprop="email"><a href="mailto:{SETTINGS_STORE_EMAIL_MAIN}">{SETTINGS_STORE_EMAIL_MAIN}</a></p></div>{% ENDIF %}
               {% IF SETTINGS_STORE_REGION %}<div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="addressLocality"><span><i class="fal fa-compass"></i><b>Наш адрес</b></span><p>{SETTINGS_STORE_REGION}</p></span></div>{% ENDIF %}
+             
+            </div>
+          </div>
+          <div class="block col-lg-3 col-md-4 col-sm-12 col-xs-12">
+            <div class="subscribe">
+              <p class="subscribe-title">Подпишитесь на рассылку о новых поступлениях</p>
+              <form method="post" action="{CALLBACK_URL}" class="callbackForm" enctype="multipart/form-data">
+                <input type="hidden" name="hash" value="{HASH}" />
+                <input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}"/>
+                <!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+                {ANTISPAM_CODE}
+                <div class="callback-input">
+                  <input id="subscribe-email" class="input input-material _reverse callback_person required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_COMMENT}]" value="{FORM_FIELD_NAME_CALLBACK_COMMENT}"  maxlength="50" placeholder="Введите Ваш e-mail" autocomplete="off" required>
+                  <label for="subscribe-email" class="input-material-label material-icons _order">mail_outline</label>
+                </div>
+              </form>
+              <p class="subscribe-pp">
+                Нажимая на кнопку Отправить, Вы соглашаетесь с правилами обработки данных
+              </p>
+            </div>
+            <div class="social-links">
+              <a style="display:none" class="facebook" href="https://www.facebook.com/" title="FaceBook.com" target="_blank"><i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+              <a style="display:none" class="twitter" href="https://twitter.com/" title="Twitter.com" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
+              <a class="vk" href="https://vk.com/" title="VK.com" target="_blank"><i class="fab fa-vk" aria-hidden="true"></i><span>ВКонтакте</span></a>
+              <a class="viber" href="https://viber.com/" title="Viber.com" target="_blank"><i class="fab fa-viber" aria-hidden="true"></i><span>Viber</span></a>
+              <a class="whatsapp" href="https://whatsapp.com/" title="Whatsapp.com" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i><span>Whatsapp</span></a>
+              <a class="odnoklassniki" href="https://ok.ru/" title="Odnoklassniki" target="_blank"><i class="fab fa-odnoklassniki" aria-hidden="true"></i><span>Odnoklassniki</span></a>
+              <a class="instagram" href="https://instagram.com/" title="Instagram.com" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+              <a class="youtube" href="https://youtube.com/" title="YouTube.com" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i><span>Youtube</span></a>
             </div>
           </div>          
         </div>
@@ -2803,15 +2815,9 @@
       <div class="fotter-bottom">
         <div class="container">
           <div class="row">
-            <div class="copyright col-xs-12 col-md-6">
-              <div>{SETTINGS_STORE_NAME} &copy; {DATE_YEAR}. Все права защищены. </div>
-              <div>{SETTINGS_STORE_ORG_NAME}.</div>
-              <div>{COPYRIGHT_FOR_DESIGN_NEON}</div>
-              <div>{SETTINGS_STORE_HTML_CODE}</div>
-            </div>
-            <div class="payments-block col-xs-12 col-md-6">
+            <div class="payments-block col-xs-12">
               <div id="payment">                   
-                  <a href="#" title="Подробнее о способах оплаты">
+                  <div class="payment-container">
                     <div class="payment-ico sber">
                       <img class="lozad" data-src="{ASSETS_IMAGES_PATH}sberbank.svg" alt="">
                     </div>
@@ -2836,8 +2842,16 @@
                     <div class="payment-ico qiwi">
                       <img class="lozad" data-src="{ASSETS_IMAGES_PATH}qiwi.svg" alt="">
                     </div>
-                  </a>
+                  </div>
               </div>             
+            </div>            
+            <div class="copyright col-xs-12">
+              <div>
+              {SETTINGS_STORE_NAME} &copy; {DATE_YEAR}. Все права защищены.
+              {SETTINGS_STORE_ORG_NAME}.
+              {COPYRIGHT_FOR_DESIGN_FRANT}
+              {SETTINGS_STORE_HTML_CODE}
+              </div>
             </div>
           </div>
         </div>
