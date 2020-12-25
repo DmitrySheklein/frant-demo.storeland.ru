@@ -1,7 +1,17 @@
 // Функции для главной страницы
 function indexPage() {
     // Слайдер на главной
-    $('#slideshow .owl-carousel').owlCarousel({
+    $('#slideshow .owl-carousel').on('initialized.owl.carousel changed.owl.carousel', function(e) {
+      if (!e.namespace)  {
+        return;
+      }
+      var carousel = e.relatedTarget;
+      var itemWidth = 55 //px
+      var paddingWidth = 15 //px
+      $('.slider-counter').text(carousel.relative(carousel.current()) + 1 + ' / ' + carousel.items().length)
+      .css('left', paddingWidth +  (carousel.items().length * itemWidth) + 'px')
+    })
+    .owlCarousel({
       items: 1,
       loop: true,
       rewind: true,
@@ -71,119 +81,76 @@ function indexPage() {
         1200:{items:4,margin: 30,mouseDrag: false}
       }
     });  
-    // Категории на главной
-    $("#categories-index .owl-carousel").owlCarousel({
-      loop: false,
-      rewind: true,
-      lazyLoad: false,
-      nav: false,
-      dots: false,
-      autoplay: false,
-      smartSpeed: 500,
-      touchDrag: true,
-      pullDrag: true,
-      navContainer: '#categories-index .navigation',
-      navText: [, ],
-      navText: ["<i class='slideshow-nav fal fa-angle-left' aria-hidden='true'></i>", "<i class='slideshow-nav fal fa-angle-right' aria-hidden='true'></i>"],      
-      responsiveClass: true,
-      responsiveRefreshRate: 100,
-      responsive: {
-        0:{items:1},
-        320:{items:1,margin: 10},
-        370:{items:2,margin: 10},
-        480:{items:2,margin: 10},
-        991:{items:3,margin: 10},
-        1200:{items:5,margin: 10}
+
+    
+    //Функция показать больше 
+    $('.products-button-load').on('click', function () {
+      var $btn = $(this);
+
+      if($btn.hasClass('_loaded')){
+        $btn.closest('.products-container').find('.products-grid .item').filter('._visible').removeClass('_visible').hide();
+        $btn
+          .removeClass('_loaded')
+          .find('span')
+          .text('Показать все')
+      }else{ 
+        $btn.closest('.products-container').find('.products-grid .item').not(':visible').addClass('_visible').show();
+        $btn
+          .addClass('_loaded')
+          .find('span')    
+          .text('Скрыть')
       }
-    });  
-    // Товары на главной
-    if(goodsIndexTemplateView === 'tabs'){
-      (function(element){
-          var $element = $(element);
-          var itemNav = $('.item-nav', $element);
-          var itemContent = $('.products-container', $element);    
-          itemNav.on('click', function(){
-            var $this = $(this);
-            var navPosition = $this.position().left
-            var navWidth = $this.outerWidth();
-            if($this.hasClass('tab-nav-actived')) return false;
-            itemNav.removeClass('tab-nav-actived');
-            $this.addClass('tab-nav-actived');
-            var itemActive = '.' + $this.data('href');
-            itemContent.hide()
-            $(itemActive, $element).fadeIn()
-            $element.find('.nav-splitter').css({'left': navPosition + 'px', 'width': navWidth})
-          });
-        $element.find('.nav-splitter').css('width', itemNav.first().outerWidth())
-      })('#producttabs');
-      //Функция показать больше 
-      $('.products-button-load').on('click', function () {
-        var $btn = $(this);
-  
-        if($btn.hasClass('_loaded')){
-          $btn.closest('.products-container').find('.products-grid .item').filter('._visible').removeClass('_visible').hide();
-          $btn
-            .removeClass('_loaded')
-            .find('span')
-            .text('Показать все')
-        }else{ 
-          $btn.closest('.products-container').find('.products-grid .item').not(':visible').addClass('_visible').show();
-          $btn
-            .addClass('_loaded')
-            .find('span')    
-            .text('Скрыть')
-        }
-      })
-    }
-    if(goodsIndexTemplateView === 'carousel'){
+    })
 
-      $(".products-container").each(function () {
-        var $navBlock = $(this).find('.navigation');
 
-        $(this).find('.products-grid').owlCarousel({
-          margin: 10,
-          loop: false,
-          rewind: true,
-          lazyLoad: true,
-          nav: true,
-          dots: false,
-          autoplay: false,
-          autoplayTimeout: 3000,
-          autoplayHoverPause: true,
-          navContainer: $navBlock,
-          navText: [, ],
-          navText: ["<i class='slideshow-nav fal fa-angle-left' aria-hidden='true'></i>", "<i class='slideshow-nav fal fa-angle-right' aria-hidden='true'></i>"],
-          smartSpeed: 500,
-          mouseDrag: true,
-          touchDrag: true,
-          pullDrag: true,
-          responsiveClass: true,
-          responsiveRefreshRate: 100,
-          responsive: {
-            0:{items:1},
-            320:{items:2},
-            480:{items:2},
-            540:{items:2},
-            768:{items:3},
-            992:{items:3},
-            1200:{items:5}
-          },          
-          onInitialized: changeNavBtn
-        });        
-      })
+    $(".products-container.section").each(function () {
+      var $navBlock = $(this).find('.navigation');
+      // 
+      $(this).find('.products-grid').owlCarousel({
+        margin: 30,
+        loop: false,
+        rewind: true,
+        lazyLoad: true,
+        nav: true,
+        dots: false,
+        autoplay: false,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        navContainer: $navBlock,
+        navText: [, ],
+        navText: ["<i class='slideshow-nav fal fa-angle-left' aria-hidden='true'></i>", "<i class='slideshow-nav fal fa-angle-right' aria-hidden='true'></i>"],
+        navText: ['<svg class="slideshow-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.213 476.213"><path d="M476.213 223.106H57.426l34.393-34.393L70.606 167.5 0 238.106l70.606 70.607L91.819 287.5l-34.393-34.394h418.787z"/></svg>', '<svg class="slideshow-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.2 476.2"><path d="M0 253.1h418.8l-34.4 34.4 21.2 21.2 70.6-70.6-70.6-70.6-21.2 21.2 34.4 34.4H0z"/></svg>'],
+        smartSpeed: 500,
+        mouseDrag: true,
+        touchDrag: true,
+        pullDrag: true,
+        responsiveClass: true,
+        responsiveRefreshRate: 100,
+        responsive: {
+          0:{items:1},
+          320:{items:2},
+          480:{items:2},
+          540:{items:2},
+          768:{items:3},
+          992:{items:3},
+          1200:{items:4}
+        },          
+        onInitialized: changeNavBtn
+      });        
+    })
 
-      function changeNavBtn(event){
-        var items = event.item.count;
-        var size = event.page.size;
-        var $nav = $(event.target).siblings('.block-title').find('.navigation');
-        
-        if (items > size){
-          $nav.show();
-        } else {
-          $nav.hide();
-        }
-      }      
-    }
+    function changeNavBtn(event){
+      var items = event.item.count;
+      var size = event.page.size;
+      var $nav = $(event.target).siblings('.block-title').find('.navigation');
+      
+      if (items > size){
+        $nav.show();
+      } else {
+        $nav.hide();
+      }
+    }      
+
     // Установшка ширины .nav-splitter при загрузке
     setTimeout(function(){
       $('#news .tabs-headerList').find('.nav-splitter').css('width', $('#news .tabs-headerList .tabs-headerItem').first().outerWidth())  

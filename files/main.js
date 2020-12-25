@@ -6,7 +6,7 @@ $(function(){
 })
 // Hover карусель изображений
 $(function(){
-  $(".mouseHoverImgCarousel").HoverMouseCarousel().on('click', function (e) {if(getClientWidth() <= 991) {e.preventDefault()}});
+  // $(".mouseHoverImgCarousel").HoverMouseCarousel().on('click', function (e) {if(getClientWidth() <= 991) {e.preventDefault()}});
 })
 // Fancybox default
 $.fancybox.defaults.beforeShow = function () {
@@ -218,7 +218,7 @@ function mainFunctions() {
     $(document).on('click', '.add-cart', function() {
       var $btn  = $(this);
       $btn.addClass('_loading')
-      $btn.find('span').html('<i class="fal fa-spinner fa-spin"></i>')
+      $btn.find('span').last().html('<i class="fal fa-spinner fa-spin"></i>')
   
       var form = $(this).closest('form');
       if ($(this).hasClass('_cart-page')) {
@@ -411,7 +411,7 @@ function AddCart() {
         url: formBlock.attr('action'),
         data: formData,
         success: function(data) {
-          var $btn = $('.add-cart._loading').removeClass('_loading').find('span').html("В корзину");
+          var $btn = $('.add-cart._loading').removeClass('_loading').find('span').last().html("В корзину");
 
           var msg = $(data).find('.notify').html();
           var type = $(data).find('.notify').hasClass('good') ? 'success' : 'error'
@@ -843,7 +843,7 @@ function quickViewShowMod(href, atempt) {
   }
   var $btn = $('.quickviewmod._loading');
   $btn.find('.fal').remove();
-  $btn.find('span').html('<i class="fal fa-spinner fa-spin"></i>')
+  $btn.find('span').last().html('<i class="fal fa-spinner fa-spin"></i>')
 
   $.ajax({
     type    : "GET",
@@ -854,7 +854,7 @@ function quickViewShowMod(href, atempt) {
       loadFile('goodsPage', 'js');
     },
     success: function(data) {
-      $btn.removeClass('_loading').find('span').html('В корзину')
+      $btn.removeClass('_loading').find('span').last().html('В корзину')
 
       $.fancybox.close();
       $.fancybox.open(data, {
@@ -1444,7 +1444,9 @@ function mainnav(){
 // Поиск в шапке
 $(function(){
   function toggleSearch() {
-    $('.header-search .search').toggleClass('_active')
+    $('.header-search .search').toggleClass('_active');
+    // $('.wrapper').toggleClass('_blur');
+    $('body .wrapper > div, .header-logo, .header-main-content__top, .header-main-content__bottom > div:not(.header-search) ').toggleClass('_blur')
   }
   $('.header-search .search-close').on('click', function(e){
     toggleSearch();
