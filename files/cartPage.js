@@ -120,7 +120,7 @@ function startOrder() {
 
 // Разделение поле адрес на Улица, Дом, Квартира
 function address() {
-  $('#quickform .button').on('click', function () {
+  $('#quickform').on('submit', function () {
     var $quickDeliveryAddress = $('#quickDeliveryAddress'),
       quickDeliveryAddressStreetValue = $('#quickDeliveryAddressStreet').val(),
       quickDeliveryAddressHomeValue = $('#quickDeliveryAddressHome').val(),
@@ -134,8 +134,7 @@ function address() {
       if ($quickDeliveryAddress.val().match(/(.*)(улица)+(.*)/i)) {
         $quickDeliveryAddress.val(null);
       }
-      $quickDeliveryAddress.val('Улица: ' + quickDeliveryAddressStreetValue + ', Дом/Корпус: ' + quickDeliveryAddressHomeValue + ', Квартира: ' + quickDeliveryAddressFlatValue);
-      $(this).submit();
+      $quickDeliveryAddress.val('Улица: ' + quickDeliveryAddressStreetValue + ', Дом/Корпус: ' + quickDeliveryAddressHomeValue + ', Квартира: ' + quickDeliveryAddressFlatValue);      
       return false;
     }
   });
@@ -452,7 +451,15 @@ function OrderScripts() {
         }
       });
     });
-
+    // Выбор времени
+    $('#quickform select.quickform-select-convenient').on('change', function(){
+      var convenientArr = $(this).val().split('-')
+      
+      if(convenientArr.length){
+            $('input[name="form[delivery][convenient_time_from]"]').val(convenientArr[0])
+            $('input[name="form[delivery][convenient_time_to]"]').val(convenientArr[1])
+      }
+    })
     // Выбор даты доставки
     // Документация к плагину //t1m0n.name/air-datepicker/docs/index-ru.html
     var TIME_ZONE = 0; // Учёт временной зоны магазина: 0 - выключен, 1 - включен

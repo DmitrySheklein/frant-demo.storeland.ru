@@ -103,7 +103,7 @@ function indexPage() {
     })
 
 
-    $(".products-container.section").each(function () {
+    $(".products-container.section:not(.pdt-sale)").each(function () {
       var $navBlock = $(this).find('.navigation');
       // 
       $(this).find('.products-grid').owlCarousel({
@@ -136,7 +136,42 @@ function indexPage() {
           1200:{items:4}
         },          
         onInitialized: changeNavBtn
-      });        
+      });            
+    })
+    $(".products-container.section.pdt-sale").each(function () {
+      var $navBlock = $(this).find('.navigation');
+      // 
+      $(this).find('.products-grid').owlCarousel({
+        margin: 30,
+        loop: false,
+        rewind: true,
+        lazyLoad: true,
+        nav: true,
+        dots: false,
+        autoplay: false,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        navContainer: $navBlock,
+        navText: [, ],
+        navText: ["<i class='slideshow-nav fal fa-angle-left' aria-hidden='true'></i>", "<i class='slideshow-nav fal fa-angle-right' aria-hidden='true'></i>"],
+        navText: ['<svg class="slideshow-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.213 476.213"><path d="M476.213 223.106H57.426l34.393-34.393L70.606 167.5 0 238.106l70.606 70.607L91.819 287.5l-34.393-34.394h418.787z"/></svg>', '<svg class="slideshow-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.2 476.2"><path d="M0 253.1h418.8l-34.4 34.4 21.2 21.2 70.6-70.6-70.6-70.6-21.2 21.2 34.4 34.4H0z"/></svg>'],
+        smartSpeed: 500,
+        mouseDrag: true,
+        touchDrag: true,
+        pullDrag: true,
+        responsiveClass: true,
+        responsiveRefreshRate: 100,
+        responsive: {
+          0:{items:1},
+          320:{items:2},
+          480:{items:2},
+          540:{items:2},
+          768:{items:3},
+          992:{items:3},
+          1200:{items:2}
+        },          
+        onInitialized: changeNavBtn
+      });            
     })
 
     function changeNavBtn(event){
