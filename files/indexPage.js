@@ -117,8 +117,7 @@ function indexPage() {
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
         navContainer: $navBlock,
-        navText: [, ],
-        navText: ["<i class='slideshow-nav fal fa-angle-left' aria-hidden='true'></i>", "<i class='slideshow-nav fal fa-angle-right' aria-hidden='true'></i>"],
+        navText: [, ],        
         navText: ['<svg class="slideshow-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.213 476.213"><path d="M476.213 223.106H57.426l34.393-34.393L70.606 167.5 0 238.106l70.606 70.607L91.819 287.5l-34.393-34.394h418.787z"/></svg>', '<svg class="slideshow-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.2 476.2"><path d="M0 253.1h418.8l-34.4 34.4 21.2 21.2 70.6-70.6-70.6-70.6-21.2 21.2 34.4 34.4H0z"/></svg>'],
         smartSpeed: 500,
         mouseDrag: true,
@@ -152,8 +151,7 @@ function indexPage() {
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
         navContainer: $navBlock,
-        navText: [, ],
-        navText: ["<i class='slideshow-nav fal fa-angle-left' aria-hidden='true'></i>", "<i class='slideshow-nav fal fa-angle-right' aria-hidden='true'></i>"],
+        navText: [, ],        
         navText: ['<svg class="slideshow-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.213 476.213"><path d="M476.213 223.106H57.426l34.393-34.393L70.606 167.5 0 238.106l70.606 70.607L91.819 287.5l-34.393-34.394h418.787z"/></svg>', '<svg class="slideshow-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.2 476.2"><path d="M0 253.1h418.8l-34.4 34.4 21.2 21.2 70.6-70.6-70.6-70.6-21.2 21.2 34.4 34.4H0z"/></svg>'],
         smartSpeed: 500,
         mouseDrag: true,
@@ -173,7 +171,36 @@ function indexPage() {
         onInitialized: changeNavBtn
       });            
     })
+    // Отсчет даты до окончания акции
+    function counterDate() {
+      // Устанавливаем дату обратного отсчета ММ-ДД-ГГ
+      var end = $('.sale-counter').first().attr('end');
+      if(!end) return;
+      var countDownDate = new Date(end).getTime();
+      function drawCounter() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));        
+        // Вывод
+        $('.sale-counter').each(function(i, el){
+          $(el).find('.days span').text(days);
+          $(el).find('.hours span').text(hours);
+          $(el).find('.minutes span').text(minutes);
+        })
+        // Счетчик завершен
+        if (distance < 0) {
+          clearInterval(x);
+          $(el).find('span').text("0");
+        }
+      }
+      // Обновление счетчика каждую секунду
+      var x = setInterval(drawCounter, 60000);      
+      drawCounter();
 
+    }
+    counterDate();
     function changeNavBtn(event){
       var items = event.item.count;
       var size = event.page.size;
@@ -186,10 +213,33 @@ function indexPage() {
       }
     }      
 
-    // Установшка ширины .nav-splitter при загрузке
-    setTimeout(function(){
-      $('#news .tabs-headerList').find('.nav-splitter').css('width', $('#news .tabs-headerList .tabs-headerItem').first().outerWidth())  
-    }, 300);    
+    // Слайдер брендов
+    $("#main .brands-list").owlCarousel({
+      margin: 15,
+      loop: false,
+      rewind: true,
+      lazyLoad: true,      
+      nav: true,
+      navContainer: '.brands-navigation',
+      navText: ['<svg class="slideshow-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.213 476.213"><path d="M476.213 223.106H57.426l34.393-34.393L70.606 167.5 0 238.106l70.606 70.607L91.819 287.5l-34.393-34.394h418.787z"/></svg>', '<svg class="slideshow-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.2 476.2"><path d="M0 253.1h418.8l-34.4 34.4 21.2 21.2 70.6-70.6-70.6-70.6-21.2 21.2 34.4 34.4H0z"/></svg>'],
+      dots: false,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplayHoverPause: true,
+      autoHeight: false,
+      smartSpeed: 500,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: true,
+      responsiveClass:true,
+      responsive:{
+        0:{items:2},
+        767:{items:2},
+        768:{items:4},
+        992:{items:2},
+        1199:{items:2}
+      }
+    });
     // Клик по табам в блоке новости
     $('#news .tabs-headerList').on('click', '.tabs-headerLink', function(event){
       event.preventDefault()

@@ -28,6 +28,7 @@
 #slideshow .container .slider-content .button {display: inline-block;margin-top: auto;margin-left: auto;}
 .slider-counter {
   position: absolute;
+  z-index: 1;
   top: auto;
   bottom: 25px;
   left: 0;
@@ -142,6 +143,84 @@
   #producttabs .pdt-nav-wrap:after {display: none}
   #producttabs .pdt-nav-wrap {overflow: auto}
   #producttabs .nav-splitter {display: none}
+}
+/*! Описание на главной ***/
+#main._index .DescriptionBlock p:last-child {margin-bottom: 0;}
+#main._index .DescriptionBlock .htmlDataBlock {padding-left: 50px;position: relative;}
+#main._index .DescriptionBlock .htmlDataBlock::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: #cec5bf;  
+  position: absolute;
+  top: 7px;
+  left: 0;
+  opacity: .3;
+}
+#main._index .row {align-items: center;}
+/*! Бренды ***/
+.brands {
+  position: relative;
+  max-width: 265px;
+  margin-left: auto;
+}
+.brands::before {
+  content: '';
+  width: 420px;
+  height: 420px;
+  display: block;
+  position: absolute;
+  top: -50%;
+  right: 0;
+  background-image: url('{ASSETS_IMAGES_PATH}ellips.svg');
+}
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  height: 70px;
+  padding: 0 10px;
+  background: #302e33;
+}
+.brand:nth-child(2) {
+  margin-top: 15px;
+}
+.brand img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.brands-navigation {
+  display: flex;
+}
+
+.brands-navigation .owl-prev,
+.brands-navigation .owl-next {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-left: auto;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #b7b7b7;
+  fill: rgb(206 197 191 / .2);
+  user-select: none;
+}
+.brands-navigation .owl-next:hover, .brands-navigation .owl-prev:hover {
+  fill: rgb(206 197 191 / 1);
+}
+.brands-title {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+.brands-navigation .owl-next {
+  margin-left: 20px;
 }
 /*! Новости ***/
 #news {

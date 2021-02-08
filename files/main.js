@@ -245,7 +245,7 @@ function mainFunctions() {
     })
 
   tippy('.selectBox', {
-    theme: 'material',
+    theme: 'mytheme',
     onShow(instance) {
       var $link = $(instance.reference);
       var titleName = $link.attr('title');
@@ -359,7 +359,7 @@ function viewed(){
 function tippyViewBtn() {
   $(function () {
     tippy('.view-mode-btn', {
-      theme: 'material',
+      theme: 'mytheme',
       onShow(instance) {
         var $link = $(instance.reference);
         var titleName = $link.attr('title');
@@ -453,14 +453,35 @@ function AddCart() {
 // Добавление в сравнение и избранное
 function Addto() {
   $(function(){
-    tippy('.add-compare, .add-wishlist', {
-      theme: 'material',
+    tippy('.add-compare', {
+      theme: 'mytheme',
       onShow(instance) {
         var $link = $(instance.reference);
         var title = $link.hasClass('added') ? $link.data('del-tooltip') : $link.data('add-tooltip');
 
         $link.removeAttr('title');        
         instance.setContent(title);
+      }
+    });
+    tippy('.add-wishlist', {
+      theme: 'mytheme',   
+      placement: 'top-end',      
+      onShow(instance) {
+        var $link = $(instance.reference);
+        var isLogin = $('.header-loginLink').hasClass('_is-login');
+
+        if(!isLogin){
+          instance.setProps({
+            content: '<div>Пожалуйста, <a href="/user/login">авторируйтесь</a>, <br> чтобы добавить в избранное</div>',
+            allowHTML: true,
+            interactive: true,            
+          });
+        } else {
+          var title = $link.hasClass('added') ? $link.data('del-tooltip') : $link.data('add-tooltip');
+
+          $link.removeAttr('title');        
+          instance.setContent(title);
+        }
       }
     });
   })

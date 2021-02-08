@@ -212,7 +212,7 @@
               {% IFNOT MOD_LNAME = user %}
               <div class="_header-mobile header-login {% IF CLIENT_IS_LOGIN %}isLogin{% ENDIF %}" id="headerLogin">
                 {% IFNOT CLIENT_IS_LOGIN %}
-                  <a class="header-loginLink" href="#" title="Вход в личный кабинет" rel="nofollow" data-fancybox data-src="#fancybox-login"> 
+                  <a class="header-loginLink" href="/user/login" title="Вход в личный кабинет" rel="nofollow" data-src="#fancybox-login"> 
                       <i class="material-icons">person_outline</i>
                   </a>
                   <div id="fancybox-login" class="fancybox-login" style="display:none">
@@ -349,7 +349,7 @@
                     </div>
                   </div>
                 {% ELSE %}
-                  <a class="header-loginLink" href="{USER_SETTINGS_URL}" title="Мой кабинет" rel="nofollow">                
+                  <a class="header-loginLink _is-login" href="{USER_SETTINGS_URL}" title="Мой кабинет" rel="nofollow">                
                       <span class="fal fa-cabinet-filing"></span>
                       <span>Кабинет</span>
                   </a>              
@@ -960,7 +960,7 @@
                               title="Убрать из избранного"
                               href="{FAVORITES_DELETE_URL}?id={index_page_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                               rel="nofollow"
-                            ><i class="material-icons-outlined">favorite</i></a>
+                            ><i class="material-icons-outlined">favorite_border</i></a>
                           {% ELSE %}
                             <a class="add-wishlist  product-ico"
                               data-action-is-add="1"
@@ -980,7 +980,7 @@
                               title="Добавить в избранное"
                               href="{FAVORITES_ADD_URL}?id={index_page_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                               rel="nofollow"
-                            ><i class="material-icons-outlined">favorite</i></a>
+                            ><i class="material-icons-outlined">favorite_border</i></a>
                           {% ENDIF %}
                           <!-- /END Если есть возможность добавить товар в избранное -->
                           <!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
@@ -1080,6 +1080,7 @@
               <div class="navigation"></div>
             </div>
             <!--<div class="preloader"><span class="content-loading"></span></div>-->
+          
             <div class="products-grid owl-carousel">
               {% FOR index_page_sale_goods %}
               <div class="item _gorizontal {% IF index_page_sale_goods.MAX_REST_VALUE=0 && SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}empty{% ENDIF %}{% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %} _with-mod{% ENDIF %}">
@@ -1104,7 +1105,7 @@
                           {% ENDFOR %}
                         {% ENDIF %}
                       </a>
-                      <div class="product-icos">
+                      <div class="product-icos" style="display: none;">
                         {% IF index_page_sale_goods.IS_NEW %}
                           <span class="ico-new">Новинка</span>
                         {% ENDIF %}
@@ -1114,6 +1115,20 @@
                         {% IF index_page_sale_goods.MAX_DISCOUNT %}
                           <span class="ico-sale">Акция</span>
                         {% ENDIF %}
+                      </div>
+                      <div class="product-icos">
+                        <!-- Счетчик обратного отсчета. end дата окончания акции в формате Месяц:День:Год Часы:Минуты:Секунды -->
+                        <div class="ico-sale sale-counter" end="{index_page_sale_goods.MAX_DISCOUNT_EXPIRED_AT | date('m/d/Y H:i:s')}" now="{CURRENT_TIME | date('m/d/Y H:i:s')}">                          
+                          <div class="sale-counter-item days">
+                            <span>00</span>д
+                          </div>
+                          <div class="sale-counter-item hours">
+                            <span>00</span>ч
+                          </div>
+                          <div class="sale-counter-item minutes">
+                            <span>00</span>м
+                          </div>
+                        </div>                          
                       </div>
                       <div class="ratings" {% IFNOT index_page_sale_goods.OPINION_RATING_VALUE %} style="display:none"{% ENDIF %}>
                         <a href="{index_page_sale_goods.URL | url_amp}" title="Перейти к отзывам">
@@ -1191,7 +1206,7 @@
                               title="Убрать из избранного"
                               href="{FAVORITES_DELETE_URL}?id={index_page_sale_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                               rel="nofollow"
-                            ><i class="material-icons-outlined">favorite</i></a>
+                            ><i class="material-icons-outlined">favorite_border</i></a>
                           {% ELSE %}
                             <a class="add-wishlist  product-ico"
                               data-action-is-add="1"
@@ -1211,7 +1226,7 @@
                               title="Добавить в избранное"
                               href="{FAVORITES_ADD_URL}?id={index_page_sale_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                               rel="nofollow"
-                            ><i class="material-icons-outlined">favorite</i></a>
+                            ><i class="material-icons-outlined">favorite_border</i></a>
                           {% ENDIF %}
                           <!-- /END Если есть возможность добавить товар в избранное -->
                           <!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
@@ -1390,7 +1405,7 @@
                               title="Убрать из избранного"
                               href="{FAVORITES_DELETE_URL}?id={index_page_new_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                               rel="nofollow"
-                            ><i class="material-icons-outlined">favorite</i></a>
+                            ><i class="material-icons-outlined">favorite_border</i></a>
                           {% ELSE %}
                             <a class="add-wishlist  product-ico"
                               data-action-is-add="1"
@@ -1410,7 +1425,7 @@
                               title="Добавить в избранное"
                               href="{FAVORITES_ADD_URL}?id={index_page_new_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                               rel="nofollow"
-                            ><i class="material-icons-outlined">favorite</i></a>
+                            ><i class="material-icons-outlined">favorite_border</i></a>
                           {% ENDIF %}
                           <!-- /END Если есть возможность добавить товар в избранное -->
                           <!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
@@ -1541,7 +1556,7 @@
                                   title="Убрать из избранного"
                                   href="{FAVORITES_DELETE_URL}?id={index_page_new_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                                   rel="nofollow"
-                                ><i class="material-icons-outlined">favorite</i></a>
+                                ><i class="material-icons-outlined">favorite_border</i></a>
                               {% ELSE %}
                                 <a class="add-wishlist  product-ico"
                                   data-action-is-add="1"
@@ -1561,7 +1576,7 @@
                                   title="Добавить в избранное"
                                   href="{FAVORITES_ADD_URL}?id={index_page_new_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                                   rel="nofollow"
-                                ><i class="material-icons-outlined">favorite</i></a>
+                                ><i class="material-icons-outlined">favorite_border</i></a>
                               {% ENDIF %}
                               <!-- /END Если есть возможность добавить товар в избранное -->
                               <!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
@@ -1743,7 +1758,7 @@
                                   title="Убрать из избранного"
                                   href="{FAVORITES_DELETE_URL}?id={index_page_favorites_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                                   rel="nofollow"
-                                ><i class="material-icons-outlined">favorite</i></a>
+                                ><i class="material-icons-outlined">favorite_border</i></a>
                               {% ELSE %}
                                 <a class="add-wishlist  product-ico"
                                   data-action-is-add="1"
@@ -1763,7 +1778,7 @@
                                   title="Добавить в избранное"
                                   href="{FAVORITES_ADD_URL}?id={index_page_favorites_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                                   rel="nofollow"
-                                ><i class="material-icons-outlined">favorite</i></a>
+                                ><i class="material-icons-outlined">favorite_border</i></a>
                               {% ENDIF %}
                               <!-- /END Если есть возможность добавить товар в избранное -->
                               <!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
@@ -1945,7 +1960,7 @@
                                   title="Убрать из избранного"
                                   href="{FAVORITES_DELETE_URL}?id={index_page_sale_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                                   rel="nofollow"
-                                ><i class="material-icons-outlined">favorite</i></a>
+                                ><i class="material-icons-outlined">favorite_border</i></a>
                               {% ELSE %}
                                 <a class="add-wishlist  product-ico"
                                   data-action-is-add="1"
@@ -1965,7 +1980,7 @@
                                   title="Добавить в избранное"
                                   href="{FAVORITES_ADD_URL}?id={index_page_sale_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                                   rel="nofollow"
-                                ><i class="material-icons-outlined">favorite</i></a>
+                                ><i class="material-icons-outlined">favorite_border</i></a>
                               {% ENDIF %}
                               <!-- /END Если есть возможность добавить товар в избранное -->
                               <!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
@@ -2158,7 +2173,7 @@
                                       title="Убрать из избранного"
                                       href="{FAVORITES_DELETE_URL}?id={index_page_sale_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                                       rel="nofollow"
-                                    ><i class="material-icons-outlined">favorite</i></a>
+                                    ><i class="material-icons-outlined">favorite_border</i></a>
                                   {% ELSE %}
                                     <a class="add-wishlist  product-ico"
                                       data-action-is-add="1"
@@ -2178,7 +2193,7 @@
                                       title="Добавить в избранное"
                                       href="{FAVORITES_ADD_URL}?id={index_page_sale_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                                       rel="nofollow"
-                                    ><i class="material-icons-outlined">favorite</i></a>
+                                    ><i class="material-icons-outlined">favorite_border</i></a>
                                   {% ENDIF %}
                                   <!-- /END Если есть возможность добавить товар в избранное -->
                                   <!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
@@ -2560,8 +2575,53 @@
     
     {% IF index_page %}
     <div id="main" class="section _index">
-      <div class="container">      
-        {BODY}
+      <div class="container">
+        <div class="row">
+          <!-- Чтобы отключить блок брендов поменяйте 0 на 1 -->
+          {% IF BRANDS_BLOCK = 0 %}
+            <div class="col-xs-12 col-md-8">
+              {BODY}
+            </div>
+            <div class="col-xs-12 col-md-4">
+              <div class="brands">
+                <h3 class="brands-title">
+                  Наши бренды
+                  <div class="brands-navigation"></div>
+                </h3>
+                <div class="brands-list owl-carousel">
+                  <div class="brands-item">
+                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand1.png" alt=""></a></div>
+                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand2.png" alt=""></a></div>
+                  </div>
+                  <div class="brands-item">
+                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand3.png" alt=""></a></div>
+                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand4.png" alt=""></a></div>
+                  </div>
+                  <div class="brands-item">
+                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand5.png" alt=""></a></div>
+                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand6.png" alt=""></a></div>
+                  </div>
+                  <div class="brands-item">
+                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand7.png" alt=""></a></div>
+                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand8.png" alt=""></a></div>
+                  </div>
+                  <div class="brands-item">
+                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand9.png" alt=""></a></div>
+                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand10.png" alt=""></a></div>
+                  </div>
+                  <div class="brands-item">
+                    <div class="brand"><img src="{ASSETS_IMAGES_PATH}brand11.png" alt=""></div>
+                    <div class="brand"><img src="{ASSETS_IMAGES_PATH}brand12.png" alt=""></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% ELSE %}
+          <div class="col-xs-12 col-md-12">
+            {BODY}
+          </div>          
+          {% ENDIF %}
+        </div>         
       </div>
     </div>
     {% ENDIF %}
@@ -2683,7 +2743,7 @@
                                 title="Убрать из избранного"
                                 href="{FAVORITES_DELETE_URL}?id={index_page_favorites_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                                 rel="nofollow"
-                              ><i class="material-icons-outlined">favorite</i></a>
+                              ><i class="material-icons-outlined">favorite_border</i></a>
                             {% ELSE %}
                               <a class="add-wishlist  product-ico"
                                 data-action-is-add="1"
@@ -2703,7 +2763,7 @@
                                 title="Добавить в избранное"
                                 href="{FAVORITES_ADD_URL}?id={index_page_favorites_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                                 rel="nofollow"
-                              ><i class="material-icons-outlined">favorite</i></a>
+                              ><i class="material-icons-outlined">favorite_border</i></a>
                             {% ENDIF %}
                             <!-- /END Если есть возможность добавить товар в избранное -->
                             <!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
