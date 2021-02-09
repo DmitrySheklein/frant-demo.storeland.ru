@@ -441,6 +441,7 @@ function AddCart() {
 
           // Обновляем данные корзины
           $('.header .cart .count').html($(data).filter('#newCartCount').html());
+          $('.header .cart .count').attr('data-count', $(data).filter('#newCartCount').text());
           $('.header .cart .header-toolsContent').html($(data).filter('#newCartContent').html());
           $('.header .cart .dropdown').html($(data).filter('#newCartData').html());
           // Анимация на кнопках

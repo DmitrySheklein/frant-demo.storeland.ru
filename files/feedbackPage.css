@@ -5,7 +5,7 @@
 .callback-info .callback-form div label {display: block;}
 .callback-info .callback-form div input {margin: 0;}
 .contact-info .block-contact > div {margin-bottom: 12px;line-height: 36px;display: flex;}
-.contact-info .block-contact > div i {display: inline-block;vertical-align: top;color: #fff;background: #398f93;font-size: 22px;line-height: 45px;width: 45px;height: 45px;text-align: center;margin-right: 10px;border-radius: 50%;}
+.contact-info .block-contact > div i {display: inline-block;vertical-align: top;color: #fff;background: #caa462;font-size: 22px;line-height: 45px;width: 45px;height: 45px;text-align: center;margin-right: 10px;border-radius: 50%;}
 .contact-info .block-contact > div [itemprop="telephone"] {font-family: 'Roboto Condensed', sans-serif;}
 .contact-info .block-contact .block-contact-workTime {font-family: 'Roboto Condensed', sans-serif;}
 .feedbackForm .feedbackForm-title {
@@ -26,7 +26,7 @@
   position: relative;
   z-index: 1;
   height: 36px;
-  border: 1px solid #398f93;
+  border: 1px solid #caa462;
   border-left: 0;
   padding: 9px;
   padding-left: 20px;
@@ -35,12 +35,12 @@
   margin-left: -15px;
 }
 .clear-file:hover {
-  background: #398f93;
+  background: #caa462;
   color: #fff;  
 }
 .file-label-button {
   position: relative;
   z-index: 2;
-  color: #398f93!important;
+  color: #caa462!important;
   background: #fff!important;
 }
