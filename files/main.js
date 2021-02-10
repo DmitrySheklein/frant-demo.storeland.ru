@@ -1257,7 +1257,8 @@ function headerIcons() {
   function headerCatalog() {
     var e,
         $headerCatalog = $(".header-catalog"),
-        $catalogBtn = $(".header-catalogBtn"),
+        $catalogBtn = $(".header-catalogBtn"),        
+        $catalogBtnIcon = $catalogBtn.find('.header-catalogIcon'),        
         $catalogMenu = $(".header-catalogMenu"),
         $catalogItem = $(".header-catalogItem"),
         $headerSubcatalog = $(".header-subcatalog"),
@@ -1268,28 +1269,32 @@ function headerIcons() {
           function() {
             if (getClientWidth() > 992) {
               (e = setTimeout(function() {
+                  $catalogBtn.addClass('_active')
+                  // $catalogBtnIcon.text('close')   
+                  blurPage()               
                   $catalogMenu.add($headerOverlay).addClass("_visible")
-              }, 200))                                
+              }, 100))                                
             }
         },
           function() {
           if (getClientWidth() > 992) {
             (clearTimeout(e),
                 setTimeout(function() {
+                    $catalogBtn.removeClass('_active')
+                    $catalogBtnIcon.text('drag_indicator')
+                    unBlurPage()
                     $catalogMenu.add($headerOverlay).removeClass("_visible")
-                }, 200))                              
+                }, 100))                              
           }
         });
         $catalogItem.hover(
           function() {
            if (getClientWidth() > 992) {
-              $(this).find('.header-catalogLink').addClass("hover");
               $(this).find($headerSubcatalog).addClass("_visible");                              
             }
           },
           function() {
             if (getClientWidth() > 992) {
-              $(this).find('.header-catalogLink').removeClass("hover")
               $headerSubcatalog.removeClass("_visible")                              
             }
         })
@@ -1306,6 +1311,13 @@ function headerIcons() {
           $("body").removeClass("modal-open"))                                
         }
       })
+      var $bluredElements = $('body .wrapper > div, .header-logo, .header-main-content__top, .header-main-content__bottom > div:not(.header-catalog)');
+      function blurPage(){
+        $bluredElements.addClass('_blur')
+      }
+      function unBlurPage(){
+        $bluredElements.removeClass('_blur')
+      }
       $catalogMenu.on('click', '.parent .header-arrow', function(evt){
         if (getClientWidth() <= 991) {
           evt.preventDefault()
