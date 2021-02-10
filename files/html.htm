@@ -168,7 +168,7 @@
                       <span class="material-icons">
                         phone_in_talk
                       </span>
-                      <span>
+                      <span class="header-phoneCallback-text">
                         Заказать звонок
                       </span>
                     </a>
@@ -522,99 +522,103 @@
               <!-- /Инструменты -->                
               </div>
               <div class="header-main-content__bottom">
-                <!-- Каталог -->
-                <div class="header-catalog">
-                  <span class="header-catalogBtn unselectable">
-                    <span class="header-catalogIcon material-icons">drag_indicator</span>
-                    <span class="header-catalogName">Каталог</span>                    
-                  </span>                  
-                  <ul class="header-catalogMenu">
-                        <li class="header-catalogMenuTitle">
-                          <a href="/catalog">Каталог</a>
-                          <button class="header-closeBtn"><i class="fal fa-times"></i></button>
-                        </li>
-                        {% IFNOT catalog_full_empty %}
-                          {% FOR catalog_full %}
-                            {% IF catalog_full.FIRST %}
-                              {% IFNOT catalog_full.LEVEL = 0 %}
-                              <ul class="sub{% IF catalog_full.LEVEL = 1 %} header-subcatalog{% ENDIF %}{% IF catalog_full.LEVEL = 2 %} header-subcatalog-third{% ENDIF %}{% IF catalog_full.LEVEL > 3 %} hide{% ENDIF %}">
-                              {% ENDIF %}
-                            {% ENDIF %}
-                            <li {% IF catalog_full.HIDE %}style="display:none;"{% ENDIF %} class="{% IF catalog_full.LEVEL = 0 %}header-catalogItem {% ENDIF %}{% IF catalog_full.LEVEL = 1 %}header-subcatalogCol {% ENDIF %}{% IF catalog_full.LEVEL = 2 %}header-subcatalogItem {% ENDIF %}{% IF catalog_full.ISSET_VISIBLE_SUB %} parent{% ENDIF %}{% IF catalog_full.CURRENT || catalog_full.CURRENT_PARENT %} active{% ENDIF %}">
-                                  <a href="{catalog_full.URL}" class="{% IF catalog_full.LEVEL = 0 %}header-catalogLink {% ENDIF %}{% IF catalog_full.LEVEL = 1 %}header-subcatalogTitle {% ENDIF %}{% IF catalog_full.LEVEL >= 2 %}header-subcatalogLink {% ENDIF %}{% IF catalog_full.CURRENT %} active{% ENDIF %}" title="{catalog_full.NAME}" itemprop="url">
-                                    {catalog_full.NAME}
-                                    {% IF catalog_full.ISSET_VISIBLE_SUB &&  catalog_full.LEVEL = 0 %}<span class="header-arrow header-catalogArrow fal fa-angle-down {% IF catalog_full.CURRENT_PARENT || catalog_full.CURRENT %}active{% ENDIF %}"></span>{% ENDIF %}
-                                    {% IF catalog_full.ISSET_VISIBLE_SUB &&  catalog_full.LEVEL != 0 %}<span class="header-arrow header-secondArrow  fal fa-angle-down {% IF catalog_full.CURRENT_PARENT || catalog_full.CURRENT %}active{% ENDIF %}"></span>{% ENDIF %}
-                                  </a>
-                            {% IF catalog_full.ISSET_SUB=0 %}
+                <div class="container">
+                  <div class="header-main-content__bottom-wrap">
+                    <!-- Каталог -->
+                    <div class="header-catalog">
+                      <span class="header-catalogBtn unselectable">
+                        <span class="header-catalogIcon material-icons">drag_indicator</span>
+                        <span class="header-catalogName">Каталог</span>                    
+                      </span>                  
+                      <ul class="header-catalogMenu">
+                            <li class="header-catalogMenuTitle">
+                              <a href="/catalog">Каталог</a>
+                              <button class="header-closeBtn"><i class="fal fa-times"></i></button>
                             </li>
+                            {% IFNOT catalog_full_empty %}
+                              {% FOR catalog_full %}
+                                {% IF catalog_full.FIRST %}
+                                  {% IFNOT catalog_full.LEVEL = 0 %}
+                                  <ul class="sub{% IF catalog_full.LEVEL = 1 %} header-subcatalog{% ENDIF %}{% IF catalog_full.LEVEL = 2 %} header-subcatalog-third{% ENDIF %}{% IF catalog_full.LEVEL > 3 %} hide{% ENDIF %}">
+                                  {% ENDIF %}
+                                {% ENDIF %}
+                                <li {% IF catalog_full.HIDE %}style="display:none;"{% ENDIF %} class="{% IF catalog_full.LEVEL = 0 %}header-catalogItem {% ENDIF %}{% IF catalog_full.LEVEL = 1 %}header-subcatalogCol {% ENDIF %}{% IF catalog_full.LEVEL = 2 %}header-subcatalogItem {% ENDIF %}{% IF catalog_full.ISSET_VISIBLE_SUB %} parent{% ENDIF %}{% IF catalog_full.CURRENT || catalog_full.CURRENT_PARENT %} active{% ENDIF %}">
+                                      <a href="{catalog_full.URL}" class="{% IF catalog_full.LEVEL = 0 %}header-catalogLink {% ENDIF %}{% IF catalog_full.LEVEL = 1 %}header-subcatalogTitle {% ENDIF %}{% IF catalog_full.LEVEL >= 2 %}header-subcatalogLink {% ENDIF %}{% IF catalog_full.CURRENT %} active{% ENDIF %}" title="{catalog_full.NAME}" itemprop="url">
+                                        {catalog_full.NAME}
+                                        {% IF catalog_full.ISSET_VISIBLE_SUB &&  catalog_full.LEVEL = 0 %}<span class="header-arrow header-catalogArrow fal fa-angle-down {% IF catalog_full.CURRENT_PARENT || catalog_full.CURRENT %}active{% ENDIF %}"></span>{% ENDIF %}
+                                        {% IF catalog_full.ISSET_VISIBLE_SUB &&  catalog_full.LEVEL != 0 %}<span class="header-arrow header-secondArrow  fal fa-angle-down {% IF catalog_full.CURRENT_PARENT || catalog_full.CURRENT %}active{% ENDIF %}"></span>{% ENDIF %}
+                                      </a>
+                                {% IF catalog_full.ISSET_SUB=0 %}
+                                </li>
+                                {% ENDIF %}
+                                
+                            {% IF catalog_full.LAST && catalog_full.LEVEL > 0 %}
+                              {%FOR out%}
+                                </ul> 
+                                {%IFNOT catalog_full.out.LAST %}
+                                </li>
+                                {%ENDIF%}
+                              {%ENDFOR%}
                             {% ENDIF %}
-                            
-                        {% IF catalog_full.LAST && catalog_full.LEVEL > 0 %}
-                          {%FOR out%}
-                            </ul> 
-                            {%IFNOT catalog_full.out.LAST %}
-                            </li>
-                            {%ENDIF%}
-                          {%ENDFOR%}
-                        {% ENDIF %}
-                            
-                            
-                          {% ENDFOR %}
-                        {% ENDIF %}                
-                  </ul>
-                </div>
-                <!-- /Каталог -->							
-
-                <!-- Меню -->
-                <div class="header-sections _header-mobile" id="headerNav">
-                  <nav class="mainnav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-                    <ul class="mainnav__list">
-                      {% FOR menu %}
-                        {% FOR header %}
-                          {% FOR links %}                      
-                            <li class="mainnav__item"><a class="mainnav__link {% IF menu.header.links.SELECTED %}active{%ENDIF%}" href="{menu.header.links.URL}"  {% IF menu.header.links.TITLE %}title="{menu.header.links.TITLE}"{% ENDIF %} itemprop="url"><span>{menu.header.links.NAME}</span></a></li>                        
-                          {% ENDFOR %}
-                        {% ENDFOR %}
-                      {% ENDFOR %}
-                    </ul>
-                  </nav>
-                </div>
-                
-                <!-- Поиск -->
-                <div class="header-search _header-mobile" id="headerSearch">
-                  <a class="header-searchLink" href="/search" title="Поиск" rel="nofollow">                
-                    <i class="material-icons">search</i>
-                  </a>
-                  <div class="search">
-                    <div class="search-overlay"></div>
-                    <div class="search-wrapper">
-                      <div class="container">
-                        <form id="search_mini_form" class="search-form" action="{QUICK_SEARCH_URL}" method="get">
-                          <input type="hidden" name="goods_search_field_id" value="0">
-                          <input required type="text" name="q" value="{SEARCH_QUERY}" class="input search-string search-input" placeholder="Поиск по магазину" autocomplete="off">
-                          <button type="submit" title="Искать" class="search-submit">
-                            <i class="material-icons">search</i>
-                          </button>                        
-                          <button type="reset" title="Закрыть" class="search-close">
-                            <span class="header-searchIcon">
-                              <i class="material-icons">close</i>
-                            </span>
-                          </button> 
-                        </form>
-                        <div id="search-result" style="display: none;">
-                          <div class="container">
-                            <div class="inner">
-                              <div class="result-category"></div>
-                              <div class="result-goods"></div>
-                            </div>
-                          </div>
-                        </div>                       
-                      </div>
+                                
+                                
+                              {% ENDFOR %}
+                            {% ENDIF %}                
+                      </ul>
                     </div>
-                  </div>  
-              </div>	
-              <!-- /Поиск -->
+                    <!-- /Каталог -->							
+    
+                    <!-- Меню -->
+                    <div class="header-sections _header-mobile" id="headerNav">
+                      <nav class="mainnav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+                        <ul class="mainnav__list">
+                          {% FOR menu %}
+                            {% FOR header %}
+                              {% FOR links %}                      
+                                <li class="mainnav__item"><a class="mainnav__link {% IF menu.header.links.SELECTED %}active{%ENDIF%}" href="{menu.header.links.URL}"  {% IF menu.header.links.TITLE %}title="{menu.header.links.TITLE}"{% ENDIF %} itemprop="url"><span>{menu.header.links.NAME}</span></a></li>                        
+                              {% ENDFOR %}
+                            {% ENDFOR %}
+                          {% ENDFOR %}
+                        </ul>
+                      </nav>
+                    </div>
+                    
+                    <!-- Поиск -->
+                    <div class="header-search _header-mobile" id="headerSearch">
+                      <a class="header-searchLink" href="/search" title="Поиск" rel="nofollow">                
+                        <i class="material-icons">search</i>
+                      </a>
+                      <div class="search">
+                        <div class="search-overlay"></div>
+                        <div class="search-wrapper">
+                          <div class="container">
+                            <form id="search_mini_form" class="search-form" action="{QUICK_SEARCH_URL}" method="get">
+                              <input type="hidden" name="goods_search_field_id" value="0">
+                              <input required type="text" name="q" value="{SEARCH_QUERY}" class="input search-string search-input" placeholder="Поиск по магазину" autocomplete="off">
+                              <button type="submit" title="Искать" class="search-submit">
+                                <i class="material-icons">search</i>
+                              </button>                        
+                              <button type="reset" title="Закрыть" class="search-close">
+                                <span class="header-searchIcon">
+                                  <i class="material-icons">close</i>
+                                </span>
+                              </button> 
+                            </form>
+                            <div id="search-result" style="display: none;">
+                              <div class="container">
+                                <div class="inner">
+                                  <div class="result-category"></div>
+                                  <div class="result-goods"></div>
+                                </div>
+                              </div>
+                            </div>                       
+                          </div>
+                        </div>
+                      </div>  
+                  </div>	
+                  <!-- /Поиск -->
+                  </div>
+                </div>
               </div>
             </div>
   
@@ -1139,6 +1143,9 @@
                           <div class="sale-counter-item minutes">
                             <span>00</span>м
                           </div>
+                          <div class="sale-counter-item seconds">
+                            <span>00</span>с
+                          </div>                          
                         </div>                          
                       </div>
                       <div class="ratings" {% IFNOT index_page_sale_goods.OPINION_RATING_VALUE %} style="display:none"{% ENDIF %}>

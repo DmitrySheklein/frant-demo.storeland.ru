@@ -182,12 +182,14 @@ function indexPage() {
         var distance = countDownDate - now;
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));        
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);     
         // Вывод
         $('.sale-counter').each(function(i, el){
           $(el).find('.days span').text(days);
           $(el).find('.hours span').text(hours);
           $(el).find('.minutes span').text(minutes);
+          $(el).find('.seconds span').text(seconds);
         })
         // Счетчик завершен
         if (distance < 0) {
@@ -196,7 +198,7 @@ function indexPage() {
         }
       }
       // Обновление счетчика каждую секунду
-      var x = setInterval(drawCounter, 60000);      
+      var x = setInterval(drawCounter, 1000);      
       drawCounter();
 
     }

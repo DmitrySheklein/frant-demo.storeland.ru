@@ -1311,7 +1311,7 @@ function headerIcons() {
           $("body").removeClass("modal-open"))                                
         }
       })
-      var $bluredElements = $('body .wrapper > div, .header-logo, .header-main-content__top, .header-main-content__bottom > div:not(.header-catalog)');
+      var $bluredElements = $('body .wrapper > div, .header-logo, .header-main-content__top, .header-main-content__bottom-wrap > div:not(.header-catalog)');
       function blurPage(){
         $bluredElements.addClass('_blur')
       }
@@ -1449,7 +1449,7 @@ function mainnav(){
       for(a;a < menuCount;a++){
         $('.mainnav .mainnav__list li:nth-child('+ a +')').addClass('mainnav__replaced');
       }
-      $('.mainnav .mainnav__list').append('<li class="mainnav__item mainnav__more"><a class="mainnav__link">Еще...</a></li>');
+      $('.mainnav .mainnav__list').append('<li class="mainnav__item mainnav__more"><a class="mainnav__link">Ещё <span class="material-icons">keyboard_arrow_down</span></a></li>');
       $('.mainnav__more').append($('<ul>').addClass('overflowMenu'))
       $('.mainnav .mainnav__replaced').each(function(){
         $('.overflowMenu').append($(this));
@@ -1480,7 +1480,7 @@ $(function(){
   function toggleSearch() {
     $('.header-search .search').toggleClass('_active');
     // $('.wrapper').toggleClass('_blur');
-    $('body .wrapper > div, .header-logo, .header-main-content__top, .header-main-content__bottom > div:not(.header-search) ').toggleClass('_blur')
+    $('body .wrapper > div, .header-logo, .header-main-content__top, .header-main-content__bottom-wrap > div:not(.header-search) ').toggleClass('_blur')
   }
   $('.header-search .search-close').on('click', function(e){
     toggleSearch();

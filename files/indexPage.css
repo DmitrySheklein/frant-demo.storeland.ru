@@ -84,9 +84,12 @@
 #slideshow .owl-nav .owl-next:hover,
 #slideshow .owl-nav .owl-prev:hover {color: #fff;background: #398f93}
 @media (max-width:991px) {
+  .slider-banners  {
+    display: none;
+  }
   #slideshow .container .slider-content .slider-title {font-size: 26px}
   #slideshow .container .slider-content .slider-text {margin-top: 15px}
-  #slideshow .slider-image {height: 375px;background-position: left center}
+  #slideshow .slider-image {width: 420px;height: 450px;background-position: left center}
   #slideshow .slider-image._1 {background-position: 30% center}
   #slideshow .slider-image._2 {background-position: 50% center}
   #slideshow .slider-image._3 {background-position: 50% center}
