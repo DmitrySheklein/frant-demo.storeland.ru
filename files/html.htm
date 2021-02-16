@@ -96,25 +96,43 @@
     </div>
     
     <!-- Шапка -->
-    <header class="header">
-      <div class="header-top">
-        <!-- Мобильные иконки -->
-        <div class="header-icons">
-          <span class="header-iconsItem" type="button" data-target="#headerNav" role="button">
-            <i class="fal fa-ellipsis-v"></i>
-          </span>
-          <span class="header-iconsItem" type="button" data-target="#headerSearch" role="button">
-            <i class="fal fa-search"></i>
-          </span>
-          <span class="header-iconsItem" type="button" data-target="#headerPhone" role="button">
-            <i class="fal fa-phone"></i>
-          </span>
-          <span class="header-iconsItem" type="button" data-target="#headerLogin" role="button">
-            <i class="fal fa-user-circle"></i>
-          </span>
-        </div>
-        <!-- /Мобильные иконки -->
+    <header class="header">      
+      <!-- Мобильные иконки -->
+      <div class="header-icons">
+        <button class="header-iconsItem">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 12H2l10-9 10 9h-3v8h-6v-6h-2v6H5v-8zm10 6h2v-7.8l-5-4.5-5 4.5V18h2v-6h6v6z" fill="#cec5bf"/><path d="M7 10.2V18h2v-6h6v6h2v-7.8l-5-4.5-5 4.5z" opacity=".3" fill="#cec5bf"/></svg>
+        </button>
+        <button class="header-iconsItem">
+          <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24 24" xml:space="preserve"><style>.st0{fill:#e0e0e0;fill-opacity:.54}</style><path class="st0" d="M9.5 11c.3.7.8 1.4 1.3 2H2v-2h7.5zm0-5c-.3.6-.4 1.3-.5 2H2V6h7.5zM18 18H2v-2h16v2zM15.5 4C18 4 20 6 20 8.5c0 .9-.3 1.7-.7 2.4l3.1 3.1-1.4 1.4-3.1-3.1c-.7.4-1.5.7-2.4.7C13 13 11 11 11 8.5S13 4 15.5 4zM13 8.5c0 1.4 1.1 2.5 2.5 2.5S18 9.9 18 8.5 16.9 6 15.5 6 13 7.1 13 8.5z"/><path class="st0" d="M15.5 4C18 4 20 6 20 8.5c0 .9-.3 1.7-.7 2.4l3.1 3.1-1.4 1.4-3.1-3.1c-.7.4-1.5.7-2.4.7C13 13 11 11 11 8.5S13 4 15.5 4zM13 8.5c0 1.4 1.1 2.5 2.5 2.5S18 9.9 18 8.5 16.9 6 15.5 6 13 7.1 13 8.5z"/><path class="st0" d="M15.5 4C18 4 20 6 20 8.5c0 .9-.3 1.7-.7 2.4l3.1 3.1-1.4 1.4-3.1-3.1c-.7.4-1.5.7-2.4.7C13 13 11 11 11 8.5S13 4 15.5 4zM13 8.5c0 1.4 1.1 2.5 2.5 2.5S18 9.9 18 8.5 16.9 6 15.5 6 13 7.1 13 8.5zM9.5 11c.3.7.8 1.4 1.3 2H2v-2h7.5zm0-5c-.3.6-.4 1.3-.5 2H2V6h7.5zM18 18H2v-2h16v2z"/><path class="st0" d="M9.5 11c.3.7.8 1.4 1.3 2H2v-2h7.5zm0-5c-.3.6-.4 1.3-.5 2H2V6h7.5zM18 18H2v-2h16v2z"/></svg>
+        </button>
+        <button class="header-iconsItem">
+          <i class="material-icons">person_outline</i>
+        </button>
+        <button class="header-iconsItem">
+          <span class="material-icons-outlined">refresh</span>
+        </button>
+        <button class="header-iconsItem">
+          <span class="material-icons-outlined">favorite_border</span>
+        </button>
+        <button class="header-iconsItem _cart">
+          <span class="material-icons-outlined">shopping_cart</span>
+          <i class="header-iconsItem-icon" data-count="{CART_COUNT_TOTAL}">{CART_COUNT_TOTAL}</i>
+        </button>
+
+<!--           <span class="header-iconsItem" type="button" data-target="#headerNav" role="button">
+          <i class="fal fa-ellipsis-v"></i>
+        </span>
+        <span class="header-iconsItem" type="button" data-target="#headerSearch" role="button">
+          <i class="fal fa-search"></i>
+        </span>
+        <span class="header-iconsItem" type="button" data-target="#headerPhone" role="button">
+          <i class="fal fa-phone"></i>
+        </span>
+        <span class="header-iconsItem" type="button" data-target="#headerLogin" role="button">
+          <i class="fal fa-user-circle"></i>
+        </span> -->
       </div>
+      <!-- /Мобильные иконки -->
       
       <div class="header-main">
         <div class="container">
@@ -131,7 +149,7 @@
               <div class="header-main-content__top">
 
                 <!-- Контакты  -->
-                <div class="header-contacts _header-mobile" id="headerPhone">       
+                <div class="header-contacts" id="headerPhone">       
                   <div class="header-contacts-inner">
                     <div class="header-contacts-wrap">
                       <!-- Навигация -->
@@ -210,7 +228,7 @@
 
               <!-- Логин -->
               {% IFNOT MOD_LNAME = user %}
-              <div class="_header-mobile header-login {% IF CLIENT_IS_LOGIN %}isLogin{% ENDIF %}" id="headerLogin">
+              <div class="header-login {% IF CLIENT_IS_LOGIN %}isLogin{% ENDIF %}" id="headerLogin">
                 {% IFNOT CLIENT_IS_LOGIN %}
                   <a class="header-loginLink" href="/user/login" title="Вход в личный кабинет" rel="nofollow" data-src="#fancybox-login"> 
                       <i class="material-icons">person_outline</i>
@@ -407,12 +425,12 @@
                   {% ENDIF %}                  
                 </div>                                
                 <!-- Избранное -->
-                <div class="header-toolsCol _favorite _bordered {% IF MOD_LNAME = user && ACT = favorites %}_page{% ENDIF %}">
+                <div class="header-toolsCol _favorite {% IF MOD_LNAME = user && ACT = favorites %}_page{% ENDIF %}">
                   <div class="favorites {% IF MOD_LNAME = user && ACT = favorites %}page{% ENDIF %}">
                     <a class="header-toolsLink title" href="{%IF CLIENT_IS_LOGIN%}{USER_FAVORITES_URL}{%ELSE%}{USER_REGISTER_URL}{%ENDIF%}" title="Перейти к Избранному">
                       <span class="header-toolsIcon _favorite">
                         <span class="header-toolsCounter count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
-                        <span class="material-icons-outlined">favorite</span>
+                        <span class="material-icons-outlined">favorite_border</span>
                       </span>
                       <span class="header-toolsName title">Избранное</span>
                     </a>                    
@@ -2373,7 +2391,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 
   <!-- Скрипты магазина -->
-  <script defer src="{ASSETS_JS_PATH}forall.js?design=neon"></script>
+  <script src="{ASSETS_JS_PATH}forall.js?design=neon"></script>
   <script defer src="{ASSETS_JS_PATH}main.js?design=neon"></script>
   <script async src="{ASSETS_JS_PATH}smart-search.js?design=neon"></script>
 

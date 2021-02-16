@@ -61,7 +61,6 @@ function indexPage() {
 
     // Преимущества
     $("#features .features-list").owlCarousel({
-      items: 4,
       loop: false,
       rewind: true,
       lazyLoad: false,
@@ -75,9 +74,10 @@ function indexPage() {
       responsiveRefreshRate: 100,
       responsive: {
         0:{items:1},
-        320:{items:1,margin: 5},
-        480:{items:2,margin: 10},
-        991:{items:3,margin: 10},
+        320:{items:1,margin: 30, autoWidth: true},
+        480:{items:2,margin: 30, autoWidth: true},
+        768:{items:3,margin: 30, autoWidth: true},
+        992:{items:4,margin: 30, autoWidth: false},
         1200:{items:4,margin: 30,mouseDrag: false}
       }
     });  

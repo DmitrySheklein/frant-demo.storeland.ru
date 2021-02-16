@@ -1173,9 +1173,9 @@ $(function(){
 	// fade in #back-top
 	$(window).scroll(function () {
 		if ($(this).scrollTop() > 100) {
-			$('#back-top').addClass('_bordered').show().prev().removeClass('_bordered');
+			$('#back-top').show()
 		} else {
-			$('#back-top').removeClass('_bordered').hide().prev().addClass('_bordered');
+			$('#back-top').hide()
 		}
 	});
 	// scroll body to 0px on click
@@ -1243,7 +1243,7 @@ function headerIcons() {
   })
   
   $(document).on('click', function(e){
-    if(getClientWidth() <= 991){
+    if(getClientWidth() <= 481){
     if(!$(e.target).parents('.header-top,._header-mobile').length && !$(e.target).hasClass('_header-mobile')) {
       $('._header-mobile').slideUp();
       $('.header-iconsItem').removeClass('active');
@@ -1301,12 +1301,16 @@ function headerIcons() {
       // Мобильная версия
       $catalogBtn.click(function() {
         if (getClientWidth() <= 991) {
+          $catalogBtn.addClass('_blur');
+          blurPage();
           ($catalogMenu.add($headerOverlay).addClass("_visible"),
           $("body").addClass("modal-open"))                                
         }
       }),
       $headerOverlay.add($headerCloseBtn).click(function() {
         if (getClientWidth() <= 991) {
+          $catalogBtn.removeClass('_blur');
+          unBlurPage();
           ($catalogMenu.add($headerOverlay).removeClass("_visible"),
           $("body").removeClass("modal-open"))                                
         }
