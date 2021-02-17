@@ -440,8 +440,10 @@ function AddCart() {
           }          
 
           // Обновляем данные корзины
-          $('.header .cart .count').html($(data).filter('#newCartCount').html());
-          $('.header .cart .count').attr('data-count', $(data).filter('#newCartCount').text());
+          var cartCount = $(data).filter('#newCartCount').html();
+          $('.header-iconsItem._cart .header-iconsItem-icon').html(cartCount).attr('data-count', cartCount);
+          $('.header .cart .count').html(cartCount).attr('data-count', cartCount);
+          
           $('.header .cart .header-toolsContent').html($(data).filter('#newCartContent').html());
           $('.header .cart .dropdown').html($(data).filter('#newCartData').html());
           // Анимация на кнопках
@@ -1257,6 +1259,7 @@ function headerIcons() {
   function headerCatalog() {
     var e,
         $headerCatalog = $(".header-catalog"),
+        $catalogIcon = $('.header-iconsItem._catalog'),
         $catalogBtn = $(".header-catalogBtn"),        
         $catalogBtnIcon = $catalogBtn.find('.header-catalogIcon'),        
         $catalogMenu = $(".header-catalogMenu"),
@@ -1299,20 +1302,20 @@ function headerIcons() {
             }
         })
       // Мобильная версия
-      $catalogBtn.click(function() {
+      $catalogBtn.add($catalogIcon).click(function() {
         if (getClientWidth() <= 991) {
           $catalogBtn.addClass('_blur');
           blurPage();
-          ($catalogMenu.add($headerOverlay).addClass("_visible"),
-          $("body").addClass("modal-open"))                                
+          $catalogMenu.add($headerOverlay).addClass("_visible");
+          $("body").addClass("modal-open")                         
         }
       }),
       $headerOverlay.add($headerCloseBtn).click(function() {
         if (getClientWidth() <= 991) {
           $catalogBtn.removeClass('_blur');
           unBlurPage();
-          ($catalogMenu.add($headerOverlay).removeClass("_visible"),
-          $("body").removeClass("modal-open"))                                
+          $catalogMenu.add($headerOverlay).removeClass("_visible");
+          $("body").removeClass("modal-open")                              
         }
       })
       var $bluredElements = $('body .wrapper > div, .header-logo, .header-main-content__top, .header-main-content__bottom-wrap > div:not(.header-catalog)');

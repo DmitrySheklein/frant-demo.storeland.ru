@@ -161,11 +161,9 @@ function indexPage() {
         responsiveRefreshRate: 100,
         responsive: {
           0:{items:1},
-          320:{items:2},
-          480:{items:2},
-          540:{items:2},
-          768:{items:3},
-          992:{items:3},
+          320:{items:1},
+          768:{items:1},
+          992:{items:2},
           1200:{items:2}
         },          
         onInitialized: changeNavBtn

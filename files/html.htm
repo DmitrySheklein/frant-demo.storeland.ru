@@ -102,7 +102,7 @@
         <button class="header-iconsItem">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 12H2l10-9 10 9h-3v8h-6v-6h-2v6H5v-8zm10 6h2v-7.8l-5-4.5-5 4.5V18h2v-6h6v6z" fill="#cec5bf"/><path d="M7 10.2V18h2v-6h6v6h2v-7.8l-5-4.5-5 4.5z" opacity=".3" fill="#cec5bf"/></svg>
         </button>
-        <button class="header-iconsItem">
+        <button class="header-iconsItem _catalog">
           <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24 24" xml:space="preserve"><style>.st0{fill:#e0e0e0;fill-opacity:.54}</style><path class="st0" d="M9.5 11c.3.7.8 1.4 1.3 2H2v-2h7.5zm0-5c-.3.6-.4 1.3-.5 2H2V6h7.5zM18 18H2v-2h16v2zM15.5 4C18 4 20 6 20 8.5c0 .9-.3 1.7-.7 2.4l3.1 3.1-1.4 1.4-3.1-3.1c-.7.4-1.5.7-2.4.7C13 13 11 11 11 8.5S13 4 15.5 4zM13 8.5c0 1.4 1.1 2.5 2.5 2.5S18 9.9 18 8.5 16.9 6 15.5 6 13 7.1 13 8.5z"/><path class="st0" d="M15.5 4C18 4 20 6 20 8.5c0 .9-.3 1.7-.7 2.4l3.1 3.1-1.4 1.4-3.1-3.1c-.7.4-1.5.7-2.4.7C13 13 11 11 11 8.5S13 4 15.5 4zM13 8.5c0 1.4 1.1 2.5 2.5 2.5S18 9.9 18 8.5 16.9 6 15.5 6 13 7.1 13 8.5z"/><path class="st0" d="M15.5 4C18 4 20 6 20 8.5c0 .9-.3 1.7-.7 2.4l3.1 3.1-1.4 1.4-3.1-3.1c-.7.4-1.5.7-2.4.7C13 13 11 11 11 8.5S13 4 15.5 4zM13 8.5c0 1.4 1.1 2.5 2.5 2.5S18 9.9 18 8.5 16.9 6 15.5 6 13 7.1 13 8.5zM9.5 11c.3.7.8 1.4 1.3 2H2v-2h7.5zm0-5c-.3.6-.4 1.3-.5 2H2V6h7.5zM18 18H2v-2h16v2z"/><path class="st0" d="M9.5 11c.3.7.8 1.4 1.3 2H2v-2h7.5zm0-5c-.3.6-.4 1.3-.5 2H2V6h7.5zM18 18H2v-2h16v2z"/></svg>
         </button>
         <button class="header-iconsItem">
@@ -1779,10 +1779,10 @@
         <div class="row">
           <!-- Чтобы отключить блок брендов поменяйте 0 на 1 -->
           {% IF BRANDS_BLOCK = 0 %}
-            <div class="col-xs-12 col-md-8">
+            <div class="col-xs-12 col-sm-12 col-md-8">
               {BODY}
             </div>
-            <div class="col-xs-12 col-md-4">
+            <div class="col-xs-12 col-sm-12 col-md-4">
               <div class="brands">
                 <h3 class="brands-title">
                   Наши бренды
@@ -1790,28 +1790,28 @@
                 </h3>
                 <div class="brands-list owl-carousel">
                   <div class="brands-item">
-                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand1.png" alt=""></a></div>
-                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand2.png" alt=""></a></div>
+                    <div class="brand"><a href="#" class="brand-link"><img class="brand-image" src="{ASSETS_IMAGES_PATH}brand1.png" alt=""></a></div>
+                    <div class="brand"><a href="#" class="brand-link"><img class="brand-image" src="{ASSETS_IMAGES_PATH}brand2.png" alt=""></a></div>
                   </div>
                   <div class="brands-item">
-                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand3.png" alt=""></a></div>
-                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand4.png" alt=""></a></div>
+                    <div class="brand"><a href="#" class="brand-link"><img class="brand-image" src="{ASSETS_IMAGES_PATH}brand3.png" alt=""></a></div>
+                    <div class="brand"><a href="#" class="brand-link"><img class="brand-image" src="{ASSETS_IMAGES_PATH}brand4.png" alt=""></a></div>
                   </div>
                   <div class="brands-item">
-                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand5.png" alt=""></a></div>
-                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand6.png" alt=""></a></div>
+                    <div class="brand"><a href="#" class="brand-link"><img class="brand-image" src="{ASSETS_IMAGES_PATH}brand5.png" alt=""></a></div>
+                    <div class="brand"><a href="#" class="brand-link"><img class="brand-image" src="{ASSETS_IMAGES_PATH}brand6.png" alt=""></a></div>
                   </div>
                   <div class="brands-item">
-                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand7.png" alt=""></a></div>
-                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand8.png" alt=""></a></div>
+                    <div class="brand"><a href="#" class="brand-link"><img class="brand-image" src="{ASSETS_IMAGES_PATH}brand7.png" alt=""></a></div>
+                    <div class="brand"><a href="#" class="brand-link"><img class="brand-image" src="{ASSETS_IMAGES_PATH}brand8.png" alt=""></a></div>
                   </div>
                   <div class="brands-item">
-                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand9.png" alt=""></a></div>
-                    <div class="brand"><a href="#"><img src="{ASSETS_IMAGES_PATH}brand10.png" alt=""></a></div>
+                    <div class="brand"><a href="#" class="brand-link"><img class="brand-image" src="{ASSETS_IMAGES_PATH}brand9.png" alt=""></a></div>
+                    <div class="brand"><a href="#" class="brand-link"><img class="brand-image" src="{ASSETS_IMAGES_PATH}brand10.png" alt=""></a></div>
                   </div>
                   <div class="brands-item">
-                    <div class="brand"><img src="{ASSETS_IMAGES_PATH}brand11.png" alt=""></div>
-                    <div class="brand"><img src="{ASSETS_IMAGES_PATH}brand12.png" alt=""></div>
+                    <div class="brand"><a href="#" class="brand-link"><img class="brand-image" src="{ASSETS_IMAGES_PATH}brand11.png" alt=""></a></div>
+                    <div class="brand"><a href="#" class="brand-link"><img class="brand-image" src="{ASSETS_IMAGES_PATH}brand12.png" alt=""></a></div>
                   </div>
                 </div>
               </div>
