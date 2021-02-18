@@ -213,7 +213,37 @@ function mainFunctions() {
     // Вызов функции редиректа при обратном звонке
     // Возвращаем пользователя на страницу с которой был сделан обратный звонок
     $('.callbackredirect').val(document.location.href);
+    // AJAX подписка
+    $('.subscribeForm').on('submit', function(e){
+      e.preventDefault();
       
+      var $form = $(this);
+      var url = $form.prop('action');
+      var formData = $form.serializeArray();
+      formData.push({name: 'ajax_q', value: 1});
+      formData.push({name: 'only_body', value: 1});
+      
+      if($form.valid()){
+        $.getJSON(url, formData, function(d){          
+          var notyText = (d.status == 'ok') ? d.message : 'Произошла ошибка, попробуйте ещё раз';
+          var notyType = (d.status == 'ok') ? 'success' : 'error';
+          
+          if($form.hasClass('subscribeForm') && notyType === 'success'){
+            notyText = "Запрос на подписку успешно отправлен администрации магазина."
+          }
+          new Noty({
+            text: '<div class="noty_content">'+ notyText +'</div>',
+            type: notyType
+          }).show()
+          
+          if(notyType == 'success'){
+            $form[0].reset();
+          }
+        })
+      }
+      
+    })
+        
     // Добавление товара в корзину
     $(document).on('click', '.add-cart', function() {
       var $btn  = $(this);
