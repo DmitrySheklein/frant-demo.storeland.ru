@@ -1145,6 +1145,7 @@ function removeFromCart(e){
       var oldQuantity = quantity;
       var newCount = oldCount - oldQuantity;
       
+      $('.header-iconsItem._cart .header-iconsItem-icon').html(newCount).attr('data-count', newCount);
       $('.cart .count').text(newCount).attr('data-count',newCount);
       $('.cart .header-toolsContent').find('.price').html($(d).find('.total-sum').html());
       console.log(
@@ -1186,6 +1187,7 @@ function removeFromCartAll(e){
     cache   : false,
     url		  : url,
     success: function(){
+      $('.header-iconsItem._cart .header-iconsItem-icon').html('0').attr('data-count', '0');
       $('.cart .count').first().text("0").attr('data-count', "0");
       $('.cart .header-toolsContent').find('.price .num').text("0");
       $('.header .cart  .dropdown-content._cart .dropdown-items-list').hide();
@@ -1262,12 +1264,19 @@ function headerIcons() {
     var $icon = $(this);
     var id = $icon.attr('data-target');
     var $icons = $icon.siblings();
-  
+    console.log(id, id === '/');
+    if(id === '#link'){
+      document.location.href = $icon.attr('data-link');
+
+      return;
+    }
     $icons.each(function(index, icon){
-    var id = $(icon).attr('data-target');
-  
-    $(icon).removeClass('active');
-    $(id).slideUp()
+      var id = $(icon).attr('data-target');
+    
+      $(icon).removeClass('active');
+      if(id !== '#link'){
+        $(id).slideUp()
+      }
     })
   
     $icon.toggleClass('active')
