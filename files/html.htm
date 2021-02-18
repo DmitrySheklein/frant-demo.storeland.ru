@@ -8,8 +8,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="format-detection" content="telephone=no"><!--если вы где-нибудь на странице указали номер телефона в html-коде и не указали в хедере, то смартфон распознает его как телефонный номер и попытается набрать его по клику. -->
-  <link rel="icon" href="{ASSETS_IMAGES_PATH}favicon.ico?design=neon" type="image/x-icon" />
-  <link rel="shortcut icon" href="{ASSETS_IMAGES_PATH}favicon.ico?design=neon" type="image/x-icon" />
+  <link rel="icon" href="{ASSETS_IMAGES_PATH}favicon.ico?design=frant" type="image/x-icon" />
+  <link rel="shortcut icon" href="{ASSETS_IMAGES_PATH}favicon.ico?design=frant" type="image/x-icon" />
   
 	<meta property="og:title" content="{PAGE_TITLE}">
 	<meta property="og:image" content="{% IF MOD_LNAME=goods %}{GOODS_IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}logo.png{% ENDIF %}">
@@ -24,40 +24,40 @@
   {% ENDIF %}
  
   <!-- Стили магазина -->
-  <link rel="stylesheet" href="{ASSETS_STYLES_PATH}forall.css?design=neon"/>
-  <link rel="stylesheet" href="{ASSETS_STYLES_PATH}main.css?design=neon">
+  <link rel="stylesheet" href="{ASSETS_STYLES_PATH}forall.css?design=frant"/>
+  <link rel="stylesheet" href="{ASSETS_STYLES_PATH}main.css?design=frant">
 
   <!-- Стили для главной -->
   {% IF index_page %}
-  <link rel="stylesheet" href="{ASSETS_STYLES_PATH}indexPage.css?design=neon">   
+  <link rel="stylesheet" href="{ASSETS_STYLES_PATH}indexPage.css?design=frant">   
   {% ENDIF %}
   <!-- Стили страниц с сайдбаром-->
   <link id="catalogPage-css" rel="stylesheet" 
   {% IF MOD_LNAME = catalog || MOD_LNAME = user && ACT= settings || MOD_LNAME = user && ACT= favorites || MOD_LNAME = user && ACT= history_list || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = news || MOD_LNAME = compare %}
-    href="{ASSETS_STYLES_PATH}catalogPage.css?design=neon"
+    href="{ASSETS_STYLES_PATH}catalogPage.css?design=frant"
   {% ELSE %}
-    data-href="{ASSETS_STYLES_PATH}catalogPage.css?design=neon"
+    data-href="{ASSETS_STYLES_PATH}catalogPage.css?design=frant"
   {% ENDIF %}
   >  
   <!-- Стили для страницы Товар -->
   <link id="goodsPage-css" rel="stylesheet" 
   {% IF MOD_LNAME = goods %}
-    href="{ASSETS_STYLES_PATH}goodsPage.css?design=neon"
+    href="{ASSETS_STYLES_PATH}goodsPage.css?design=frant"
   {% ELSE %}
-    data-href="{ASSETS_STYLES_PATH}goodsPage.css?design=neon"
+    data-href="{ASSETS_STYLES_PATH}goodsPage.css?design=frant"
   {% ENDIF %}
   >  
   <!-- Стили для страницы Корзины -->
   <link id="cartPage-css" rel="stylesheet" 
   {% IF MOD_LNAME = cart || MOD_LNAME = order %}
-    href="{ASSETS_STYLES_PATH}cartPage.css?design=neon"
+    href="{ASSETS_STYLES_PATH}cartPage.css?design=frant"
   {% ELSE %}
-    data-href="{ASSETS_STYLES_PATH}cartPage.css?design=neon"
+    data-href="{ASSETS_STYLES_PATH}cartPage.css?design=frant"
   {% ENDIF %}
   >
   <!-- Стили для страницы Сравнение -->
   {% IF MOD_LNAME = compare %}  
-  <link rel="stylesheet" href="{ASSETS_STYLES_PATH}comparePage.css?design=neon"> 
+  <link rel="stylesheet" href="{ASSETS_STYLES_PATH}comparePage.css?design=frant"> 
   {% ENDIF %}
 </head>
 <body>
@@ -400,7 +400,7 @@
                           {% FOR compare_goods %}
                           <li class="item" {% IF compare_goods.index > 10 %}style="display:none;"{% ENDIF %} data-id="{compare_goods.ID}">                            
                             <a href="{compare_goods.URL}" title="{compare_goods.NAME}" class="product-image">
-                              <img class="lozad" data-src="{% IF compare_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=neon{% ELSE %}{compare_goods.IMAGE_ICON}{% ENDIF %}" alt="{compare_goods.NAME}" class="goods-image-icon">
+                              <img class="lozad" data-src="{% IF compare_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=frant{% ELSE %}{compare_goods.IMAGE_ICON}{% ENDIF %}" alt="{compare_goods.NAME}" class="goods-image-icon">
                             </a>
                             <div class="product-details">
                               <p class="product-name">
@@ -450,7 +450,7 @@
                           {% FOR favorites_goods %}
                           <li class="item" {% IF favorites_goods.index > 10 %}style="display:none;"{% ENDIF %} data-id="{favorites_goods.ID}">                            
                             <a href="{favorites_goods.URL}" title="{favorites_goods.NAME}" class="product-image">
-                              <img class="lozad" data-src="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=neon{% ELSE %}{favorites_goods.IMAGE_ICON}{% ENDIF %}" alt="{favorites_goods.NAME}" class="goods-image-icon">
+                              <img class="lozad" data-src="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=frant{% ELSE %}{favorites_goods.IMAGE_ICON}{% ENDIF %}" alt="{favorites_goods.NAME}" class="goods-image-icon">
                             </a>
                             <div class="product-details">
                               <p class="product-name">
@@ -505,7 +505,7 @@
                           {% FOR cart_items %}
                           <li class="item">
                             <a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}" class="product-image">
-                              <img class="lozad" data-src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=neon{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" class="goods-image-icon">
+                              <img class="lozad" data-src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=frant{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" class="goods-image-icon">
                             </a>
                             <div class="product-details">
                               <div class="product-name">
@@ -915,7 +915,7 @@
 
                       <a href="{index_page_goods.URL_MIN_PRICE_NOW | url_amp}"  class="product-img mouseHoverImgCarousel">
                         {% IF index_page_goods.IMAGE_EMPTY %}
-                        <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=neon" alt="{index_page_goods.NAME}" title="{index_page_goods.NAME}"  itemprop="image">
+                        <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=frant" alt="{index_page_goods.NAME}" title="{index_page_goods.NAME}"  itemprop="image">
                         {% ELSE %}
                           <img class="lozad" src="{ASSETS_IMAGES_PATH}loader-min.gif"  data-src="{index_page_goods.IMAGE_MEDIUM}" alt="{index_page_goods.NAME}" title="{index_page_goods.NAME}"  itemprop="image">
                           {% FOR images %}
@@ -982,7 +982,7 @@
                               data-action-add-title="Добавить в избранное"
                               data-action-delete-title="Убрать из избранного"
                               data-prodname="{index_page_goods.NAME}"
-                              data-prodimage="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                              data-prodimage="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}"
                               data-produrl="{index_page_goods.URL}"
                               data-id="{index_page_goods.ID}"
                               data-mod-id="{index_page_goods.MIN_PRICE_NOW_ID}" 
@@ -1002,7 +1002,7 @@
                               data-action-add-title="Добавить в избранное"
                               data-action-delete-title="Убрать из избранного"
                               data-prodname="{index_page_goods.NAME}"
-                              data-prodimage="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                              data-prodimage="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}"
                               data-produrl="{index_page_goods.URL}"
                               data-id="{index_page_goods.ID}"
                               data-mod-id="{index_page_goods.MIN_PRICE_NOW_ID}" 
@@ -1026,7 +1026,7 @@
                                 data-action-add-title="В сравнение"
                                 data-action-delete-title="Убрать из сравнения"
                                 data-prodname="{index_page_goods.NAME}"
-                                data-prodimage="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                                data-prodimage="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}"
                                 data-produrl="{index_page_goods.URL}"
                                 data-id="{index_page_goods.ID}"
                                 data-mod-id="{index_page_goods.MIN_PRICE_NOW_ID}"
@@ -1046,7 +1046,7 @@
                                 data-action-add-title="В сравнение" 
                                 data-action-delete-title="Убрать из сравнения" 
                                 data-prodname="{index_page_goods.NAME}"
-                                data-prodimage="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                                data-prodimage="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}"
                                 data-produrl="{index_page_goods.URL}"
                                 data-id="{index_page_goods.ID}"
                                 data-mod-id="{index_page_goods.MIN_PRICE_NOW_ID}"
@@ -1128,7 +1128,7 @@
                       </a>                      
                       <a href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_sale_goods.NAME}" class="product-img mouseHoverImgCarousel">
                         {% IF index_page_sale_goods.IMAGE_EMPTY %}
-                        <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=neon" alt="{index_page_sale_goods.NAME}" title="{index_page_sale_goods.NAME}"  itemprop="image">
+                        <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=frant" alt="{index_page_sale_goods.NAME}" title="{index_page_sale_goods.NAME}"  itemprop="image">
                         {% ELSE %}
                           <img class="lozad" src="{ASSETS_IMAGES_PATH}loader-min.gif"  data-src="{index_page_sale_goods.IMAGE_MEDIUM}" alt="{index_page_sale_goods.NAME}" title="{index_page_sale_goods.NAME}"  itemprop="image">
                           {% FOR images %}
@@ -1231,7 +1231,7 @@
                               data-action-add-title="Добавить в избранное"
                               data-action-delete-title="Убрать из избранного"
                               data-prodname="{index_page_sale_goods.NAME}"
-                              data-prodimage="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                              data-prodimage="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}"
                               data-produrl="{index_page_sale_goods.URL}"
                               data-id="{index_page_sale_goods.ID}"
                               data-mod-id="{index_page_sale_goods.MIN_PRICE_NOW_ID}" 
@@ -1251,7 +1251,7 @@
                               data-action-add-title="Добавить в избранное"
                               data-action-delete-title="Убрать из избранного"
                               data-prodname="{index_page_sale_goods.NAME}"
-                              data-prodimage="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                              data-prodimage="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}"
                               data-produrl="{index_page_sale_goods.URL}"
                               data-id="{index_page_sale_goods.ID}"
                               data-mod-id="{index_page_sale_goods.MIN_PRICE_NOW_ID}" 
@@ -1275,7 +1275,7 @@
                                 data-action-add-title="В сравнение"
                                 data-action-delete-title="Убрать из сравнения"
                                 data-prodname="{index_page_sale_goods.NAME}"
-                                data-prodimage="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                                data-prodimage="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}"
                                 data-produrl="{index_page_sale_goods.URL}"
                                 data-id="{index_page_sale_goods.ID}"
                                 data-mod-id="{index_page_sale_goods.MIN_PRICE_NOW_ID}"
@@ -1295,7 +1295,7 @@
                                 data-action-add-title="В сравнение" 
                                 data-action-delete-title="Убрать из сравнения" 
                                 data-prodname="{index_page_sale_goods.NAME}"
-                                data-prodimage="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                                data-prodimage="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}"
                                 data-produrl="{index_page_sale_goods.URL}"
                                 data-id="{index_page_sale_goods.ID}"
                                 data-mod-id="{index_page_sale_goods.MIN_PRICE_NOW_ID}"
@@ -1356,7 +1356,7 @@
 
                       <a href="{index_page_new_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_new_goods.NAME}" class="product-img mouseHoverImgCarousel">
                         {% IF index_page_new_goods.IMAGE_EMPTY %}
-                          <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=neon" alt="{index_page_new_goods.NAME}" title="{index_page_new_goods.NAME}"  itemprop="image">
+                          <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=frant" alt="{index_page_new_goods.NAME}" title="{index_page_new_goods.NAME}"  itemprop="image">
                         {% ELSE %}
                           <img class="lozad" src="{ASSETS_IMAGES_PATH}loader-min.gif"  data-src="{index_page_new_goods.IMAGE_MEDIUM}" alt="{index_page_new_goods.NAME}" title="{index_page_new_goods.NAME}"  itemprop="image">
                           {% FOR images %}
@@ -1430,7 +1430,7 @@
                               data-action-add-title="Добавить в избранное"
                               data-action-delete-title="Убрать из избранного"
                               data-prodname="{index_page_new_goods.NAME}"
-                              data-prodimage="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                              data-prodimage="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}"
                               data-produrl="{index_page_new_goods.URL}"
                               data-id="{index_page_new_goods.ID}"
                               data-mod-id="{index_page_new_goods.MIN_PRICE_NOW_ID}" 
@@ -1450,7 +1450,7 @@
                               data-action-add-title="Добавить в избранное"
                               data-action-delete-title="Убрать из избранного"
                               data-prodname="{index_page_new_goods.NAME}"
-                              data-prodimage="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                              data-prodimage="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}"
                               data-produrl="{index_page_new_goods.URL}"
                               data-id="{index_page_new_goods.ID}"
                               data-mod-id="{index_page_new_goods.MIN_PRICE_NOW_ID}" 
@@ -1474,7 +1474,7 @@
                                 data-action-add-title="В сравнение"
                                 data-action-delete-title="Убрать из сравнения"
                                 data-prodname="{index_page_new_goods.NAME}"
-                                data-prodimage="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                                data-prodimage="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}"
                                 data-produrl="{index_page_new_goods.URL}"
                                 data-id="{index_page_new_goods.ID}"
                                 data-mod-id="{index_page_new_goods.MIN_PRICE_NOW_ID}"
@@ -1494,7 +1494,7 @@
                                 data-action-add-title="В сравнение" 
                                 data-action-delete-title="Убрать из сравнения" 
                                 data-prodname="{index_page_new_goods.NAME}"
-                                data-prodimage="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                                data-prodimage="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}"
                                 data-produrl="{index_page_new_goods.URL}"
                                 data-id="{index_page_new_goods.ID}"
                                 data-mod-id="{index_page_new_goods.MIN_PRICE_NOW_ID}"
@@ -1859,7 +1859,7 @@
 
                       <a href="{index_page_favorites_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_favorites_goods.NAME}" class="product-img mouseHoverImgCarousel">
                         {% IF index_page_favorites_goods.IMAGE_EMPTY %}
-                          <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=neon" alt="{index_page_favorites_goods.NAME}" title="{index_page_favorites_goods.NAME}"  itemprop="image">
+                          <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=frant" alt="{index_page_favorites_goods.NAME}" title="{index_page_favorites_goods.NAME}"  itemprop="image">
                         {% ELSE %}
                           <img class="lozad" src="{ASSETS_IMAGES_PATH}loader-min.gif"  data-src="{index_page_favorites_goods.IMAGE_MEDIUM}" alt="{index_page_favorites_goods.NAME}" title="{index_page_favorites_goods.NAME}"  itemprop="image">
                           {% FOR images %}
@@ -1933,7 +1933,7 @@
                                 data-action-add-title="Добавить в избранное"
                                 data-action-delete-title="Убрать из избранного"
                                 data-prodname="{index_page_favorites_goods.NAME}"
-                                data-prodimage="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                                data-prodimage="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}"
                                 data-produrl="{index_page_favorites_goods.URL}"
                                 data-id="{index_page_favorites_goods.ID}"
                                 data-mod-id="{index_page_favorites_goods.MIN_PRICE_NOW_ID}" 
@@ -1953,7 +1953,7 @@
                                 data-action-add-title="Добавить в избранное"
                                 data-action-delete-title="Убрать из избранного"
                                 data-prodname="{index_page_favorites_goods.NAME}"
-                                data-prodimage="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                                data-prodimage="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}"
                                 data-produrl="{index_page_favorites_goods.URL}"
                                 data-id="{index_page_favorites_goods.ID}"
                                 data-mod-id="{index_page_favorites_goods.MIN_PRICE_NOW_ID}" 
@@ -1977,7 +1977,7 @@
                                   data-action-add-title="Добавить &laquo;{index_page_favorites_goods.NAME}&raquo; в сравнение"
                                   data-action-delete-title="Убрать &laquo;{index_page_favorites_goods.NAME}&raquo; из сравнения"
                                   data-prodname="{index_page_favorites_goods.NAME}"
-                                  data-prodimage="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                                  data-prodimage="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}"
                                   data-produrl="{index_page_favorites_goods.URL}"
                                   data-id="{index_page_favorites_goods.ID}"
                                   data-mod-id="{index_page_favorites_goods.MIN_PRICE_NOW_ID}"
@@ -1997,7 +1997,7 @@
                                   data-action-add-title="Добавить &laquo;{index_page_favorites_goods.NAME}&raquo; в сравнение" 
                                   data-action-delete-title="Убрать &laquo;{index_page_favorites_goods.NAME}&raquo; из сравнения" 
                                   data-prodname="{index_page_favorites_goods.NAME}"
-                                  data-prodimage="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}"
+                                  data-prodimage="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}"
                                   data-produrl="{index_page_favorites_goods.URL}"
                                   data-id="{index_page_favorites_goods.ID}"
                                   data-mod-id="{index_page_favorites_goods.MIN_PRICE_NOW_ID}"
@@ -2189,7 +2189,7 @@
                   <meta itemprop="description" content="{% IF recently_viewed_goods.DESCRIPTION_SHORT %}{recently_viewed_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
                   <div class="product-image">
                     <a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">
-                      <img src="{ASSETS_IMAGES_PATH}loader-min.gif" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=neon{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon lozad" alt="{recently_viewed_goods.NAME}" title="{recently_viewed_goods.NAME}"  itemprop="image">
+                      <img src="{ASSETS_IMAGES_PATH}loader-min.gif" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon lozad" alt="{recently_viewed_goods.NAME}" title="{recently_viewed_goods.NAME}"  itemprop="image">
                     </a>
                   </div>
                   <div class="product-info">
@@ -2455,9 +2455,9 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 
   <!-- Скрипты магазина -->
-  <script src="{ASSETS_JS_PATH}forall.js?design=neon"></script>
-  <script defer src="{ASSETS_JS_PATH}main.js?design=neon"></script>
-  <script async src="{ASSETS_JS_PATH}smart-search.js?design=neon"></script>
+  <script src="{ASSETS_JS_PATH}forall.js?design=frant"></script>
+  <script defer src="{ASSETS_JS_PATH}main.js?design=frant"></script>
+  <script async src="{ASSETS_JS_PATH}smart-search.js?design=frant"></script>
 
   {% IF user_agent_ie %}
   <script>
@@ -2475,7 +2475,7 @@
   <!-- ВНИМАНИЕ! Если Вы удалите код ниже, то это повлияет на работу вашего сайта. Пожалуйста ничего не удаляйте без консультации у специалистов. -->
   <!-- Скрипты страниц с сайдбаром-->
   {% IF MOD_LNAME = catalog || MOD_LNAME = user && ACT= settings || MOD_LNAME = user && ACT= favorites || MOD_LNAME = user && ACT= history_list || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = news || MOD_LNAME = compare %}   
-  <script defer src="{ASSETS_JS_PATH}catalogPage.js?design=neon"></script>
+  <script defer src="{ASSETS_JS_PATH}catalogPage.js?design=frant"></script>
   <script>
     // Запуск основных скриптов для страниц Каталога
     document.addEventListener("DOMContentLoaded", function(){
@@ -2486,7 +2486,7 @@
   {% ENDIF %}
   <!-- Скрипты для страницы Сравнение -->
   {% IF MOD_LNAME = compare %}
-  <script defer src="{ASSETS_JS_PATH}comparePage.js?design=neon"></script>
+  <script defer src="{ASSETS_JS_PATH}comparePage.js?design=frant"></script>
   <script >
     // Запуск основных скриптов для страницы Сравнение
     document.addEventListener("DOMContentLoaded", function(){
@@ -2496,7 +2496,7 @@
   {% ENDIF %}
   <!-- Стили для страницы Обратной связи -->
   {% IF MOD_LNAME = feedback %}
-  <link rel="stylesheet" href="{ASSETS_STYLES_PATH}feedbackPage.css?design=neon"> 
+  <link rel="stylesheet" href="{ASSETS_STYLES_PATH}feedbackPage.css?design=frant"> 
   {% ENDIF %}
   <!-- Скрипты для страницы Обратной связи -->
   {% IF MOD_LNAME = feedback %}
@@ -2508,14 +2508,14 @@
   {% ENDIF %}
   <!-- Стили для страницы Заказа по шагам -->
   {% IF MOD_LNAME = order %}
-  <link rel="stylesheet" href="{ASSETS_STYLES_PATH}orderPage.css?design=neon"> 
+  <link rel="stylesheet" href="{ASSETS_STYLES_PATH}orderPage.css?design=frant"> 
   {% ENDIF %}
   <!-- Скрипты для страницы Корзины -->  
   <script id="cartPage-js" defer 
   {% IF MOD_LNAME = cart ||  MOD_LNAME = order %}
-  src="{ASSETS_JS_PATH}cartPage.js?design=neon"
+  src="{ASSETS_JS_PATH}cartPage.js?design=frant"
   {% ELSE %}
-  data-src="{ASSETS_JS_PATH}cartPage.js?design=neon"
+  data-src="{ASSETS_JS_PATH}cartPage.js?design=frant"
   {% ENDIF %}
   ></script>  
   {% IF MOD_LNAME = cart ||  MOD_LNAME = order %}
@@ -2530,9 +2530,9 @@
   <!-- Скрипты для страницы Товар -->  
   <script id="goodsPage-js" defer
     {% IF MOD_LNAME = goods %}
-    src="{ASSETS_JS_PATH}goodsPage.js?design=neon"
+    src="{ASSETS_JS_PATH}goodsPage.js?design=frant"
     {% ELSE %}
-    data-src="{ASSETS_JS_PATH}goodsPage.js?design=neon"
+    data-src="{ASSETS_JS_PATH}goodsPage.js?design=frant"
     {% ENDIF %}
   ></script>
   {% IF MOD_LNAME = goods %}
@@ -2550,7 +2550,7 @@
   {% ENDIF %}
   <!-- Скрипты для главной -->
   {% IF index_page %}
-  <script defer src="{ASSETS_JS_PATH}indexPage.js?design=neon"></script>
+  <script defer src="{ASSETS_JS_PATH}indexPage.js?design=frant"></script>
   <script >
     // Запуск основных скриптов для главной страницы
     document.addEventListener("DOMContentLoaded", function(){
