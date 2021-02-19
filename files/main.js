@@ -1284,8 +1284,8 @@ function headerIcons() {
   })
   
   $(document).on('click', function(e){
-    if(getClientWidth() <= 481){
-    if(!$(e.target).parents('.header-top,._header-mobile').length && !$(e.target).hasClass('_header-mobile')) {
+    if(getClientWidth() <= 767){
+    if(!$(e.target).parents('.header-icons,._header-mobile').length && !$(e.target).hasClass('_header-mobile')) {
       $('._header-mobile').slideUp();
       $('.header-iconsItem').removeClass('active');
     }

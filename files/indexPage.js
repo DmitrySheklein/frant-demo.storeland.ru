@@ -281,13 +281,13 @@ function indexPage() {
       touchDrag: true,
       pullDrag: true,
       responsiveClass:true,
-      autoWidth: true,
+      
       responsive:{
-        0:{items:1},
-        767:{items:2},
-        768:{items:3},
-        992:{items:3},
-        1199:{items: 3}
+        0:{items:1, autoWidth: false},
+        767:{items:2, autoWidth: false},
+        768:{items:3, autoWidth: false},
+        992:{items:3, autoWidth: true},
+        1199:{items: 3, autoWidth: true,}
       }
     });
     // Слайдер новостей (группы)
