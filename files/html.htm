@@ -1069,7 +1069,7 @@
                         </div>
                         <!-- Добавление товара в корзину -->
                         {% IF index_page_goods.MAX_REST_VALUE=0 && SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}
-                          <div class="empty" title="Нет в наличии" data-tooltip="Нет в наличии"><span>Нет в наличии</span></div>
+                          <div class="empty" title="Нет в наличии" data-fancybox="" data-src="#fancybox-notify"><span>Нет в наличии</span></div>
                         {% ELSE %}
                           {% IF index_page_goods.COUNT_MODIFICATION > 1 %}
                             <a class="quickviewmod" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{index_page_goods.URL_MIN_PRICE_NOW}"><span class="material-icons-outlined">shopping_cart</span><span>В корзину</span></a>
@@ -1208,7 +1208,7 @@
                         </div>
                         <!-- Добавление товара в корзину -->
                         {% IF index_page_sale_goods.MAX_REST_VALUE=0 && SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}
-                        <div class="empty" title="Нет в наличии" data-tooltip="Нет в наличии"><span>Нет в наличии</span></div>
+                        <div class="empty" title="Нет в наличии" data-fancybox="" data-src="#fancybox-notify"><span>Нет в наличии</span></div>
                         {% ELSE %}
                         {% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}
                           <a class="quickviewmod" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{index_page_sale_goods.URL_MIN_PRICE_NOW}"><span class="material-icons-outlined">shopping_cart</span><span>В корзину</span></a>
@@ -1509,7 +1509,7 @@
                       </div>                        
                         <!-- Добавление товара в корзину -->
                         {% IF index_page_new_goods.MAX_REST_VALUE=0 && SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}
-                        <div class="empty" title="Нет в наличии" data-tooltip="Нет в наличии"><span>Нет в наличии</span></div>
+                        <div class="empty" title="Нет в наличии" data-fancybox="" data-src="#fancybox-notify"><span>Нет в наличии</span></div>
                         {% ELSE %}
                         {% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}
                           <a class="quickviewmod" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{index_page_new_goods.URL_MIN_PRICE_NOW}"><span class="material-icons-outlined">shopping_cart</span><span>В корзину</span></a>
@@ -2012,7 +2012,7 @@
                         </div>                        
                         <!-- Добавление товара в корзину -->
                         {% IF index_page_favorites_goods.MAX_REST_VALUE=0 && SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}
-                        <div class="empty" title="Нет в наличии" data-tooltip="Нет в наличии"><span>Нет в наличии</span></div>
+                        <div class="empty" title="Нет в наличии" data-fancybox="" data-src="#fancybox-notify"><span>Нет в наличии</span></div>
                         {% ELSE %}
                         {% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}
                           <a class="quickviewmod" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{index_page_favorites_goods.URL_MIN_PRICE_NOW}"><span class="material-icons-outlined">shopping_cart</span><span>В корзину</span></a>
@@ -2441,7 +2441,37 @@
   <!-- /END Кнопка Наверх -->  
   <!-- Overlay -->
   <div class="overlay"></div>  
-
+  <!-- Уведомить о поступлении в модальном окне -->
+  <div id="fancybox-notify" class="fancybox-callback" style="display:none">
+    <div class="fancybox-header">
+      <strong class="title">Уведомить о поступлении</strong>                   
+    </div>
+    <div class="fancybox-body">
+      <form method="post" action="{CALLBACK_URL}" class="callbackForm" enctype="multipart/form-data">
+        <input type="hidden" name="hash" value="{HASH}"/>
+        <input type="hidden" name="return_to" value="{CALLBACK_URL}" class="callbackredirect"/>
+        <input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="Уведомить о поступлении товара"/>        
+        <input type="hidden" name="form[goods_mod_id]" value="" id="fancy-notify-goods-mod"/>
+        <!-- <input type="hidden" name="form[Артикул]" value="{GOODS_MOD_ART_NUMBER}" id="fancy-notify-goods-art"/>--> 
+        <!-- Для использования почты для уведомлений необходимо убрать комментарии для строки ниже -->         
+        <!-- <input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="Уведомить по Email" /> -->
+        <!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+        {ANTISPAM_CODE}
+        <div class="callback-input">     
+          <input id="callback_phone_notify" class="input input-material callback_phone required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}"  maxlength="50" placeholder="Ваш телефон" autocomplete="off" required>
+          <label for="callback_person_notify" class="input-material-label material-icons">phone_in_talk</label> 
+        </div>
+                      
+        <button type="submit" title="Отправить" class="callback-btn button button3">Уведомить</button>
+        <div class="pp">
+          <input type="checkbox" id="pp-check-callback-notify" class="pp-checkbox checkbox-hidden required" name="pp-check" required="" aria-required="true" checked>
+          <label for="pp-check-callback-notify"  class="pp-label checkbox-name required">
+          Я согласен на <a class="blue-link" href="#" data-fancybox="" data-src="#fancybox-pp">обработку персональных данных</a>
+          </label>
+        </div>
+      </form>
+    </div>
+  </div>
 
   
   <!-- Подключаемые шрифты -->  

@@ -286,12 +286,17 @@ function mainFunctions() {
       // console.log(titleName);
     }
   });
-
-  // Валидация формы на странице оформления заказа, а так же формы на страницы связи с администрацией
-  // $("#myform, .feedbackForm, .clientForm._login, .clientForm._reg, .goodsDataOpinionAddForm, .callbackForm").validate()
+  // Уведомить о поступлении товара
+  $(document).on('click', '.empty[data-fancybox], .goodsDataMainModificationEmpty', function(){
+    var $formBlock = $(this).closest('.goodsListForm, .goodsDataForm');
+    var goodsMod = $formBlock.find('[name="form[goods_mod_id]"]').val();
+    $('#fancy-notify-goods-mod').val(goodsMod)
+  })
+  // Валидация формы на странице оформления заказа, а так же формы на страницы связи с администрацией  
   $("#myform, .feedbackForm, .clientForm._login, .clientForm._reg,.clientForm._recovery, .goodsDataOpinionAddForm, .callbackForm").each(function(){
     $(this).validate()
-  }); 
+  });
+  // Формы логина и регистрации 
   $('.clientForm._login,.clientForm._reg, .clientForm._recovery').on('submit', function (e) {
     e.preventDefault();
 
@@ -473,7 +478,7 @@ function addCart() {
               type: type,
               closeWith: notyCloseWith,
               layout: "bottomRight",
-              timeout: "200000",              
+              timeout: "2000",              
               animation: {
                   open: 'animated fadeInRight', 
                   close: 'animated fadeOutRight',
