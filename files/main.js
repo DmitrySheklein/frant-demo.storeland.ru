@@ -407,7 +407,7 @@ function hoverAnimBtn() {
 }
 $(window).on('resize', $.debounce(300, hoverAnimBtn))
 // Добавление товара в корзину
-function AddCart() {
+function addCart() {
   $('.goodsDataForm, .goodsToCartFromCompareForm, .goodsListForm').off('submit').on('submit', function() {    
     // Выносим функции из шаблонов
     if ($(this).attr('rel') === 'quick') {
@@ -444,17 +444,36 @@ function AddCart() {
           var $btn = $('.add-cart._loading').removeClass('_loading').find('span').last().html("В корзину");
 
           var msg = $(data).find('.notify').html();
-          var type = $(data).find('.notify').hasClass('good') ? 'success' : 'error'
-          var iconTemplate = ('success' == type) ? '<i class="fal fa-check"></i>' : '<i class="fal fa-times"></i>';
+          var type = $(data).find('.notify').hasClass('good') ? 'success' : 'error';
+          var isAdded = ('success' == type) ? true : false;
+          var iconTemplate = (isAdded) ? '<i class="fal fa-check"></i>' : '<i class="fal fa-times"></i>';
+          var notyText, notyTheme, notyCloseWith;
 
-          if('success' == type){$.fancybox.close();};
+          if (isAdded){
+            var $msgBlock = $('<div>').html(msg);
+            var goodsName = $msgBlock.find('a').first().text();
+            var $cartLink = $($msgBlock.find('a').last()[0].outerHTML).addClass('noty-cart-btn').text('Перейти в корзину');
+            var goodsMod = $(data).find('.cart-product').find('.properties').text();
+
+            notyText = '<div class="noty__content">'+ '<div class="noty__content-text">'+ 'Товар ' + '<b>' + goodsName + '</b>' + ' добавлен в корзину!'  + '</div>' + '<div class="noty-goods-prop">' + goodsMod + '</div>' + $cartLink[0].outerHTML +'</div>';
+            notyTheme = 'addCart';
+            notyCloseWith = ['click', 'button'];
+          } else {
+            notyText = '<div class="noty__content">'+ iconTemplate + '<div class="noty__content-text">' + msg + '</div>' +'</div>';
+            notyTheme = 'metroui';
+            notyCloseWith = ['click'];
+          }
+
+          if(isAdded){$.fancybox.close();};
           // Если есть функция, которая отображает сообщения пользователю
           if(typeof(Noty) == "function") {
             new Noty({
-              text: '<div class="noty__content">'+ iconTemplate + '<div class="noty__content-text">' + msg + '</div>' +'</div>',
+              text: notyText,
+              theme: notyTheme,
               type: type,
+              closeWith: notyCloseWith,
               layout: "bottomRight",
-              timeout: "2000",
+              timeout: "200000",              
               animation: {
                   open: 'animated fadeInRight', 
                   close: 'animated fadeOutRight',
@@ -484,7 +503,7 @@ function AddCart() {
   });
 }
 // Добавление в сравнение и избранное
-function Addto() {
+function addto() {
   $(function(){
     tippy('.add-compare', {
       theme: 'mytheme',
@@ -613,6 +632,7 @@ function Addto() {
             if(typeof(data.compare_goods_count) != 'undefined') {
               // Блок информации о том, что есть товары на сравнении
               var sidecount = $('.compare .count');
+              var $compareBlock = $('.header-iconsItem._compare')
               // Если на сравнении больше нет товаров
               // Указываем информацию о новом количестве товаров на сравнении
               // Блок обновления списка сравнения в каталога
@@ -622,11 +642,13 @@ function Addto() {
                 if(data.compare_goods_count > 0){
                   $('.compare').addClass('have-items');
                   $('.compare #compare-items .empty').hide();
-                  $('.compare #compare-items .actions').show();              
+                  $('.compare #compare-items .actions').show();     
+                  $compareBlock.addClass('_active')         
                 }else{
                   $('.compare').removeClass('have-items');
                   $('.compare #compare-items .empty').show();
-                  $('.compare #compare-items .actions').hide();               
+                  $('.compare #compare-items .actions').hide();  
+                  $compareBlock.removeClass('_active')                
                 }
               }).animate({display: "inline"} , 500 );
             }
@@ -762,6 +784,7 @@ function Addto() {
             if(typeof(data.favorites_goods_count) != 'undefined') {
               // Блок информации о том, что есть товары на сравнении
               var sidecount = $('.favorites .count');
+              var $favoritesBlock = $('.header-iconsItem._favorites')  
               // Если на сравнении больше нет товаров
               // Указываем информацию о новом количестве товаров на сравнении
               // Блок обновления списка сравнения в каталога
@@ -771,11 +794,13 @@ function Addto() {
                 if(data.favorites_goods_count > 0){
                   $('.favorites').addClass('have-items');
                   $('.favorites #favorites-items .empty').hide();
-                  $('.favorites #favorites-items .actions').show();                     
+                  $('.favorites #favorites-items .actions').show();
+                  $favoritesBlock.addClass('_active')           
                 }else{
                   $('.favorites').removeClass('have-items');
                   $('.favorites #favorites-items .empty').show();
-                  $('.favorites #favorites-items .actions').hide();                   
+                  $('.favorites #favorites-items .actions').hide();     
+                  $favoritesBlock.removeClass('_active')               
                 }
               }).animate({display: "inline"} , 500 );
             }
@@ -924,7 +949,7 @@ function quickViewShowMod(href, atempt) {
             // Обновление доступности модификаций
             goodsMods($('.fancybox-content.product-view'));
             goodsPage();
-            AddCart();
+            addCart();
             quantity();
             hoverAnimBtn();
             // Стилизация селектов
@@ -1257,7 +1282,7 @@ function preloadShow(currentPreloader) {
 }
 
 // Адаптивное меню и каталог
-function OpenMenu() {
+function openMenu() {
 // Иконки в мобильной версии
 function headerIcons() {
   $('.header-icons').on('click', '.header-iconsItem', function(evt){
@@ -1273,13 +1298,13 @@ function headerIcons() {
     $icons.each(function(index, icon){
       var id = $(icon).attr('data-target');
     
-      $(icon).removeClass('active');
+      $(icon).removeClass('_active');
       if(id !== '#link'){
         $(id).slideUp()
       }
     })
   
-    $icon.toggleClass('active')
+    $icon.toggleClass('_active')
     $(id).slideToggle()
   })
   
@@ -1287,7 +1312,7 @@ function headerIcons() {
     if(getClientWidth() <= 767){
     if(!$(e.target).parents('.header-icons,._header-mobile').length && !$(e.target).hasClass('_header-mobile')) {
       $('._header-mobile').slideUp();
-      $('.header-iconsItem').removeClass('active');
+      $('.header-iconsItem').removeClass('_active');
     }
     }
   })
@@ -1399,10 +1424,10 @@ function headerIcons() {
 // Загрузка основных функций шаблона
 $(function(){
   mainFunctions();
-  AddCart();
-  Addto();
+  addCart();
+  addto();
   quantity();
-  OpenMenu();  
+  openMenu();  
   viewed();
   quickViewMod();
   mainnav();

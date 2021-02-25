@@ -1,6 +1,6 @@
 /*! Слайдер ***/
 #slideshow {position: relative;min-height: 70px;padding-top: 30px;}
-#slideshow .slider {border-radius: 5px;overflow: hidden}
+#slideshow .slider {border-radius: 0px;overflow: hidden}
 #slideshow .slider-item {width: 100%;position: relative}
 #slideshow .slider-item:not(:first-child) {display: none}
 #slideshow .owl-loaded .item {display: block}
@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
 }
-#slideshow .container .slider-content .slider-title {letter-spacing: 0;font-size: 55px;font-weight: 400;color: #cec5bf;text-transform: uppercase;}
+#slideshow .container .slider-content .slider-title {letter-spacing: 0;font-size: 55px;line-height: 1;font-weight: 400;color: #cec5bf;text-transform: uppercase;}
 #slideshow .container .slider-content .slider-title::before {
   content: '';
   width: 420px;
@@ -25,7 +25,7 @@
   left: 2%;
   background-image: url('{ASSETS_IMAGES_PATH}ellips.svg');
 }
-#slideshow .container .slider-content .slider-text {margin-top: 30px;margin-bottom: 0;font-size: 16px;color: #cec5bf;}
+#slideshow .container .slider-content .slider-text {margin-top: 30px;margin-bottom: 0;font-size: 16px;line-height: 18px;color: #cec5bf;}
 #slideshow .container .slider-content .button {display: inline-block;margin-top: auto;margin-left: auto;}
 .slider-counter {
   position: absolute;
@@ -100,10 +100,11 @@
   #slideshow .owl-nav {display: none}
 }
 @media (max-width: 767px) {
-  #slideshow .container .slider-content .slider-title {font-size: 22px;padding: 20px 20px;max-width: 300px;background-color: rgba(0,0,0,.7);}
-  #slideshow .container .slider-content .slider-text {margin-top: 0;font-size: 15px;padding: 0px 20px;padding-bottom: 20px;max-width: 300px;background-color: rgba(0,0,0,.7);}  
+  #slideshow .container .slider-content .slider-title {font-size: 22px;padding: 20px 0;padding-left: 23px;max-width: 300px;background-color: rgba(0,0,0,.7);}
+  #slideshow .container .slider-content .slider-text {margin-top: 0;font-size: 16px;padding-left: 23px;padding-bottom: 20px;max-width: 300px;background-color: rgba(0,0,0,.7);}  
 }
 @media (max-width:481px) {
+  #slideshow {padding-top: 0;}
   #slideshow .slider-image {width: auto;}
   #slideshow .slider-image {background-position: center top;margin-left: 0;}
 
@@ -178,6 +179,14 @@
   opacity: .3;
 }
 #main._index .row {align-items: center;}
+@media(max-width:767px) {
+  #main._index .DescriptionBlock .htmlDataBlock {
+    padding-left: 0;
+  }
+  #main._index .DescriptionBlock .htmlDataBlock::before {
+    display: none;
+  }
+}
 /*! Бренды ***/
 .brands {
   position: relative;

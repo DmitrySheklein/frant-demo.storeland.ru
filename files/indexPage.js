@@ -106,8 +106,7 @@ function indexPage() {
     $(".products-container.section:not(.pdt-sale)").each(function () {
       var $navBlock = $(this).find('.navigation');
       // 
-      $(this).find('.products-grid').owlCarousel({
-        margin: 30,
+      $(this).find('.products-grid').owlCarousel({        
         loop: false,
         rewind: true,
         lazyLoad: true,
@@ -126,13 +125,13 @@ function indexPage() {
         responsiveClass: true,
         responsiveRefreshRate: 100,
         responsive: {
-          0:{items:1},
-          320:{items:2},
-          480:{items:2},
-          540:{items:2},
-          768:{items:3},
-          992:{items:3},
-          1200:{items:4}
+          0:{items:1, margin: 15},
+          320:{items:2, margin: 15},
+          480:{items:2, margin: 15},
+          540:{items:2, margin: 15},
+          768:{items:3,margin: 30},
+          992:{items:3,margin: 30},
+          1200:{items:4,margin: 30}
         },          
         onInitialized: changeNavBtn
       });            
@@ -169,7 +168,20 @@ function indexPage() {
         onInitialized: changeNavBtn
       });            
     })
+    
+    function changeNavBtn(event){
+      var items = event.item.count;
+      var size = event.page.size;
+      var $nav = $(event.target).siblings('.block-title').find('.navigation');
+      
+      if (items > size){
+        $nav.show();
+      } else {
+        $nav.hide();
+      }
+    }      
     // Отсчет даты до окончания акции
+    counterDate();
     function counterDate() {
       // Устанавливаем дату обратного отсчета ММ-ДД-ГГ
       var end = $('.sale-counter').first().attr('end');
@@ -200,19 +212,6 @@ function indexPage() {
       drawCounter();
 
     }
-    counterDate();
-    function changeNavBtn(event){
-      var items = event.item.count;
-      var size = event.page.size;
-      var $nav = $(event.target).siblings('.block-title').find('.navigation');
-      
-      if (items > size){
-        $nav.show();
-      } else {
-        $nav.hide();
-      }
-    }      
-
     // Слайдер брендов
     $("#main .brands-list").owlCarousel({
       margin: 15,
@@ -284,6 +283,7 @@ function indexPage() {
       
       responsive:{
         0:{items:1, autoWidth: false},
+        481:{items:2, autoWidth: false},
         767:{items:2, autoWidth: false},
         768:{items:3, autoWidth: false},
         992:{items:3, autoWidth: true},

@@ -109,17 +109,17 @@
             <use xlink:href="/design/sprite.svg#search-catalog"></use>
           </svg>          
         </button>
-        <button class="header-iconsItem" data-target="#link" data-link="{% IFNOT CLIENT_IS_LOGIN %}/user/login{% ELSE %}{USER_SETTINGS_URL}{% ENDIF %}">
-          <i class="material-icons">person_outline</i>
+        <button class="header-iconsItem _client {% IFNOT CLIENT_IS_LOGIN %}{% ELSE %} _active{% ENDIF %}" data-target="#link" data-link="{% IFNOT CLIENT_IS_LOGIN %}/user/login{% ELSE %}{USER_SETTINGS_URL}{% ENDIF %}">
+          <i class="icon material-icons">person_outline</i>
         </button>
-        <button class="header-iconsItem" data-target="#link" data-link="{COMPARE_URL}">
-          <span class="material-icons-outlined">refresh</span>
+        <button class="header-iconsItem _compare {% IF COMPARE_GOODS_COUNT %} _active{% ENDIF %}" data-target="#link" data-link="{COMPARE_URL}">
+          <span class="icon material-icons-outlined">refresh</span>
         </button>
-        <button class="header-iconsItem" data-target="#link" data-link="{%IF CLIENT_IS_LOGIN%}{USER_FAVORITES_URL}{%ELSE%}{USER_REGISTER_URL}{%ENDIF%}">
-          <span class="material-icons-outlined">favorite_border</span>
+        <button class="header-iconsItem _favorites {% IF FAVORITES_GOODS_COUNT %} _active{% ENDIF %}" data-target="#link" data-link="{%IF CLIENT_IS_LOGIN%}{USER_FAVORITES_URL}{%ELSE%}{USER_REGISTER_URL}{%ENDIF%}">
+          <span class="icon material-icons-outlined">favorite_border</span>
         </button>
-        <button class="header-iconsItem _cart">
-          <span class="material-icons-outlined">shopping_cart</span>
+        <button class="header-iconsItem _cart" data-target="#link" data-link="/cart">
+          <span class="icon material-icons-outlined">shopping_cart</span>
           <i class="header-iconsItem-icon" data-count="{CART_COUNT_TOTAL}">{CART_COUNT_TOTAL}</i>
         </button>
       </div>

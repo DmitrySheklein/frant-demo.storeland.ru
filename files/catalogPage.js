@@ -181,7 +181,7 @@ function catalogFunctions(){
           $('.products-ajax').parent().html($(d).find('.products-ajax').parent().html());
           lozad().observe();
           $('.view-mode').html($(d).find('.view-mode').html());
-          Addto();
+          addto();
           AddCart();
           quantity();
           $(".mouseHoverImgCarousel").HoverMouseCarousel();
