@@ -1440,6 +1440,9 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   }
 }
 .block-title .sub-title {font-size: 14px;margin-top: 0px;margin-bottom: 0;text-transform: none;}
+@media(max-width: 481px){
+  .block-title .sub-title {display: none;}
+}
 .block-title .block-result {margin-left: auto;}
 @media(max-width: 481px){
   .block-title .block-result {margin-left: 0;}
@@ -1458,12 +1461,24 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .block-title.cart .title {padding-bottom: 0px;border-bottom: 0px solid #dce4e9}
 /*! Хлебные крошки ***/
 #breadcrumbs {position: relative;font-size: 12px;padding-top: 10px;margin-bottom: 10px;line-height: 30px;white-space: nowrap;overflow: hidden;overflow-x: auto}
-#breadcrumbs .breadcrumbs-list {margin: 0;padding: 0;list-style: none;list-style-position: inside}
+#breadcrumbs .breadcrumbs-list {display: flex;margin: 0;padding: 0;list-style: none;list-style-position: inside}
 #breadcrumbs ul li {display: inline-block;vertical-align: middle}
-#breadcrumbs ul li + li {margin-left: 10px}
-#breadcrumbs ul li:before {display: inline-block;vertical-align: middle;content: "\f105";font-size: 14px;margin-right: 10px;font-family: "FontAwesome";font-style: normal;font-weight: normal;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
+#breadcrumbs ul li + li {margin-left: 8px}
+#breadcrumbs ul li:before {
+  display: inline-block;
+  vertical-align: middle;
+  content: "remove";
+  margin-right: 8px;
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 12px;
+  width: 12px;
+  height: 12px;  
+}
 #breadcrumbs ul li:first-child:before {display: none;}
-#breadcrumbs ul li a {font-weight: 400;vertical-align: middle;border-bottom: 1px solid #ccd8df;}
+#breadcrumbs ul li a {font-weight: 400;vertical-align: middle;color: #CEC5BF; opacity: .5;}
 #breadcrumbs ul li a:hover {color: #caa462; border-color: #caa462;}
 #breadcrumbs ul li a i {margin-right: 5px;}
 #breadcrumbs ul li strong {    max-width: 700px;    overflow: hidden;    white-space: nowrap;    text-overflow: ellipsis;    display: inline-block;font-weight: 400;vertical-align: middle;}

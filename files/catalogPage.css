@@ -16,7 +16,13 @@
 /*! Каталог **/
 .col-left .block .content {padding: 0;overflow: hidden}
 .col-left .block .content ul {margin: 0;padding: 0;list-style: none;list-style-position: inside}
-.col-left .block.catalog > .title {display: none}
+.col-left .block.catalog > .title {
+  text-transform: uppercase;
+  font-weight: 400;
+  padding-top: 20px;
+  padding-left: 15px;
+  margin: 0;
+}
 @media(max-width: 991px){
   .col-left .block.catalog > .content{display:none}
   .col-left .block.catalog > .title{display:block;position:relative;padding:6px 20px;margin-bottom:0;border-radius:5px;cursor:pointer;border:1px solid #f2f2f2}
@@ -25,13 +31,13 @@
   .col-left .block.catalog > .title._active .open-sub{transform:rotate(0deg)}
   .col-left .block.catalog .open-sub:before{content:"\f107";display:block;width:16px;height:16px;line-height:16px;text-align:center}
 }
-.col-left .block.catalog {padding: 0;border-radius: 5px;background: #f8f8f9}
+.col-left .block.catalog {padding: 0;border-radius: 0;background: rgba(0,0,0,.2);}
 .col-left .block.catalog .content ul li {position: relative;margin-bottom: -1px;}
 .col-left .block.catalog .content ul li:last-child {margin-bottom: 0;}
-.col-left .block.catalog .content ul li a {display: block;position: relative;text-transform: none;font-size: 16px;line-height: 33px;padding: 5px 15px;color: #2e2e2e;padding-right: 26px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;border: 1px solid #f2f2f2;}
+.col-left .block.catalog .content ul li a {display: block;position: relative;text-transform: none;font-size: 16px;line-height: 33px;padding: 5px 15px;color: #CEC5BF;padding-right: 26px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
 .col-left .block.catalog .content ul li a.active, .col-left .block.catalog .content ul li a:hover {color: #398f93;}
 .col-left .block.catalog .content ul li a img {width: 30px;height: 30px;margin-right: 5px;display: none;}
-.col-left .block.catalog .content ul li .open-sub {display: block;position: absolute;right: 5px;top: 8px;padding: 5px;background: #f8f8f9;cursor: pointer;font-family: "FontAwesome";font-size: 18px;}
+.col-left .block.catalog .content ul li .open-sub {display: block;position: absolute;right: 5px;top: 8px;padding: 5px;background: transparent;cursor: pointer;font-family: "FontAwesome";font-size: 18px;}
 .col-left .block.catalog .content ul li .open-sub.active:before {content: "\f106";}
 .col-left .block.catalog .content ul li .open-sub:hover {color: #398f93;}
 .col-left .block.catalog .content ul li .open-sub:before {content: "\f107";display: block;vertical-align: middle;width: 16px;height: 16px;line-height: 16px;text-align: center;}
