@@ -5,22 +5,7 @@
 function catalogFunctions(){
     // Стилизация селектов
     $('.selectBox').styler()
-  
-    // Tippy
-    tippyViewBtn();
-    $(function () {
-      tippy('.selectBox', {
-        theme: 'material',
-        onShow(instance) {
-          var $link = $(instance.reference);
-          var titleName = $link.attr('title');
-          $link.removeAttr('title');
-          $link.attr('data-title', titleName);
-          instance.setContent($link.attr('data-title'));
-        }
-      });     
-    })  
-  
+ 
   
     // Фильтр по ценам
     var
@@ -182,9 +167,9 @@ function catalogFunctions(){
           lozad().observe();
           $('.view-mode').html($(d).find('.view-mode').html());
           addto();
-          AddCart();
+          addCart();
           quantity();
-          $(".mouseHoverImgCarousel").HoverMouseCarousel();
+          // $(".mouseHoverImgCarousel").HoverMouseCarousel();
           tippyViewBtn();
           hoverAnimBtn();
         }

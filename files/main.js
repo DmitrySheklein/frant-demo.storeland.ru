@@ -274,7 +274,7 @@ function mainFunctions() {
       }
     })
 
-  tippy('.selectBox', {
+/*   tippy('.selectBox', {
     theme: 'mytheme',
     onShow(instance) {
       var $link = $(instance.reference);
@@ -285,7 +285,7 @@ function mainFunctions() {
       instance.setContent($link.attr('data-title'))
       // console.log(titleName);
     }
-  });
+  }); */
   // Уведомить о поступлении товара
   $(document).on('click', '.empty[data-fancybox], .goodsDataMainModificationEmpty', function(){
     var $formBlock = $(this).closest('.goodsListForm, .goodsDataForm');

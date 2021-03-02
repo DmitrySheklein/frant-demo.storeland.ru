@@ -41,9 +41,9 @@
             <td class="cart-qty">
               <div class="qty-wrap">
                   <div class="qty-set">
-                    <a href="javascript:void(0)" class="qty-minus unselectable" title="Уменьшить"><i class="fal fa-minus"></i></a>
+                    <a href="javascript:void(0)" class="qty-minus unselectable" title="Уменьшить"><i class="material-icons">remove</i></a></a>
                     <input {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}data-dont-put-more="1"{% ENDIF %} name="form[quantity][{cart_items.GOODS_MOD_ID}]" value="{cart_items.ORDER_LINE_QUANTITY}" title="Количество, {cart_items.GOODS_MOD_MEASURE_NAME}" class="input cartqty" type="number" maxlength="5" min="1" onkeypress="return keyPress(this, event);" onpaste="return false;" />
-                    <a href="javascript:void(0)" class="qty-plus unselectable" title="Увеличить"><i class="fal fa-plus"></i></a>
+                    <a href="javascript:void(0)" class="qty-plus unselectable" title="Увеличить"><i class="material-icons">add</i></a></a>
                   </div>
               </div>
               <span class="cart-qty-mesure">{cart_items.GOODS_MOD_MEASURE_NAME}</span>
@@ -175,7 +175,7 @@
                           title="Убрать из избранного"
                           href="{FAVORITES_DELETE_URL}?id={cart_related_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                           rel="nofollow"
-                        ><i class="fal fa-heart"></i></a>
+                        ><i class="material-icons-outlined">favorite_border</i></a>
                       {% ELSE %}
                         <a class="add-wishlist  product-ico"
                           data-action-is-add="1"
@@ -195,7 +195,7 @@
                           title="Добавить в избранное"
                           href="{FAVORITES_ADD_URL}?id={cart_related_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                           rel="nofollow"
-                        ><i class="fal fa-heart"></i></a>
+                        ><i class="material-icons-outlined">favorite_border</i></a>
                       {% ENDIF %}
                       <!-- /END Если есть возможность добавить товар в избранное -->
                       <!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
@@ -219,7 +219,7 @@
                             title="Убрать из сравнения"
                             href="{COMPARE_DELETE_URL}?id={cart_related_goods.MIN_PRICE_NOW_ID}&amp;from={cart_related_goods.GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
                             rel="nofollow"
-                          ><i class="fal fa-signal"></i></a>
+                          ><i class="material-icons">cached</i></a>
                         {% ELSE %}
                           <a class="add-compare  product-ico" 
                             data-action-is-add="1" 
@@ -239,7 +239,7 @@
                             title="В сравнение" 
                             href="{COMPARE_ADD_URL}?id={cart_related_goods.MIN_PRICE_NOW_ID}&amp;from={cart_related_goods.GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
                             rel="nofollow"
-                          ><i class="fal fa-signal"></i></a>
+                          ><i class="material-icons">cached</i></a>
                         {% ENDIF %}
                       {% ENDIF %}
                       <!-- /END Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->                          
@@ -302,14 +302,14 @@
                     <div class="actions">
                       <div class="qty-wrap">
                         <div class="qty-set">
-                          <a href="javascript:void(0)" class="qty-plus unselectable" title="Увеличить"><i class="fal fa-plus"></i></a>
+                          <a href="javascript:void(0)" class="qty-plus unselectable" title="Увеличить"><i class="material-icons">add</i></a></a>
                           <input type="number" name="form[goods_mod_quantity]" max="4" value="1" min="1" title="Количество" class="inputText quantity" onkeypress="return keyPress(this, event);"  autocomplete="off">
-                          <a href="javascript:void(0)" class="qty-minus unselectable" title="Уменьшить"><i class="fal fa-minus"></i></a>
+                          <a href="javascript:void(0)" class="qty-minus unselectable" title="Уменьшить"><i class="material-icons">remove</i></a></a>
                         </div>
                       </div>
                       <!-- Добавление товара в корзину -->
                       {% IF cart_related_goods.MAX_REST_VALUE=0 && SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}
-                        <div class="empty" title="Нет в наличии" data-tooltip="Нет в наличии"><span>Нет в наличии</span></div>
+                        <div class="empty" title="Уведомить" data-fancybox="" data-src="#fancybox-notify"><span>Уведомить</span></div>
                       {% ELSE %}
                         {% IF cart_related_goods.COUNT_MODIFICATION > 1 %}
                           <a class="quickviewmod button" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{cart_related_goods.URL_MIN_PRICE_NOW}"><i class="fal fa-shopping-cart" aria-hidden="true"></i><span>В корзину</span></a>

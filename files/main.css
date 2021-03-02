@@ -1429,6 +1429,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   border-bottom: 1px solid #cec5bf;
   margin-bottom: 30px;  
 }
+.index #page-title {border-bottom: none;padding-bottom: 0;}
 #page-title.index-catalog {padding: 15px 15px 0;}
 #page-title .block-title h1.title {font-size: 30px;word-break: break-word;font-weight: 300;text-transform: uppercase;}
 @media all and (max-width: 641px) {  #page-title .block-title h1.title {font-size: 22px;}}
@@ -1526,7 +1527,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .index .products-grid.owl-carousel .owl-stage {display: -webkit-box;display: -ms-flexbox;display: flex}
 .index .products-grid.owl-carousel .owl-item {-webkit-box-flex: 1;-ms-flex: 1 0 auto;flex: 1 0 auto}
 @media all and (min-width: 1200px) {
-  .products-grid .item {width: calc(25% - 10px);}
+  .products-grid .item {width: calc(33.3% - 30px);}
   .index .products-grid .item {width: calc(25% - 30px);}
 }
 @media all and (max-width: 1199px) {
@@ -1539,13 +1540,6 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 }
 @media all and (max-width: 576px) {
   .index .products-grid .item {width: calc(50% - 15px);margin: 0 7.5px;margin-bottom: 30px;}
-
-/*   .index .products-grid .item:nth-child(odd){
-    margin-right: 7.5px;
-  }
-  .index .products-grid .item:nth-child(even){
-    margin-left: 7.5px;
-  } */
   .products-grid .item {width: calc(50% - 10px);padding: 5px;}
 }
 .index .products-grid .item:nth-child(8) ~ .item {display: none}
@@ -1673,36 +1667,36 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 /* Разделитель */
 .nav-splitter {position: absolute;z-index: 1;top: 100%;left: 0;width: auto;height: 2px;background-color: #caa462;-webkit-transition-delay: .15s;transition-delay: .15s;-webkit-transition: all .3s;transition: all .3s;border-radius: 25px}
 /*! Кнопки В корзину, избранное, сравнение, быстрый просмотр */
-.product-shop .actions .quickviewmod {overflow: hidden;position: relative;z-index: 2;border: 2px solid transparent;    text-align: center;}
-.product-shop .actions .quickviewmod span {color: #caa462;    transition: all .5s ease-in-out;}
-.product-shop .actions .quickviewmod:hover span {color: #caa462}
+.products-grid .product-shop .actions .quickviewmod {overflow: hidden;position: relative;z-index: 2;border: 2px solid transparent;    text-align: center;}
+.products-grid .product-shop .actions .quickviewmod span {color: #caa462;    transition: all .5s ease-in-out;}
+.products-grid .product-shop .actions .quickviewmod:hover span {color: #caa462}
 
-.product-shop .actions .quickviewmod .fal.fa-shopping-cart {display: none;}
-.product-shop .actions .quickviewmod span:last-child {display: none;}
+.products-grid .product-shop .actions .quickviewmod .fal.fa-shopping-cart {display: none;}
+.products-grid .product-shop .actions .quickviewmod span:last-child {display: none;}
 
-.product-shop .actions .quickviewmod._loading {
+.products-grid .product-shop .actions .quickviewmod._loading {
   width: 28px;
 }
-.product-shop .actions .quickviewmod._loading span[class^=material] {
+.products-grid .product-shop .actions .quickviewmod._loading span[class^=material] {
   display: none;
 }
-.product-shop .actions .quickviewmod._loading span:last-child {
+.products-grid .product-shop .actions .quickviewmod._loading span:last-child {
   display: block;
 }
-.product-shop .actions .quickviewmod .fal.fa-spinner {
+.products-grid .product-shop .actions .quickviewmod .fal.fa-spinner {
   margin-right: 0;
 }
-.product-shop .actions .quickviewmod .fal {
+.products-grid .product-shop .actions .quickviewmod .fal {
   vertical-align: middle;
   margin-right: 5px;
   font-size: 16px;
 }
 @media(max-width: 481px){
-  .product-shop .actions .quickviewmod {max-width: 100%;}
+  .products-grid .product-shop .actions .quickviewmod {max-width: 100%;}
 }
-.product-shop .actions .add-cart .fal {vertical-align: middle;margin-right: 5px;font-size: 16px;}
-.product-shop .actions .add-cart .fal.fa-spinner {margin-right: 0;}
-.product-shop .actions .add-cart .fal.fa-shopping-cart {display: none;}
+.products-grid .product-shop .actions .add-cart .fal {vertical-align: middle;margin-right: 5px;font-size: 16px;}
+.products-grid .product-shop .actions .add-cart .fal.fa-spinner {margin-right: 0;}
+.products-grid .product-shop .actions .add-cart .fal.fa-shopping-cart {display: none;}
 
 /** Товары горизонтальные **/
 .products-grid .item._gorizontal {
@@ -1934,9 +1928,9 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 .fancybox-inner .product-view .custom-block {display: none;}
 /** Товар с модификациями **/
 .products-container .item._with-mod .actions .qty-wrap {display: none}
-.products-list .item._with-mod .actions .qty-wrap {display: block;visibility: hidden;opacity: 0}
+.products-list .item._with-mod .actions .qty-wrap {display: none;visibility: hidden;opacity: 0}
 /*! Выбор модификации при добавлении в корзину ***/
-.fancybox-container._modification .product-view {max-width: 380px;padding: 30px;padding-top: 40px;overflow: visible;border-radius: 5px;background: #e7e2df;}
+.fancybox-container._modification .product-view {max-width: 380px;padding: 30px;padding-top: 40px;overflow: visible;border-radius: 0px;background: #e7e2df;}
 .fancybox-container._modification .product-view .product-toolbar {padding-top: 0;}
 .fancybox-container._modification .product-view .block-bg {border:none;padding: 0; color: #2e2e2e}
 .fancybox-container._modification .product-view .block-bg > .row {visibility: hidden;opacity: 0;margin: 0;}
