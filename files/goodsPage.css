@@ -58,8 +58,8 @@
 .product-view .product-toolbar .goodsDataMainModificationAvailable {display: inline-block;vertical-align: middle;white-space: nowrap}
 .product-view .product-toolbar .goodsDataMainModificationAvailable span {display: none}
 .product-view .product-toolbar .goodsDataMainModificationAvailable .available-value {display: block}
-.product-view .product-toolbar .goodsDataMainModificationAvailable .available-true .available-value {color: #4db725}
-.product-view .product-toolbar .goodsDataMainModificationAvailable .available-false .available-value {color: #398f93}
+.product-view .product-toolbar .goodsDataMainModificationAvailable .available-true .available-value {}
+.product-view .product-toolbar .goodsDataMainModificationAvailable .available-false .available-value {}
 .product-view .short-description {margin-top: 15px;font-size: 15px;font-weight: 400;line-height: 1.5}
 .product-view .short-description p {max-height: 110px;overflow: hidden;margin: 0}
 .product-view .short-description-link {display: inline-block;margin-top: 10px;color: #398f93}
@@ -81,6 +81,9 @@
 }
 .product-view .product-order .product-order-inner {padding: 0}
 .product-view .product-order .price-box {float: left;margin: 0}
+.product-view .product-order .price-box .price {
+  color: #2e2e2e;
+}
 .product-view .product-order .price-box .old-price > span {margin-right: 5px}
 .product-view .product-shop .goodsDataMainModificationAvailable {margin: 0 0 7px 0;font-weight: 600;color: #2e2e2e}
 .product-view .product-shop .goodsDataMainModificationAvailable span {display: inline-block;font-weight: 400;margin-left: 5px;text-shadow: none;color: #4db725}
@@ -97,10 +100,11 @@
 .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsDescriptionBlock div {margin: 0}
 .product-view .product-order .actions .qty-wrap {width: 100px}
 .product-view .product-order .actions .qty-set > a {width: 30px;height: 36px;line-height: 36px}
+.product-view .product-order .actions .qty-set .material-icons {line-height: 36px;}
 .product-view .product-order .actions input.quantity {width: 40px;height: 36px}
 .product-view .product-order .add-to-box .goodsDataMainModificationEmpty {display: inline-block;vertical-align: middle;width: 100%;height: 38px;line-height: 36px;text-align: center;padding: 0 17px;margin: 15px 0 0px;font-size: 14px;border: none;cursor: default;border-radius: 0px;cursor: pointer;}
 .product-view .product-order .add-to-box .add-to-cart {display: inline-block;vertical-align: middle;display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;-webkit-box-align: center;-ms-flex-align: center;align-items: center;padding-top: 10px}
-.product-view .product-order .add-to-box .add-to-cart .button {height: 36px;line-height: 34px;font-size: 14px;padding: 0 10px;vertical-align: middle;-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1}
+.product-view .product-order .add-to-box .add-to-cart .button {height: 36px;line-height: 34px;font-size: 16px;padding: 0 10px;vertical-align: middle;-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1}
 .product-view .product-order .add-to-box .add-to-cart .quick {width: 100%;margin-top: 10px;background: #fff;border-color: #398f93;color: #398f93}
 .product-view .product-order .add-to-box .add-to-cart .more {display: none;margin-top: 10px}
 .product-view .product-shop .custom-block {padding: 15px 0;border-bottom: 1px solid #dce4e9}

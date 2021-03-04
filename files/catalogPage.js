@@ -6,7 +6,11 @@ function catalogFunctions(){
     // Стилизация селектов
     $('.selectBox').styler()
  
-  
+    $('.attr-button').on('click', function () {
+      var $btn = $(this);
+      $btn.parent().find('.attr-list').slideToggle()
+      $btn.toggleClass('_active')
+    })
     // Фильтр по ценам
     var
       // Минимальное значение цены для фильтра
@@ -82,17 +86,28 @@ function catalogFunctions(){
     }
     
     // Фильтры по товарам. При нажании на какую либо характеристику или свойство товара происходит фильтрация товаров
-    $('.filters-goods input').click(function(){
+    $('.filters-goods input[type="checkbox"]').click(function(){
       $(this)[0].form.submit();
       
       return;
       
     });
   
-    $('.filters-goods-active input').click(function(){
+    $('.filters-goods-active input[type="checkbox"]').click(function(){
       $(this)[0].form.submit();
     });
     
+    $('.filter-search').on('input', function () {
+      var $items = $(this).next('.filter-inner').children()
+      var $checkboxes = $items.find('.checkbox-name');
+      var itemsArray = $checkboxes.map(function () {return $(this).data('name').toLowerCase()}).toArray();
+      var str = $(this).val();
+
+      var resultArray = itemsArray.map((item, i) => item.indexOf(str) >= 0 ? i : -1).filter(item => item >= 0);
+      $items.hide().filter(function () {        
+        return resultArray.some(el => el === $(this).index())
+      }).show();
+    })
     
     // Показать/скрыть категорию фильтра
     $('.block.filters').on('click', '.title', function(){

@@ -248,7 +248,7 @@ function mainFunctions() {
     $(document).on('click', '.add-cart', function() {
       var $btn  = $(this);
       $btn.addClass('_loading')
-      $btn.find('span').last().html('<i class="fal fa-spinner fa-spin"></i>')
+      $btn.find('span').last().html('<i class="material-icons rotating">donut_large</i>')
   
       var form = $(this).closest('form');
       if ($(this).hasClass('_cart-page')) {
@@ -927,7 +927,7 @@ function quickViewShowMod(href, atempt) {
   }
   var $btn = $('.quickviewmod._loading');
   $btn.find('.fal').remove();
-  $btn.find('span').last().html('<i class="fal fa-spinner fa-spin"></i>')
+  $btn.find('span').last().html('<i class="material-icons rotating">donut_large</i>')
 
   $.ajax({
     type    : "GET",
