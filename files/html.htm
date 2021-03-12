@@ -542,7 +542,7 @@
                       <ul class="header-catalogMenu">
                             <li class="header-catalogMenuTitle">
                               <a href="/catalog">Каталог</a>
-                              <button class="header-closeBtn"><i class="fal fa-times"></i></button>
+                              <button class="header-closeBtn"><i class="material-icons">close</i></button>
                             </li>
                             {% IFNOT catalog_full_empty %}
                               {% FOR catalog_full %}
@@ -1618,7 +1618,7 @@
             <!-- Левый блок -->
             {% IF MOD_LNAME = catalog || MOD_LNAME = user && ACT= settings || MOD_LNAME = user && ACT= favorites || MOD_LNAME = user && ACT= history_list || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = news || MOD_LNAME = compare %}
             <div class="col-md-3 col-xs-12 col-left">
-              <div class="page-sidebar">
+              <div class="page-sidebar {% IF MOD_LNAME = catalog %}_catalog{% ENDIF %}">
               <!-- Меню пользователя ЛК -->
               {% IF MOD_LNAME = user && ACT= settings || MOD_LNAME = user && ACT= favorites || MOD_LNAME = user && ACT= history_list || MOD_LNAME = compare && CLIENT_IS_LOGIN %}
               <div class="block user-menu catalog">
@@ -1639,7 +1639,10 @@
               {% IFNOT catalog_full_empty %}
               <div class="block catalog">
                 <h3 class="title">
-                  <a href="{CATALOG_URL}"><span class="text">Категории товаров</span><span class="open-sub"></span></a>
+                  <a href="{CATALOG_URL}">
+                    <span class="text">Категории товаров</span>
+                    <!-- <span class="open-sub"></span> -->
+                  </a>
                 </h3>
                 <div class="content">
                   <ul>
@@ -1667,7 +1670,7 @@
                   Фильтры
                 </h3>
                 <div class="content">
-                  <div class="content-title">Фильтры<button class="content-close-btn"><i class="fal fa-times"></i></button></div>
+                  <div class="content-title">Фильтры<button class="content-close-btn"><i class="material-icons">close</i></button></div>
                   <!-- Форма поиска отправляет всегда на ту же страницу, на которой находится пользователь -->
                   <form action="#page-title" method="get" id="filters-form">
                     <!-- Если есть возможность фильтрации товаров по ценам -->
@@ -1708,7 +1711,11 @@
                       <!-- Фильтры по характеристикам товаров (Например: Производитель, разрешение экрана, заряд аккомулятора) -->
                       {% FOR filter_attr_list %}
                         <div class="filter">
-                          <div class="title {% IF filter_attr_list.index > 3 %}active{% ENDIF %}">{filter_attr_list.NAME}:<span class="filter-arrow"></span></div>
+                          <div class="title {% IF filter_attr_list.index > 3 %}active{% ENDIF %}">
+                            {filter_attr_list.NAME}:
+                            <!-- <span class="filter-reset material-icons">close</span> -->
+                            <span class="filter-arrow"></span>
+                          </div>
                           <input class="filter-search" type="text" placeholder="Я ищу">                          
                           <ul class="filter-inner {% FOR values %}{% IF filter_attr_list.values.index > 10 %}crop{break}{% ENDIF %}{% ENDFOR %}" {% IF filter_attr_list.index > 3 %}style="display:none"{% ENDIF %}>
                           {% FOR values %}
@@ -1729,7 +1736,11 @@
                       <!-- Фильтры по свойствам товарных модификаций (Например: Цвет, размер, модификация) -->
                       {% FOR filter_prop_list %}
                         <div class="filter">
-                          <div class="title {% IF filter_prop_list.index > 3 %}active{% ENDIF %}">{filter_prop_list.NAME}:<span class="filter-arrow"></span></div>
+                          <div class="title {% IF filter_prop_list.index > 3 %}active{% ENDIF %}">
+                            {filter_prop_list.NAME}:
+                            <span class="filter-arrow"></span>
+                            <!-- <span class="filter-reset material-icons">close</span> -->
+                          </div>
                           <input class="filter-search" type="text" placeholder="Я ищу">
                           <ul class="filter-inner {% FOR values %}{% IF filter_prop_list.values.index > 10 %}crop{break}{% ENDIF %}{% ENDFOR %}" {% IF filter_prop_list.index > 3 %}style="display:none"{% ENDIF %}>                          
                           {% FOR values %}
@@ -1757,7 +1768,7 @@
               </div>
             </div>
             {% ENDIF %}
-            <div class="{% IFMOD_LNAME = catalog || MOD_LNAME = user && ACT= settings || MOD_LNAME = user && ACT= favorites || MOD_LNAME = user && ACT= history_list || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = news || MOD_LNAME = compare%}col-md-9 col-xs-12 col-right{% ELSE %}col-xs-12{% ENDIF %}">
+            <div class="{% IFMOD_LNAME = catalog || MOD_LNAME = user && ACT= settings || MOD_LNAME = user && ACT= favorites || MOD_LNAME = user && ACT= history_list || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = news || MOD_LNAME = compare%}col-lg-9 col-xs-12 col-right{% ELSE %}col-xs-12{% ENDIF %}">
               <div class="page-content {% IF MOD_LNAME = catalog || MOD_LNAME = search || MOD_LNAME =  discount %}no-padding {% ENDIF %} clearfix">             
                 {BODY}                
               </div>
@@ -2172,9 +2183,13 @@
     
     <!-- Вы смотрели -->
     {% IFNOT recently_viewed_goods_empty %}
-    <div id="viewed" style="display: none;">
-      <div class="container">
-        <h3 class="title _main"><span class="text">Вы смотрели</span></h3>
+    <div id="viewed">
+      <div class="container">        
+        <div class="block-title">
+          <h2 class="title">
+            Ранее вы смотрели
+          </h2>
+        </div>        
         <div class="content">
           <div class="viewed-items owl-carousel owl-theme">
             {% FOR recently_viewed_goods %}

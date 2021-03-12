@@ -92,15 +92,23 @@
         <!-- Если в тарифном плане подключен модуль фильтров по товарам -->
         {% IF TARIFF_FEATURE_GOODS_FILTERS && SHOW_GOODS_FILTERS %}
         <div class="filters _toolbar" {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}style="display: block;"{% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}style="display: block;"{% ENDIF %}{% ENDFOR %}{% ENDFOR %}>
-          <form action="#page-title" method="get">
+          <button class="filters-btn">
+            <span class="filters-btn-inner">
+              <span class="material-icons">filter_alt</span>
+              <span class="filters-btn-text">
+                Фильтры
+              </span>
+            </span>
+          </button>
+          <form class="filters-form" action="#page-title" method="get">
             <!-- Активные Фильтры -->
-            <div class="filters-goods-active" >
+            <div class="" >
               <!-- Фильтры по характеристикам товаров (Например: Производитель, разрешение экрана, заряд аккомулятора) -->
               <div class="filter">
                 <div class="title">Активные фильтры:<span class="filter-arrow"></span></div>                        
                 <div class="filter-inner">
-                  {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}<label class="filter-item" for="filterAttrVal{filter_attr_list.values.ID}"><span>{filter_attr_list.values.VALUE}</span><i class="fal fa-times" aria-hidden="true"></i> <span class="counter">{filter_attr_list.values.NB_GOODS_FILTERED}</span></label>{% ENDIF %}{% ENDFOR %}{% ENDFOR %}
-                  {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}<label class="filter-item" for="filterPropVal{filter_prop_list.values.ID}"><span>{filter_prop_list.values.VALUE}</span><i class="fal fa-times" aria-hidden="true"></i> <span class="counter">{filter_prop_list.values.NB_GOODS_FILTERED}</span></label>{% ENDIF %}{% ENDFOR %}{% ENDFOR %}
+                  {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}<label class="filter-item" for="filterAttrVal{filter_attr_list.values.ID}"><span>{filter_attr_list.values.VALUE}</span><i class="material-icons">highlight_off</i> <span class="counter">{filter_attr_list.values.NB_GOODS_FILTERED}</span></label>{% ENDIF %}{% ENDFOR %}{% ENDFOR %}
+                  {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}<label class="filter-item" for="filterPropVal{filter_prop_list.values.ID}"><span>{filter_prop_list.values.VALUE}</span><i class="material-icons">highlight_off</i> <span class="counter">{filter_prop_list.values.NB_GOODS_FILTERED}</span></label>{% ENDIF %}{% ENDFOR %}{% ENDFOR %}
                 </div>                
               </div>
               <!-- Фильтры по свойствам товарных модификаций (Например: Цвет, размер, модификация) -->

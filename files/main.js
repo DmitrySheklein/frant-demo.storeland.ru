@@ -371,7 +371,6 @@ function mainFunctions() {
 function viewed(){
   // Вы смотрели
   $("#viewed .viewed-items").owlCarousel({
-    items: 5,
     loop: false,
     rewind: true,
     lazyLoad: false,
@@ -387,7 +386,7 @@ function viewed(){
       0:{items:1,margin: 5},
       320:{items:1,margin: 5},
       480:{items:2,margin: 10},
-      1200:{items:5,margin: 10}
+      1200:{items:6,margin: 10}
     }
   });  
 }
@@ -451,7 +450,7 @@ function addCart() {
           var msg = $(data).find('.notify').html();
           var type = $(data).find('.notify').hasClass('good') ? 'success' : 'error';
           var isAdded = ('success' == type) ? true : false;
-          var iconTemplate = (isAdded) ? '<i class="fal fa-check"></i>' : '<i class="fal fa-times"></i>';
+          var iconTemplate = (isAdded) ? '<span class="material-icons">done</span>' : '<span class="material-icons">close</span>';
           var notyText, notyTheme, notyCloseWith;
 
           if (isAdded){
@@ -667,7 +666,7 @@ function addto() {
           
           var msgType = ('ok' == data.status) ? 'success' : 'error';
           var message = ('ok' == data.status) ? data.message.replace('сравнения', '<a href="/compare" class="underline">сравнения</a>') : data.message;
-          var iconTemplate = ('ok' == data.status) ? '<i class="fal fa-check"></i>' : '<i class="fal fa-times"></i>';
+          var iconTemplate = ('ok' == data.status) ? '<span class="material-icons">done</span>' : '<span class="material-icons">close</span>';
           // Если есть функция, которая отображает сообщения пользователю
           if(typeof(Noty) == "function") {
             new Noty({
@@ -819,7 +818,7 @@ function addto() {
           
           var msgType = ('ok' == data.status) ? 'success' : 'error';
           var message = ('ok' == data.status) ? data.message.replace('избранное', '<a href="/user/favorites" class="underline">избранное</a>') : data.message;
-          var iconTemplate = ('ok' == data.status) ? '<i class="fal fa-check"></i>' : '<i class="fal fa-times"></i>';
+          var iconTemplate = ('ok' == data.status) ? '<span class="material-icons">done</span>' : '<span class="material-icons">close</span>';
           // Если есть функция, которая отображает сообщения пользователю
           if(typeof(Noty) == "function") {
               new Noty({

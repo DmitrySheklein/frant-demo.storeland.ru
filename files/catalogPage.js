@@ -126,6 +126,13 @@ function catalogFunctions(){
       $title.toggleClass('_active');
       $title.next().toggle();
     });
+    $('.filters-btn').on('click', function () {
+      if( getClientWidth() <= 1199) {
+        
+        $('.block.filters').find('.content').addClass('_active');
+        $('.overlay').addClass('_active');        
+      }
+    })
     $('.block.filters, .block.viewed').on('click', '.title', function(){
       if( getClientWidth() <= 991) {        
         var $title = $(this);
