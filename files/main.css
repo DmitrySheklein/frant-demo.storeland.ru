@@ -227,9 +227,8 @@ label.invalidInput {color: #E80636;font-size: 90%;}
 .noty_body {font-size: 16px!important;text-align: center!important;zoom: 97%}
 #noty_layout__bottom {max-width: 95%;left: 2.5%}
 .noty__content {padding: 0;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;border-radius: 0px;overflow: hidden;font-size: 14px;text-align: left;padding-right: 15px}
-.noty_content {padding: 15px}
 .noty__content-text {padding: 10px 0}
-.noty__content .fal {height: 60px;width: 60px;line-height: 60px;font-size: 30px;margin-right: 0;-ms-flex-negative: 0;flex-shrink: 0;text-align: center;background: 0 0!important}
+.noty__content .material-icons {height: 60px;width: 60px;line-height: 60px;font-size: 30px;margin-right: 0;-ms-flex-negative: 0;flex-shrink: 0;text-align: center;background: 0 0!important}
 .noty__content a,
 .noty__content a:visited {color: #fff;margin-left: 2px}
 .noty__content a:hover {text-decoration: none}
@@ -1842,12 +1841,21 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 #viewed .content .viewed-items .item-inner {position: relative;width: 100%;height: 100%;background-color: rgba(0,0,0,.2);box-shadow: none;border: 0;border-radius: 0;padding: 5px;display: flex;flex-direction: column;align-items: center;border-radius: 0;}
 #viewed .content .viewed-items .product-image {width: 100%;height: 155px;padding: 0;margin-bottom: 15px;}
 #viewed .content .viewed-items .product-image a {display: flex;position: relative;width: 100%;height: 100%;min-height: 60px;z-index: 0;overflow: hidden;border-radius: 0;background: #fff;text-align: center;}
-#viewed .content .viewed-items .product-image a img {width: auto;margin: auto;transition: opacity .3s;}
+#viewed .content .viewed-items .product-image a img {width: auto;margin: auto;transition: opacity .3s;max-height: 100%;}
+#viewed .content .viewed-items .product-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+}
 #viewed .content .viewed-items .product-info {position: relative;text-align: center;padding: 0;background-color: transparent;}
 #viewed .content .viewed-items .product-info .product-name {display: block;text-overflow: ellipsis;font-family: inherit;margin-bottom: 11px;padding: 0;}
 #viewed .content .viewed-items .product-info .product-name a:hover {color: #caa462;}
 #viewed .content .viewed-items .product-info .ratings {background: transparent;margin-bottom: 10px;}
-#viewed .content .viewed-items .product-info .price-box {margin: 0;padding: 0;border: none;}
+#viewed .content .viewed-items .product-info .price-box {margin: 0;margin-top: auto;padding: 0;border: none;margin-bottom: 13px;}
+#viewed .content .viewed-items .product-info .price {
+  color: #cec5bf;
+}
 #viewed .owl-carousel .owl-nav {position: absolute;right: 0px;}
 #viewed .owl-carousel .owl-nav > button {display: inline-block;position: relative;text-align: center;font-size: 21px;color: #777;width: 25px;}
 #viewed .owl-carousel .owl-nav > button:hover {color: #caa462;}
@@ -1855,6 +1863,73 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 #viewed .owl-carousel .owl-nav .owl-prev:after {content: "\f104";}
 #viewed .owl-carousel .owl-nav .owl-next:after {content: "\f105";}
 #viewed .owl-carousel .owl-nav {top: -45px;}
+
+#viewed .item .actions {position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;justify-content: center;}
+
+#viewed .item .product-icons {position: static;overflow: hidden;display: flex;flex-direction: row-reverse;}
+#viewed .item .product-ico {display: inline-block;vertical-align: middle;width: 32px;height: 32px;padding: 8px;color: #9c9e9e;z-index: 1;-webkit-transition: .1s all;transition: .1s all;}
+#viewed .item .product-ico > i {font-size: 17px;}
+#viewed .item:hover .product-ico,
+#viewed .item:hover .product-ico.added {opacity: 1}
+#viewed .item .product-ico.added {color: #caa462;}
+#viewed .item .product-ico:hover {opacity: .8;color: #caa462;}
+#viewed .item.empty .actions .empty {
+  display: inline-block;
+  vertical-align: middle;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  padding: 0;
+  font-size: 0;
+  color: #2e2e2e;
+  background-color: transparent;
+  cursor: default;
+  border-radius: 5px;
+  font-family: 'Material Icons Outlined';
+  cursor: pointer;
+}
+#viewed .item.empty .actions .empty::before {
+  content: 'notifications_none';
+  font-size: 17px;
+  color: #9c9e9e;
+}
+#viewed .item.empty .actions .empty:hover::before {
+  color: #caa462;
+}
+
+/*! Кнопки в Корзину  */
+#viewed .item .actions .add-cart span:last-child {display: none;}
+#viewed .item .actions .add-cart {height: 36px;position: relative;z-index: 2;display: flex;justify-content: center;align-items: center;background: transparent;padding: 0px;color: #fff;text-align: center;border-radius: 0px;font-size: 14px;overflow: hidden;border: 2px solid transparent;}
+#viewed .item .actions .add-cart span {color: #caa462;transition: all .5s ease-in-out;}
+/* .products-grid .item .product-shop .actions .add-cart:hover {background: #fff;border-color: #caa462} */
+#viewed .item .actions .add-cart:hover span {color: #caa462;}
+/* .products-grid .item .product-shop .actions .add-cart:hover span:not(.hover-anim) {position: relative;z-index: 1;} */
+#viewed .item .actions .add-cart._loading {
+  width: 28px;
+}
+#viewed .item .actions .add-cart._loading span[class^=material] {
+  display: none;
+}
+#viewed .item .actions .add-cart._loading span:last-child {
+  display: block;
+}
+/*! Покупка товара с модификацией */
+#viewed .item .actions .quickviewmod {overflow: hidden;position: relative;z-index: 2;border: 2px solid transparent;    text-align: center;}
+#viewed .item .actions .quickviewmod span {color: #caa462;    transition: all .5s ease-in-out;}
+#viewed .item .actions .quickviewmod:hover span {color: #caa462}
+#viewed .item .actions .quickviewmod span:last-child {display: none;}
+#viewed .item .actions .quickviewmod._loading {
+  width: 28px;
+}
+#viewed .item .actions .quickviewmod._loading span[class^=material] {
+  display: none;
+}
+#viewed .item .actions .quickviewmod._loading span:last-child {
+  display: block;
+}
+/*!  */
+
 .product-tabs #viewed .owl-carousel .owl-nav {top: -38px;right: -9px;}
 .col-left .block .content .content-title {display: none;}
 .col-left .block .content .content-title .content-close-btn {position: absolute;top: 3px;right: 5px;font-size: 25px;line-height: 47px;height: 47px;width: 45px;text-align: center}
