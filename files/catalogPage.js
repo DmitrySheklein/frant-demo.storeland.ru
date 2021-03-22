@@ -117,7 +117,7 @@ function catalogFunctions(){
         return;
       }
       
-      $title.toggleClass('active').next('.layout-slider, .filter-inner').slideToggle();
+      $title.toggleClass('active').parent().find('.layout-slider, .filter-inner,.filter-search').slideToggle();
     });
     
     $('.block.catalog').on('click', '.title', function(e){
