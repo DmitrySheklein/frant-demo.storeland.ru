@@ -293,7 +293,7 @@ function mainFunctions() {
     $('#fancy-notify-goods-mod').val(goodsMod)
   })
   // Валидация формы на странице оформления заказа, а так же формы на страницы связи с администрацией  
-  $("#myform, .feedbackForm, .clientForm._login, .clientForm._reg,.clientForm._recovery, .goodsDataOpinionAddForm, .callbackForm").each(function(){
+  $("#myform, .feedbackForm,.clientForm, .clientForm._login, .clientForm._reg,.clientForm._recovery, .goodsDataOpinionAddForm, .callbackForm").each(function(){
     $(this).validate()
   });
   // Формы логина и регистрации 
@@ -1180,9 +1180,6 @@ function removeFromCart(e){
       $('.header-iconsItem._cart .header-iconsItem-icon').html(newCount).attr('data-count', newCount);
       $('.cart .count').text(newCount).attr('data-count',newCount);
       $('.cart .header-toolsContent').find('.price').html($(d).find('.total-sum').html());
-      console.log(
-        $(d).find('.total-sum').html()
-      );
       $('.total-sum').animate({opacity: 1},500);
       $('.total-sum').html($(d).find('.total-sum').html());
         var flag = 0; 

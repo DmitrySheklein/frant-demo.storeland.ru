@@ -9,21 +9,23 @@
         <input type="hidden" name="from" value="{FROM}" />
         <div class="form-list">
           <div class="fields">
-            <label for="reg_name" class="required">Представьтесь, пожалуйста <em>*</em></label>
-            <input id="reg_name" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_NAME}]"  value="{FORM_SITES_CLIENT_NAME}" maxlength="100" class="input required">
+            
+            <input id="reg_name" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_NAME}]"  value="{FORM_SITES_CLIENT_NAME}" maxlength="100" class="input input-material _light-text required" placeholder="Представьтесь, пожалуйста">
+            <label for="reg_name" class="input-material-label material-icons">person_outline</label>
           </div>
           <div class="fields">
-            <label for="sites_client_phone" class="required">Телефон для связи <em>*</em></label>
-            <input id="sites_client_phone" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_PHONE}]"  value="{FORM_SITES_CLIENT_PHONE}" maxlength="255" class="input required">
+            <input id="sites_client_phone" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_PHONE}]"  value="{FORM_SITES_CLIENT_PHONE}" maxlength="255" class="input input-material _light-text required" placeholder="Телефон для связи">
+            <label for="sites_client_phone" class="input-material-label material-icons">phone_in_talk</label> 
           </div>
           <div class="fields">
-            <label for="sites_client_mail" class="required">Электронная почта <em>*</em></label>
-            <input id="sites_client_mail" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_MAIL}]"  value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" class="input email required">
+            <input id="sites_client_mail" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_MAIL}]"  value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" class="input input-material _light-text email required" placeholder="Ваш email">
+            <label for="sites_client_mail" class="input-material-label material-icons-outlined">email</label>
           </div>
           <div class="fields">
-            <label for="sites_client_pass" class="required">Придумайте пароль <em>*</em></label>
+            
             <div class="input-box">
-              <input id="sites_client_pass" type="password" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_PASS}]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50"  class="input required" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()"/>
+              <input id="sites_client_pass" type="password" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_PASS}]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50"  class="input input-material _light-text required" placeholder="Придумайте пароль" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()"/>
+              <label for="sites_client_pass" class="input-material-label material-icons">lock</label>
               {% IFNOT user_agent_ie %}
                 <div class="showPassBlock">
                   <a href="#" rel="<span class='material-icons'>visibility_off</span>" class="showPass">
@@ -41,7 +43,7 @@
         <div class="pp">
           <input type="checkbox" id="pp-check" class="pp-checkbox checkbox-hidden" name="pp-check" required="" aria-required="true" checked>
           <label for="pp-check"  class="pp-label checkbox-name">
-          Я согласен на <a class="blue-link" href="#" data-fancybox data-src="#fancybox-pp">обработку персональных данных</a>
+          Я согласен на <a class="blue-link _underline" href="#" data-fancybox data-src="#fancybox-pp">обработку персональных данных</a>
           </label>
         </div>
         <div class="buttons">

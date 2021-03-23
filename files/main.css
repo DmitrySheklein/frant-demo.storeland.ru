@@ -349,7 +349,8 @@ label.invalidInput {color: #E80636;font-size: 90%;}
 *******************************************************************************/
 .fancybox-slide--html .fancybox-close-small {
   right: -35px;
-  top: -35px;  
+  top: -35px;
+  color: #cec5bf;
 }
 .fancybox-content {overflow: visible;}
 .fancybox-bg {background: rgba(0, 0, 0, .8);}
@@ -539,7 +540,13 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   cursor: pointer;
   font-size: 40px;
   color: #fff;
-  background: #302e33;
+}
+.back-top-arrow {
+  fill: rgb(206 197 191 / 30%);
+  transform: rotate(90deg);
+}
+#back-top:hover .back-top-arrow {
+  fill: #cec5bf
 }
 @media all and (max-width: 991px) {
   #back-top {font-size: 25px;line-height: 43px;}
@@ -1442,7 +1449,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 #page-title {
   text-align: left;
   padding-bottom: 25px;
-  border-bottom: 1px solid #cec5bf;
+  border-bottom: 1px solid rgb(206 197 191 / 30%);
   margin-bottom: 30px;  
 }
 @media all and (max-width: 481px) {  
@@ -2039,7 +2046,7 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 /*! Выбор модификации при добавлении в корзину ***/
 .fancybox-container._modification .product-view {max-width: 380px;padding: 30px;padding-top: 40px;overflow: visible;border-radius: 0px;background: #e7e2df;}
 .fancybox-container._modification .product-view .product-toolbar {padding-top: 0;}
-.fancybox-container._modification .product-view .block-bg {border:none;padding: 0; color: #2e2e2e}
+.fancybox-container._modification .product-view .block-bg {border:none;padding: 0; color: #2e2e2e;background: none;}
 .fancybox-container._modification .product-view .block-bg > .row {visibility: hidden;opacity: 0;margin: 0;}
 .fancybox-container._modification .product-view .product-name {padding-right: 0;}
 .fancybox-container._modification .product-shop {margin: 0;}
@@ -2127,7 +2134,7 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 .col-account .form-list .fields > label {margin-bottom: 15px;text-align: left}
 .account .message {margin-left: 15px;margin-right: 15px}
 .account .first .buttons {max-width: 450px;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between}
-.account:not(._settings) .second {width: 100%;padding-top: 30px;border-top: 1px solid #f2f2f2}
+.account:not(._settings) .second {width: 100%;padding-top: 30px;border-top: 1px solid rgb(206 197 191 / 30%)}
 .account .second p {font-size: 12px;}
 .account .second .col-account {max-width: 450px}
 .clientForm .pp {margin-bottom: 10px}

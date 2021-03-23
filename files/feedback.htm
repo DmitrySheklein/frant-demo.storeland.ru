@@ -9,13 +9,22 @@
         <div class="block-contact">
           {% IF SETTINGS_STORE_REGION %}
           <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-            <i class="fal fa-map-marker"></i><p><b>Адрес</b><br> <span itemprop="addressLocality">{SETTINGS_STORE_REGION}</span></p>
+            <span class="material-icons-outlined">
+              place
+            </span>
+            <p><b>Адрес</b><br> <span itemprop="addressLocality">{SETTINGS_STORE_REGION}</span></p>
           </div>
           {% ENDIF %}
-          {% IF SETTINGS_STORE_WORK_TIME %}<div><i class="fal fa-clock"></i><p class="block-contact-workTime"><b>Время работы:</b><br>{SETTINGS_STORE_WORK_TIME | htmlspecialchars_decode}</p></div>{% ENDIF %}
+          {% IF SETTINGS_STORE_WORK_TIME %}<div>
+            <span class="material-icons-outlined">
+              schedule
+            </span>
+            <p class="block-contact-workTime"><b>Время работы:</b><br>{SETTINGS_STORE_WORK_TIME | htmlspecialchars_decode}</p></div>{% ENDIF %}
           {% IF SETTINGS_STORE_PHONE_NUMBER1 %}
           <div>
-            <i class="fal fa-phone"></i>
+            <span class="material-icons-outlined">
+              phone
+            </span>
             <div>
               <b>Телефон:</b>
               <div itemprop="telephone"><a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}{SETTINGS_STORE_PHONE_CITY_CODE1}{SETTINGS_STORE_PHONE_NUMBER1}">{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</a></div>
@@ -24,8 +33,15 @@
             </div>
           </div>
           {% ENDIF %}
-          {% IF SETTINGS_STORE_EMAIL_MAIN %}<div itemprop="email"><i class="fal fa-envelope"></i><p><b>E-mail:</b><br><a href="mailto:{SETTINGS_STORE_EMAIL_MAIN}">{SETTINGS_STORE_EMAIL_MAIN}</a></p></div>{% ENDIF %}
-          {% IF SETTINGS_STORE_SKYPE %}<div><i class="fal fa-skype"></i><a href="skype:{SETTINGS_STORE_SKYPE}?call">{SETTINGS_STORE_SKYPE}</a></div>{% ENDIF %}
+          {% IF SETTINGS_STORE_EMAIL_MAIN %}<div itemprop="email">
+            <span class="material-icons-outlined">
+              mail_outline
+            </span>
+            <p><b>E-mail:</b><br><a href="mailto:{SETTINGS_STORE_EMAIL_MAIN}">{SETTINGS_STORE_EMAIL_MAIN}</a></p></div>
+          {% ENDIF %}
+          {% IF SETTINGS_STORE_SKYPE %}<div>
+            <a href="skype:{SETTINGS_STORE_SKYPE}?call">{SETTINGS_STORE_SKYPE}</a></div>
+          {% ENDIF %}
         </div>
       </div>
     </div>
@@ -76,7 +92,7 @@
           <div class="pp">
             <input type="checkbox" id="pp-check" class="pp-checkbox checkbox-hidden" name="pp-check" required="" aria-required="true" checked>
             <label for="pp-check"  class="pp-label checkbox-name">
-            Я согласен на <a class="blue-link" href="#" data-fancybox data-src="#fancybox-pp">обработку персональных данных</a>
+            Я согласен на <a class="blue-link _underline" href="#" data-fancybox data-src="#fancybox-pp">обработку персональных данных</a>
             </label>
           </div>
         </form>
