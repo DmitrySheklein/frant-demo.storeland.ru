@@ -171,8 +171,19 @@
                       {% ENDFOR %}
                     {% ENDIF %}
                   </a>
+                  
+                  <div class="product-icos">
+                    {% IF goods.IS_NEW %}
+                      <span class="ico-new">Новинка</span>
+                    {% ELSEIF goods.IS_TOP %}
+                      <span class="ico-best">Хит</span>
+                    {% ENDIF %}
+                    {% IF goods.MAX_DISCOUNT %}
+                      <span class="ico-sale">Акция</span>
+                    {% ENDIF %}
+                  </div>                  
 
-                  <div class=" {% IFNOT goods.OPINION_RATING_VALUE %}_hide{% ELSE %}_show{% ENDIF %}" >
+                  <div class="ratings {% IFNOT goods.OPINION_RATING_VALUE %}_hide{% ELSE %}_show{% ENDIF %}" >
                     <a href="{goods.URL | url_amp}" title="Перейти к отзывам">
                       <div class="rating-box">
                         {% IF goods.OPINION_RATING_VALUE %}
@@ -345,7 +356,7 @@
                       <img class="lozad" src="{ASSETS_IMAGES_PATH}loader-min.gif"  data-src="{goods.IMAGE_MEDIUM}" alt="{goods.NAME}" title="{goods.NAME}"  itemprop="image">
                     {% ENDIF %}
 
-                    {% IF goods.IS_NEW || goods.IS_TOP || goods.MAX_DISCOUNT || goods.OPINION_RATING_VALUE %}
+                    
                     <div class="product-icos">
                       {% IF goods.IS_NEW %}
                         <span class="ico-new">Новинка</span>
@@ -356,7 +367,7 @@
                         <span class="ico-sale">Акция</span>
                       {% ENDIF %}
                     </div>
-                    {% ENDIF %}
+                    
 
                   </a>
                 </div>

@@ -8,15 +8,16 @@
           <p>Если вы уже имеете аккаунт у нас, пожалуйста, входите.</p>
           <div class="form-list">
             <div class="fields">
-              <label for="email" class="required">E-mail: <em>*</em></label>
-              <input type="text" name="form[sites_client_mail]" value="{FORM_SITES_CLIENT_MAIL}" id="email"  maxlength="255" class="input email" required />
+              <input placeholder="Ваш email" type="text" name="form[sites_client_mail]" value="{FORM_SITES_CLIENT_MAIL}" id="email"  maxlength="255" class="input input-material _light-text email" required />
+              <label for="email" class="required input-material-label material-icons">mail_outline</label>
             </div>
             <div class="fields">
-              <label for="sites_client_pass" class="required">Пароль: <em>*</em></label>
+              
               <div class="input-box">
-                <input  type="password" id="sites_client_pass" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="input" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" required/>
+                <input placeholder="Ваш пароль" type="password" id="sites_client_pass" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="input input-material _light-text" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" required/>
+                <label for="sites_client_pass" class="input-material-label material-icons">lock</label>
                 {% IFNOT user_agent_ie %}
-                  <div class="showPassBlock"><a href="#" rel="<i class='fal fa-eye-slash' aria-hidden='true'></i>" class="showPass"><i class="fal fa-eye" aria-hidden="true"></i></a></div>
+                  <div class="showPassBlock"><a href="#" rel="<span class='material-icons'>visibility_off</span>" class="showPass"><span class="material-icons">visibility</span></a></div>
                 {% ENDIF %}
                 <div id="caps_lock"> 
                   <span class="fal fa-warning"></span>
@@ -27,7 +28,7 @@
           </div>
           <div class="buttons">
             <button type="submit" class="button" title="Войти" name="send" id="send2">Войти</button>
-            <a href="{USER_RECOVERY_URL}" class="blue-link">Забыли пароль?</a>
+            <a href="{USER_RECOVERY_URL}" class="blue-link _underline">Забыли пароль?</a>
           </div>
         </div>
       </div>

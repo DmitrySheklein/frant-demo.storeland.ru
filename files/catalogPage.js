@@ -6,8 +6,9 @@ function catalogFunctions(){
     // Стилизация селектов
     $('.selectBox').styler()
  
-    $('.attr-button').on('click', function () {
+    $('.products-container').on('click', '.attr-button', function () {
       var $btn = $(this);
+
       $btn.parent().find('.attr-list').slideToggle()
       $btn.toggleClass('_active')
     })

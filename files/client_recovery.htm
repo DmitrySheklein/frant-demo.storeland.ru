@@ -6,18 +6,19 @@
       <div class="col-account">
         <p>Забыли пароль? Ничего страшного. Сейчас мы его восстановим!<br> Для этого укажите свою почту, на которую будет отправлена ссылка для активации аккаунта, и новый пароль, с которым Вы будете заходить на сайт.</p>
         <div class="form-list">
-          <div class="fields">
-            <label for="sites_client_mail" class="required">Электронная почта <em>*</em></label>
-            <input id="sites_client_mail" type="text" name="form[sites_client_mail]"  value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" class="input email required" required>
+          <div class="fields">            
+            <input placeholder="Ваш email" id="sites_client_mail" type="text" name="form[sites_client_mail]"  value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" class="input input-material _light-text email required" required>
+            <label for="sites_client_mail" class="required input-material-label material-icons">mail_outline</label>
           </div>
           <div class="fields">
-            <label for="sites_client_pass" class="required">Придумайте новый пароль <em>*</em></label>
+            
             <div class="input-box">
-              <input id="sites_client_pass" type="password" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="input required"   onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()"/>
+              <input placeholder="Ваш пароль" id="sites_client_pass" type="password" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="input input-material _light-text required"   onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()"/>
+              <label for="sites_client_pass" class="input-material-label material-icons">lock</label>
               {% IFNOT user_agent_ie %}
                 <div class="showPassBlock">
-                  <a href="#" rel="<i class='fal fa-eye-slash' aria-hidden='true'></i>" class="showPass">
-                    <i class="fal fa-eye" aria-hidden="true"></i>
+                  <a href="#" rel="<span class='material-icons'>visibility_off</span>" class="showPass">
+                    <span class="material-icons">visibility</span>
                   </a>
                 </div>
               {% ENDIF %}

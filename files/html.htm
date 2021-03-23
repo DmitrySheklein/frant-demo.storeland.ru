@@ -648,7 +648,7 @@
     <div id="breadcrumbs">
       <div class="container">
         <ul class="breadcrumbs-list" itemscope itemtype="https://schema.org/BreadcrumbList">
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="home"><a itemprop="item" href="{INDEX_PAGE_URL}" title="Перейти на главную"><span itemprop="name">Главная</span></a></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="home"><a itemprop="item" href="{INDEX_PAGE_URL}" title="Перейти на главную"><span itemprop="name">Главная</span><meta itemprop="position" content="1" /></a></li>
           {% IF MOD_LNAME=cart %}
             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><strong itemprop="name">{% IF cart_items_empty %}Корзина покупок пуста{% ELSE %}Корзина{% ENDIF %}</strong></li>
           {% ELSEIF MOD_LNAME=user && ACT=login %}
@@ -701,21 +701,21 @@
           {% ELSEIF MOD_LNAME=callback %}
             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><strong itemprop="name">Заказ обратного звонка</strong></li>
           {% ELSEIF MOD_LNAME=goods %}
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{CATALOG_URL}" title="Перейти в каталог товаров"><span itemprop="name">Каталог</span></a></li>
-          {% FOR upper_navigation %}
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{upper_navigation.URL}" title="Перейти в категорию &laquo;{upper_navigation.NAME}&raquo;"><span itemprop="name">{upper_navigation.NAME}</span></a></li>
-          {% ENDFOR %}
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><strong itemprop="name">{GOODS_NAME}</strong></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{CATALOG_URL}" title="Перейти в каталог товаров"><span itemprop="name">Каталог</span><meta itemprop="position" content="2" /></a></li>
+            {% FOR upper_navigation %}
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{upper_navigation.URL}" title="Перейти в категорию &laquo;{upper_navigation.NAME}&raquo;"><span itemprop="name">{upper_navigation.NAME}</span><meta itemprop="position" content='{upper_navigation.index |  plus("2")}' /></a></li>
+            {% ENDFOR %}
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><strong itemprop="name">{GOODS_NAME}</strong><meta itemprop="position" content='{% FOR upper_navigation %}{%IF upper_navigation.last%}{upper_navigation.index |  plus("3")}{%ENDIF%}{%ENDFOR%}' /></li>
           {% ELSEIF MOD_LNAME=catalog %}
             {% IF IS_FULL_CATALOG %}
-              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><strong itemprop="name">Каталог</strong></li>
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><strong itemprop="name">Каталог</strong><meta itemprop="position" content="2" /></li>
             {% ELSE %}
-              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{CATALOG_URL}" title="Перейти в каталог продукции нашего магазина"><span itemprop="name">Каталог</span></a></li>
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{CATALOG_URL}" title="Перейти в каталог продукции нашего магазина"><span itemprop="name">Каталог</span><meta itemprop="position" content="2" /></a></li>
                 {% FOR upper_navigation %}
                   {% IF upper_navigation.CURRENT %}
                     <li><strong>{upper_navigation.NAME}</strong></li>
                   {% ELSEIF upper_navigation.CURRENT_PARENT %}
-                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{upper_navigation.URL}" title="Перейти в категорию &laquo;{upper_navigation.NAME}&raquo;"><span itemprop="name">{upper_navigation.NAME}</span></a></li>
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{upper_navigation.URL}" title="Перейти в категорию &laquo;{upper_navigation.NAME}&raquo;"><span itemprop="name">{upper_navigation.NAME}</span><meta itemprop="position" content='{upper_navigation.index |  plus("2")}' /></a></li>
                   {% ENDIF %}
                 {% ENDFOR %}
             {% ENDIF %}
