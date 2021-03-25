@@ -1714,8 +1714,13 @@
                       {% FOR filter_attr_list %}
                         <div class="filter">
                           <div class="title {% IF filter_attr_list.index > 3 %}active{% ENDIF %}">
-                            {filter_attr_list.NAME}:
+                            <span class="title-name">
+                              {filter_attr_list.NAME}:
+                            </span>
                             <!-- <span class="filter-reset material-icons">close</span> -->
+                            <span class="filter-reset" style="{% FOR values %}{% IF filter_attr_list.values.CHECKED %}display:inline-block;{% ENDIF %}{% ENDFOR %}">
+                              Сбросить
+                            </span>
                             <span class="filter-arrow"></span>
                           </div>
                           <input class="filter-search" type="text" placeholder="Я ищу">                          
@@ -1739,9 +1744,13 @@
                       {% FOR filter_prop_list %}
                         <div class="filter">
                           <div class="title {% IF filter_prop_list.index > 3 %}active{% ENDIF %}">
-                            {filter_prop_list.NAME}:
+                            <span class="title-name">
+                              {filter_prop_list.NAME}:
+                            </span>
+                            <span class="filter-reset" style="{% FOR values %}{% IF filter_prop_list.values.CHECKED %}display:inline-block;{% ENDIF %}{% ENDFOR %}">
+                              Сбросить
+                            </span>
                             <span class="filter-arrow"></span>
-                            <!-- <span class="filter-reset material-icons">close</span> -->
                           </div>
                           <input class="filter-search" type="text" placeholder="Я ищу">
                           <ul class="filter-inner {% FOR values %}{% IF filter_prop_list.values.index > 10 %}crop{break}{% ENDIF %}{% ENDFOR %}" {% IF filter_prop_list.index > 3 %}style="display:none"{% ENDIF %}>                          
@@ -2095,7 +2104,7 @@
                           <a class="news-image-wrap" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;"><img class="news-image lozad" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}"></a>
                           <div class="title"><a href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">{news_list_shop.TITLE}</a></div>
                           {% IF news_list_shop.SHOW_TIME %}<div class="date">{news_list_shop.TIME | date("d")}.{news_list_shop.TIME | date("m")}.{news_list_shop.TIME | date("Y")}</div>{% ENDIF %}
-                          <a href="{news_list_shop.URL}" class="button button2">Подробнее</a>
+                          <a href="{news_list_shop.URL}" class="button button2">Подробнее<span class="material-icons-outlined">arrow_right_alt</span></a>
                         </div>
                       </div>
                     {% ENDFOR %}
@@ -2115,7 +2124,7 @@
                           <a class="news-image-wrap" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;"><img class="news-image lozad" data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}"></a>
                           <div class="title"><a href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">{news_list_articles.TITLE}</a></div>
                           {% IF news_list_articles.SHOW_TIME %}<div class="date">{news_list_articles.TIME | date("d")}.{news_list_articles.TIME | date("m")}.{news_list_articles.TIME | date("Y")}</div>{% ENDIF %}
-                          <a href="{news_list_articles.URL}" class="button button2">Подробнее</a>
+                          <a href="{news_list_articles.URL}" class="button button2">Подробнее<span class="material-icons-outlined">arrow_right_alt</span></a>
                         </div>
                       </div>
                     {% ENDFOR %}
@@ -2135,7 +2144,7 @@
                           <a class="news-image-wrap" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;"><img class="news-image lozad" data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}"></a>
                           <div class="title"><a href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">{news_list_mass_media.TITLE}</a></div>
                           {% IF news_list_mass_media.SHOW_TIME %}<div class="date">{news_list_mass_media.TIME | date("d")}.{news_list_mass_media.TIME | date("m")}.{news_list_mass_media.TIME | date("Y")}</div>{% ENDIF %}
-                          <a href="{news_list_mass_media.URL}" class="button button2">Подробнее</a>
+                          <a href="{news_list_mass_media.URL}" class="button button2">Подробнее<span class="material-icons-outlined">arrow_right_alt</span></a>
                         </div>
                       </div>
                     {% ENDFOR %}
@@ -2167,7 +2176,7 @@
                         {% IF news_list_all.SHOW_TIME %}<div class="date">{news_list_all.TIME | date("d")}.{news_list_all.TIME | date("m")}.{news_list_all.TIME | date("Y")}</div>{% ENDIF %}
                         <div class="title"><a href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">{news_list_all.TITLE}</a></div>
                         <div class="description"><p>{news_list_all.TEXT_SHORT}</p></div> 
-                        <a href="{news_list_all.URL}" class="news-button">Подробнее</a>
+                        <a href="{news_list_all.URL}" class="news-button">Подробнее<span class="news-button-icon material-icons-outlined">arrow_right_alt</span></a>
                       </div>
                     </div>
                   </div>

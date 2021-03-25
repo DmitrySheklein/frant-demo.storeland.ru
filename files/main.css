@@ -861,7 +861,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
     width: 100%;
     padding: 0;
   }
-  #search-result .inner .result-item {
+  #search-result .inner #show-wrap.result-item {
     margin-bottom: 0;
   }
 }
@@ -1111,7 +1111,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   .header-catalogMenu .header-subcatalog {display: none;list-style: none;padding-left: 7px;background-color: #f6f8fa}
   .header-subcatalogTitle {position: relative;padding: 10px 15px 10px 0;font-size: 14px;margin-bottom: 0}
   .header-catalogLink .header-catalogArrow {padding: 9px 15px;position: absolute;top: 0;right: 0;text-align: center;}
-  .header-subcatalog .header-secondArrow {position: absolute;top: 0;right: 0;float: right;padding: 5px 15px;font-size: 12px;color: #93a6b3;transition: -webkit-transform .15s ease-in-out;transition: transform .15s ease-in-out;transition: transform .15s ease-in-out,-webkit-transform .15s ease-in-out}
+  .header-subcatalog .header-secondArrow {position: absolute;top: 0;right: 0;float: right;padding: 5px 15px;font-size: 12px;transition: -webkit-transform .15s ease-in-out;transition: transform .15s ease-in-out;transition: transform .15s ease-in-out,-webkit-transform .15s ease-in-out}
   .header-subcatalog .header-secondArrow .material-icons {-webkit-transform: rotate(-90deg);transform: rotate(-90deg);}
   .header-catalogMenu .header-arrow.active .material-icons,
   .header-catalogMenu a.active .header-arrow .material-icons {-webkit-transform: rotate(0deg);transform: rotate(0deg);color: #caa462}
@@ -2000,11 +2000,14 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 .categories .item {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-ms-flex-direction: column;flex-direction: column;position: relative;text-align: center;margin-bottom: 12px;background: transparent;-webkit-transition: border-color .3s,-webkit-box-shadow;transition: box-shadow,border-color .3s;border-radius: 0px;}
 
 .index.categories .item:nth-child(5) ~ .item {display: none}
-.categories .item .item-inner {padding: 5px;padding-bottom: 0;height: 100%;background: rgba(0,0,0,.2);z-index: 19;-webkit-transition: .3s;transition: .3s}
+.categories .item .item-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;padding-bottom: 0;height: 100%;background: rgba(0,0,0,.2);z-index: 19;-webkit-transition: .3s;transition: .3s}
 .categories .item:hover:before {border-color: #caa462;top: -12px;left: -12px;right: -12px;bottom: -10px;-webkit-box-shadow: 0 20px 60px rgba(156,158,158,.5);box-shadow: 0 20px 60px rgba(156,158,158,.5);z-index: 20}
 .categories .item:hover .item-inner {z-index: 21}
 .categories .item:hover {position: relative;z-index: 20}
-.categories .item .cat-image {border-bottom: 0;margin-bottom: 15px;line-height: 252px;z-index: 19;background: #fff;}
+.categories .item .cat-image {flex-grow: 1;margin: 0 auto;margin-bottom: 15px;max-width: 252px;line-height: 252px;z-index: 19;background: #fff;}
 .categories .item .cat-image a {display: block;overflow: hidden}
 .categories .item .cat-image a img {max-width: 100%;}
 .categories .item .cat-name {min-height: 40px;display: -webkit-box;display: -ms-flexbox;display: flex;margin: 0;margin-bottom: 15px;padding: 0;background: 0 0;text-align: center;-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;z-index: 19;}
@@ -2013,12 +2016,29 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 
 @media (max-width: 991px) {
   .categories .item .cat-image {
-    line-height: 220px;
+    line-height: 215px;
+    max-width: 215px;
   }
 }
 @media (max-width: 767px) {
   .categories .item .cat-image {
     line-height: 190px;
+    max-width: 190px;
+  }
+}
+@media (max-width: 481px) {
+  .categories .item .cat-image {
+    max-width: 100%;
+    line-height: 1;
+  }
+}
+@media (max-width: 375px) {
+  .categories .item .cat-name a {
+    font-size: 14px;
+  }
+  .categories .item .cat-image {
+    line-height: 126px;
+    max-width: 126px;
   }
 }
 /** Вы смотрели **/

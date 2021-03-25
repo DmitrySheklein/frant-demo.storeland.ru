@@ -319,12 +319,17 @@
 #news .block-news .description {font-size: 14px;padding: 0;margin-bottom: 15px;height: 80px;overflow: hidden;text-align: left;color: #cec5bf;opacity: .3;}
 #news .block-news .description > p {margin: 0}
 #news .block-news .news-button {
-  display: block;
+  display: flex;
+  align-items: center;
   text-align: left;
   font-size: 14px;
 }
 #news .block-news .news-button:hover {
   color: #caa462;
+}
+#news .block-news .news-button-icon {
+  margin-left: 5px;
+  font-size: 15px;
 }
 #news .block-news .button {max-width: 145px;margin: auto}
 #news .tabs-headerList {display: inline-block;vertical-align: middle;position: relative}

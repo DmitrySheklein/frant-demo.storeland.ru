@@ -111,14 +111,22 @@ function catalogFunctions(){
     })
     
     // Показать/скрыть категорию фильтра
-    $('.block.filters').on('click', '.title', function(){
-      var $title = $(this);
+    $('.block.filters').on('click', '.filter-arrow', function(){
+      var $title = $(this).parent();
       
-      if($(this).hasClass('_main')){
+      if($title.hasClass('_main')){
         return;
       }
       
       $title.toggleClass('active').parent().find('.layout-slider, .filter-inner,.filter-search').slideToggle();
+    });
+    // Сборосить категорию фильтра
+    $('.block.filters').on('click', '.filter-reset', function(){
+      var $parent = $(this).closest('.filter');
+      var $checkboxes = $parent.find('[type="checkbox"]')
+
+      $checkboxes.prop('checked', false).attr('checked', false);
+      $('#filters-form')[0].submit();
     });
     
     $('.block.catalog').on('click', '.title', function(e){
