@@ -798,11 +798,11 @@
         <div class="slider-banners">
           <div class="slider-banner-item">
             <img src="{ASSETS_IMAGES_PATH}banner-1.jpg" alt="">
-            <a href="#" class="slider-banner-name">Часы</a>
+            <a href="#" class="slider-banner-name">Галстуки</a>
           </div>
           <div class="slider-banner-item">
             <img src="{ASSETS_IMAGES_PATH}banner-2.jpg" alt="">
-            <a href="#" class="slider-banner-name">Часы</a>
+            <a href="#" class="slider-banner-name">Туфли</a>
           </div>
           <div class="slider-banner-item">
             <img src="{ASSETS_IMAGES_PATH}banner-3.jpg" alt="">
@@ -1324,7 +1324,7 @@
 
     <!-- Новинки -->
     {% IFNOT index_page_new_goods_empty %}
-    <div class="pdt-new products-container index">
+    <div class="pdt-new products-container index section">
       <div class="container">
         <div class="">
           <div class="">
@@ -1847,7 +1847,7 @@
     <!-- Хиты продаж -->
     {% IF index_page %}
     {% IFNOT index_page_favorites_goods_empty %}
-    <div class="pdt-best products-container index {% IF index_page_goods_empty=1 && index_page_new_goods_empty=1 %}tab-content-actived{% ENDIF %}">
+    <div class="pdt-best products-container index section {% IF index_page_goods_empty=1 && index_page_new_goods_empty=1 %}tab-content-actived{% ENDIF %}">
       <div class="container">
         <div class="">
           <div class="">
@@ -2193,7 +2193,7 @@
     <!-- /END Если в тарифном плане подключен модуль новостей -->
     
     <!-- Вы смотрели -->
-    {% IFNOT recently_viewed_goods_empty %}
+    {% IFNOT recently_viewed_goods_empty && index_page = 0 %}
     <div id="viewed">
       <div class="container">        
         <div class="block-title">

@@ -1555,7 +1555,7 @@ $(function(){
   function toggleSearch() {
     $('.header-search .search').toggleClass('_active');
     // $('.wrapper').toggleClass('_blur');
-    $('body .wrapper > div, .header-logo, .header-main-content__top, .header-main-content__bottom-wrap > div:not(.header-search) ').toggleClass('_blur')
+    // $('body .wrapper > div, .header-logo, .header-main-content__top, .header-main-content__bottom-wrap > div:not(.header-search) ').toggleClass('_blur')
   }
   $('.header-search .search-close').on('click', function(e){
     toggleSearch();

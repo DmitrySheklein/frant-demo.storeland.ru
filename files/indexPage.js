@@ -103,7 +103,7 @@ function indexPage() {
     })
 
 
-    $(".products-container.section:not(.pdt-sale)").each(function () {
+    $(".products-container.pdt-index").each(function () {
       var $navBlock = $(this).find('.navigation');
       // 
       $(this).find('.products-grid').owlCarousel({        
