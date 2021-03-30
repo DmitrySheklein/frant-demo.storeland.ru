@@ -1615,8 +1615,9 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .products-grid .item .quickview [class*=fa] {display: none}
 .products-grid .item:hover .quickview {visibility: visible}
 .products-grid .item .product-icons {position: static;overflow: hidden;display: flex;flex-direction: row-reverse;}
-.products-grid .item .product-ico {display: inline-block;vertical-align: middle;width: 32px;height: 32px;padding: 8px;color: #9c9e9e;z-index: 1;-webkit-transition: .1s all;transition: .1s all;}
-.products-grid .item .product-ico > i {font-size: 17px;}
+.products-grid .item .product-ico {display: inline-block;vertical-align: middle;width: 21px;height: 21px;padding: 0;text-align: center;color: #cec5bf;z-index: 1;-webkit-transition: .1s all;transition: .1s all;}
+.products-grid .item .product-ico:first-child {margin-left: 20px;margin-right: 17px;}
+.products-grid .item .product-ico > i {font-size: 19px;line-height: 21px;}
 .products-grid .item:hover .product-ico,
 .products-grid .item:hover .product-ico.added {opacity: 1}
 .products-grid .item .product-ico.added {color: #caa462;}
@@ -1633,7 +1634,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 
 /*! Кнопки в Корзину  */
 .products-grid .item .product-shop .actions .add-cart span:last-child {display: none;}
-.products-grid .item .product-shop .actions .add-cart {height: 36px;position: relative;z-index: 2;display: flex;justify-content: center;align-items: center;background: transparent;padding: 0px;color: #fff;text-align: center;border-radius: 0px;font-size: 14px;overflow: hidden;border: 2px solid transparent;}
+.products-grid .item .product-shop .actions .add-cart {height: 36px;position: relative;z-index: 2;display: flex;justify-content: center;align-items: center;background: transparent;padding: 0px;color: #fff;text-align: center;border-radius: 0px;font-size: 14px;overflow: hidden;}
 .products-grid .item .product-shop .actions .add-cart span {color: #caa462;transition: all .5s ease-in-out;}
 /* .products-grid .item .product-shop .actions .add-cart:hover {background: #fff;border-color: #caa462} */
 .products-grid .item .product-shop .actions .add-cart:hover span {color: #caa462;}
@@ -1718,7 +1719,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 /* Разделитель */
 .nav-splitter {position: absolute;z-index: 1;top: 100%;left: 0;width: auto;height: 2px;background-color: #caa462;-webkit-transition-delay: .15s;transition-delay: .15s;-webkit-transition: all .3s;transition: all .3s;border-radius: 25px}
 /*! Кнопки В корзину, избранное, сравнение, быстрый просмотр */
-.products-grid .product-shop .actions .quickviewmod {overflow: hidden;position: relative;z-index: 2;border: 2px solid transparent;    text-align: center;}
+.products-grid .product-shop .actions .quickviewmod {overflow: hidden;position: relative;z-index: 2;    text-align: center;}
 .products-grid .product-shop .actions .quickviewmod span {color: #caa462;    transition: all .5s ease-in-out;}
 .products-grid .product-shop .actions .quickviewmod:hover span {color: #caa462}
 
@@ -1952,7 +1953,7 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 
 /*! Кнопки в Корзину  */
 #viewed .item .actions .add-cart span:last-child {display: none;}
-#viewed .item .actions .add-cart {height: 36px;position: relative;z-index: 2;display: flex;justify-content: center;align-items: center;background: transparent;padding: 0px;color: #fff;text-align: center;border-radius: 0px;font-size: 14px;overflow: hidden;border: 2px solid transparent;}
+#viewed .item .actions .add-cart {height: 36px;position: relative;z-index: 2;display: flex;justify-content: center;align-items: center;background: transparent;padding: 0px;color: #fff;text-align: center;border-radius: 0px;font-size: 14px;overflow: hidden;}
 #viewed .item .actions .add-cart span {color: #caa462;transition: all .5s ease-in-out;}
 /* .products-grid .item .product-shop .actions .add-cart:hover {background: #fff;border-color: #caa462} */
 #viewed .item .actions .add-cart:hover span {color: #caa462;}

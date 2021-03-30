@@ -524,7 +524,8 @@ function addto() {
     });
     tippy('.add-wishlist', {
       theme: 'mytheme',   
-      placement: 'top-end',      
+      // placement: 'top-end',      
+      placement: 'top',      
       onShow(instance) {
         var $link = $(instance.reference);
         var isLogin = $('.header-loginLink').hasClass('_is-login');
