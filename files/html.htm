@@ -205,10 +205,7 @@
                           </div>                      
                           <button type="submit" title="Отправить" class="callback-btn button button3">Отправить</button>
                           <div class="pp">
-                            <input type="checkbox" id="pp-check-callback" class="pp-checkbox checkbox-hidden required" name="pp-check" required="" aria-required="true" checked>
-                            <label for="pp-check-callback"  class="pp-label checkbox-name required">
-                            Я согласен на <a class="blue-link" href="#" data-fancybox="" data-src="#fancybox-pp">обработку персональных данных</a>
-                            </label>
+                            Я согласен на <a class="blue-link" href="#" data-fancybox="" data-src="#fancybox-pp">обработку персональных данных</a>                            
                           </div>
                         </form>
                       </div>
@@ -1113,7 +1110,7 @@
           
             <div class="products-grid owl-carousel">
               {% FOR index_page_sale_goods %}
-              <div class="item _gorizontal {% IF index_page_sale_goods.MAX_REST_VALUE=0 && SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}empty{% ENDIF %}{% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %} _with-mod{% ENDIF %}">
+              <div class="item _gorizontal  {% IF index_page_sale_goods.MAX_REST_VALUE=0 && SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}empty{% ENDIF %}{% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %} _with-mod{% ENDIF %}">
                 <div class="item-inner" itemscope itemtype="https://schema.org/Product">
                   <form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product-form-{index_page_sale_goods.MIN_PRICE_NOW_ID} goodsListForm">
                     <input type="hidden" name="hash" value="{HASH}" />
@@ -1163,7 +1160,13 @@
                           </div>                          
                         </div>                          
                       </div>
-                      <div class="ratings" {% IFNOT index_page_sale_goods.OPINION_RATING_VALUE %} style="display:none"{% ENDIF %}>
+
+                    </div>
+                    <div class="product-shop">
+                      <meta itemprop="name" content="{index_page_sale_goods.NAME}">
+                      <meta itemprop="description" content="{% IF index_page_sale_goods.DESCRIPTION_SHORT %}{index_page_sale_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
+                      <div class="product-name"><a href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_sale_goods.NAME}" itemprop="url">{index_page_sale_goods.NAME}</a></div>
+                      <div class="ratings">
                         <a href="{index_page_sale_goods.URL | url_amp}" title="Перейти к отзывам">
                           <div class="rating-box">
                             {% IF index_page_sale_goods.OPINION_RATING_VALUE %}
@@ -1181,12 +1184,7 @@
                             {% ENDIF %}
                           </div>
                         </a>
-                      </div>
-                    </div>
-                    <div class="product-shop">
-                      <meta itemprop="name" content="{index_page_sale_goods.NAME}">
-                      <meta itemprop="description" content="{% IF index_page_sale_goods.DESCRIPTION_SHORT %}{index_page_sale_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
-                      <div class="product-name"><a href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_sale_goods.NAME}" itemprop="url">{index_page_sale_goods.NAME}</a></div>
+                      </div>                      
                       <div class="price-box" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                         <meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}"/>
                           {% IF index_page_sale_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_sale_goods.MIN_PRICE_NOW %}
@@ -2345,7 +2343,10 @@
                 <img class="footer-logoImg" src="{ASSETS_IMAGES_PATH}logo.png" alt="{SETTINGS_STORE_NAME}">
                </a>
             </div>
-            <!-- /Лого -->            
+            <!-- /Лого -->   
+            <p class="footer-site-desr">
+              Франт - это интернет - бутик, мужской одежды и аксессуаров, созданный с любовью к моде и уважением к комфорту.
+            </p>         
             {% IF SETTINGS_STORE_WORK_TIME %}<div></i><p>{SETTINGS_STORE_WORK_TIME | htmlspecialchars_decode}</p></div>{% ENDIF %}
           </div>
           {% IFNOT menu_footer_links_empty %}
@@ -2414,8 +2415,9 @@
                   </button>
                 </div>
               </form>
-              <p class="subscribe-pp">
-                Нажимая на кнопку Отправить, Вы соглашаетесь с правилами обработки данных
+              <p class="subscribe-pp pp" >
+                Нажимая на кнопку Отправить, Вы соглашаетесь с
+                <a class="" href="#" data-fancybox="" data-src="#fancybox-pp">правилами обработки данных</a>
               </p>
             </div>
             <div class="social-links">

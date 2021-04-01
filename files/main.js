@@ -9,12 +9,12 @@ $(function(){
   // $(".mouseHoverImgCarousel").HoverMouseCarousel().on('click', function (e) {if(getClientWidth() <= 991) {e.preventDefault()}});
 })
 // Fancybox default
-$.fancybox.defaults.beforeShow = function () {
-  $('.wrapper').addClass('_blur');  
-}
-$.fancybox.defaults.beforeClose = function () {
-  $('.wrapper').removeClass('_blur')
-}
+// $.fancybox.defaults.beforeShow = function () {
+//   $('.wrapper').addClass('_blur');  
+// }
+// $.fancybox.defaults.beforeClose = function () {
+//   $('.wrapper').removeClass('_blur')
+// }
 $.fancybox.defaults.btnTpl.smallBtn = '<button data-fancybox-close class="fancybox-button fancybox-close-small" title="{{CLOSE}}"><i class="material-icons">close</i></button>'
 $.fancybox.defaults.lang = "ru";
 $.fancybox.defaults.i18n = {
@@ -1373,7 +1373,7 @@ function headerIcons() {
       // Мобильная версия
       $catalogBtn.add($catalogIcon).click(function() {
         if (getClientWidth() <= 991) {
-          $catalogBtn.addClass('_blur');
+          // $catalogBtn.addClass('_blur');
           blurPage();
           $catalogMenu.add($headerOverlay).addClass("_visible");
           $("body").addClass("modal-open")                         
@@ -1381,7 +1381,7 @@ function headerIcons() {
       }),
       $headerOverlay.add($headerCloseBtn).click(function() {
         if (getClientWidth() <= 991) {
-          $catalogBtn.removeClass('_blur');
+          // $catalogBtn.removeClass('_blur');
           unBlurPage();
           $catalogMenu.add($headerOverlay).removeClass("_visible");
           $("body").removeClass("modal-open")                              
@@ -1389,10 +1389,10 @@ function headerIcons() {
       })
       var $bluredElements = $('body .wrapper > div, .header-logo, .header-main-content__top, .header-main-content__bottom-wrap > div:not(.header-catalog)');
       function blurPage(){
-        $bluredElements.addClass('_blur')
+        // $bluredElements.addClass('_blur')
       }
       function unBlurPage(){
-        $bluredElements.removeClass('_blur')
+        // $bluredElements.removeClass('_blur')
       }
       $catalogMenu.on('click', '.parent .header-arrow', function(evt){
         if (getClientWidth() <= 991) {
