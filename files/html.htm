@@ -404,8 +404,8 @@
                           </ul>
                         {% ENDIF %}
                         <div class="actions" {% IF compare_list_empty %}style="display:none"{% ENDIF %}>
-                          <a class="button-link" data-href="{COMPARE_RESET_URL}" onclick="removeFromCompareAll($(this))"  class="button _dropdown" title="Очистить список сравнения">Очистить</a>
                           <a class="button" href="{COMPARE_URL}" title="Перейти к Сравнению">Сравнение</a>
+                          <a class="button-link" data-href="{COMPARE_RESET_URL}" onclick="removeFromCompareAll($(this))"  class="button _dropdown" title="Очистить список сравнения">Очистить</a>
                         </div>
                       </div>
                     </div>
@@ -454,8 +454,8 @@
                           </ul>
                         {% ENDIF %}
                         <div class="actions" {% IF favorites_goods_empty %}style="display:none"{% ENDIF %}>
-                          <a data-href="{FAVORITES_RESET_URL}" onclick="removeFromFavoritesAll($(this))" class="button _dropdown" title="Очистить список избранного">Очистить</a>
                           <a href="{FAVORITES_URL}" class="button" title="Перейти к избранному">Избранное</a>
+                          <a data-href="{FAVORITES_RESET_URL}" onclick="removeFromFavoritesAll($(this))" class="button _dropdown" title="Очистить список избранного">Очистить</a>
                         </div>
                       </div>
                     </div>
@@ -516,8 +516,8 @@
                           <span class="price total-sum {CURRENCY_CHAR_CODE}">{CART_SUM_NOW | money_format}</span>
                         </div>
                         <div class="actions">
-                          <a class="button-link" href="{CART_TRUNCATE_URL}" data-href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))">Очистить корзину</a>
                           <a class="button" title="Перейти к оформлению заказа" href="{CART_URL}">В корзину</a>
+                          <a class="button-link" href="{CART_TRUNCATE_URL}" data-href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))">Очистить корзину</a>
                         </div>
                         {% ENDIF %}
                       </div>
@@ -532,10 +532,10 @@
                   <div class="header-main-content__bottom-wrap">
                     <!-- Каталог -->
                     <div class="header-catalog">
-                      <span class="header-catalogBtn unselectable">
+                      <a href="/catalog" class="header-catalogBtn">
                         <span class="header-catalogIcon material-icons">drag_indicator</span>
                         <span class="header-catalogName">Каталог</span>                    
-                      </span>                  
+                      </a>                  
                       <ul class="header-catalogMenu">
                             <li class="header-catalogMenuTitle">
                               <a href="/catalog">Каталог</a>
