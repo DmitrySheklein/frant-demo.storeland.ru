@@ -49,6 +49,10 @@
   margin-bottom: 6px;
   transition: all .3s;
 }
+
+@media all and (max-width: 1199px){
+  .col-left .block.quick-category {display: none;}
+}
 /*! Каталог **/
 .col-left .block .content {padding: 0;overflow: hidden}
 .col-left .block .content ul {margin: 0;padding: 0;list-style: none;list-style-position: inside}

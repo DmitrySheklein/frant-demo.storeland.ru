@@ -210,6 +210,50 @@ $(function () {
 // Основные функции
 function mainFunctions() {
   $(function(){
+    // Фикс шапки 
+    (function() {
+      var $headerFixed = $('.header-fixed');
+      var $header = $('.header');
+      
+      if($headerFixed.length && $header.length) {
+        var isHeaderFixed = false,
+        headerCanFix = true,
+        headerFixedHeight = $headerFixed.actual('outerHeight'),
+        headerNormalHeight = $header.actual('outerHeight'),
+        headerDiffHeight = headerNormalHeight - headerFixedHeight;
+
+        if (headerDiffHeight <= 0) {
+          headerDiffHeight = 0;
+        }
+        
+        $(window).on('scroll', function () {
+          var scrollTop = $(window).scrollTop();
+
+          if (!isHeaderFixed) {
+            if ((scrollTop > headerNormalHeight) && headerCanFix) {
+              isHeaderFixed = true;
+
+              $header.find(".header-main-content__top").clone().appendTo($headerFixed.find(".header-main-content__top"));
+              $headerFixed.css('top', '-' + headerNormalHeight + 'px');
+              $headerFixed.addClass('_fixed');
+              $headerFixed.animate({top: '0'}, {
+                duration: 300, complete:
+                    function () {
+                    }
+              });              
+
+            } 
+          } else if (isHeaderFixed || !headerCanFix) {
+            if ((scrollTop <= headerDiffHeight ) || !headerCanFix) {
+                isHeaderFixed = false;
+                $headerFixed.removeClass('_fixed');
+                $headerFixed.find(".header-main-content__top").html('')
+            }
+        }      
+        })
+        // $(".header .header-main-content__top").clone().appendTo(".header-fixed .header-main-content__top");
+      }
+    })()
     // Вызов функции редиректа при обратном звонке
     // Возвращаем пользователя на страницу с которой был сделан обратный звонок
     $('.callbackredirect').val(document.location.href);
@@ -265,8 +309,6 @@ function mainFunctions() {
       form.trigger('submit');
       return (false);
     })
-    // 
-    hoverAnimBtn();
     // Слайдер в подвале
     $('#footer .block.collapse .title').on('click', function(){
       if(getClientWidth() <= 991){
@@ -274,18 +316,6 @@ function mainFunctions() {
       }
     })
 
-/*   tippy('.selectBox', {
-    theme: 'mytheme',
-    onShow(instance) {
-      var $link = $(instance.reference);
-      var titleName = $link.attr('title');
-
-      $link.removeAttr('title');
-      $link.attr('data-title', titleName);
-      instance.setContent($link.attr('data-title'))
-      // console.log(titleName);
-    }
-  }); */
   // Уведомить о поступлении товара
   $(document).on('click', '.empty[data-fancybox], .goodsDataMainModificationEmpty', function(){
     var $formBlock = $(this).closest('.goodsListForm, .goodsDataForm');
@@ -390,6 +420,12 @@ function viewed(){
       768:{items:4,margin: 30},
       992:{items:5,margin: 30},
       1200:{items:6,margin: 30}
+    },
+    onInitialized : function (evt) {
+      var items = evt.item.count;
+      console.log(
+        items
+      );
     }
   });  
 }
@@ -408,11 +444,6 @@ function tippyViewBtn() {
   }) 
 }
 
-// Hover эффект на кнопках
-function hoverAnimBtn() {
-  
-}
-$(window).on('resize', $.debounce(300, hoverAnimBtn))
 // Добавление товара в корзину
 function addCart() {
   $('.goodsDataForm, .goodsToCartFromCompareForm, .goodsListForm').off('submit').on('submit', function() {    
@@ -498,12 +529,11 @@ function addCart() {
           // Обновляем данные корзины
           var cartCount = $(data).filter('#newCartCount').html();
           $('.header-iconsItem._cart .header-iconsItem-icon').html(cartCount).attr('data-count', cartCount);
-          $('.header .cart .count').html(cartCount).attr('data-count', cartCount);
+          $('.cart .count').html(cartCount).attr('data-count', cartCount);
           
-          $('.header .cart .header-toolsContent').html($(data).filter('#newCartContent').html());
-          $('.header .cart .dropdown').html($(data).filter('#newCartData').html());
-          // Анимация на кнопках
-          hoverAnimBtn()
+          $('.cart .header-toolsContent').html($(data).filter('#newCartContent').html());
+          $('.cart .dropdown').html($(data).filter('#newCartData').html());
+
         }
       });
     return false;
@@ -959,7 +989,6 @@ function quickViewShowMod(href, atempt) {
             goodsPage();
             addCart();
             quantity();
-            hoverAnimBtn();
             // Стилизация селектов
             $('.fancybox-inner .product-view [name="form[properties][]"]').styler();
 
@@ -1071,7 +1100,7 @@ function removeFromCompare(e){
 
 // Удаление ВСЕХ товаров из Сравнения без обновлении страницы
 function removeFromCompareAll(e){
-  if(confirm('Вы точно хотите очистить корзину?')){
+  if(confirm('Вы точно хотите очистить сравнение?')){
   var del = e;
   url = del.data('href');
 
@@ -1235,13 +1264,13 @@ function removeFromCartAll(e){
     url		  : url,
     success: function(){
       $('.header-iconsItem._cart .header-iconsItem-icon').html('0').attr('data-count', '0');
-      $('.cart .count').first().text("0").attr('data-count', "0");
+      $('.cart .count').text("0").attr('data-count', "0");
       $('.cart .header-toolsContent').find('.price .num').text("0");
-      $('.header .cart  .dropdown-content._cart .dropdown-items-list').hide();
-      $('.header .cart  .dropdown-content._cart .cart-products-header').hide();
-      $('.header .cart  .dropdown-content._cart .subtotal').hide();
-      $('.header .cart  .dropdown-content._cart .actions').hide();
-      $('.header .cart  .dropdown-content._cart .empty').show();
+      $('.cart .dropdown-content._cart .dropdown-items-list').hide();
+      $('.cart .dropdown-content._cart .cart-products-header').hide();
+      $('.cart .dropdown-content._cart .subtotal').hide();
+      $('.cart .dropdown-content._cart .actions').hide();
+      $('.cart .dropdown-content._cart .empty').show();
 		}
   })
   }
@@ -1252,7 +1281,7 @@ $(function(){
   // hide #back-top first
   $("#back-top").hide();
 	// fade in #back-top
-	$(window).scroll(function () {
+	$(window).on('scroll', function () {
 		if ($(this).scrollTop() > 100) {
 			$('#back-top').show()
 		} else {
@@ -1260,7 +1289,7 @@ $(function(){
 		}
 	});
 	// scroll body to 0px on click
-	$('#back-top').click(function () {
+	$('#back-top').on('click', function () {
 		$('body,html').animate({
 			scrollTop: 0
 		}, 800);

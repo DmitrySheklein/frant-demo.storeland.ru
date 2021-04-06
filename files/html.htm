@@ -98,7 +98,7 @@
     </div>
     
     <!-- Шапка -->
-    <header class="header">      
+    <header class="header">    
       <!-- Мобильные иконки -->
       <div class="header-icons">
         <button class="header-iconsItem _home" data-target="#link" data-link="/">
@@ -642,6 +642,21 @@
       <div class="header-overlay"></div>
     </header>
 
+    <div class="header-fixed">
+      <div class="container">
+        <div class="header-main-wrap">
+            <!-- Логотип -->
+            <div class="header-logo">
+              <a href="{INDEX_PAGE_URL}" title="{SETTINGS_STORE_NAME}">
+                <img class="header-logoImg" src="{ASSETS_IMAGES_PATH}logo.png" alt="{SETTINGS_STORE_NAME}">
+               </a>
+            </div>
+            <!-- /Лого -->
+
+            <div class="header-main-content__top"></div>
+        </div>
+      </div>
+    </div>
     {% IFNOT index_page %}
     <!-- Хлебные крошки -->
     <div id="breadcrumbs">
@@ -925,11 +940,11 @@
                         {% IF index_page_goods.IS_NEW %}
                           <span class="ico-new">Новинка</span>
                         {% ENDIF %}
+                        {% IF index_page_goods.MAX_DISCOUNT %}
+                        <span class="ico-sale">Акция</span>
+                        {% ENDIF %}
                         {% IF index_page_goods.IS_TOP %}
                           <span class="ico-best">Хит</span>
-                        {% ENDIF %}
-                        {% IF index_page_goods.MAX_DISCOUNT %}
-                          <span class="ico-sale">Акция</span>
                         {% ENDIF %}
                       </div>
                       <div class="ratings" {% IFNOT index_page_goods.OPINION_RATING_VALUE %} style="display:none"{% ENDIF %}>
@@ -1138,11 +1153,11 @@
                         {% IF index_page_sale_goods.IS_NEW %}
                           <span class="ico-new">Новинка</span>
                         {% ENDIF %}
+                        {% IF index_page_sale_goods.MAX_DISCOUNT %}
+                        <span class="ico-sale">Акция</span>
+                        {% ENDIF %}
                         {% IF index_page_sale_goods.IS_TOP %}
                           <span class="ico-best">Хит</span>
-                        {% ENDIF %}
-                        {% IF index_page_sale_goods.MAX_DISCOUNT %}
-                          <span class="ico-sale">Акция</span>
                         {% ENDIF %}
                       </div>
                       <div class="product-icos">
@@ -1367,11 +1382,11 @@
                         {% IF index_page_new_goods.IS_NEW %}
                           <span class="ico-new">Новинка</span>
                         {% ENDIF %}
+                        {% IF index_page_new_goods.MAX_DISCOUNT %}
+                        <span class="ico-sale">Акция</span>
+                        {% ENDIF %}
                         {% IF index_page_new_goods.IS_TOP %}
                           <span class="ico-best">Хит</span>
-                        {% ENDIF %}
-                        {% IF index_page_new_goods.MAX_DISCOUNT %}
-                          <span class="ico-sale">Акция</span>
                         {% ENDIF %}
                       </div>
                       <div class="ratings"  {% IFNOT index_page_new_goods.OPINION_RATING_VALUE %} style="display:none"{% ENDIF %}>
@@ -1787,12 +1802,14 @@
                 <div class="content">
                   <ul class="quick-category-list" itemscope itemtype="https://schema.org/SiteNavigationElement"> 
                     {% FOR catalog_full %}
+                    {% IF catalog_full.NAME != Аксессуары для стильных мужчин%}
                     {% IFNOT catalog_full.HIDE && catalog_full.LEVEL = 0 %}
                       <li class="quick-category-item">
                         <a class="quick-category-link" href="{catalog_full.URL}" title="{catalog_full.NAME}" itemprop="url">
                           {catalog_full.NAME}
                         </a>
                       </li>                      
+                    {% ENDIF %}
                     {% ENDIF %}
                     {% ENDFOR %}
                   </ul>
@@ -1913,11 +1930,11 @@
                         {% IF index_page_favorites_goods.IS_NEW %}
                           <span class="ico-new">Новинка</span>
                         {% ENDIF %}
+                        {% IF index_page_favorites_goods.MAX_DISCOUNT %}
+                        <span class="ico-sale">Акция</span>
+                        {% ENDIF %}
                         {% IF index_page_favorites_goods.IS_TOP %}
                           <span class="ico-best">Хит</span>
-                        {% ENDIF %}
-                        {% IF index_page_favorites_goods.MAX_DISCOUNT %}
-                          <span class="ico-sale">Акция</span>
                         {% ENDIF %}
                       </div>
                       <div class="ratings" {% IFNOT index_page_favorites_goods.OPINION_RATING_VALUE %} style="display:none"{% ENDIF %}>
