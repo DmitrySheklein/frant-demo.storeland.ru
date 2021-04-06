@@ -63,14 +63,16 @@
 <body>
   <div class="wrapper {% IF index_page %}index{% ENDIF %} {% IF MOD_LNAME = cart%}_cart-page{% ENDIF %} nojs">
     <!-- Сообщение для инвалидов -->
+    <noindex>    
     <noscript>
       <div class="noscript"> 
         <div class="noscript-inner"> 
-          <h4><strong>Мы заметили, что у Вас выключен JavaScript.</strong></h4>
-          <h5>Необходимо включить его для корректной работы сайта.</h5>
+          <span><strong>Мы заметили, что у Вас выключен JavaScript.</strong></span>
+          <span>Необходимо включить его для корректной работы сайта.</span>
         </div> 
       </div>
     </noscript>
+    </noindex>
     <!-- /END Сообщение для инвалидов -->
     <!-- Сообщение для инвалидов -->
     <style>
@@ -606,7 +608,7 @@
                           <div class="container">
                             <form id="search_mini_form" class="search-form" action="{QUICK_SEARCH_URL}" method="get">
                               <input type="hidden" name="goods_search_field_id" value="0">
-                              <input required type="text" name="q" value="{SEARCH_QUERY}" class="input search-string search-input" placeholder="Поиск по магазину" autocomplete="off">
+                              <input required type="text" name="q" value="" class="input search-string search-input" placeholder="Поиск по магазину" autocomplete="off">
                               <button type="submit" title="Искать" class="search-submit">
                                 <i class="material-icons">search</i>
                               </button>                        
@@ -1773,7 +1775,30 @@
                 </div>
               </div>
               {% ENDIF %}
-              <!-- /END Если в тарифном плане подключен модуль фильтров по товарам -->                
+              <!-- /END Если в тарифном плане подключен модуль фильтров по товарам -->
+
+              <!-- Теги категорий  -->
+              <div class="block quick-category">
+                <h3 class="title">
+                  <a href="{CATALOG_URL}">
+                    <span class="text">Быстрый подбор</span>
+                  </a>
+                </h3>           
+                <div class="content">
+                  <ul class="quick-category-list" itemscope itemtype="https://schema.org/SiteNavigationElement"> 
+                    {% FOR catalog_full %}
+                    {% IFNOT catalog_full.HIDE && catalog_full.LEVEL = 0 %}
+                      <li class="quick-category-item">
+                        <a class="quick-category-link" href="{catalog_full.URL}" title="{catalog_full.NAME}" itemprop="url">
+                          {catalog_full.NAME}
+                        </a>
+                      </li>                      
+                    {% ENDIF %}
+                    {% ENDFOR %}
+                  </ul>
+                </div>
+              </div>
+
               </div>
             </div>
             {% ENDIF %}

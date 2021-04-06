@@ -408,12 +408,13 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 
 /*! Цена ****/
 .price {display: inline-block;vertical-align: middle;position:relative;font-size: 18px;font-weight: 700;font-family: 'Ubuntu', sans-serif;color: #2e2e2e;line-height: 22px;}
-.price > span:after {display: inline-block;font-family: "FontAwesome";font-weight: 700;font-size: 17px;line-height: 1.1;margin-left: 0px;}
+.price > span:after {display: inline-block;font-family: "FontAwesome";font-weight: inherit;font-size: inherit;line-height: 1.1;margin-left: 0px;}
 .price > span {position: relative;z-index: 1}
 
 .old-price, .old-price .price, .price.old-price {display: inline-block;vertical-align: middle;margin:0;font-size: 14px;font-weight: 400;font-family: 'Ubuntu', sans-serif;text-decoration: line-through;background: none;color: #cec5bf;opacity: .3;}
 .old-price:not(:empty) + .price {color: #cec5bf;}
-.old-price > span:after, .old-price .price > span:after, .price.old-price > span:after {font-size: 14px;font-weight: 400;text-decoration: line-through;}
+.old-price > span:after, .old-price .price > span:after,
+.price.old-price > span:after {font-size: 14px;font-weight: 400;text-decoration: line-through;}
 .old-price:after,.old-price:before {display:none}
 
 .price.RUB > span:after, .RUB .price:after {content: "руб.";    font-family: 'Ubuntu', sans-serif;}
@@ -456,7 +457,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 
 .button._dropdown:focus {border-color: #333;color: #333;background-color: transparent;}
 
-.button.small {font-size: 13px;padding: 0 10px;}
+.button.small {font-size: 14px;padding: 0 10px;}
 .button.big, .button._big {line-height: 50px;}
 .button.disabled, .button._disabled {opacity: 0.7;cursor: default;    pointer-events: none;}
 .remove {display: inline-block;vertical-align: middle;}
@@ -510,7 +511,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   border-radius: 0;  
 }
 .ico-new {background: #145349}
-.ico-best {background: #365e87;order: 1;}
+.ico-best {background: #365e87;}
 .ico-sale {background-color: #caa462}
 .product-icos [class^=ico] ~  [class^=ico] {margin-left: 4px}
 .ico-best + .ico-sale,
@@ -2019,10 +2020,12 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 }
 #viewed .content .viewed-items .product-info {position: relative;text-align: center;padding: 0;background-color: transparent;}
 #viewed .content .viewed-items .product-info .product-name {display: block;text-overflow: ellipsis;font-family: inherit;margin-bottom: 11px;padding: 0;}
+#viewed .content .viewed-items .product-info .product-name a {font-size: 14px;}
 #viewed .content .viewed-items .product-info .product-name a:hover {color: #caa462;}
 #viewed .content .viewed-items .product-info .ratings {background: transparent;margin-bottom: 10px;}
 #viewed .content .viewed-items .product-info .price-box {margin: 0;margin-top: auto;padding: 0;border: none;margin-bottom: 13px;}
 #viewed .content .viewed-items .product-info .price {
+  font-size: 16px;
   color: #cec5bf;
 }
 #viewed .owl-carousel .owl-nav {position: absolute;right: 0px;}
@@ -2374,7 +2377,7 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 .discount-box h3 {margin-bottom: 10px;}
 .discount-box h3 span {text-decoration: underline;}
 .discount-box h4 {text-transform: none;margin-bottom: 15px;}
-.discount-box h4 span {color: #2e2e2e;text-transform: uppercase;}
+.discount-box h4 span {text-transform: uppercase;}
 .discount-box .content {padding:15px 0 30px;border-bottom: 1px solid #dce4e9;}
 .discount-box .content:first-child {padding:0 0 30px 0;}
 .discount-box .content:last-child {border: 0;padding-bottom: 0;}

@@ -386,10 +386,10 @@ function viewed(){
       0:{items:1,margin: 5},
       320:{items:2,margin: 10},
       480:{items:2,margin: 10},
-      565:{items:3,margin: 10},
-      768:{items:4,margin: 10},
-      992:{items:5,margin: 10},
-      1200:{items:6,margin: 10}
+      565:{items:3,margin: 30},
+      768:{items:4,margin: 30},
+      992:{items:5,margin: 30},
+      1200:{items:6,margin: 30}
     }
   });  
 }
@@ -988,6 +988,7 @@ function quantity() {
     if (!isNaN(currentVal)){
       quantity.val(currentVal + 1);
       quantity.trigger('change');
+      getTotalGoodPrice($(this), quantity.val());
     }
     return false;
   });
@@ -999,16 +1000,32 @@ function quantity() {
     if (!isNaN(currentVal) && !(currentVal <= 1) ){
       quantity.val(currentVal - 1);
       quantity.trigger('change');
+      getTotalGoodPrice($(this), quantity.val());
     }
     return false;
   });
   // Если вводят 0 то заменяем на 1
   $('.qty-wrap .quantity').off('change').change(function(){
-    if($(this).val() < 1){
-      $(this).val(1); 
+    var $input = $(this);
+    if($input.val() < 1){
+      $input.val(1); 
+      getTotalGoodPrice($input, $input.val());
     }
   });
+  var getTotalGoodPrice = function ($el, goodsCount) {
+    var $goodPriceBlock = $el.closest('.item').find('.total-good');
+    var $priceBlock = $goodPriceBlock.find('.price')
+    var goodPrice = $priceBlock.data('price');
+
+    $priceBlock.find('.num').text(addSpaces(goodPrice * goodsCount));
+
+    if(goodsCount > 1) {
+      $goodPriceBlock.show()
+    } else {
+      $goodPriceBlock.hide()
+    }
   }
+}
 
 // Удаление товара из Сравнения без обновлении страницы
 function removeFromCompare(e){

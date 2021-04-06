@@ -395,14 +395,28 @@
                             {% ENDIF %}
                           </div>
                         </a>
-                      </div>     
+                      </div>
+
+                      <!-- Наличие -->
+                      {% IF goods.MAX_REST_VALUE=0 && SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}
+                        <div class="product-rest _not-available">
+                          <span class="material-icons">done</span>
+                          <span>Нет в наличии</span>
+                        </div>
+                      {% ELSE %}
+                        <div class="product-rest _available">
+                          <span class="material-icons">done</span>
+                          <span>В наличии</span>
+                        </div>
+                      {% ENDIF %}
+                      <!-- /END Наличие --> 
+
                       {% IF goods.ART_NUMBER %}
                       <div class="art-number">
                         <span class="art-number-text">Артикул:</span>
                         <span class="art-number-value">{goods.ART_NUMBER}</span>                      
                       </div>  
-                      {% ENDIF %}
-       
+                      {% ENDIF %}       
                     </div>
                     <!-- Выводим 4 характеристики -->
                     {% IFNOT goods.goods_attr_list_empty %}
@@ -553,6 +567,14 @@
                         {% ENDIF %}
                       {% ENDIF %}
                       <!-- /END Добавление товара в корзину -->
+                      {% IF goods.COUNT_MODIFICATION = 1 %}
+                      <div class="total-good" style="display: none;">
+                        <span class="total-good-title">Общая стоимость</span>
+                        <span class="total-good-price">
+                          <span class="price {CURRENCY_CHAR_CODE}" data-price="{goods.MIN_PRICE_NOW}">{goods.MIN_PRICE_NOW | money_format}</span>                          
+                        </span>
+                      </div>
+                      {% ENDIF %}
                     </div>
                   </div>
                 </div>
