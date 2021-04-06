@@ -1646,7 +1646,7 @@
                   <ul>
                     {% FOR catalog_full %}
                       {% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}<ul class="sub">{% ENDIF %}{% ENDIF %}
-                      <li {% IF catalog_full.HIDE %}style="display:none;"{% ENDIF %} class="{% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.LEVEL = 0 %}subhead{% ENDIF %} {% IF catalog_full.CURRENT || catalog_full.CURRENT_PARENT %}active{% ENDIF %}" title="{catalog_full.NAME}">
+                      <li {% IF catalog_full.HIDE %}style="display:none;"{% ENDIF %} class="{% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.LEVEL = 0 %}subhead{% ENDIF %} {% IF catalog_full.CURRENT || catalog_full.CURRENT_PARENT %}_current{% ENDIF %}" title="{catalog_full.NAME}">
                         <a href="{catalog_full.URL}" {% IF catalog_full.CURRENT %}class="active"{% ENDIF %}>
                           {% IF catalog_full.IMAGE_ICON %}<img class="lozad" data-src="{catalog_full.IMAGE_ICON}" class="goods-cat-image-icon"/>{% ENDIF %}{% IF catalog_full.ISSET_VISIBLE_SUB %}<span class="open-sub {% IF catalog_full.CURRENT_PARENT || catalog_full.CURRENT %}active{% ENDIF %}"></span>{% ENDIF %}
                           {catalog_full.NAME}

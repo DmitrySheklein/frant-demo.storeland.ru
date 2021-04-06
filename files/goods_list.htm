@@ -183,7 +183,7 @@
                     {% ENDIF %}
                   </div>                  
 
-                  <div class="ratings {% IFNOT goods.OPINION_RATING_VALUE %}_hide{% ELSE %}_show{% ENDIF %}" >
+                  <div class="ratings _show" >
                     <a href="{goods.URL | url_amp}" title="Перейти к отзывам">
                       <div class="rating-box">
                         {% IF goods.OPINION_RATING_VALUE %}
@@ -379,7 +379,7 @@
   
                     
                     <div class="product-name-content">                     
-                      <div class="ratings {% IFNOT goods.OPINION_RATING_VALUE %}_hide{% ELSE %}_show{% ENDIF %}">
+                      <div class="ratings _show">
                         <a href="{goods.URL | url_amp}" title="Перейти к отзывам">
                           <div class="rating-box">
                             {% IF goods.OPINION_RATING_VALUE %}

@@ -1172,7 +1172,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
     display: block;
     background: transparent;
     width: 300%;
-    height: 25px;
+    height: 10px;
   }
   .header-catalogMenu::after {
     content: '';
@@ -1543,7 +1543,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .block-title.cart .title-tab.disabled {opacity: .5}
 .block-title.cart .title {padding-bottom: 0px;border-bottom: 0px solid #dce4e9}
 /*! Хлебные крошки ***/
-#breadcrumbs {position: relative;font-size: 12px;padding-top: 10px;margin-bottom: 10px;line-height: 30px;white-space: nowrap;overflow: hidden;overflow-x: auto}
+#breadcrumbs {position: relative;font-size: 14px;padding-top: 10px;margin-bottom: 10px;line-height: 30px;white-space: nowrap;overflow: hidden;overflow-x: auto}
 #breadcrumbs .breadcrumbs-list {display: flex;margin: 0;padding: 0;list-style: none;list-style-position: inside}
 #breadcrumbs ul li {display: inline-block;vertical-align: middle}
 #breadcrumbs ul li + li {margin-left: 8px}
@@ -1597,10 +1597,13 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .products-grid.owl-carousel {margin: 0}
 .products-grid .item {position: relative;padding: 6px;}
 .products-grid > .item {transition: outline .3s;outline: 1px solid transparent}
-.products-grid > .item:hover {outline: 1px solid rgb(206 197 191 / 50%)}
+.products-grid > .item:hover {outline: 1px solid rgb(206 197 191 / 50%);    background: rgba(0,0,0,.5);}
 .products-grid .item-inner {height: 100%;position: relative;z-index: 19;-webkit-transition: .3s;transition: .3s}
 .index .products-grid.owl-carousel.owl-loaded .item,
 .products-grid.owl-carousel .item {width: 100%;height: 100%;}
+.products-grid.owl-carousel .item:hover {
+  background: rgba(0,0,0,.5);
+}
 .index .products-grid.owl-carousel .owl-stage {display: -webkit-box;display: -ms-flexbox;display: flex}
 .index .products-grid.owl-carousel .owl-item {-webkit-box-flex: 1;-ms-flex: 1 0 auto;flex: 1 0 auto}
 @media all and (min-width: 1200px) {
@@ -1787,6 +1790,9 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   max-width: 460px;
   padding: 0;
   border: none;    
+}
+.products-grid .item._gorizontal:hover {
+  background: transparent
 }
 .products-grid .item._gorizontal .goodsListForm{
   flex-direction: row;
@@ -1985,8 +1991,15 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 .qty-set .qty-minus {left: 0px;}
 
 /*! Вы смотрели **/
-#viewed {content-visibility: auto;padding: 30px 0}
-#viewed .title {margin-bottom: 15px;}
+#viewed {
+  content-visibility: auto;
+  padding: 30px 0;
+  background: rgb(206 198 191 / 0.05);
+}
+#viewed .title {
+  margin-bottom: 35px;
+  line-height: 1;  
+}
 #viewed .product .title {padding: 15px;background: #fafafa;}
 @media(max-width: 991px){
   /* #viewed .owl-stage-outer {overflow: visible;} */
@@ -2122,15 +2135,25 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 .categories .item .item-inner {
   display: flex;
   flex-direction: column;
-  padding: 5px;padding-bottom: 0;height: 100%;background: rgba(0,0,0,.2);z-index: 19;-webkit-transition: .3s;transition: .3s}
+  padding: 5px;
+  padding-bottom: 0;
+  height: 100%;
+  background: rgba(0,0,0,.2);
+  z-index: 19;
+  transition: all .3s;
+  border: 1px solid transparent;  
+}
+.categories .item:hover .item-inner{
+  border: 1px solid rgb(206 197 191 / 50%);  
+}
 .categories .item:hover:before {border-color: #caa462;top: -12px;left: -12px;right: -12px;bottom: -10px;-webkit-box-shadow: 0 20px 60px rgba(156,158,158,.5);box-shadow: 0 20px 60px rgba(156,158,158,.5);z-index: 20}
 .categories .item:hover .item-inner {z-index: 21}
 .categories .item:hover {position: relative;z-index: 20}
-.categories .item .cat-image {flex-grow: 1;margin: 0 auto;margin-bottom: 15px;max-width: 252px;line-height: 252px;z-index: 19;background: #fff;}
+.categories .item .cat-image {flex-grow: 1;margin: 0 auto;margin-bottom: 15px;width: 100%;max-width: 252px;line-height: 252px;z-index: 19;background: #fff;}
 .categories .item .cat-image a {display: block;overflow: hidden}
 .categories .item .cat-image a img {max-width: 100%;}
 .categories .item .cat-name {min-height: 40px;display: -webkit-box;display: -ms-flexbox;display: flex;margin: 0;margin-bottom: 15px;padding: 0;background: 0 0;text-align: center;-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;z-index: 19;}
-.categories .item .cat-name a {display: block;margin: auto;overflow: hidden;font-size: 16px;}
+.categories .item .cat-name a {display: block;margin: auto;overflow: hidden;font-size: 18px;}
 .categories .item:hover .cat-name a {color: #caa462}
 
 @media (max-width: 991px) {
