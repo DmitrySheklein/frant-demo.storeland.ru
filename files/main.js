@@ -239,9 +239,10 @@ function mainFunctions() {
               $headerFixed.animate({top: '0'}, {
                 duration: 300, complete:
                     function () {
+                      lozad().observe();
                     }
               });              
-
+              
             } 
           } else if (isHeaderFixed || !headerCanFix) {
             if ((scrollTop <= headerDiffHeight ) || !headerCanFix) {
@@ -734,18 +735,6 @@ function addto() {
       ,delTooltip = a.attr('data-del-tooltip')
       requestUrl = a.attr('href')
     ;
-    var flag = 0;
-    $('#favorites-items li').each(function(){       
-      if($(this).attr('data-id') == pDataid){  
-      flag = 1;
-      }
-      if(flag == 1){
-        $(this).remove();
-        return false;
-      }
-      return flag;
-    });
-
     
     // Если в ссылке присутствует идентификатор, который мы можем узнать только вытащив его с текущей страницы
     if( /GET_GOODS_MOD_ID_FROM_PAGE/.test(requestUrl)) {
@@ -762,14 +751,9 @@ function addto() {
         data : {
           'ajax_q': 1
         },
-        success: function(data) {
-          if(data.status != 'error'){
-            $('.favorites #favorites-items .empty').hide();
-            $('.favorites #favorites-items .actions').show();            
-          }
-          
-          if(flag == 0 && data.status != 'error'){   
-            $('#favorites-items .dropdown-items-list').prepend(
+        success: function(data) {          
+          if(isAdd == 1){   
+            $('.favorites-items .dropdown-items-list').prepend(
               "<li class=\"item\" data-id=\"" + pDataid +  "\">" +                 
                 "<a href=\"" + pUrl + "\" title=\"" + pName + "\" class=\"product-image\">"+
                   "<img src=\"" + pImage + "\" alt=\"" + pName + "\" class=\"goods-image-icon\">"+
@@ -785,6 +769,8 @@ function addto() {
                 "</div>"+
               "</li>"
             );
+          } else {
+            $('.favorites-items .dropdown-items-list').find('li.item[data-id="'+ pDataid +'"]').remove();
           }
           if('ok' == data.status) {
             if(isAdd == 1) {
@@ -820,13 +806,13 @@ function addto() {
               sidecount.attr('data-count', data.favorites_goods_count);                 
                 if(data.favorites_goods_count > 0){
                   $('.favorites').addClass('have-items');
-                  $('.favorites #favorites-items .empty').hide();
-                  $('.favorites #favorites-items .actions').show();
+                  $('.favorites .favorites-items .empty').hide();
+                  $('.favorites .favorites-items .actions').show();
                   $favoritesBlock.addClass('_active')           
                 }else{
                   $('.favorites').removeClass('have-items');
-                  $('.favorites #favorites-items .empty').show();
-                  $('.favorites #favorites-items .actions').hide();     
+                  $('.favorites .favorites-items .empty').show();
+                  $('.favorites .favorites-items .actions').hide();     
                   $favoritesBlock.removeClass('_active')               
                 }
               }).animate({display: "inline"} , 500 );
@@ -1117,30 +1103,24 @@ function removeFromCompareAll(e){
 // Удаление товара из Избранного без обновлении страницы
 function removeFromFavorites(e){
   if(confirm('Вы точно хотите удалить товар из избранного?')){
-  var del = e;
-  del.closest('.item').fadeOut().remove();
-  var url = del.data('href');
-  var goodsModId = $(del).attr('data-goods-mod-id');
+  var $link = $(e);
+  var url = $link.data('href');
+  var goodsModId = $link.attr('data-goods-mod-id');
+  var $favoriteBlock = $('.favorites').first();
+  var favoriteCount = $favoriteBlock.find('.count').text();
+
+  $('.favorites').find('.item-remove[data-goods-mod-id='+ goodsModId +']').closest('.item').fadeOut().remove();
   $.ajax({ 
     cache    : false,
     url		  : url,
-    success: function(d){
-      var oldCount = $('.favorites .count').text();
+    success: function(){
+      var oldCount = favoriteCount;
       var newCount = oldCount - 1;
       $('.favorites .count').text(newCount).attr('data-count', newCount);
-      var flag = 0;
       
-      if(newCount != 0){
-        $('#favorites-items li.item').each(function(){
-          if(flag == 0){
-            if($(this).css('display') == 'none'){
-              $(this).show();
-              flag++;
-            }
-          }
-        })}else{
+      if(newCount === 0){
           $('.favorites').removeClass('have-items');
-          $('.favorites #favorites-items .empty').show();
+          $('.favorites .favorites-items .empty').show();
           $('.favorites .actions').hide();          
         }
       var obj = $('.add-wishlist[data-mod-id="' + goodsModId + '"]');
@@ -1160,13 +1140,14 @@ function removeFromFavoritesAll(e){
   if(confirm('Вы точно хотите очистить избранное?')){
   var del = e;
   var url = del.data('href');
-  
+  var $favoriteBlock = $('.favorites').first();
+
   $.ajax({ 
     cache   : false,
     url		  : url,
     success: function(d){
       // Очищаем активные кнопки избранное на товарах
-      $('.favorites #favorites-items .item .item-remove').each(function(){
+      $favoriteBlock.find('.item-remove').each(function(){
         var goodsModId = $(this).attr('data-goods-mod-id');
         var obj = $('.add-wishlist[data-mod-id="' + goodsModId + '"]');
         
@@ -1181,9 +1162,8 @@ function removeFromFavoritesAll(e){
       $('.favorites').removeClass('have-items');
       $('.favorites .count').text("0").attr('data-count', '0');
       $('.favorites .actions').hide();
-      $('.favorites #favorites-items .item').remove();
-      $('.favorites #favorites-items .empty').show();
-      $('.add-wishlist').removeAttr("title").removeClass("added");
+      $('.favorites .favorites-items .item').remove();
+      $('.favorites .favorites-items .empty').show();
 		}
   })
   }
@@ -1192,42 +1172,38 @@ function removeFromFavoritesAll(e){
 // Удаление товара из корзины без обновлении страницы
 function removeFromCart(e){
   if(confirm('Вы точно хотите удалить товар из корзины?')){
-  var del = e;  
-  del.closest('.item').fadeOut().remove();
-  var url = del.data('href');
-  var quantity = del.data('count');
-  
-  $('.total-sum').animate({opacity: 0},500);
+  var $link = e;  
+  var goodsModId = $link.attr('data-goods-mod-id');
+  var url = $link.data('href');
+  var quantity = $link.data('count');
+  var $cartBlock = $('.cart').first();
+  var cartCount = $cartBlock.find('.header-toolsCounter').text();
+
+  $('.cart').find('.item-remove[data-goods-mod-id='+ goodsModId +']').closest('.item').fadeOut().remove();
+
   $.ajax({
     cache   : false,
 		url		  : url,
     success: function(d){
-      var oldCount = $('.cart .count').first().text();
-      var oldQuantity = quantity;
-      var newCount = oldCount - oldQuantity;
-      
-      $('.header-iconsItem._cart .header-iconsItem-icon').html(newCount).attr('data-count', newCount);
-      $('.cart .count').text(newCount).attr('data-count',newCount);
-      $('.cart .header-toolsContent').find('.price').html($(d).find('.total-sum').html());
-      $('.total-sum').animate({opacity: 1},500);
-      $('.total-sum').html($(d).find('.total-sum').html());
-        var flag = 0; 
-        if(newCount != 0){
-          $('.cart-products-list li.item').each(function(){
-          if(flag == 0){
-            if($(this).css('display') == 'none'){
-              $(this).show();
-            flag++;
-            }
-          }
-        })
-        }else{
-          $('.cart .header-toolsContent').find('.price .num').text("0");
-          $('.header .cart .dropdown-content._cart .dropdown-items-list').hide();
-          $('.header .cart  .dropdown-content._cart .cart-products-header').hide();
-          $('.header .cart  .dropdown-content._cart .subtotal').hide();
-          $('.header .cart  .dropdown-content._cart .actions').hide();
-          $('.header .cart  .dropdown-content._cart .empty').show();
+        var oldCount = cartCount
+        var oldQuantity = quantity;
+        var newCount = oldCount - oldQuantity;
+        var $cartBlock = $('.cart');
+        
+        if(newCount === 0){
+          $('.header-iconsItem._cart .header-iconsItem-icon').html("0").attr('data-count', 0);
+          $cartBlock.find('.count').html("0").attr('data-count', "0");
+          $cartBlock.find('.header-toolsContent').find('.price .num').text("0");
+          $cartBlock.find('.dropdown-content._cart .dropdown-items-list').hide();
+          $cartBlock.find('.dropdown-content._cart .cart-products-header').hide();
+          $cartBlock.find('.dropdown-content._cart .subtotal').hide();
+          $cartBlock.find('.dropdown-content._cart .actions').hide();
+          $cartBlock.find('.dropdown-content._cart .empty').show();
+        } else {
+          $('.header-iconsItem._cart .header-iconsItem-icon').html(newCount).attr('data-count', newCount);
+          $cartBlock.find('.count').text(newCount).attr('data-count',newCount);
+          $cartBlock.find('.header-toolsContent').find('.price').html($(d).find('.total-sum').html());
+          $cartBlock.find('.total-sum').html($(d).find('.total-sum').html());          
         }
       }
     })
@@ -1238,9 +1214,9 @@ function removeFromCart(e){
 function removeFromCartAll(e){
   event.preventDefault();
   if(confirm('Вы точно хотите очистить корзину?')){
-  var del = e;  
-  e.parent().fadeOut().remove();
-  url = del.data('href');
+  var $link = e;  
+  $link.parent().fadeOut().remove();
+  var url = $link.data('href');
   $.ajax({ 
     cache   : false,
     url		  : url,

@@ -425,7 +425,7 @@
                       <span class="header-toolsName title">Избранное</span>
                     </a>                    
                     <div class="dropdown">
-                      <div id="favorites-items" class="dropdown-content">
+                      <div class="favorites-items dropdown-content">
                         {% IF favorites_goods_empty %}
                           <div class="empty">
                             Ваш список Избранного пуст.<br/> Вы можете добавлять товары из <a href="{CATALOG_URL}" title="Перейти в каталог">Каталога</a>
@@ -445,7 +445,7 @@
                             <div class="product-details">
                               <p class="product-name">
                                 <a class="name" href="{favorites_goods.URL}" title="{favorites_goods.NAME}">{favorites_goods.NAME}</a>
-                                <a class="item-remove material-icons" data-href="{FAVORITES_DELETE_URL}?id={favorites_goods.MIN_PRICE_NOW_ID}" data-goods-mod-id="{favorites_goods.MIN_PRICE_NOW_ID}" title="Убрать товар из списка избранного" onclick="removeFromFavorites($(this))">
+                                <a class="item-remove material-icons" data-href="{FAVORITES_DELETE_URL}?id={favorites_goods.MIN_PRICE_NOW_ID}" data-goods-mod-id="{favorites_goods.MIN_PRICE_NOW_ID}" title="Убрать товар из списка избранного" onclick="removeFromFavorites(this)">
                                   close
                                 </a>
                               </p>
@@ -457,7 +457,7 @@
                         {% ENDIF %}
                         <div class="actions" {% IF favorites_goods_empty %}style="display:none"{% ENDIF %}>
                           <a href="{FAVORITES_URL}" class="button" title="Перейти к избранному">Избранное</a>
-                          <a data-href="{FAVORITES_RESET_URL}" onclick="removeFromFavoritesAll($(this))" class="button _dropdown" title="Очистить список избранного">Очистить</a>
+                          <a data-href="{FAVORITES_RESET_URL}" onclick="removeFromFavoritesAll($(this))" class="button-link" title="Очистить список избранного">Очистить</a>
                         </div>
                       </div>
                     </div>
@@ -493,14 +493,14 @@
                         </div>
                         <ul class="dropdown-items-list">
                           {% FOR cart_items %}
-                          <li class="item">
+                          <li class="item" data-id="{cart_items.GOODS_ID}">
                             <a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}" class="product-image">
                               <img class="lozad" data-src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=frant{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" class="goods-image-icon">
                             </a>
                             <div class="product-details">
                               <div class="product-name">
                                 <a class="name" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">{cart_items.GOODS_NAME}</a>
-                                <a class="item-remove material-icons" data-href="{cart_items.ORDER_LINE_DELETE_URL}" data-count="{cart_items.ORDER_LINE_QUANTITY}" title="Удалить позицию" onclick="removeFromCart($(this))">                                  
+                                <a class="item-remove material-icons" data-href="{cart_items.ORDER_LINE_DELETE_URL}" data-goods-mod-id="{cart_items.GOODS_MOD_ID}" data-count="{cart_items.ORDER_LINE_QUANTITY}" title="Удалить позицию" onclick="removeFromCart($(this))">                                  
                                     close                                  
                                 </a>                                
                               </div>
@@ -743,7 +743,7 @@
     <!-- Слайдер и Хиты продаж-->
     {% IF index_page %}
     <!-- Слайдшоу-->
-    <div id="slideshow">
+    <div id="slideshow" style="display: none;">
       <div class="container">
         <div class="slider owl-carousel">
           <!-- Используйте data-webp-desktop-src="{ASSETS_IMAGES_PATH}slide-1.webp" и data-webp="1" для уставновки .webp изображений в слайдах -->
@@ -839,7 +839,7 @@
     <!-- /Слайдшоу-->   
 
     <!-- Преимущества -->
-    <div id="features" class="section">
+    <div id="features" class="section" style="display: none;">
       <div class="container">
         <div class="features-list owl-carousel owl-theme">
             <a class="main-featuresItem" href="#" >

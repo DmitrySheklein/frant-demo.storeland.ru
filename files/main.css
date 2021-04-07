@@ -1077,7 +1077,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 
 .dropdown-content .actions {width: 100%;padding: 15px;color: #fff;background-color: #e7e2df;}
 .dropdown-content .actions .button {margin: 0 auto;margin-top: 10px;line-height: 50px;display: block;}
-
+.dropdown-content .actions .button-link {margin-top: 15px;font-size: 16px;}
 
 .dropdown-content .subtotal {margin-top: auto}
 .dropdown-content .subtotal + .actions {margin-top: 0}
