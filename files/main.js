@@ -597,19 +597,6 @@ function addto() {
       ,delTooltip = a.attr('data-del-tooltip')
       requestUrl = a.attr('href')
     ;
-    var flag = 0;
-    $('#compare-items li.item').each(function(){   
-      if($(this).attr('data-id') == pDataid){  
-      flag = 1;
-      }
-      if(flag == 1){
-        $(this).remove();
-        return false;
-      }
-      return flag;
-    });
-    $('.compare #compare-items .empty').hide();
-    $('.compare #compare-items .actions').show();
     
     // Если в ссылке присутствует идентификатор, который мы можем узнать только вытащив его с текущей страницы
     if( /GET_GOODS_MOD_ID_FROM_PAGE/.test(requestUrl)) {
@@ -627,8 +614,8 @@ function addto() {
           'ajax_q': 1
         },
         success: function(data) {
-          if(flag == 0){   
-            $('#compare-items .dropdown-items-list').prepend(
+          if(isAdd == 1){   
+            $('.compare-items .dropdown-items-list').prepend(
                 "<li class=\"item\" data-id=\"" + pDataid +  "\">" +                    
                     "<a href=\"" + pUrl + "\" title=\"" + pName + "\" class=\"product-image\">" + 
                       "<img src=\"" + pImage + "\" alt=\"" + pName + "\" class=\"goods-image-icon\">" +
@@ -644,6 +631,8 @@ function addto() {
                     "</div>"+
                 "</li>"
               );
+          } else {
+            $('.compare-items .dropdown-items-list').find('li.item[data-id="'+ pDataid +'"]').remove();
           }
           if('ok' == data.status) {
             if(isAdd == 1) {
@@ -679,13 +668,13 @@ function addto() {
               sidecount.attr('data-count', data.compare_goods_count);                 
                 if(data.compare_goods_count > 0){
                   $('.compare').addClass('have-items');
-                  $('.compare #compare-items .empty').hide();
-                  $('.compare #compare-items .actions').show();     
+                  $('.compare .compare-items .empty').hide();
+                  $('.compare .compare-items .actions').show();     
                   $compareBlock.addClass('_active')         
                 }else{
                   $('.compare').removeClass('have-items');
-                  $('.compare #compare-items .empty').show();
-                  $('.compare #compare-items .actions').hide();  
+                  $('.compare .compare-items .empty').show();
+                  $('.compare .compare-items .actions').hide();  
                   $compareBlock.removeClass('_active')                
                 }
               }).animate({display: "inline"} , 500 );
@@ -1059,33 +1048,26 @@ function quantity() {
 // Удаление товара из Сравнения без обновлении страницы
 function removeFromCompare(e){
   if(confirm('Вы точно хотите удалить товар из сравнения?')){
-  var del = e;
-  var num = $('.compare .count').text();
-  del.closest('.item').fadeOut().remove();
-  url = del.data('href');
-  goodsModId = $(del).attr('data-goods-mod-id');
+  var $link = $(e);
+  var url = $link.data('href');
+  var goodsModId = $link.attr('data-goods-mod-id');
+  var $compareBlock = $('.compare').first();
+  var compareCount = $compareBlock.find('.count').text();
+
+  $('.compare').find('.item-remove[data-goods-mod-id='+ goodsModId +']').closest('.item').fadeOut().remove();
   $.ajax({ 
     cache : false,
     url		: url,
-    success: function(d){
-      var oldCount = num;
+    success: function(){
+      var oldCount = compareCount;
       var newCount = oldCount - 1;
       $('.compare .count').text(newCount).attr('data-count', newCount);
-      var flag = 0;
       
-      if(newCount != 0){
-        $('#compare-items li.item').each(function(){
-          if(flag == 0){
-            if($(this).css('display') == 'none'){
-              $(this).show();
-            flag++;
-            }
-          }
-        })}else{
+      if(newCount === 0){
           $('.compare').removeClass('have-items');
-          $('.compare #compare-items .empty').show();
+          $('.compare .compare-items .empty').show();
           $('.compare .actions').hide();
-        }
+      }
       var obj = $('.add-compare[data-mod-id="' + goodsModId + '"]');
       if(obj.length) {
         obj.attr("data-action-is-add", "1")
@@ -1102,17 +1084,18 @@ function removeFromCompare(e){
 function removeFromCompareAll(e){
   if(confirm('Вы точно хотите очистить сравнение?')){
   var del = e;
-  url = del.data('href');
+  var url = del.data('href');
+  var $compareBlock = $('.compare').first();
 
   $.ajax({ 
     cache   : false,
     url		  : url,
-    success: function(d){
+    success: function(){
       // Очищаем активные кнопки сравнения на товарах
-      $('.compare #compare-items .item .item-remove').each(function(){
+      $compareBlock.find('.item-remove').each(function(){
         var goodsModId = $(this).attr('data-goods-mod-id');
         var obj = $('.add-compare[data-mod-id="' + goodsModId + '"]');
-         
+
         if(obj.length) {
           obj.attr("data-action-is-add", "1")
           .removeAttr("title")
@@ -1124,9 +1107,8 @@ function removeFromCompareAll(e){
       $('.compare').removeClass('have-items');
       $('.compare .count').text("0").attr('data-count',"0");
       $('.compare .actions').hide();
-      $('.compare #compare-items .item').remove();
-      $('.compare #compare-items .empty').show();
-      $('.add-compare').removeAttr("title").removeClass("added");
+      $('.compare .compare-items .item').remove();
+      $('.compare .compare-items .empty').show();
 		}
   })
   }

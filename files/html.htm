@@ -380,7 +380,7 @@
                       <span class="header-toolsName title">Сравнение</span>
                     </a>
                     <div class="dropdown">
-                      <div id="compare-items" class="dropdown-content">
+                      <div class="compare-items dropdown-content">
                         {% IF compare_list_empty %}
                           <div class="empty">Ваш список сравнения пуст.<br/> Вы можете добавлять товары из <a href="{CATALOG_URL}" title="Перейти в каталог">Каталога</a> и сравнивать их между собой.</div>
                           <ul class="dropdown-items-list"></ul>
@@ -395,7 +395,7 @@
                             <div class="product-details">
                               <p class="product-name">
                                 <a class="name" href="{compare_goods.URL}" title="{compare_goods.NAME}">{compare_goods.NAME}</a>
-                                <a class="item-remove material-icons" data-href="{COMPARE_DELETE_URL}?id={compare_goods.MIN_PRICE_NOW_ID}" data-goods-mod-id="{compare_goods.MIN_PRICE_NOW_ID}" class="remove item-remove" title="Убрать товар из списка сравнения" onclick="removeFromCompare($(this))">
+                                <a class="item-remove material-icons" data-href="{COMPARE_DELETE_URL}?id={compare_goods.MIN_PRICE_NOW_ID}" data-goods-mod-id="{compare_goods.MIN_PRICE_NOW_ID}" class="remove item-remove" title="Убрать товар из списка сравнения" onclick="removeFromCompare(this)">
                                   close
                                 </a>
                               </p>
