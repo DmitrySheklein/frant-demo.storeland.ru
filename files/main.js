@@ -233,7 +233,8 @@ function mainFunctions() {
             if ((scrollTop > headerNormalHeight) && headerCanFix) {
               isHeaderFixed = true;
 
-              $header.find(".header-main-content__top").clone().appendTo($headerFixed.find(".header-main-content__top"));
+              $header.find(".header-main-content__top").clone().appendTo($headerFixed.find(".header-main-wrap"));
+
               $headerFixed.css('top', '-' + headerNormalHeight + 'px');
               $headerFixed.addClass('_fixed');
               $headerFixed.animate({top: '0'}, {

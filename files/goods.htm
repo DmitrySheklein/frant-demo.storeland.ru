@@ -123,6 +123,33 @@
           </div>                 
         </div>        
         <div class="product-order-inner clearfix">
+        {% IF ONLY_BODY %}
+        <div class="product-order-fancybox f-fix">
+          <!-- Доступность товара -->
+          <div class="product-order-fancybox-item goodsDataMainModificationAvailable">
+            <div class="available-true" {% IF GOODS_MOD_REST_VALUE=0 %}style="display:none;"{% ENDIF %}>
+              <span class="available-value">
+                <span class="material-icons">
+                  done
+                </span>                
+                В наличии
+              </span>
+            </div>
+            <div class="available-false" {% IF GOODS_MOD_REST_VALUE >0 %}style="display:none;"{% ENDIF %}>       
+              <span class="available-value">
+                <span class="material-icons">
+                  done
+                </span>                  
+                Нет в наличии
+              </span>
+            </div>
+          </div>          
+          <!-- Цена товара -->
+          <div class="product-order-fancybox-item price-box"">
+            <span class="price goodsDataMainModificationPriceNow {CURRENCY_CHAR_CODE}"content="{GOODS_MOD_PRICE_NOW}">{GOODS_MOD_PRICE_NOW | money_format}</span>
+          </div>
+        </div>
+        {% ENDIF %}
         <!-- Цена товара -->
         <div class="price-box f-fix" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
           <!-- информация для поисковика о наличии товара -->
