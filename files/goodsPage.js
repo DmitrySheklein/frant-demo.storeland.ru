@@ -338,14 +338,14 @@ function goodsMods($container) {
         if (modificationRestValue > 0) {
           goodsAvailableTrue.show();
           goodsAvailableFalse.hide();
-          goodsAvailableAddCart.show();
+          goodsAvailableAddCart.show().removeClass('_hide');
           goodsAvailableQty.show();
           goodsModEmpty.hide();
           // Если товара нет в наличии
         } else {
           goodsAvailableTrue.hide();
           goodsAvailableFalse.show();
-          goodsAvailableAddCart.hide();
+          goodsAvailableAddCart.hide().addClass('_hide');
           goodsAvailableQty.hide();
           goodsModEmpty.show();
         }

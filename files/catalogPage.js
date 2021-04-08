@@ -202,7 +202,6 @@ function catalogFunctions(){
           quantity();
           // $(".mouseHoverImgCarousel").HoverMouseCarousel();
           tippyViewBtn();
-          hoverAnimBtn();
         }
       });
     });  

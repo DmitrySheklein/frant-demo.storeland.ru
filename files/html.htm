@@ -205,7 +205,11 @@
                             <textarea id="callback_comment_header" class="input input-material textarea" rows="7" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_COMMENT}]" placeholder="Ваш комментарий">{FORM_CALLBACK_COMMENT}</textarea>
                             <label for="callback_comment_header" class="input-material-label material-icons">create</label>                           
                           </div>                      
-                          <button type="submit" title="Отправить" class="callback-btn button button3">Отправить</button>
+                          <button type="submit" title="Отправить" class="callback-btn button button3">
+                            <span>
+                              Отправить
+                            </span>
+                          </button>
                           <div class="pp">
                             Я согласен на <a class="blue-link" href="#" data-fancybox="" data-src="#fancybox-pp">обработку персональных данных</a>                            
                           </div>
@@ -300,7 +304,7 @@
                             </div>
                           </div>
                           <div class="buttons">
-                            <button type="submit" title="Зарегистрироваться" class="button">Зарегистрироваться</button>
+                            <button type="submit" title="Зарегистрироваться" class="button"><span>Зарегистрироваться</span></button>
                           </div>
                           <div class="pp">
                             <input type="checkbox" id="pp-check" class="pp-checkbox checkbox-hidden" name="pp-check" required="" aria-required="true" checked>
@@ -349,7 +353,7 @@
                                 </div>
                               </div>
                               <div class="buttons">
-                                <button type="submit" title="Восстановить" class="button">Восстановить</button>
+                                <button type="submit" title="Восстановить" class="button"><span>Восстановить</span></button>
                               </div>
                           </div>
                         </form>
@@ -405,7 +409,11 @@
                           </ul>
                         {% ENDIF %}
                         <div class="actions" {% IF compare_list_empty %}style="display:none"{% ENDIF %}>
-                          <a class="button" href="{COMPARE_URL}" title="Перейти к Сравнению">Сравнение</a>
+                          <a class="button" href="{COMPARE_URL}" title="Перейти к Сравнению">
+                            <span>
+                              Сравнение
+                            </span>
+                          </a>
                           <a class="button-link" data-href="{COMPARE_RESET_URL}" onclick="removeFromCompareAll($(this))"  class="button _dropdown" title="Очистить список сравнения">Очистить</a>
                         </div>
                       </div>
@@ -455,7 +463,11 @@
                           </ul>
                         {% ENDIF %}
                         <div class="actions" {% IF favorites_goods_empty %}style="display:none"{% ENDIF %}>
-                          <a href="{FAVORITES_URL}" class="button" title="Перейти к избранному">Избранное</a>
+                          <a href="{FAVORITES_URL}" class="button" title="Перейти к избранному">
+                            <span>
+                              Избранное
+                            </span>
+                          </a>
                           <a data-href="{FAVORITES_RESET_URL}" onclick="removeFromFavoritesAll($(this))" class="button-link" title="Очистить список избранного">Очистить</a>
                         </div>
                       </div>
@@ -517,7 +529,11 @@
                           <span class="price total-sum {CURRENCY_CHAR_CODE}">{CART_SUM_NOW | money_format}</span>
                         </div>
                         <div class="actions">
-                          <a class="button" title="Перейти к оформлению заказа" href="{CART_URL}">В корзину</a>
+                          <a class="button" title="Перейти к оформлению заказа" href="{CART_URL}">
+                            <span>
+                              В корзину
+                            </span>
+                          </a>
                           <a class="button-link" href="{CART_TRUNCATE_URL}" data-href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))">Очистить корзину</a>
                         </div>
                         {% ENDIF %}
@@ -740,7 +756,7 @@
     <!-- Слайдер и Хиты продаж-->
     {% IF index_page %}
     <!-- Слайдшоу-->
-    <div id="slideshow" style="display: none;">
+    <div id="slideshow">
       <div class="container">
         <div class="slider owl-carousel">
           <!-- Используйте data-webp-desktop-src="{ASSETS_IMAGES_PATH}slide-1.webp" и data-webp="1" для уставновки .webp изображений в слайдах -->
@@ -759,7 +775,9 @@
                     Ультрамодная коллекция аксессуаров <br>
                     Все взгляды будут прикованы к Вам!               
                   </p>
-                  <a href="#" class="button _big">Смотреть колекцию</a>
+                  <a href="#" class="button _big">
+                    <span>Смотреть колекцию</span>
+                  </a>
                 </div>
           </div>
           <!-- /Слайд 1 -->
@@ -779,7 +797,7 @@
                     Покупайте все аксессуары в одном <br>
                     интернет-магазине            
                   </p>
-                  <a href="#" class="button _big">Смотреть колекцию</a>
+                  <a href="#" class="button _big"><span>Смотреть колекцию</span></a>
                 </div>
           </div>
           <!-- /Слайд 2 -->
@@ -799,7 +817,7 @@
                     Яркость и индивидуальность <br>
                     в ритме большого города                
                   </p>
-                  <a href="#" class="button _big">Смотреть колекцию</a>
+                  <a href="#" class="button _big"><span>Смотреть колекцию</span></a>
                 </div>                
           </div>
           <!-- /Слайд 3 -->
@@ -836,7 +854,7 @@
     <!-- /Слайдшоу-->   
 
     <!-- Преимущества -->
-    <div id="features" class="section" style="display: none;">
+    <div id="features" class="section">
       <div class="container">
         <div class="features-list owl-carousel owl-theme">
             <a class="main-featuresItem" href="#" >
@@ -1714,7 +1732,7 @@
                             </div>
                           </div>                          
                           <div class="goodsFilterPriceSubmit">
-                            <button class="button button2 small" type="submit" title="Показать">Показать</button>
+                            <button class="button button2 small" type="submit" title="Показать"><span>Показать</span></button>
                           </div>
                         </div>
                       </div>
@@ -2424,7 +2442,7 @@
               {% IF SETTINGS_STORE_PHONE_NUMBER3 %}<div itemprop="telephone"><p><b>Звонок по России бесплатный</b><br><a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE3}{SETTINGS_STORE_PHONE_CITY_CODE3}{SETTINGS_STORE_PHONE_NUMBER3}">{SETTINGS_STORE_PHONE_COUNTRY_CODE3} ({SETTINGS_STORE_PHONE_CITY_CODE3}) {SETTINGS_STORE_PHONE_NUMBER3}</a></p></div>{% ENDIF %}
               {% IF SETTINGS_STORE_SKYPE %}<div><i class="fab fa-skype"></i><p><b>Skype</b><br><a href="skype:{SETTINGS_STORE_SKYPE}?call">{SETTINGS_STORE_SKYPE}</a></p></div>{% ENDIF %}
               <!-- Обратный звонок -->
-              <a href="#" class="footer-phoneCallback" data-src="#fancybox-callback" data-fancybox="">
+              <a href="#" class="button footer-phoneCallback" data-src="#fancybox-callback" data-fancybox="">
                 <span>
                   Перезвоните мне
                 </span>
@@ -2630,7 +2648,11 @@
           <label for="callback_person_notify" class="input-material-label material-icons">phone_in_talk</label> 
         </div>
                       
-        <button type="submit" title="Отправить" class="callback-btn button button3">Уведомить</button>
+        <button type="submit" title="Уведомить" class="callback-btn button button3">
+          <span>
+            Уведомить
+          </span>
+        </button>
         <div class="pp">
           <input type="checkbox" id="pp-check-callback-notify" class="pp-checkbox checkbox-hidden required" name="pp-check" required="" aria-required="true" checked>
           <label for="pp-check-callback-notify"  class="pp-label checkbox-name required">

@@ -11,9 +11,17 @@
         <li class="CompareGoodsTableNext"><a href="#" class="next {% IF COMPARE_GOODS_COUNT < 5 %}disable{% ENDIF %}" title="Следующий товар"><i class="fal fa-angle-right"></i></a></li>
       </ul>
       <div class="CompareGoodsTableFilter">
-        <span class="bold">Отображать: </span>
-        <a href="#" class="CompareGoodsTableFilterShowAll CompareGoodsTableFilterSelected button small">Все характеристики</a>
-        <a class="CompareGoodsTableFilterShowOnlyDifferent button small" href="#">Различающиеся характеристики</a>
+        <span class="">Отображать: </span>
+        <a href="#" class="CompareGoodsTableFilterShowAll CompareGoodsTableFilterSelected button small">
+          <span>
+            Все характеристики
+          </span>
+        </a>
+        <a class="CompareGoodsTableFilterShowOnlyDifferent button small" href="#">
+          <span>
+            Различающиеся характеристики
+          </span>
+        </a>
       </div>
     </div>
     <!-- Тело таблицы сравнения товаров -->
@@ -49,7 +57,7 @@
       <!-- Строка №3 Главное изображение товара и галлерея изображений -->
       <tr>
         {% FOR goods_mod_info %}
-          <td class="compare-td compare-td-{goods_mod_info.index}" {% IF goods_mod_info.index>4 %}style="display:none;"{% ENDIF %}>
+          <td class="compare-td compare-td-{goods_mod_info.index} _image" {% IF goods_mod_info.index>4 %}style="display:none;"{% ENDIF %}>
             <div class="image">
               <!-- Если изображения товара нет -->
               {% IF goods_mod_info.GOODS_IMAGE_EMPTY %}
@@ -74,7 +82,9 @@
                 <input type="hidden" name="form[goods_from]" value="{goods_mod_info.GOODS_FROM}" />
                 <input type="hidden" name="form[goods_mod_id]" value="{goods_mod_info.GOODS_MOD_ID}" class="goodsDataMainModificationId" />
                 <button type="submit" class="button button2 small add-cart" title="Положить товар в корзину" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}{% IF goods_mod_info.REST_VALUE=0 %}style="display:none;"{% ENDIF %}{% ENDIF %}>
-                  В корзину
+                  <span>
+                    В корзину
+                  </span>
                 </button>
                 <div class="compare-empty" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}{% IF goods_mod_info.REST_VALUE=0 %}style="display:block;"{% ENDIF %}{% ENDIF %}>Нет в наличии</div>
                 <!--button type="submit" class="button button2 small add-cart quick" title="Быстро оформить заказ">Купить</button-->
@@ -92,8 +102,8 @@
           <label class="checkbox-name" for="compare_tb_check_price">Цена</label>
         </td>
         {% FOR goods_mod_info %}
-          <td class="compare-td compare-td-{goods_mod_info.index} bold" {% IF goods_mod_info.index>4 %}style="display:none;"{% ENDIF %}>
-            {goods_mod_info.PRICE_NOW | money} за {goods_mod_info.MEASURE_NAME}
+          <td class="compare-td compare-td-{goods_mod_info.index} _price" {% IF goods_mod_info.index>4 %}style="display:none;"{% ENDIF %}>
+            <span class="price {CURRENCY_CHAR_CODE}">{goods_mod_info.PRICE_NOW | money}</span> за {goods_mod_info.MEASURE_NAME}            
           </td>
         {% ENDFOR %}
       </tr>
@@ -121,7 +131,17 @@
           </td>
           {% FOR goods_mod_info %}
             <td class="compare-td compare-td-{goods_mod_info.index}" {% IF goods_mod_info.index>4 %}style="display:none;"{% ENDIF %}>
-              {%IF goods_mod_info.REST_VALUE=0 %}Товара нет в наличии{% ELSE %}Товар есть в наличии{% ENDIF %}
+              {% IF goods_mod_info.REST_VALUE=0 %}
+                <div class="product-rest _not-available">
+                  <span class="material-icons">done</span>
+                  <span>Нет в наличии</span>
+                </div>              
+              {% ELSE %}
+                <div class="product-rest _available">
+                  <span class="material-icons">done</span>
+                  <span>В наличии</span>
+                </div>
+              {% ENDIF %}
             </td>
           {% ENDFOR %}
         </tr>
@@ -219,9 +239,9 @@
 
     <!-- Управление выбранными строками -->
     <div class="buttons">
-      <a href="#" class="CompareGoodsHideSelected button">Убрать выбранные характеристики</a>  
-      <a href="#" class="CompareGoodsShowAll button" style="display:none;">Отобразить скрытые характеристики</a>
-      <a href="{COMPARE_RESET_URL}" class="button" title="Очистить список сравнения">Очистить список сравнения</a>
+      <a href="#" class="CompareGoodsHideSelected button"><span>Убрать выбранные характеристики</span></a>  
+      <a href="#" class="CompareGoodsShowAll button" style="display:none;"><span>Отобразить скрытые характеристики</span></a>
+      <a href="{COMPARE_RESET_URL}" class="button" title="Очистить список сравнения"><span>Очистить список сравнения</span></a>
     </div>
     <!-- END Управление выбранными строками -->
   </div>

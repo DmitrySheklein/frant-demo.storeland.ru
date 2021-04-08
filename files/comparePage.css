@@ -1,9 +1,9 @@
 /*! Сравнение ***/
 .compare-info .buttons {margin: 20px 0 30px}
-.compare-info .buttons .button {margin-bottom: 5px;margin-right: 15px;}
+.compare-info .buttons .button {margin-bottom: 5px;margin-right: 15px;    max-width: fit-content;}
 .CompareGoodsTable {float: left;width: 100%;display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;margin-bottom: 15px;}
 .CompareGoodsTableFilter {float: right;display: flex;align-items: center;flex-wrap: wrap;}
-.CompareGoodsTableFilter .button {margin-bottom: 0;margin-left: 11px}
+.CompareGoodsTableFilter .button {margin-bottom: 0;margin-left: 11px;max-width: fit-content;}
 .CompareGoodsTable .CompareNavigation {float: left;margin: 0;padding: 0;list-style: none;list-style-position: inside}
 .CompareGoodsTable .CompareNavigation li {display: inline-block;vertical-align: middle}
 .CompareGoodsTable .CompareNavigation .next,
@@ -13,6 +13,38 @@
 .CompareGoodsTableTbody .CompareCheckbox {margin: 0;vertical-align: middle}
 .CompareGoodsTableTbody .CompareGoodsTableTbodyComparisonLine .htmlDataBlock {text-align: left}
 .CompareGoodsTableTbody .compare-empty{display:none;width:fit-content;white-space: nowrap;height:38px;line-height:36px;text-align:center;padding:0 10px;margin:0 auto;font-size:13px;border:none;color:#2e2e2e;background-color:#f3f3f5;cursor:default;border-radius:5px}
+.CompareGoodsTableTbody .compare-td._image {
+  background: #fff;
+}
+.CompareGoodsTableTbody .compare-td._price .price {
+  font-size: 16px;
+  color: #cec5bf;
+}
+.product-rest._available .material-icons {
+  color: #caa462;
+}
+.product-rest._not-available {
+  opacity: .5;
+}
+.product-rest._not-available .material-icons {
+  color: #cec5bf;
+}
+.product-rest .material-icons {
+  font-size: 14px;
+  line-height: 14px;
+  margin-right: 4px;
+}
+.product-rest {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #cec5bf;
+  white-space: nowrap;
+}
 @media all and (min-width: 1200px) {.CompareGoodsTableTbody.table-box {table-layout: fixed;}}
 @media all and (max-width: 768px) {.CompareGoodsTableFilter .button {margin-bottom: 5px;margin-left: 0;}}
 @media all and (max-width: 481px) {.CompareGoodsTable {-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center}}

@@ -660,6 +660,10 @@
   height: 38px;
   line-height: 38px;
   padding: 0 13px;
+  color: rgb(206 197 191 / 50%);
+}
+.products-list .qty-set > a:hover {
+  color: #cec5bf;
 }
 .products-list .qty-set > a .material-icons {
   line-height: 38px;

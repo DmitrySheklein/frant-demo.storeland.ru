@@ -89,8 +89,7 @@ function startOrder() {
       quickOrderScripts();
       OrderScripts();
       coupons();
-      address();
-      hoverAnimBtn();      
+      address();    
       $('#closeOrder, #closeOrderTab').off('click').on('click', function () {
         // Если таб уже активен выходим
         if ($(this).hasClass('title-tab') && !$(this).hasClass('disabled')) {
@@ -214,7 +213,6 @@ function ajaxdelete(event) {
         $('.cartTable .cartTable-cart-count').html($(d).find('.cartTable .cartTable-cart-count').html());
         $('.cart-info').html($(d).find('.cart-info').html());
         $('.cartTable-remove-item').on('click', ajaxdelete);
-        hoverAnimBtn();
         ajaxnewqty();
         cartItemsDelete();
         quantity();

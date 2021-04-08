@@ -51,9 +51,11 @@
 {% ENDIF %}
 
   <div class="buttons"> 
-    <a href="{USER_SETTINGS_URL}" class="button" title="Назад на главную страниц личного кабинета">Назад</a>
+    <a href="{USER_SETTINGS_URL}" class="button" title="Назад на главную страниц личного кабинета"><span>Назад</span></a>
     {% IFNOT favorites_goods_empty %}
-    <a href="{FAVORITES_RESET_URL}" class="button" title="Очистить список избранного">Очистить список избранного</a>
+    <a href="{FAVORITES_RESET_URL}" class="button" title="Очистить список избранного">
+      <span>Очистить список избранного</span>
+    </a>
     {% ENDIF %}
   </div>
 </div>

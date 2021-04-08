@@ -319,8 +319,6 @@
           <!-- Добавление товара в Корзину -->
           <div class="add-to-box actions f-fix {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}add-to-form{% ENDIF %}" >
             <input type="hidden" name="form[goods_mod_id]" value="{GOODS_MOD_ID}" class="goodsDataMainModificationId" />
-            <!--Нет в наличии-->
-            {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}<div class="goodsDataMainModificationEmpty button" title="Уведомить" data-fancybox="" data-src="#fancybox-notify" {% IF GOODS_MOD_REST_VALUE!=0 %}style="display:none;"{% ENDIF %}><span>Уведомить</span></div>{% ENDIF %}
             <!-- Добавление товара в корзину -->
             <div class="add-to-cart" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && GOODS_MOD_REST_VALUE=0 %}style="display:none;"{% ENDIF %}>
               <div class="qty-wrap">
@@ -332,6 +330,8 @@
               </div>
               <button type="submit" class="add-cart button" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину"><span>В корзину</span></button>
               <button type="submit" class="add-cart quick button _outline" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину"><span>Купить в 1 клик</span></button>
+              <!--Нет в наличии-->
+              {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}<div class="goodsDataMainModificationEmpty button" title="Уведомить" data-fancybox="" data-src="#fancybox-notify" {% IF GOODS_MOD_REST_VALUE!=0 %}style="display:none;"{% ENDIF %}><span>Уведомить</span></div>{% ENDIF %}
               <!-- <a href="{GOODS_URL}" class="button button2 more" title="Подробнее">Подробнее</a> -->
             </div>
             <!-- /END Добавление товара в корзину -->

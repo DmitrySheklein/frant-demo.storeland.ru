@@ -425,9 +425,7 @@ function viewed(){
     },
     onInitialized : function (evt) {
       var items = evt.item.count;
-      console.log(
-        items
-      );
+      // console.log(        items      );
     }
   });  
 }
@@ -1010,12 +1008,12 @@ function quantity() {
     return false;
   });
   // Если вводят 0 то заменяем на 1
-  $('.qty-wrap .quantity').off('change').change(function(){
+  $('.qty-wrap .quantity').off('change').on('change', function(){
     var $input = $(this);
     if($input.val() < 1){
       $input.val(1); 
-      getTotalGoodPrice($input, $input.val());
     }
+    getTotalGoodPrice($input, $input.val());
   });
   var getTotalGoodPrice = function ($el, goodsCount) {
     var $goodPriceBlock = $el.closest('.item').find('.total-good');
