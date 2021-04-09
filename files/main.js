@@ -479,8 +479,12 @@ function addCart() {
         url: formBlock.attr('action'),
         data: formData,
         success: function(data) {
-          var $btn = $('.add-cart._loading').removeClass('_loading').find('span').last().html("В корзину");
+          var $btn = $('.add-cart._loading')
 
+          if(!$btn.hasClass('_goods-page')) {
+            $btn.removeClass('_loading').find('span').last().html("В корзину");
+          }
+          
           var msg = $(data).find('.notify').html();
           var type = $(data).find('.notify').hasClass('good') ? 'success' : 'error';
           var isAdded = ('success' == type) ? true : false;
@@ -520,7 +524,7 @@ function addCart() {
               }              
             }).show();
           }
-          $btn.removeClass('_added').find('span').html('Купить');
+          $btn.removeClass('_added').find('span').html('В корзину');
 
           if(formBlock.attr('rel') === 'cartPage' && type === 'success'){
             document.location.href = '/cart'
@@ -534,6 +538,19 @@ function addCart() {
           $('.cart .header-toolsContent').html($(data).filter('#newCartContent').html());
           $('.cart .dropdown').html($(data).filter('#newCartData').html());
 
+          var modId = $('.goodsDataMainModificationId').val();
+          var $cartData = $(data).filter('#newCartData');
+          var $countBlock = $cartData.find('.item[data-goods-mod-id="' + modId +'"]').find('.header-toolsAmount.quantity')
+          var newCount = $countBlock.text();
+          var measureName = $countBlock.find('.measure-name').text();
+          var $goodsCart = $('.goods-cart');
+          var $goodsCartCount = $goodsCart.find('.goods-cart-count');
+
+          if($btn.hasClass('_goods-page') && newCount) {
+            $goodsCart.addClass('_show')
+            $goodsCartCount.text(newCount)
+            $btn.removeClass('_loading').find('span').last().html("+1 " + measureName);
+          }
         }
       });
     return false;
@@ -1202,7 +1219,13 @@ function removeFromCart(e){
           $('.header-iconsItem._cart .header-iconsItem-icon').html(newCount).attr('data-count', newCount);
           $cartBlock.find('.count').text(newCount).attr('data-count',newCount);
           $cartBlock.find('.header-toolsContent').find('.price').html($(d).find('.total-sum').html());
-          $cartBlock.find('.total-sum').html($(d).find('.total-sum').html());          
+          $cartBlock.find('.total-sum').html($(d).find('.total-sum').html()); 
+          
+          var $goodsCart = $('.goods-cart');
+          var $goodsBtn = $('.add-cart._goods-page');
+
+          $goodsCart.removeClass('_show');
+          $goodsBtn.find('span').text('В корзину')          
         }
       }
     })
@@ -1223,11 +1246,16 @@ function removeFromCartAll(e){
       $('.header-iconsItem._cart .header-iconsItem-icon').html('0').attr('data-count', '0');
       $('.cart .count').text("0").attr('data-count', "0");
       $('.cart .header-toolsContent').find('.price .num').text("0");
-      $('.cart .dropdown-content._cart .dropdown-items-list').hide();
+      $('.cart .dropdown-content._cart .dropdown-items-list').hide().html('');
       $('.cart .dropdown-content._cart .cart-products-header').hide();
       $('.cart .dropdown-content._cart .subtotal').hide();
       $('.cart .dropdown-content._cart .actions').hide();
       $('.cart .dropdown-content._cart .empty').show();
+      var $goodsCart = $('.goods-cart');
+      var $goodsBtn = $('.add-cart._goods-page');      
+
+      $goodsCart.removeClass('_show');
+      $goodsBtn.find('span').text('В корзину')       
 		}
   })
   }

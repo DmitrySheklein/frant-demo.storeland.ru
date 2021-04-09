@@ -195,6 +195,13 @@ function initTabs() {
       }, 400);
     }
   }
+  $('.goodsDataOpinionAvatar').each(function () {
+    var $svg = $(this);
+    var name = $svg.data('name');
+    if (name) {
+      $svg.find('text').text(name[0]);      
+    }
+  })
   // Биндим изменение хэша - проверка какой таб нужно открыть.
   $(window).bind('hashchange', function () {
     checkTabHash();
@@ -338,14 +345,14 @@ function goodsMods($container) {
         if (modificationRestValue > 0) {
           goodsAvailableTrue.show();
           goodsAvailableFalse.hide();
-          goodsAvailableAddCart.show().removeClass('_hide');
+          goodsAvailableAddCart.removeClass('_hide');
           goodsAvailableQty.show();
           goodsModEmpty.hide();
           // Если товара нет в наличии
         } else {
           goodsAvailableTrue.hide();
           goodsAvailableFalse.show();
-          goodsAvailableAddCart.hide().addClass('_hide');
+          goodsAvailableAddCart.addClass('_hide');
           goodsAvailableQty.hide();
           goodsModEmpty.show();
         }
@@ -424,6 +431,25 @@ function goodsMods($container) {
         // Обновляем изображние модификации товара, если оно указано
         changePrimaryGoodsImage(modificationGoodsModImageId);
 
+        function changeGoodsBtn(modId) {
+          var $goodsCart = $('.goods-cart');
+          var $goodsBtn = $('.add-cart._goods-page');
+          var $cartData = $('.cart').first();
+          var $countBlock = $cartData.find('.item[data-goods-mod-id="' + modId +'"]').find('.header-toolsAmount.quantity')
+          var newCount = $countBlock.text();
+          var measureName = $countBlock.find('.measure-name').text();
+
+          if (newCount){
+            var $goodsCartCount = $('.goods-cart').find('.goods-cart-count');
+            $goodsCartCount.text(newCount);
+            $goodsCart.addClass('_show');
+            $goodsBtn.find('span').text('+1' + measureName)
+          } else {
+            $goodsCart.removeClass('_show');
+            $goodsBtn.find('span').text('В корзину')
+          }
+        }
+        changeGoodsBtn(modificationId)
       } else {
         // Отправим запись об ошибке на сервер
         sendError('no modification by slug ' + slug);

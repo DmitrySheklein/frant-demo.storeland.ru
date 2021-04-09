@@ -2249,6 +2249,7 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 /*! Выбор модификации при добавлении в корзину ***/
 .fancybox-container._modification .product-view {max-width: 380px;padding: 0px;padding-top: 0px;overflow: visible;border-radius: 0px;background: #e7e2df;}
 .fancybox-container._modification .product-view .product-toolbar {display: none;}
+.fancybox-container._modification .product-view .product-tabs {display: none;}
 .fancybox-container._modification .product-view .block-bg {border:none;padding: 0; color: #2e2e2e;background: none;}
 .fancybox-container._modification .product-view .block-bg > .row {visibility: hidden;opacity: 0;margin: 0;}
 .fancybox-container._modification .product-view .product-name {padding-right: 0;}
@@ -2352,6 +2353,7 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 }
 .fancybox-container._modification .product-view .product-order .price-box .price {
   color: #2e2e2e;
+  font-size: 24px;
 }
 .fancybox-container._modification .product-order .more{display: none;}
 .fancybox-container._modification .table-features-min {display: none;}
@@ -2510,7 +2512,7 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 /*! Личный кабинет (Избранное) ***/
 .account.cart-info .buttons .button {margin-right: 11px;margin-bottom:5px;max-width: fit-content;}
 .account .favorites-empty{display:none;width:100%;white-space: nowrap;text-align:center;margin:0;cursor:default;border-radius: 0;height: 40px;line-height: 36px;padding: 0 5px;font-size: 16px;border: 1px solid rgb(206 197 191 / 20%);background-color: transparent;}
-.account.cart-info .price {white-space: nowrap;}
+.account.cart-info .price {white-space: nowrap;color: #cec5bf;}
 /** Платежные системы на странице просмотра заказа **/
 .order-info .title {margin-bottom: 10px;}
 .order-info .paymentQiwi .tr2 .ceil1 {padding: 25px 0 25px;}
