@@ -11,7 +11,7 @@ github.com/t1m0n/air-datepicker
 .сart-related .owl-item {-webkit-box-flex: 1;-ms-flex: 1 0 auto;flex: 1 0 auto}
 /*! Быстрый заказ ***/
 .fancybox-container._quickOrder {z-index: 8030}
-.fancybox-container._quickOrder .fancybox-content {max-width: 900px;width: 100%;padding: 15px;padding-top: 40px;border-radius: 0px}
+.fancybox-container._quickOrder .fancybox-content {max-width: 900px;width: 100%;padding: 15px;padding-top: 40px;border-radius: 0px;    background: #e7e2df;}
 @media all and (max-width:481px) {.fancybox-container._quickOrder {padding: 15px}
 }
 .fancybox-container._quickOrder .form-list {margin-bottom: 0}
@@ -163,7 +163,7 @@ github.com/t1m0n/air-datepicker
 .cartTable tfoot tr.total td.disc-name {border-left: 1px solid #f2f2f2}
 .cartTable tfoot tr.total td.disc-name + td {border-right: 1px solid #f2f2f2}
 .cartTable tfoot tr.total .title {vertical-align: -webkit-baseline-middle}
-.cartTable .price {font-size: 16px;white-space: nowrap}
+.cartTable .price {font-size: 16px;white-space: nowrap;    color: #cec5bf;}
 .cartTable .goods-image-other {max-width: 100px;max-height: 100px}
 .cartTable .TotalSum .price {font-size: 22px}
 .cartTable .buttons {display: block;float: left;width: 100%;margin: 30px 0 0}

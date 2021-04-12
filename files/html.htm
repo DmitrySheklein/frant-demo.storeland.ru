@@ -2780,13 +2780,10 @@
   <div class="message {% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}" style="display: none;">{FORM_NOTICE | nl2br}</div>
   <script>
   window.addEventListener('load', function(){
-    function generate(type) {
       new Noty({
         text: '<div class="noty_content">{FORM_NOTICE | nl2br}</div>',
         type: '{% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}error{% ENDIF %}'
-      }).show()        
-    }
-    generate();
+      }).show()    
   })
   </script>
   {% ENDIF %}

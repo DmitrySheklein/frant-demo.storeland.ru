@@ -58,9 +58,7 @@
 }
 .product-view .product-action a.added {    color: #caa462;}
 .product-view .product-action a:hover {    color: #caa462;}
-@media all and (max-width:991px) {
-  .product-view .product-action {padding: 0}
-}
+
 .product-view .product-toolbar {padding-top: 0;margin-bottom: 20px;display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;-webkit-box-align: center;-ms-flex-align: center;align-items: center}
 .product-view .product-neighbor {display: none;;margin-left: auto;flex-shrink: 0;}
 .product-view .product-neighbor > div {display: inline-block;position: relative;vertical-align: middle}
@@ -80,6 +78,13 @@
 .product-view .product-toolbar .ratings .ratiing-count:hover {color: #323f48}
 .product-view .product-toolbar .goodsDataMainModificationArtNumber {display: inline-block;vertical-align: middle;white-space: nowrap;margin-left: 25px}
 .product-view .product-toolbar .goodsDataMainModificationArtNumber span {font-family: 'Roboto Condensed',sans-serif}
+@media(max-width: 481px){
+  .product-view .product-toolbar .goodsDataMainModificationArtNumber {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
 .product-view .product-toolbar .goodsDataMainModificationAvailable {display: inline-block;vertical-align: middle;white-space: nowrap}
 .product-view .product-toolbar .goodsDataMainModificationAvailable .available-name {display: none}
 .product-view .product-toolbar .goodsDataMainModificationAvailable .available-value {display: flex;align-items: center;}
@@ -208,7 +213,7 @@
 
 .product-view .product-order .add-to-box .add-to-cart {display: inline-block;vertical-align: middle;display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;-webkit-box-align: center;-ms-flex-align: center;align-items: center;padding-top: 18px}
 .product-view .product-order .add-to-box .add-to-cart .button {height: 50px;line-height: 50px;font-size: 16px;padding: 0 10px;vertical-align: middle;max-width: 100%;}
-.product-view .product-order .add-to-box .add-to-cart .quick {margin-left: auto;;width: calc(50% - 7.5px);    max-width: 262px;}
+.product-view .product-order .add-to-box .add-to-cart .quick {margin-left: auto;;width: calc(50% - 7.5px);    max-width: 50%;}
 .product-view .product-order .add-to-box .add-to-cart .more {display: none;margin-top: 10px}
 .product-view .product-order .add-to-box .add-to-cart .goodsDataMainModificationEmpty {display: inline-block;vertical-align: middle;width: 100%;max-width: 100%;height: 50px;line-height: 50px;text-align: center;padding: 0 17px;margin: 0px;font-size: 14px;border: none;cursor: default;border-radius: 0px;cursor: pointer;}
 
@@ -219,6 +224,16 @@
 .product-view .product-order .add-to-box .add-to-cart .add-cart-block {
   display: flex;
   width: calc(50% - 7.5px);
+}
+@media (max-width: 550px) {
+  .product-view .product-order .add-to-box .add-to-cart .add-cart-block {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .product-view .product-order .add-to-box .add-to-cart .quick {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 .goods-cart {
   width: 70%;
@@ -315,7 +330,7 @@
 }
 /*!Отзывы */
 .goodsDataOpinionMessage.empty p {margin: 0}
-.goodsDataOpinionListNavigateTop {display: flex}
+.goodsDataOpinionListNavigateTop {display: flex;flex-wrap: wrap;}
 .goodsDataOpinionListNavigateTop .button {display: inline-block;margin-bottom: 5px;margin-right: 15px;}
 .goodsDataOpinionListNavigateTop .opinionListCount {font-family: 'Roboto Condensed',sans-serif}
 .goodsDataOpinionShowAddForm {text-decoration: underline}
@@ -323,7 +338,7 @@
 .goodsDataOpinionListNavigateTop .goodsDataOpinionShowAddForm:hover {background-image: linear-gradient(160.47deg,#398f93 11.94%,#fc9758 85.71%)}
 .goodsDataOpinionListNavigateBottom .pager .pages {float: left}
 .goodsDataOpinionListNavigateBottom .pager .pages .title {float: left;line-height: 28px;margin-right: 10px}
-.goodsDataOpinionList {width: 100%;margin-top: 10px}
+.goodsDataOpinionList {width: 100%;margin-top: 30px}
 .goodsDataOpinionList .bord {
   position: relative;  
   width: 100%;
@@ -333,7 +348,7 @@
   border-bottom: 1px solid rgb(206 197 191 / 50%)  
 }
 .goodsDataOpinionList .goodsDataOpinionHeader {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-ms-flex-wrap: wrap;flex-wrap: wrap;margin-bottom: 15px}
-.goodsDataOpinionList .goodsDataOpinionHeader .rating-box {margin-right: 10px}
+.goodsDataOpinionList .goodsDataOpinionHeader .rating-box {margin-top: 10px}
 .goodsDataOpinionList .goodsDataOpinionListTitle {display: block;margin-bottom: 5px;padding-right: 10px;color: #2e2e2e;line-height: 1.3;overflow: hidden;white-space: nowrap;text-overflow: ellipsis}
 .goodsDataOpinionList .goodsDataOpinionListClient {
   display: flex;
@@ -418,6 +433,9 @@
 .goodsDataOpinionFormReset:hover {color: #caa462;}
 .goodsDataOpinionAddTable .button {margin-bottom: 15px;}
 .goodsDataOpinionAddForm._show + .goodsDataOpinionNoOpinion {margin-top: 30px;}
+.goodsDataOpinionNoOpinionContent {
+  padding-right: 10px;
+}
 .goodsDataOpinionNoOpinionContentInner {
   padding: 30px;
   background: rgba(0,0,0,.2);
@@ -431,6 +449,15 @@
   font-weight: 700;
   color: #cec5bf;  
   margin-bottom: 10px;
+}
+.goodsDataOpinionNoOpinionText {
+  margin: 0;
+}
+@media(max-width: 550px){
+  .goodsDataOpinionListNavigateTop .button {
+    max-width: 100%;
+    margin-right: 0;
+  }
 }
 /*!С этим товаром смотрят, Сопутствующие товары */
 .related {padding-top: 40px}
@@ -452,7 +479,7 @@
 }
 @media all and (max-width:767px) {
   .thumblist {max-width: 500px}
-  .goodsDataOpinionAddTable label {width: 100%}
+  
   .goodsDataOpinionFormReset {width: 80px}
 }
 @media all and (max-width:641px) {
@@ -467,7 +494,24 @@
   .product-tabs .tabs-inner {height: auto;overflow: auto}
   .product-tabs .tabs-inner .nav-splitter {display: none}
   .product-tabs .tabs-inner:after {display: none}
-  .product-tabs .tabs .tabs-item a {padding: 5px 0}
+  .tab-content .table-box .table-row {
+    width: 100%;
+    margin-bottom: -1px;
+  }
+  .goodsDataOpinionAddTable .goodsDataOpinionCaptcha {
+    flex-wrap: wrap;
+  }
+  .goodsDataOpinionInputWrap {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .goodsDataOpinionNoOpinionContent {
+    padding-right: 0;
+    margin-bottom: 15px;
+  }
+  .goodsDataOpinionNoOpinionContentInner {
+    flex-direction: column;
+  }
 }
 @media all and (max-width:481px) {
   .product-view .product-img-box .general-img {min-height: 100px}
