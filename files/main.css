@@ -460,6 +460,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .button:hover, .button.added {background: #c7a161;}
 
 .button._outline {background-color: transparent;border: 1px solid #caa462;line-height: 38px;color: #caa462;}
+.button._outline:after {content: '';position: absolute;z-index: 1;left: 0;bottom: 0;width: 100%;height: 100%;display: block;background: inherit;}
 .button._outline:hover {color: #fff;background-color: #caa462;}
 
 .button._dropdown:focus {border-color: #333;color: #333;background-color: transparent;}
@@ -1434,7 +1435,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .feedbackForm .form-list .fields > label {display: block;margin-bottom: 10px;text-align: left;}
 /*! Перезвоните мне */
 .callbackForm .callback-input {margin-bottom: 15px;display: flex;}
-.callbackForm .callback-input .input::-webkit-input-placeholder {font-size: 14px;color: rgb(206 197 191 / .5);}
+.callbackForm .callback-input .input::-webkit-input-placeholder {font-size: 14px;color: #cec5bf;}
 .callbackForm .callback-input .callback-label {display:block;margin-bottom: 10px;cursor:pointer;}
 .callbackForm .callback-btn {display: block;margin: 30px auto 15px;}
 .callbackForm .pp-label {
@@ -2045,7 +2046,8 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 }
 #viewed .viewed-items .owl-stage {display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap}
 #viewed .content .viewed-items {text-align: left;}
-#viewed .content .viewed-items .owl-item > div {display: inline-block;float: none;width: 100%;height: 100%;padding: 0;}
+#viewed .content .viewed-items .item {display: inline-block;float: none;width: 100%;height: 100%;padding: 0;    border: 1px solid transparent;    transition: box-shadow,border-color .3s,-webkit-box-shadow;}
+#viewed .content .viewed-items .item:hover {border: 1px solid rgb(206 197 191 / 50%);background: rgba(0,0,0,.5);}
 #viewed .content .viewed-items .item-inner {position: relative;width: 100%;height: 100%;background-color: rgba(0,0,0,.2);box-shadow: none;border: 0;border-radius: 0;padding: 5px;display: flex;flex-direction: column;align-items: center;border-radius: 0;}
 #viewed .content .viewed-items .product-image {width: 100%;height: 155px;padding: 0;margin-bottom: 15px;}
 #viewed .content .viewed-items .product-image a {display: flex;position: relative;width: 100%;height: 100%;min-height: 60px;z-index: 0;overflow: hidden;border-radius: 0;background: #fff;text-align: center;}
@@ -2131,9 +2133,6 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 #viewed .item .actions .quickviewmod span {color: #caa462;    transition: all .5s ease-in-out;}
 #viewed .item .actions .quickviewmod:hover span {color: #caa462}
 #viewed .item .actions .quickviewmod span:last-child {display: none;}
-#viewed .item .actions .quickviewmod._loading {
-  width: 28px;
-}
 #viewed .item .actions .quickviewmod._loading span[class^=material] {
   display: none;
 }
@@ -2185,7 +2184,7 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
   border: 1px solid transparent;  
 }
 .categories .item:hover .item-inner{
-  border: 1px solid rgb(206 197 191 / 50%);  
+  background: rgba(0,0,0,.5);
 }
 .categories .item:hover:before {border-color: #caa462;top: -12px;left: -12px;right: -12px;bottom: -10px;-webkit-box-shadow: 0 20px 60px rgba(156,158,158,.5);box-shadow: 0 20px 60px rgba(156,158,158,.5);z-index: 20}
 .categories .item:hover .item-inner {z-index: 21}
@@ -2260,7 +2259,7 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 .fancybox-container._modification .product-shop .product-name {display: block;margin-bottom: 15px;}
 .fancybox-container._modification .product-view .product-header {padding-top: 0;background-color: #caa462;    padding: 0 30px; padding-top: 15px;padding-bottom: 15px; text-align: center; }
 .fancybox-container._modification .product-view .product-header .product-name {margin: auto;}
-.fancybox-container._modification .product-view .product-header .product-name h1 {color: #fff}
+.fancybox-container._modification .product-view .product-header .product-name h1 {color: #fff;    text-transform: none;font-size: 24px;}
 
 .fancybox-container._modification .product-shop .goodsDataMainModificationsValues {display: none;}
 .fancybox-container._modification .product-shop .goodsDataMainModificationsBlock {padding: 0;}
@@ -2374,9 +2373,12 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
   height: 50px;
   width: 50px;
 }
-
+.fancybox-container._modification .product-view .product-order .actions input.quantity {
+  color: #2e2e2e;
+}
 .fancybox-container._modification .product-view .product-order .actions .qty-set .material-icons {
   line-height: 50px;
+  color: #2d2d2d;  
 }
 .fancybox-container._modification .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox__select {
   background: #f3f1ef;
@@ -2389,11 +2391,20 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 .fancybox-container._modification .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox__select-text {
   height: 100%;
 }
+.fancybox-container._modification .opened .jq-selectbox__trigger-arrow {
+  transform: rotate(270deg);
+}
 .fancybox-container._modification .jq-selectbox__trigger-arrow {
-  top: 20px;
+  top: 20px!important;
   right: 15px;  
 }
-
+.fancybox-container._modification .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .opened .jq-selectbox__select {
+  background-color: #fff;
+  border: 1px solid #cec5bf;
+}
+.fancybox-container._modification .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox__dropdown {
+  margin-top: 10px;
+}
 .fancybox-container._modification .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox li {
   background-color: #fff;
   border: 1px solid #cec5bf;

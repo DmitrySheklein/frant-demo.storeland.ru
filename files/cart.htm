@@ -96,12 +96,12 @@
             <!-- По умолчанию оформление заказа в 1 шаг. Если Вы хотите использовать 4 шага оформления, то добавьте style="display: none;" к блоку, который нужно скрыть и удалите style="display: none;" из блока, который нужно отобразить. -->
             <!-- Быстрое оформление заказа в 1 шаг -->
             <div class="buttons"> <!-- Если Вы хотите использовать 4 шага оформления, то добавьте style="display: none;" Пример: <div class="buttons" style="display: none;"> -->
-              <a class="button _outline col-left" title="Очистить корзину" href="{CART_TRUNCATE_URL}" onclick="return confirm('Вы действительно хотите удалить все товары из корзины?')">Очистить корзину</a>
+              <a class="button _outline col-left" title="Очистить корзину" href="{CART_TRUNCATE_URL}" onclick="return confirm('Вы действительно хотите удалить все товары из корзины?')"><span>Очистить корзину</span></a>
               <a id="closeOrder" class="button" title="Отменить быстрое оформление заказа">Отменить оформление</a>
-              <a id="startOrder" class="button {% FOR cart_sum %}{% IF cart_sum.NOW_WITH_DELIVERY_AND_DISCOUNT < SETTINGS_STORE_ORDER_MIN_ORDER_PRICE %}_disabled {break}{% ENDIF %}{% ENDFOR %}" title="Перейти к быстрому оформлению заказа">Оформить заказ</a>
+              <a id="startOrder" class="button {% FOR cart_sum %}{% IF cart_sum.NOW_WITH_DELIVERY_AND_DISCOUNT < SETTINGS_STORE_ORDER_MIN_ORDER_PRICE %}_disabled {break}{% ENDIF %}{% ENDFOR %}" title="Перейти к быстрому оформлению заказа"><span>Оформить заказ</span></a>
               <noscript>
               <style>#startOrder {display: none;}</style>
-              <button class="button" type="submit" name="next_step"title="Перейти к оформлению заказа в 4 шага">Оформить заказ</button>
+              <button class="button" type="submit" name="next_step"title="Перейти к оформлению заказа в 4 шага"></button>
               <div class="left">
                 <input class="button" type="submit" value="Пересчитать" title="Пересчитать" style="margin-left: 5px;"/>
               </div>
@@ -109,8 +109,8 @@
             </div>
             <!-- Оформление заказа в 4 шага -->
             <div class="buttons" style="display: none;"> <!-- Если Вы хотите использовать 1 шаг оформления, то удалите style="display: none;" Пример: <div class="buttons"> -->
-              <a class="button button2 col-left" title="Очистить корзину" href="{CART_TRUNCATE_URL}" onclick="return confirm('Вы действительно хотите удалить все товары из корзины?')">Очистить корзину</a>
-              <button class="button" type="submit" name="next_step" value="Оформить заказ" title="Перейти к оформлению заказа в 4 шага">Оформить заказ</button>
+              <a class="button button2 col-left" title="Очистить корзину" href="{CART_TRUNCATE_URL}" onclick="return confirm('Вы действительно хотите удалить все товары из корзины?')"><span>Очистить корзину</span></a>
+              <button class="button" type="submit" name="next_step" value="Оформить заказ" title="Перейти к оформлению заказа в 4 шага"><span>Оформить заказ</span></button>
               <noscript>
               <div class="left">
                 <input class="button button2" type="submit" value="Пересчитать" title="Пересчитать" style="margin-left: 5px;"/>

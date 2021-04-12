@@ -150,12 +150,6 @@ function goodsImage() {
 }
 // Инициализация табов на странице товара
 function initTabs() {
-  setTimeout(function() {
-    var $el = $('.tabs .tabs-item a.active');
-    var width = $el.parent().outerWidth()
-    var position = $el.position().left
-    $('.tabs').find('.nav-splitter').css({'width': width, 'left': position })
-  }, 200);
   // Блок в котором находятся табы
   var tabBlock = $('.product-tabs');
   if (!tabBlock.length) {
@@ -199,7 +193,14 @@ function initTabs() {
     var $svg = $(this);
     var name = $svg.data('name');
     if (name) {
-      $svg.find('text').text(name[0]);      
+      $svg.find('text').text(name[0].toUpperCase());      
+    }
+  })
+  $('.goodsDataOpinionListClientName').each(function () {
+    var $nameBlock = $(this);
+    var name = $nameBlock.data('name');
+    if (name) {
+      $nameBlock.text(name[0].toUpperCase() + name.slice(1));      
     }
   })
   // Биндим изменение хэша - проверка какой таб нужно открыть.

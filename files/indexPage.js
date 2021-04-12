@@ -146,6 +146,7 @@ function indexPage() {
         lazyLoad: true,
         nav: true,
         dots: false,
+        slideBy: 2,
         autoplay: false,
         autoplayTimeout: 3000,
         autoplayHoverPause: true,

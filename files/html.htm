@@ -115,7 +115,7 @@
           <i class="icon material-icons">person_outline</i>
         </button>
         <button class="header-iconsItem _compare {% IF COMPARE_GOODS_COUNT %} _active{% ENDIF %}" data-target="#link" data-link="{COMPARE_URL}">
-          <span class="icon material-icons-outlined">refresh</span>
+          <span class="icon material-icons">refresh</span>
         </button>
         <button class="header-iconsItem _favorites {% IF FAVORITES_GOODS_COUNT %} _active{% ENDIF %}" data-target="#link" data-link="{%IF CLIENT_IS_LOGIN%}{USER_FAVORITES_URL}{%ELSE%}{USER_REGISTER_URL}{%ENDIF%}">
           <span class="icon material-icons-outlined">favorite_border</span>
@@ -378,7 +378,7 @@
                     <a  href="{COMPARE_URL}" title="Перейти к Сравнению" class="header-toolsLink title">
                       <span class="header-toolsIcon _compare">
                         <span class="header-toolsCounter count" data-count="{COMPARE_GOODS_COUNT}">{COMPARE_GOODS_COUNT}</span>
-                        <span class="material-icons-outlined">refresh</span>
+                        <span class="material-icons">cached</span>
                       </span>
                       <span class="header-toolsName title">Сравнение</span>
                     </a>
