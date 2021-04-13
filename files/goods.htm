@@ -365,7 +365,7 @@
                 <button type="submit" class="add-cart quick button _outline" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину"><span>Купить в 1 клик</span></button>
                 {% ELSE %}
                 <!-- Чтобы включить стандартный счётчик товаров замените 1 на 0 -->
-                {% IF USE_DEFAULT_COUNTER = 0 %}
+                {% IF USE_DEFAULT_COUNTER = 1 %}
                 <script>document.querySelector('.add-to-cart').classList.add('_nowrap')</script>
                 <div class="qty-wrap">
                   <div class="qty-set">
