@@ -102,6 +102,10 @@
   opacity: 0;
   transition: all .3s;
 }
+.col-left .block.user-menu .content ul li._current a::before,
+.col-left .block.user-menu .content ul li a::before {
+  margin-right: 6px;
+}
 .col-left .block.catalog .content ul li._current > a::before {opacity: 1;}
 .col-left .block.catalog .content ul li a:hover::before {opacity: 1;}
 .col-left .block.catalog .content ul li a.active, .col-left .block.catalog .content ul li a:hover {color: #caa462;}
@@ -695,7 +699,7 @@
 
 .products-list .item .product-icons {position: static;z-index: 1;margin-top: 15px;padding-top: 15px;border-top: 1px solid rgb(206 197 191 / 20%);}
 .products-list .item .product-icons-inner {display: flex;}
-.products-list .item .product-ico {display: block;width: auto;margin: 0;font-size: 15px;text-align: center;background-color: transparent;z-index: 1;transition: .1s all;}
+.products-list .item .product-ico {position: relative;;display: block;width: auto;margin: 0;font-size: 15px;text-align: center;background-color: transparent;z-index: 1;transition: .1s all;}
 .products-list .item .product-ico .material-icons,
 .products-list .item .product-ico .material-icons-outlined {vertical-align: middle;font-size: 17px;}
 .products-list .item .product-ico.added,.products-list .item .product-ico:hover {color: #caa462}
@@ -704,15 +708,7 @@
 .products-list .item .product-ico.add-compare {
   margin-right: 25px;
 }
-.products-list .item .product-ico.add-compare::after {
-  content: 'Сравнить';
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 5px;
-  font-size: 14px;
-}
-.products-list .item .product-ico.add-wishlist::after {
-  content: 'Избранное';
+.products-list .item .product-ico.add-wishlist span {
   display: inline-block;
   vertical-align: middle;
   margin-left: 5px;

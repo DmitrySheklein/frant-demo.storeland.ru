@@ -33,8 +33,13 @@
   .product-view .product-header .product-name h1 {font-size: 16px}
 }
 .product-view .product-header .product-name.quick-view h1 {font-size: 20px}
-.product-view .product-action {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;overflow: hidden;    padding-top: 22px;}
-.product-view .product-action a {-webkit-transition: .1s all;transition: .1s all;border-radius: 0}
+.product-view .product-action {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;   padding-top: 22px;}
+.product-view .product-action a {
+  position: relative;
+  -webkit-transition: .1s all;
+  transition: .1s all;
+  border-radius: 0;
+}
 .product-view .product-action i {
   vertical-align: middle;
   font-size: 17px;
@@ -42,20 +47,7 @@
 .product-view .product-action a.add-compare {
   margin-right: 25px;
 }
-.product-view .product-action a.add-compare::after {
-  content: 'Сравнить';
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 5px;
-  font-size: 16px;
-}
-.product-view .product-action a.add-wishlist::after {
-  content: 'Избранное';
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 5px;
-  font-size: 16px;
-}
+
 .product-view .product-action a.added {    color: #caa462;}
 .product-view .product-action a:hover {    color: #caa462;}
 
@@ -208,7 +200,10 @@
 .product-view .product-order .actions .qty-wrap {width: 140px;height: 50px;line-height: 50px;background: transparent;border: 1px solid rgb(206 197 191 / 50%);margin-right: 15px;}
 .product-view .product-order .actions .qty-set {height: inherit;}
 .product-view .product-order .actions .qty-set > a {width: auto;height: inherit;line-height: inherit;padding: 0 13px;color: rgb(206 197 191 / 50%);}
-.product-view .product-order .actions .qty-set .material-icons {font-size: 16px;line-height: inherit;}
+.product-view .product-order .actions .qty-set > a:hover {
+  color: #cec5bf;
+}
+.product-view .product-order .actions .qty-set .material-icons {font-size: 24px;line-height: inherit;}
 .product-view .product-order .actions input.quantity {width: 40px;height: inherit;    color: #cec5bf;}
 
 .product-view .product-order .add-to-box .add-to-cart {display: inline-block;vertical-align: middle;display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;-webkit-box-align: center;-ms-flex-align: center;align-items: center;padding-top: 18px}
@@ -217,13 +212,42 @@
 .product-view .product-order .add-to-box .add-to-cart .more {display: none;margin-top: 10px}
 .product-view .product-order .add-to-box .add-to-cart .goodsDataMainModificationEmpty {display: inline-block;vertical-align: middle;width: 100%;max-width: 100%;height: 50px;line-height: 50px;text-align: center;padding: 0 17px;margin: 0px;font-size: 14px;border: none;cursor: default;border-radius: 0px;cursor: pointer;}
 
+.product-view .product-order .add-to-box .add-to-cart._nowrap {
+  flex-wrap: nowrap;
+}
+.product-view .product-order .add-to-box .add-to-cart._nowrap .button {
+  width: fit-content;
+  max-width: 100%;
+  flex-grow: 1;
+}
+.product-view .product-order .add-to-box .add-to-cart._nowrap .add-cart.quick {
+  margin-left: 15px;
+}
+@media (max-width: 550px){
+  .product-view .product-order .add-to-box .add-to-cart._nowrap {
+    flex-wrap: wrap;
+  }
+  .product-view .product-order .add-to-box .add-to-cart._nowrap  .add-cart.quick {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 15px;
+  }  
+}
+/*! Если товар не в наличии  */
 .product-view .product-order .add-to-box .add-to-cart._hide .add-cart.quick,
+.product-view .product-order .add-to-box .add-to-cart._hide .add-cart,
+.product-view .product-order .add-to-box .add-to-cart._hide .qty-wrap,
 .product-view .product-order .add-to-box .add-to-cart._hide .add-cart-block {
   display: none;
 }
 .product-view .product-order .add-to-box .add-to-cart .add-cart-block {
   display: flex;
   width: calc(50% - 7.5px);
+}
+@media (max-width: 991px) {
+  .product-view .product-order .add-to-box .add-to-cart {
+    margin-bottom: 15px;
+  }
 }
 @media (max-width: 550px) {
   .product-view .product-order .add-to-box .add-to-cart .add-cart-block {

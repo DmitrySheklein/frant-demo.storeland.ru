@@ -40,21 +40,18 @@ function goodsPage() {
       required: true
     });
   }
-
+  
   // Список отзывов о товаре. Ссылка на отображение формы для добавление отзыва о товаре
-  $('.goodsDataOpinionShowAddForm').click(function () {
-    if (0 == $('#goodsDataOpinionAddBlock:visible').length) {
-      $('#goodsDataOpinionAddBlock').show('blind');
-      $('html, body').animate({
-        scrollTop: jQuery('.goodsDataOpinionAddForm').offset().top
-      }, 400);
-    } else {
-      $('#goodsDataOpinionAddBlock').hide('blind');
-      $('html, body').animate({
-        scrollTop: jQuery('.goodsDataOpinion').offset().top - 60
-      }, 400);
-      return false;
-    }
+  $('.goodsDataOpinionNoOpinionBtn').click(function () {
+    var $opinionForm = $('.goodsDataOpinionAddForm');
+    var $noOpinionBlock = $('.goodsDataOpinionNoOpinion');
+    var headerHeight = $('.header-fixed').outerHeight();
+
+    $noOpinionBlock.hide();
+    $opinionForm.show('blind');
+    $('html, body').animate({
+      scrollTop: $opinionForm.offset().top - headerHeight
+    }, 400);    
   });
 
   // Добавление отзыва о товаре. кнопка reset скрывающая форму добавления отзыва о товаре
@@ -191,14 +188,14 @@ function initTabs() {
   }
   $('.goodsDataOpinionAvatar').each(function () {
     var $svg = $(this);
-    var name = $svg.data('name');
+    var name = String($svg.data('name'));
     if (name) {
       $svg.find('text').text(name[0].toUpperCase());      
     }
   })
   $('.goodsDataOpinionListClientName').each(function () {
     var $nameBlock = $(this);
-    var name = $nameBlock.data('name');
+    var name = String($nameBlock.data('name'));
     if (name) {
       $nameBlock.text(name[0].toUpperCase() + name.slice(1));      
     }

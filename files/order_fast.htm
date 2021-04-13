@@ -16,21 +16,24 @@
             <h3 class="title"><i class="fal fa-user quickform__title-icon"></i><span>Контактные данные</span></h3>
             <div class="form-list">
               <div class="fields">
-                <label for="reg_name" class="required">Ф.И.О. <em>*</em></label>
+                <!-- <label for="reg_name" class="required">Ф.И.О. <em>*</em></label> -->
                 <div class="input-box">
-                  <input id="reg_name" name="form[contact][person]" value="{ORDER_FORM_CONTACT_PERSON}" maxlength="100" class="required input" type="text"/>
+                  <input id="reg_name" name="form[contact][person]" value="{ORDER_FORM_CONTACT_PERSON}" maxlength="100" class="required input input-material _light-text" type="text" placeholder="Представьтесь, пожалуйста"/>
+                  <label for="reg_name" class="input-material-label material-icons">person_outline</label>
                 </div>
               </div>
               <div class="fields">
-                <label for="sites_client_phone" class="required">Телефон<em>*</em></label>
+                <!-- <label for="sites_client_phone" class="required">Телефон<em>*</em></label> -->
                 <div class="input-box">
-                  <input id="sites_client_phone" name="form[contact][phone]" value="{ORDER_FORM_CONTACT_PHONE}" maxlength="255" class="required input" type="text"/>
+                  <input id="sites_client_phone" name="form[contact][phone]" value="{ORDER_FORM_CONTACT_PHONE}" maxlength="255" class="required input input-material _light-text" type="text" placeholder="Телефон для связи"/>
+                  <label for="sites_client_phone" class="input-material-label material-icons">phone_in_talk</label> 
                 </div>
               </div>
               <div class="fields">
-                <label for="contactEmail" class="required">E-mail <em class="contactRegisterNeedElement" {% IFNOT ORDER_FORM_CONTACT_WANT_REGISTER %}style="display:none;"{% ENDIF %}>*</em></label>       
+                <!-- <label for="contactEmail" class="required">E-mail <em class="contactRegisterNeedElement" {% IFNOT ORDER_FORM_CONTACT_WANT_REGISTER %}style="display:none;"{% ENDIF %}>*</em></label>        -->
                 <div class="input-box">
-                  <input id="contactEmail" name="form[contact][email]" value="{ORDER_FORM_CONTACT_EMAIL}" maxlength="255" class="{% IF ORDER_FORM_CONTACT_WANT_REGISTER %}required{% ENDIF %} email input" type="text"/>
+                  <input id="contactEmail" name="form[contact][email]" value="{ORDER_FORM_CONTACT_EMAIL}" maxlength="255" class="{% IF ORDER_FORM_CONTACT_WANT_REGISTER %}required{% ENDIF %} email input input-material _light-text" type="text" placeholder="Ваш email"/>
+                  <label for="sites_client_mail" class="input-material-label material-icons-outlined">email</label>
                 </div>
               </div>
               <!-- Если в тарифном плане подключен раздел личного кабинета -->
@@ -46,9 +49,10 @@
               {% IF TARIFF_FEATURE_CLIENT_ROOM %}
                 {% IFNOT CLIENT_IS_LOGIN %}
                   <div class="contactRegisterNeedElement fields" {% IFNOT ORDER_FORM_CONTACT_WANT_REGISTER %}style="display:none;"{% ENDIF %}>
-                    <label for="contactPassWord" class="required">Придумайте пароль<em>*</em></label>
+                  
                     <div class="input-box">
-                      <input id="contactPassWord" type="password" name="form[contact][pass]" value="{ORDER_FORM_CONTACT_PASS}" maxlength="50" minlength="6" class="input {% IF ORDER_FORM_CONTACT_WANT_REGISTER %}required{% ENDIF %}" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()"/>
+                      <input id="contactPassWord" type="password" name="form[contact][pass]" value="{ORDER_FORM_CONTACT_PASS}" maxlength="50" minlength="6" class="input input-material _light-text {% IF ORDER_FORM_CONTACT_WANT_REGISTER %}required{% ENDIF %}" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" placeholder="Придумайте пароль"/>
+                      <label for="sites_client_pass" class="input-material-label material-icons">lock</label>
                       {% IFNOT user_agent_ie %}
                         <div class="showPassBlock">
                           <a href="#" rel="<span class='material-icons'>visibility_off</span>" class="OrderShowPass">
@@ -317,7 +321,7 @@
               <div class="fields _comment">
                 <!-- <label for="quickDeliveryComment" {% IF SETTINGS_ORDER_FIELDS_COMMENT=1 %}class="required"{% ENDIF %}>Комментарий к заказу{% IF SETTINGS_ORDER_FIELDS_COMMENT=1 %}<em>*</em>{% ENDIF %}</label> -->
                 <div class="input-box">
-                  <textarea cols="100" rows="5" id="quickDeliveryComment" name="form[delivery][comment]" class="{% IF SETTINGS_ORDER_FIELDS_COMMENT=1 %}required{% ENDIF %} input textarea">{ORDER_FORM_DELIVERY_COMMENT}</textarea>
+                  <textarea cols="100" rows="5" id="quickDeliveryComment" name="form[delivery][comment]" class="{% IF SETTINGS_ORDER_FIELDS_COMMENT=1 %}required{% ENDIF %} input textarea input-material _light-text">{ORDER_FORM_DELIVERY_COMMENT}</textarea>
                 </div>  
               </div>
             </div>
@@ -351,7 +355,7 @@
                     <label for="quick_form_coupon_code">Код купона</label> 
                     <div class="couponBlockCoupon">                      
                       <div class="input-box">
-                        <input type="text" id="quick_form_coupon_code" name="form[coupon_code]" value="{ORDER_FORM_COUPON_CODE}" class="input" />
+                        <input type="text" id="quick_form_coupon_code" name="form[coupon_code]" value="{ORDER_FORM_COUPON_CODE}" class="input input-material _light-text" />
                         <i class="coupon_clear fal fa-times" aria-hidden="true"></i>
                       </div>
                       <button type="button" class="button button2 small coupon-btn _disabled">Применить</button>                  

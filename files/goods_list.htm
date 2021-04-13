@@ -463,7 +463,10 @@
                               title="Убрать из сравнения"
                               href="{COMPARE_DELETE_URL}?id={goods.MIN_PRICE_NOW_ID}&amp;from={goods.GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
                               rel="nofollow"
-                            ><i class="material-icons">cached</i></a>
+                            >
+                            <i class="material-icons">cached</i>
+                            <span>Сравнить</span>
+                          </a>
                           {% ELSE %}
                             <a class="add-compare  product-ico" 
                               data-action-is-add="1" 
@@ -483,7 +486,10 @@
                               title="В сравнение" 
                               href="{COMPARE_ADD_URL}?id={goods.MIN_PRICE_NOW_ID}&amp;from={goods.GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
                               rel="nofollow"
-                            ><i class="material-icons">cached</i></a>
+                            >
+                            <i class="material-icons">cached</i>
+                            <span>Сравнить</span>
+                          </a>
                           {% ENDIF %}
                         {% ENDIF %}
                         <!-- /END Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->  
@@ -508,7 +514,10 @@
                             title="Убрать из избранного"
                             href="{FAVORITES_DELETE_URL}?id={goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                             rel="nofollow"
-                          ><i class="material-icons-outlined">favorite_border</i></a>
+                          >
+                          <i class="material-icons-outlined">favorite_border</i>
+                          <span>Избранное</span>
+                        </a>
                         {% ELSE %}
                           <a class="add-wishlist product-ico"
                             data-action-is-add="1"
@@ -528,7 +537,10 @@
                             title="Добавить в избранное"
                             href="{FAVORITES_ADD_URL}?id={goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                             rel="nofollow"
-                          ><i class="material-icons-outlined">favorite_border</i></a>
+                          >
+                          <i class="material-icons-outlined">favorite_border</i>
+                          <span>Избранное</span>
+                        </a>
                         {% ENDIF %}
                         <!-- /END Если есть возможность добавить товар в избранное -->
                       </div>

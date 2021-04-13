@@ -2264,7 +2264,7 @@
                   <meta itemprop="name" content="{recently_viewed_goods.NAME}">
                   <meta itemprop="description" content="{% IF recently_viewed_goods.DESCRIPTION_SHORT %}{recently_viewed_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
                   <div class="product-image">
-                    <a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">
+                    <a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url" class="product-img">
                       <img src="{ASSETS_IMAGES_PATH}loader-min.gif" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{recently_viewed_goods.IMAGE_SMALL}{% ENDIF %}" class="lozad" alt="{recently_viewed_goods.NAME}" title="{recently_viewed_goods.NAME}"  itemprop="image">
                     </a>
                   </div>

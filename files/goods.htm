@@ -208,7 +208,10 @@
               title="Убрать из списка сравнения с другими товарами"
               href="{COMPARE_DELETE_URL}?id=GET_GOODS_MOD_ID_FROM_PAGE&amp;from={GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
               rel="nofollow"
-            ><i class="material-icons">cached</i></a>
+            >
+            <i class="material-icons">cached</i>
+            <span>Сравнить</span>
+          </a>
           {% ELSE %}
             <a class="add-compare" 
               data-action-is-add="1" 
@@ -232,7 +235,10 @@
               title="Добавить в список сравнения с другими товарами" 
               href="{COMPARE_ADD_URL}?id=GET_GOODS_MOD_ID_FROM_PAGE&amp;from={GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
               rel="nofollow"
-            ><i class="material-icons">cached</i></a>
+            >
+            <i class="material-icons">cached</i>
+            <span>Сравнить</span>
+          </a>
           {% ENDIF %}
           {% ENDIF %}
           <!-- /END Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->   
@@ -260,7 +266,10 @@
               data-tooltip="Убрать из избранного"
               href="{FAVORITES_DELETE_URL}?id={GOODS_MOD_ID}&amp;return_to={CURRENT_URL | urlencode}"
               rel="nofollow"
-            ><i class="material-icons-outlined">favorite_border</i></a>
+            >
+            <i class="material-icons-outlined">favorite_border</i>
+            <span>Избранное</span>
+          </a>
           {% ELSE %}
             <a class="add-wishlist"
               data-action-is-add="1"
@@ -283,7 +292,10 @@
               data-tooltip="В Избранное"
               title="Добавить в избранное" href="{FAVORITES_ADD_URL}?id={GOODS_MOD_ID}&amp;return_to={CURRENT_URL | urlencode}"
               rel="nofollow"
-            ><i class="material-icons-outlined">favorite_border</i></a>
+            >
+            <i class="material-icons-outlined">favorite_border</i>
+            <span>Избранное</span>
+          </a>
           {% ENDIF %}                   
         </div>   
         <form action="{CART_ADD_GOODS_MODIFICATION_URL}" method="post" class="goodsDataForm">
@@ -339,8 +351,8 @@
           <div class="add-to-box actions f-fix {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}add-to-form{% ENDIF %}" >
             <input type="hidden" name="form[goods_mod_id]" value="{GOODS_MOD_ID}" class="goodsDataMainModificationId" />
             <!-- Добавление товара в корзину -->
-            <div class="add-to-cart" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && GOODS_MOD_REST_VALUE=0 %}style="display:none;"{% ENDIF %}>
-              <!-- Выводится в окне покупки товара с модификацией -->
+            <div class="add-to-cart {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && GOODS_MOD_REST_VALUE=0 %}_hide{% ENDIF %}">
+              <!-- Выводится только в окне покупки товара с модификацией -->
               {% IF ONLY_BODY %}
                 <div class="qty-wrap">
                   <div class="qty-set">
@@ -351,15 +363,20 @@
                 </div>
                 <button type="submit" class="add-cart button" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину"><span>В корзину</span></button>
                 <button type="submit" class="add-cart quick button _outline" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину"><span>Купить в 1 клик</span></button>
-              {% ELSE %}
-                <div class="qty-wrap" style="display: none;">
+                {% ELSE %}
+                <!-- Чтобы включить стандартный счётчик товаров замените 1 на 0 -->
+                {% IF USE_DEFAULT_COUNTER = 0 %}
+                <script>document.querySelector('.add-to-cart').classList.add('_nowrap')</script>
+                <div class="qty-wrap">
                   <div class="qty-set">
                     <a href="javascript:void(0)" class="qty-plus unselectable" title="Увеличить"><i class="material-icons">add</i></a></a>
                     <input type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" title="Количество" class="inputText quantity" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off">
                     <a href="javascript:void(0)" class="qty-minus unselectable" title="Уменьшить"><i class="material-icons">remove</i></a></a>
                   </div>
                 </div>  
-                <button style="display: none;" type="submit" class="add-cart button" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину"><span>В корзину</span></button>            
+                <button type="submit" class="add-cart button" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину"><span>В корзину</span></button>            
+                <button type="submit" class="add-cart quick button _outline" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину"><span>Купить в 1 клик</span></button>
+                {% ELSE %}
                 <div class="add-cart-block">
                   <a href="/cart" class="goods-cart {% IF GOODS_MOD_NB_GOODS_IN_CART %}_show{%ENDIF%}" >
                     <span class="goods-cart-total">
@@ -387,6 +404,7 @@
                   </button>
                 </div>
                 <button type="submit" class="add-cart quick button _outline" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину"><span>Купить в 1 клик</span></button>
+                {% ENDIF %}
               {% ENDIF %}
               <!--Нет в наличии-->
               {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}<div class="goodsDataMainModificationEmpty button" title="Уведомить" data-fancybox="" data-src="#fancybox-notify" {% IF GOODS_MOD_REST_VALUE!=0 %}style="display:none;"{% ENDIF %}><span>Уведомить</span></div>{% ENDIF %}
@@ -712,7 +730,7 @@
                             Вы приобрели товар? Поделитесь своим мнением с другими и возможно вы поможете кому-то сделать правильный выбор!
                           </p>
                         </div>
-                        <button class="goodsDataOpinionNoOpinionBtn button" onclick="$('.goodsDataOpinionAddForm').addClass('_show').toggle()">
+                        <button class="goodsDataOpinionNoOpinionBtn button">
                           <span>
                             Добавить отзыв
                           </span>
@@ -844,7 +862,9 @@
                             title="Убрать из избранного"
                             href="{FAVORITES_DELETE_URL}?id={related_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                             rel="nofollow"
-                          ><i class="material-icons-outlined">favorite_border</i></a>
+                          >
+                          <i class="material-icons-outlined">favorite_border</i>
+                        </a>
                         {% ELSE %}
                           <a class="add-wishlist  product-ico"
                             data-action-is-add="1"
@@ -864,7 +884,9 @@
                             title="Добавить в избранное"
                             href="{FAVORITES_ADD_URL}?id={related_goods.MIN_PRICE_NOW_ID}&amp;return_to={CURRENT_URL | urlencode}"
                             rel="nofollow"
-                          ><i class="material-icons-outlined">favorite_border</i></a>
+                          >
+                          <i class="material-icons-outlined">favorite_border</i>
+                        </a>
                         {% ENDIF %}
                         <!-- /END Если есть возможность добавить товар в избранное -->
                         <!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
@@ -888,7 +910,9 @@
                               title="Убрать из сравнения"
                               href="{COMPARE_DELETE_URL}?id={related_goods.MIN_PRICE_NOW_ID}&amp;from={related_goods.GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
                               rel="nofollow"
-                            ><i class="material-icons">cached</i></a>
+                            >
+                            <i class="material-icons">cached</i>
+                          </a>
                           {% ELSE %}
                             <a class="add-compare  product-ico" 
                               data-action-is-add="1" 
@@ -908,7 +932,9 @@
                               title="В сравнение" 
                               href="{COMPARE_ADD_URL}?id={related_goods.MIN_PRICE_NOW_ID}&amp;from={related_goods.GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
                               rel="nofollow"
-                            ><i class="material-icons">cached</i></a>
+                            >
+                            <i class="material-icons">cached</i>
+                          </a>
                           {% ENDIF %}
                         {% ENDIF %}
                         <!-- /END Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->                          

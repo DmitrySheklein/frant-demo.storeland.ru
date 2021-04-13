@@ -26,7 +26,11 @@
           <td><em title="{order_list.STATUS_DESC}">{order_list.STATUS_NAME}</em></td> 
           <td>{%IF order_list.PAYMENT=1%}Оплачен{% ELSEIF order_list.PAYMENT=2 %}Оплачен частично{%ELSE%}Не оплачен{%ENDIF%}</td> 
           <td> 
-            <a href="{USER_HISTORY_INFO_URL}/{order_list.NUM}" class="button small">Детали</a> 
+            <a href="{USER_HISTORY_INFO_URL}/{order_list.NUM}" class="button small">
+              <span>
+                Детали
+              </span>
+            </a> 
             <!--<span class="separator">|</span> <a href="#" class="link-reorder">Повторить заказ</a>-->
           </td> 
         </tr>

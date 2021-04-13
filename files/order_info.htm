@@ -1,6 +1,97 @@
 <div class="order-info">
   {% IF FORM_NOTICE %}<div class="{% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}">{FORM_NOTICE | nl2br}</div>{% ENDIF %}
     <h3 class="title">Данные заказа</h3> 
+  <!-- Методы методы оплаты онлайн -->
+  <!-- Если заказ не оплачен и выбранный метод оплаты позволяет оплатить его онлайн, покажем форму с оплатой заказа через сайт -->
+  {% IF ORDER_PAYMENT_STEP_ENABLE %}
+    <table class="table-box">
+    <!-- Здесь появляются дополнительные данные, необходимые для заполнения клиентом -->
+    {PAYMENT_FORM_TBODY}
+    </table>
+    <style>
+      .paymentFormTbody h4 {color: #f44336}
+      .paymentFormTbodySubmitButton {font-size: 0;}
+      .paymentFormTbodySubmitButton._active {font-size: 14px;}
+    </style>
+    <script>
+      var btn = document.querySelector('.paymentFormTbodySubmitButton')
+      btn.value = 'Оплатить'
+      btn.classList.add('_active')
+      btn.classList.add('button')
+    </script>
+    <!-- Данный автоматический редирект актуален только для клиентов. Админ магазина не должен перекидываться на страницу оплаты, если хочет посмотреть заказ на витрине магазина. -->
+    {% IF USER_ID < 1 %}
+    <!-- Специальный код, который отправляет пользователя на форму оплаты сразу после перехода на страницу сформированного заказа и делает это только 1 раз. Второй и последующие разы пользователь увидит форму сформированного заказа -->
+    <script type="text/javascript">
+      // Работа с cookie файлами.
+      // Получение переменной из cookie
+      function getCookie(name) {
+        var matches = document.cookie.match(new RegExp(
+          "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+      }
+      // Установка переменной в cookie
+      function setCookie(name, value, options) {
+        options = options || {};
+        var expires = options.expires;
+        if (typeof expires == "number" && expires) {
+          var d = new Date();
+          d.setTime(d.getTime() + expires*1000);
+          expires = options.expires = d;
+        }
+        if (expires && expires.toUTCString) {
+          options.expires = expires.toUTCString();
+        }
+        value = encodeURIComponent(value);
+        var updatedCookie = name + "=" + value;
+        for(var propName in options) {
+          updatedCookie += "; " + propName;
+          var propValue = options[propName];
+          if (propValue !== true) {
+            updatedCookie += "=" + propValue;
+          }
+        }
+        document.cookie = updatedCookie;
+      }
+      // Удаление переменной из cookie
+      function deleteCookie(name, options ) {
+        options = options || {};
+        options.expires = -1;
+        setCookie(name, "", options)
+      }
+
+      // Проверка редиреклитили ли мы пользователя на страницу оплаты или нет.
+      window.onload = function(){
+        var
+          // Cookie переменная, по которой будем определять, что юзера не надо 2 раза перекидывать на страницу оплаты.
+          cookieVariable = "isRedirect2payment{ORDER_NUM}"
+          // Данные о том, был ли переход на страницу оплаты у пользвоателя или нет.
+          ,cookieData = getCookie(cookieVariable)
+          // Селектор формы оплаты
+          ,formSelector = "#paymentForm"
+          // Объект формы оплаты. Его может не быть на странице.
+          ,formObject = $(formSelector)
+        ;
+        // Если форма оплаты есть на данной странице и её можно отправить.
+        if(formObject.length > 0) {
+          // Если шапка скрыта пользователем
+          if(undefined == cookieData) {
+            // Ставим в cookie информацию о том, что пользователь по данному заказу уже был один раз отправлен на страницу оплаты заказа.
+            setCookie(cookieVariable, 1, {path: '/'});
+            // Отправляем пользвователя на страницу оплаты заказа.
+            $(formSelector).submit();
+          } else {
+            console.log(cookieVariable + " is found on user " + cookieData);
+          }
+        } else {
+          console.log("is not found on this page by selector " + formSelector);
+        }
+      }
+    </script>
+    {% ENDIF %}    
+  {% ENDIF %}
+  <!-- END методы методы оплаты онлайн -->     
     <table class="table-box table-striped">
       <tbody>
         <tr>
@@ -14,7 +105,7 @@
         <tr>
           <td class="cell1"><span>Сумма заказа:</span></td>
           <td class="cell2">
-            <span class="price {CURRENCY_CHAR_CODE}">
+            <span class="price _light {CURRENCY_CHAR_CODE}">
               {ORDER_SUM | money}
             </span>
             {% IF ORDER_SUM_WITHOUT_DISCONT != ORDER_SUM %}
@@ -103,14 +194,6 @@
         </tr>
         {% ENDFOR %}      
       </tbody>
-      
-      <!-- Методы методы оплаты онлайн -->
-      <!-- Если заказ не оплачен и выбранный метод оплаты позволяет оплатить его онлайн, покажем форму с оплатой заказа через сайт -->
-      {% IF ORDER_PAYMENT_STEP_ENABLE %}
-        <!-- Здесь появляются дополнительные данные, необходимые для заполнения клиентом -->
-        {PAYMENT_FORM_TBODY}
-      {% ENDIF %}
-      <!-- END методы методы оплаты онлайн -->
     </table>
     
   {% IFNOT order_lines_empty %}
@@ -131,7 +214,7 @@
               <span>Итого:</span>
             </td>
             <td colspan="2">
-              <span class="price {CURRENCY_CHAR_CODE}">
+              <span class="price _light {CURRENCY_CHAR_CODE}">
                 {ORDER_SUM | money}
               </span>  
             </td>
@@ -148,7 +231,7 @@
                 {% ENDIF %}
               </td>
               <td>{% IF order_lines.GOODS_URL %}<a href="{order_lines.GOODS_URL}">{order_lines.NAME}</a>{% ELSE %}{order_lines.NAME}{% ENDIF %}</td> 
-              <td class="a-left" width="130"><span class="price-excl-tax"><span class="cart-price"><span class="price {CURRENCY_CHAR_CODE}">
+              <td class="a-left" width="130"><span class="price-excl-tax"><span class="cart-price"><span class="price _light {CURRENCY_CHAR_CODE}">
                 <!-- Товарная позиция либо доставка -->
                 {% IF order_lines.TYPE_ID=1 || order_lines.TYPE_ID=2 || order_lines.TYPE_ID=3 && order_lines.MEASURE_NAME!=% %}
                   {order_lines.LINE_PRICE | money}
@@ -172,7 +255,7 @@
               </td> 
               <td class="a-left" width="100"> 
                 <span class="price-excl-tax"> 
-                <span class="cart-price"><span class="price {CURRENCY_CHAR_CODE}">{order_lines.LINE_SUM | money}</span></span></span> 
+                <span class="cart-price"><span class="price _light {CURRENCY_CHAR_CODE}">{order_lines.LINE_SUM | money}</span></span></span> 
               </td> 
             </tr> 
           {% ENDFOR %}
@@ -180,7 +263,11 @@
       </table>
     </div>
     <div class="buttons">
-      <a href="{INDEX_PAGE_URL}" class="button">Перейти на главную</a>
+      <a href="{INDEX_PAGE_URL}" class="button">
+        <span>
+          Перейти на главную
+        </span>
+      </a>
     </div>
   {% ENDIF %}
   </div>
