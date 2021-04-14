@@ -411,7 +411,7 @@ function viewed(){
       565:{items:3,margin: 30},
       768:{items:4,margin: 30},
       992:{items:5,margin: 30},
-      1200:{items:6,margin: 30}
+      1200:{items:6,margin: 28}
     },
     onInitialized : function (evt) {
       var items = evt.item.count;
@@ -1475,6 +1475,8 @@ $(function(){
 			}
 		},
 		eventtype = mobilecheck() ? 'touchstart' : 'click';
+  $('.products-container.index:not(.pdt-sale)').find('.quickviewmod, .add-cart').addClass('cbutton');
+  $('.products-ajax .products-grid').find('.quickviewmod, .add-cart').addClass('cbutton');
   $('.add-wishlist, .add-compare').addClass('cbutton');
 	[].slice.call( document.querySelectorAll( '.cbutton' ) ).forEach( function( el ) {
 		el.addEventListener( eventtype, function( ev ) {
@@ -1636,10 +1638,10 @@ function feedbackPage(){
       
       if(e.target.files.length){
         var fileName = e.target.files[0].name;
-        $btn.text(fileName);
+        $btn.find('span').text(fileName);
         $clearBtn.show()
       } else {
-        $btn.text('Выберите файл');
+        $btn.find('span').text('Выберите файл');
         $clearBtn.hide()
       }
     })
@@ -1648,7 +1650,7 @@ function feedbackPage(){
       
       if($input[0].files.length) {
         $input.val(null)
-        $('.file .button').text('Выберите файл')
+        $('.file .button').find('span').text('Выберите файл')
         $(this).hide()
       }
     })    

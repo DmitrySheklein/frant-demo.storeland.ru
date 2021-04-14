@@ -369,10 +369,10 @@ function coupons() {
     var $input = $(this);
 
     if( $input.val() ) {
-      $input.next('.coupon_clear').addClass('active')
+      $input.parent().find('.coupon_clear').addClass('active')
       $submitBtn.removeClass('_disabled')
     } else {
-      $input.next('.coupon_clear').removeClass('active')
+      $input.parent().find('.coupon_clear').removeClass('active')
       $submitBtn.addClass('_disabled')
     }
   })
@@ -621,7 +621,7 @@ function quickOrderScripts() {
           return false;
         })
         DeliveryDescription = $('input.deliveryRadio:checked').next('div').html();
-        $('.currentDeliveryDescription').html(DeliveryDescription);
+        $('.currentDeliveryDescription').html(DeliveryDescription).toggleClass('_hide', !DeliveryDescription.length);;
         PaymentDescription = $('input.paymentRadio:checked').next('div').html();
         $('.currentPaymentDescription').html(PaymentDescription);
         if ($('input.paymentRadio:checked').next('div').length && $('input.paymentRadio:checked').next('div').html().trim() === '') {
@@ -667,7 +667,7 @@ function quickOrderScripts() {
         return false;
       });
       DeliveryDescription = $('input.deliveryRadio:checked').next('div').html();
-      $('.currentDeliveryDescription').html(DeliveryDescription);
+      $('.currentDeliveryDescription').html(DeliveryDescription).toggleClass('_hide', !DeliveryDescription.length);
       PaymentDescription = $('input.paymentRadio:checked').next('div').html();
       $('.currentPaymentDescription').html(PaymentDescription);
       if ($('input.paymentRadio:checked').next('div').length && $('input.paymentRadio:checked').next('div').html().trim() === '') {

@@ -21,18 +21,17 @@
 }
 .feedbackForm .file .button {display:inline-block;vertical-align: top;}
 .clear-file {
-  display:inline-block;
+  display: inline-block;
   vertical-align: top;
   position: relative;
   z-index: 1;
-  height: 36px;
+  height: 40px;
   border: 1px solid #caa462;
   border-left: 0;
   padding: 9px;
-  padding-left: 20px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  margin-left: -15px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-left: -3px;
 }
 .clear-file:hover {
   background: #caa462;
@@ -42,3 +41,4 @@
   position: relative;
   z-index: 2;
 }
+.clear-file .material-icons {font-size: 20px;}

@@ -40,9 +40,15 @@
   transition: .1s all;
   border-radius: 0;
 }
-.product-view .product-action i {
+.product-view .product-action span {
+  display: inline-block;
   vertical-align: middle;
-  font-size: 17px;
+}
+.product-view .product-action i {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 19px;
+  margin-right: 5px;
 }
 .product-view .product-action a.add-compare {
   margin-right: 25px;
@@ -144,7 +150,7 @@
 .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox {width: 100%}
 .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty select {display: block;width: 100%;padding: 5px;border: 1px solid rgb(206 197 191 / 50%);cursor: pointer;font-size: 16px}
 .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty select:hover {border-color: #b1bfc8}
-.product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox__select {
+/* .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox__select {
   background: none;
   border-color: rgb(206 197 191 / 30%);
   color: #cec5bf;
@@ -174,11 +180,13 @@
   color: #201e22;
   background-color: #e7e2df;
 }
-.product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox.opened .jq-selectbox__select {border-color: transparent;}
+
 .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox.opened .jq-selectbox__dropdown {border-color: transparent;border: none;border-radius: 0;    width: 100%!important;}
 .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox__trigger-arrow {
-  top: 15px;
   background-image: url("data:image/svg+xml,%3Csvg fill='%23cec5bf' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 451.846 451.847'%3E%3Cpath d='M345.441 248.292L151.154 442.573c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744L278.318 225.92 106.409 54.017c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.287 194.284c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373z'/%3E%3C/svg%3E")
+} */
+.product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox__trigger-arrow {
+  top: 15px;
 }
 .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty ::-webkit-scrollbar-track {border-radius: 0;background-color: #edf1f4}
 .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty ::-webkit-scrollbar {width: 0px;height: 0px;background-color: #f5f5f5}
@@ -210,7 +218,7 @@
 .product-view .product-order .add-to-box .add-to-cart .button {height: 50px;line-height: 50px;font-size: 16px;padding: 0 10px;vertical-align: middle;max-width: 100%;}
 .product-view .product-order .add-to-box .add-to-cart .quick {margin-left: auto;;width: calc(50% - 7.5px);    max-width: 50%;}
 .product-view .product-order .add-to-box .add-to-cart .more {display: none;margin-top: 10px}
-.product-view .product-order .add-to-box .add-to-cart .goodsDataMainModificationEmpty {display: inline-block;vertical-align: middle;width: 100%;max-width: 100%;height: 50px;line-height: 50px;text-align: center;padding: 0 17px;margin: 0px;font-size: 14px;border: none;cursor: default;border-radius: 0px;cursor: pointer;}
+.product-view .product-order .add-to-box .add-to-cart .goodsDataMainModificationEmpty {display: inline-block;vertical-align: middle;width: 100%;max-width: 100%;height: 50px;line-height: 50px;text-align: center;padding: 0 17px;margin: 0px;font-size: 16px;border: none;cursor: default;border-radius: 0px;cursor: pointer;}
 
 .product-view .product-order .add-to-box .add-to-cart._nowrap {
   flex-wrap: nowrap;
@@ -336,10 +344,13 @@
   text-align: left;
   justify-content: space-between;  
 }
+.tab-content .table-box .table-row:nth-child(2),
+.tab-content .table-box .table-row:first-child {    
+  border-top: 1px solid rgb(206 197 191 / 20%);
+}  
 .tab-content .table-box .table-row {
   width: calc(50% - 15px);
   padding: 0;
-  border-top: 1px solid rgb(206 197 191 / 20%);
   border-bottom: 1px solid rgb(206 197 191 / 20%);
 }
 .tab-content .table-box .cell2 {
