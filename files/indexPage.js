@@ -280,8 +280,7 @@ function indexPage() {
       mouseDrag: true,
       touchDrag: true,
       pullDrag: true,
-      responsiveClass:true,
-      
+      responsiveClass:true,      
       responsive:{
         0:{items:1, autoWidth: false},
         481:{items:2, autoWidth: false},
@@ -291,6 +290,26 @@ function indexPage() {
         1199:{items: 3, autoWidth: true,}
       }
     });
+    // Форматирование даты новости
+    $('.block-news').find('.date').each(function(){
+      var dateContent = $(this).data('date');
+      var date = new Date(dateContent);
+      console.log(
+        dateContent,date
+      );
+      var options = {
+        month: 'long',
+        day: 'numeric',
+        timezone: 'UTC',
+      };
+      var dateString = date.toLocaleString("ru", options) + " " + date.getFullYear();
+      console.log(
+        dateString
+      );
+      if(dateString !== 'Invalid Date NaN'){
+        $(this).text(dateString)
+      }
+    })    
     // Слайдер новостей (группы)
     $("#news .owl-carousel").owlCarousel({
       margin: 10,

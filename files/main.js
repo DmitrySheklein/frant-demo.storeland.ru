@@ -423,7 +423,7 @@ function tippyViewBtn() {
   $(function () {
     tippy('.view-mode-btn', {
       theme: 'mytheme',
-      onShow(instance) {
+      onShow: function(instance) {
         var $link = $(instance.reference);
         var titleName = $link.attr('title');
         $link.removeAttr('title');
@@ -551,7 +551,7 @@ function addto() {
   $(function(){
     tippy('.add-compare', {
       theme: 'mytheme',
-      onShow(instance) {
+      onShow: function(instance) {
         var $link = $(instance.reference);
         var title = $link.hasClass('added') ? $link.data('del-tooltip') : $link.data('add-tooltip');
 
@@ -563,7 +563,7 @@ function addto() {
       theme: 'mytheme',   
       // placement: 'top-end',      
       placement: 'top',      
-      onShow(instance) {
+      onShow: function(instance) {
         var $link = $(instance.reference);
         var isLogin = $('.header-loginLink').hasClass('_is-login');
 
@@ -887,7 +887,7 @@ function quickOrder(formSelector) {
       $.fancybox.open(data, {
         keyboard: false,
         baseClass: "_quickOrder",
-        afterShow(){
+        afterShow: function(){
           var loaded = loadFile('cartPage', 'css') && loadFile('cartPage', 'js');
 
           if(loaded) {

@@ -2579,7 +2579,7 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 
 /*! Новости ***/
 .news-box .htmlDataBlock a {text-decoration: underline;}
-.news-box .news {border-bottom: 1px solid #f0f0f0;margin-bottom: 20px;}
+.news-box .news {border-bottom: 1px solid rgb(206 197 191 / 30%);margin-bottom: 20px;}
 .news-box .news:last-child {margin-bottom: 0;}
 .news-box .news .title {margin-bottom: 10px;}
 .news-box .news .title a:hover {color: #caa462;}

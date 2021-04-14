@@ -448,6 +448,17 @@
 .goodsDataOpinionAddTable .generally .radio:first-of-type {
   margin-right: 15px;
 }
+.generally-label .material-icons-outlined {
+  font-size: 19px;
+}
+.generally-label {
+  user-select: none;
+  cursor: pointer;
+  transition: all .3s;
+}
+.generally-radio:checked + .generally-label {
+  color: #caa462;
+}
 .goodsDataOpinionAddTable .goodsDataOpinionCaptcha {float: left;display: flex; align-items: center;}
 .goodsDataOpinionAddTable .goodsDataOpinionCaptcha .input {max-width: 120px;margin-right: 20px}
 .goodsDataOpinionAddTable .goodsDataOpinionCaptcha .goodsDataOpinionCaptchaRefresh {margin-left: 15px;;padding: 5px;cursor: pointer}

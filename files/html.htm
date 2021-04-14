@@ -2163,7 +2163,7 @@
               <div class="preloader"><span class="content-loading"></span></div>
               {% IFNOT news_list_shop_empty %}
               <div id="news_list_shop" class="tabs-content active">
-                <div class="block-news news_list_shop owl-carousel">
+                <div class="block-news _group news_list_shop owl-carousel">
                   <!-- Если есть список новости магазина и если в тарифном плане подключен модуль новостей -->
                   {% IFNOT news_list_shop_empty %}
                     {% FOR news_list_shop %}
@@ -2171,8 +2171,8 @@
                         <div class="post-content">
                           <a class="news-image-wrap" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;"><img class="news-image lozad" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}"></a>
                           <div class="title"><a href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">{news_list_shop.TITLE}</a></div>
-                          {% IF news_list_shop.SHOW_TIME %}<div class="date">{news_list_shop.TIME | date("d")}.{news_list_shop.TIME | date("m")}.{news_list_shop.TIME | date("Y")}</div>{% ENDIF %}
-                          <a href="{news_list_shop.URL}" class="button button2">Подробнее<span class="material-icons-outlined">arrow_right_alt</span></a>
+                          {% IF news_list_shop.SHOW_TIME %}<div class="date" data-date='{news_list_shop.TIME | date("m")}.{news_list_shop.TIME | date("d")}.{news_list_shop.TIME | date("Y")}'>{news_list_shop.TIME | date("d")}.{news_list_shop.TIME | date("m")}.{news_list_shop.TIME | date("Y")}</div>{% ENDIF %}
+                          <a href="{news_list_shop.URL}" class="button button2"><span>Подробнее</span><span class="material-icons-outlined">arrow_right_alt</span></a>
                         </div>
                       </div>
                     {% ENDFOR %}
@@ -2183,7 +2183,7 @@
               {% ENDIF %}
               {% IFNOT news_list_articles_empty %}
               <div id="news_list_articles" class="tabs-content {% IF news_list_shop_empty=1 %}active{% ENDIF %}">
-                <div class="block-news news_list_article owl-carousel">
+                <div class="block-news _group news_list_article owl-carousel">
                   <!-- Если есть список статей магазина и если в тарифном плане подключен модуль новостей -->
                   {% IFNOT news_list_articles_empty && TARIFF_FEATURE_NEWS %}
                     {% FOR news_list_articles %}
@@ -2191,8 +2191,8 @@
                         <div class="post-content">
                           <a class="news-image-wrap" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;"><img class="news-image lozad" data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}"></a>
                           <div class="title"><a href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">{news_list_articles.TITLE}</a></div>
-                          {% IF news_list_articles.SHOW_TIME %}<div class="date">{news_list_articles.TIME | date("d")}.{news_list_articles.TIME | date("m")}.{news_list_articles.TIME | date("Y")}</div>{% ENDIF %}
-                          <a href="{news_list_articles.URL}" class="button button2">Подробнее<span class="material-icons-outlined">arrow_right_alt</span></a>
+                          {% IF news_list_articles.SHOW_TIME %}<div class="date" data-date='{news_list_articles.TIME | date("m")}.{news_list_articles.TIME | date("d")}.{news_list_articles.TIME | date("Y")}'>{news_list_articles.TIME | date("d")}.{news_list_articles.TIME | date("m")}.{news_list_articles.TIME | date("Y")}</div>{% ENDIF %}
+                          <a href="{news_list_articles.URL}" class="button button2"><span>Подробнее</span><span class="material-icons-outlined">arrow_right_alt</span></a>
                         </div>
                       </div>
                     {% ENDFOR %}
@@ -2203,7 +2203,7 @@
               {% ENDIF %}
               {% IFNOT news_list_mass_media_empty %}
               <div id="news_list_mass_media" class="tabs-content {% IF news_list_shop_empty=1 && news_list_articles_empty=1 %}active{% ENDIF %}">
-                <div class="block-news news_list_mass_media owl-carousel">
+                <div class="block-news _group news_list_mass_media owl-carousel">
                   <!-- Если есть список материалов СМИ магазина и если в тарифном плане подключен модуль новостей -->
                   {% IFNOT news_list_mass_media_empty && TARIFF_FEATURE_NEWS %}
                     {% FOR news_list_mass_media %}
@@ -2211,8 +2211,8 @@
                         <div class="post-content">
                           <a class="news-image-wrap" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;"><img class="news-image lozad" data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}"></a>
                           <div class="title"><a href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">{news_list_mass_media.TITLE}</a></div>
-                          {% IF news_list_mass_media.SHOW_TIME %}<div class="date">{news_list_mass_media.TIME | date("d")}.{news_list_mass_media.TIME | date("m")}.{news_list_mass_media.TIME | date("Y")}</div>{% ENDIF %}
-                          <a href="{news_list_mass_media.URL}" class="button button2">Подробнее<span class="material-icons-outlined">arrow_right_alt</span></a>
+                          {% IF news_list_mass_media.SHOW_TIME %}<div class="date" data-date='{news_list_mass_media.TIME | date("m")}.{news_list_mass_media.TIME | date("d")}.{news_list_mass_media.TIME | date("Y")}'>{news_list_mass_media.TIME | date("d")}.{news_list_mass_media.TIME | date("m")}.{news_list_mass_media.TIME | date("Y")}</div>{% ENDIF %}
+                          <a href="{news_list_mass_media.URL}" class="button button2"><span>Подробнее</span><span class="material-icons-outlined">arrow_right_alt</span></a>
                         </div>
                       </div>
                     {% ENDFOR %}
@@ -2241,7 +2241,7 @@
                     <div class="post-content">
                       <a class="news-image-wrap lozad" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;" data-background-image="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}"></a>
                       <div class="post-body">
-                        {% IF news_list_all.SHOW_TIME %}<div class="date">{news_list_all.TIME | date("d")}.{news_list_all.TIME | date("m")}.{news_list_all.TIME | date("Y")}</div>{% ENDIF %}
+                        {% IF news_list_all.SHOW_TIME %}<div class="date" data-date='{news_list_all.TIME | date("m")}.{news_list_all.TIME | date("d")}.{news_list_all.TIME | date("Y")}'>{news_list_all.TIME | date("d")}.{news_list_all.TIME | date("m")}.{news_list_all.TIME | date("Y")}</div>{% ENDIF %}
                         <div class="title"><a href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">{news_list_all.TITLE}</a></div>
                         <div class="description"><p>{news_list_all.TEXT_SHORT}</p></div> 
                         <a href="{news_list_all.URL}" class="news-button">Подробнее<span class="news-button-icon material-icons-outlined">arrow_right_alt</span></a>
@@ -2600,38 +2600,42 @@
     </div>
     
     <!-- Политика конфиденциальности в модальном окне -->
-    <div id="fancybox-pp" class="modal" style="display:none">
-      <div class="modal-body">
-        <h2>Политика конфиденциальности</h2>
-        <br/>
-        <div>
-          <h4>Общие положения</h4>
-          <p>Некоторые объекты, размещенные на сайте, являются интеллектуальной собственностью компании StoreLand. Использование таких объектов установлено действующим законодательством РФ.</p>
-          <p>На сайте StoreLand имеются ссылки, позволяющие перейти на другие сайты. Компания StoreLand не несет ответственности за сведения, публикуемые на этих сайтах и предоставляет ссылки на них только в целях обеспечения удобства для посетителей своего сайта.</p>
-        </div>
-        <br/>
-        <div>
-          <h4>Личные сведения и безопасность</h4>
-          <p>Компания StoreLand гарантирует, что никакая полученная от Вас информация никогда и ни при каких условиях не будет предоставлена третьим лицам, за исключением случаев, предусмотренных действующим законодательством Российской Федерации.</p>
-          <p>В определенных обстоятельствах компания StoreLand может попросить Вас зарегистрироваться и предоставить личные сведения. Предоставленная информация используется исключительно в служебных целях, а также для предоставления доступа к специальной информации.</p>
-          <p>Личные сведения можно изменить, обновить или удалить в любое время в разделе "Аккаунт" > "Профиль".</p>
-          <p>Чтобы обеспечить Вас информацией определенного рода, компания StoreLand с Вашего явного согласия может присылать на указанный при регистрации адрес электронный почты информационные сообщения. В любой момент Вы можете изменить тематику такой рассылки или отказаться от нее.</p>
-          <p>Как и многие другие сайты, StoreLand использует технологию cookie, которая может быть использована для продвижения нашего продукта и измерения эффективности рекламы. Кроме того, с помощь этой технологии StoreLand настраивается на работу лично с Вами. В частности без этой технологии невозможна работа с авторизацией в панели управления.</p>
-          <p>Сведения на данном сайте имеют чисто информативный характер, в них могут быть внесены любые изменения без какого-либо предварительного уведомления.</p>
-          <p>Чтобы отказаться от дальнейших коммуникаций с нашей компанией, изменить или удалить свою личную информацию, напишите нам через форму обратной связи</p>
+    <noindex>
+      <div id="fancybox-pp" class="modal" style="display:none">
+        <div class="modal-body">
+          <h2>Политика конфиденциальности</h2>
+          <br/>
+          <div>
+            <h4>Общие положения</h4>
+            <p>Некоторые объекты, размещенные на сайте, являются интеллектуальной собственностью компании StoreLand. Использование таких объектов установлено действующим законодательством РФ.</p>
+            <p>На сайте StoreLand имеются ссылки, позволяющие перейти на другие сайты. Компания StoreLand не несет ответственности за сведения, публикуемые на этих сайтах и предоставляет ссылки на них только в целях обеспечения удобства для посетителей своего сайта.</p>
+          </div>
+          <br/>
+          <div>
+            <h4>Личные сведения и безопасность</h4>
+            <p>Компания StoreLand гарантирует, что никакая полученная от Вас информация никогда и ни при каких условиях не будет предоставлена третьим лицам, за исключением случаев, предусмотренных действующим законодательством Российской Федерации.</p>
+            <p>В определенных обстоятельствах компания StoreLand может попросить Вас зарегистрироваться и предоставить личные сведения. Предоставленная информация используется исключительно в служебных целях, а также для предоставления доступа к специальной информации.</p>
+            <p>Личные сведения можно изменить, обновить или удалить в любое время в разделе "Аккаунт" > "Профиль".</p>
+            <p>Чтобы обеспечить Вас информацией определенного рода, компания StoreLand с Вашего явного согласия может присылать на указанный при регистрации адрес электронный почты информационные сообщения. В любой момент Вы можете изменить тематику такой рассылки или отказаться от нее.</p>
+            <p>Как и многие другие сайты, StoreLand использует технологию cookie, которая может быть использована для продвижения нашего продукта и измерения эффективности рекламы. Кроме того, с помощь этой технологии StoreLand настраивается на работу лично с Вами. В частности без этой технологии невозможна работа с авторизацией в панели управления.</p>
+            <p>Сведения на данном сайте имеют чисто информативный характер, в них могут быть внесены любые изменения без какого-либо предварительного уведомления.</p>
+            <p>Чтобы отказаться от дальнейших коммуникаций с нашей компанией, изменить или удалить свою личную информацию, напишите нам через форму обратной связи</p>
+          </div>
         </div>
       </div>
-    </div>
+    </noindex>
     <!-- /END Политика конфиденциальности в модальном окне -->
     
     <!-- Модальное окно -->
-    <div id="fancybox-popup" style="display:none">
-      <div class="popup">
-        <h2 class="popup-title">Модальное окно</h2>
-        <p>Здесь может быть произвольный текст или акция</p>
-        <button class="button" onclick="$.fancybox.close()">Продолжить</button>
+    <noindex>
+      <div id="fancybox-popup" style="display:none">
+        <div class="popup">
+          <h2 class="popup-title">Модальное окно</h2>
+          <p>Здесь может быть произвольный текст или акция</p>
+          <button class="button" onclick="$.fancybox.close()">Продолжить</button>
+        </div>
       </div>
-    </div>
+    </noindex>
     <!-- /END Модальное окно -->
     
   </div>
@@ -2679,6 +2683,14 @@
     </div>
   </div>
 
+  {% IF user_agent_ie || user_agent_mozilla %}
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign"></script>
+  <script>
+    // Picture element HTML5 shiv
+    document.createElement( "picture" );
+  </script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js" async></script>
+  {% ENDIF %}  
   
   <!-- Подключаемые шрифты -->  
   <link rel="stylesheet" href="/design/fonts.css">  
@@ -2692,13 +2704,6 @@
   <script defer src="{ASSETS_JS_PATH}main.js?design=frant"></script>
   <script async src="{ASSETS_JS_PATH}smart-search.js?design=frant"></script>
 
-  {% IF user_agent_ie %}
-  <script>
-    // Picture element HTML5 shiv
-    document.createElement( "picture" );
-  </script>  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js" async></script>
-  {% ENDIF %}  
   <!-- В случае их возникновения JS ошибок, отображаем их владельцу магазина для возможности отладки. Покупатели сообщений о JS ошибках не видят -->
   {% IF JAVASCRIPT_BUG_HUNTING_URL %}
     <script src="{JAVASCRIPT_BUG_HUNTING_URL}"></script>

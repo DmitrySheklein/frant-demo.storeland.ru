@@ -168,7 +168,7 @@ github.com/t1m0n/air-datepicker
 .cartTable tbody tr td.image {text-align: center;border-right: 0}
 .cartTable tbody tr td.name {text-align: left;border-left: 0}
 .cartTable tbody tr td.name a {display: block;font-size: 16px;line-height: 20px;margin-bottom: 10px;max-height: 53px;overflow: hidden}
-.cartTable tbody tr td.name a:hover {color: #f4605d}
+.cartTable tbody tr td.name a:hover {color: #caa462}
 .cartTable tbody tr td.name .art {margin-bottom: 5px}
 .cartTable tbody tr .cart-qty .qty-wrap {display: inline-block;vertical-align: middle;margin-right: 0;margin-bottom: 10px;    height: 40px;line-height: 40px;}
 .cartTable tbody tr .cart-qty-mesure {display: block}
