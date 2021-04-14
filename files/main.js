@@ -1194,7 +1194,7 @@ function removeFromCart(e){
         var oldCount = cartCount
         var oldQuantity = quantity;
         var newCount = oldCount - oldQuantity;
-        var $cartBlock = $('.cart');
+        var $cartBlock = $('.cart');   
         
         if(newCount === 0){
           $('.header-iconsItem._cart .header-iconsItem-icon').html("0").attr('data-count', 0);
@@ -1204,18 +1204,21 @@ function removeFromCart(e){
           $cartBlock.find('.dropdown-content._cart .cart-products-header').hide();
           $cartBlock.find('.dropdown-content._cart .subtotal').hide();
           $cartBlock.find('.dropdown-content._cart .actions').hide();
-          $cartBlock.find('.dropdown-content._cart .empty').show();
+          $cartBlock.find('.dropdown-content._cart .empty').show();     
         } else {
           $('.header-iconsItem._cart .header-iconsItem-icon').html(newCount).attr('data-count', newCount);
           $cartBlock.find('.count').text(newCount).attr('data-count',newCount);
           $cartBlock.find('.header-toolsContent').find('.price').html($(d).find('.total-sum').html());
-          $cartBlock.find('.total-sum').html($(d).find('.total-sum').html()); 
-          
-          var $goodsCart = $('.goods-cart');
-          var $goodsBtn = $('.add-cart._goods-page');
+          $cartBlock.find('.total-sum').html($(d).find('.total-sum').html());
+        }
 
+        var $goodsCart = $('.goods-cart');
+        var $goodsBtn = $('.add-cart._goods-page');     
+        var goodsCartModId = String($goodsCart.data('mod-id'));
+
+        if(goodsModId === goodsCartModId){
           $goodsCart.removeClass('_show');
-          $goodsBtn.find('span').text('В корзину')          
+          $goodsBtn.find('span').text('В корзину');     
         }
       }
     })

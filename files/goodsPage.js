@@ -437,6 +437,7 @@ function goodsMods($container) {
           var newCount = $countBlock.text();
           var measureName = $countBlock.find('.measure-name').text();
 
+          $goodsCart.data('mod-id', modificationId)
           if (newCount){
             var $goodsCartCount = $('.goods-cart').find('.goods-cart-count');
             $goodsCartCount.text(newCount);

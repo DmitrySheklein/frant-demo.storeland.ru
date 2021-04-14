@@ -378,7 +378,7 @@
                 <button type="submit" class="add-cart quick button _outline" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину"><span>Купить в 1 клик</span></button>
                 {% ELSE %}
                 <div class="add-cart-block">
-                  <a href="/cart" class="goods-cart {% IF GOODS_MOD_NB_GOODS_IN_CART %}_show{%ENDIF%}" >
+                  <a href="/cart" class="goods-cart {% IF GOODS_MOD_NB_GOODS_IN_CART %}_show{%ENDIF%}" data-mod-id="{GOODS_MOD_ID}">
                     <span class="goods-cart-total">
                       {% IF GOODS_MOD_NB_GOODS_IN_CART %}
                         В корзине
