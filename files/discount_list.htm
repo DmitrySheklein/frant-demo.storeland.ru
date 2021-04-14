@@ -4,30 +4,39 @@
   <div class="message attention">Акций в нашем магазине пока не проводилось</div>
 {% ELSE %}
   <!-- Список акций -->
-  <div class="discount-box f-fix">
+  <div class="discount-list row">
     {% FOR promotion_campaign %}
-      <div class="content f-fix">
-        <div class="image col-md-5 col-xs-12">
-          <a href="{promotion_campaign.URL | url_amp}" title="{promotion_campaign.NAME}">
-            <!-- <img class="goods-cat-image-medium" src="{ASSETS_IMAGES_PATH}discount.svg" alt="{promotion_campaign.NAME}" /> -->
-            <img class="goods-cat-image-medium" src="{ASSETS_IMAGES_PATH}discount.png" alt="{promotion_campaign.NAME}" />
-          </a>
-        </div> 
-        <div class="desc col-md-7 col-xs-12"> 
-          <h3><a href="{promotion_campaign.URL | url_amp}" title="{promotion_campaign.NAME}">{promotion_campaign.NAME}</a></h3>
-          <table class="promotionCampaignInfo table-box table-striped">
-            <tr>
-              <td class="cell1"><b>Сроки проведения:</b></td>
-              <td class="cell2">{promotion_campaign.BEGINNING_TIME | date("d.m.Y")} - {promotion_campaign.EXPIRED_TIME | date("d.m.Y")}</td>
-            </tr>
-            <tr>
-              <td class="cell1"><b>Размер скидки:</b></td>
-              <td class="cell2">{promotion_campaign.PERCENTAGE} %</td>
-            </tr>
-          </table>
-          {% IF promotion_campaign.DESCRIPTION_SHORT %}<div class="blockquote">{promotion_campaign.DESCRIPTION_SHORT | nl2br}</div>{% ENDIF %}
-          <a href="{promotion_campaign.URL | url_amp}" class="button button2"><span>Подробнее</span></a>
-        </div>
+      <div class="discount-item col-md-4 col-sm-4 col-xs-6 col-smb-12">
+        <a class="discount-item-inner" href="{promotion_campaign.URL | url_amp}" title="{promotion_campaign.NAME}"> 
+          <div class="discount-head">
+            <span class="discount-percent">
+              -{promotion_campaign.PERCENTAGE}%
+            </span>
+            <p class="discount-name">
+              {promotion_campaign.NAME}
+            </p>
+          </div>
+          {% IF promotion_campaign.IS_WORK %}
+            <div class="discount-timer" end="{promotion_campaign.EXPIRED_TIME | date('m/d/Y H:i:s')}" now="{CURRENT_TIME | date('m/d/Y H:i:s')}" title="Акция до {promotion_campaign.EXPIRED_TIME | date('d.m.Y')}">
+              <div class="discount-timer-counter-item days">
+                <span>00</span>д
+              </div>
+              <div class="discount-timer-counter-item hours">
+                <span>00</span>ч
+              </div>
+              <div class="discount-timer-counter-item minutes">
+                <span>00</span>м
+              </div>
+              <div class="discount-timer-counter-item seconds">
+                <span>00</span>с
+              </div>  
+            </div>
+            {%ELSE%}
+            <div class="discount-off">
+              Акция завершена
+            </div>
+          {%ENDIF%}
+        </a>
       </div>
     {% ENDFOR promotion_campaign %}
   </div>

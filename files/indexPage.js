@@ -303,9 +303,7 @@ function indexPage() {
         timezone: 'UTC',
       };
       var dateString = date.toLocaleString("ru", options) + " " + date.getFullYear();
-      console.log(
-        dateString
-      );
+      
       if(dateString !== 'Invalid Date NaN'){
         $(this).text(dateString)
       }

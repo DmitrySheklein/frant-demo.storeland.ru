@@ -2624,16 +2624,57 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 .page-content .search h4 {margin-bottom: 10px;}
 
 /*! Акции ***/
-.discount-box {text-align: center;}
-.discount-box h3 {margin-bottom: 10px;}
-.discount-box h3 span {text-decoration: underline;}
-.discount-box h4 {text-transform: none;margin-bottom: 15px;}
-.discount-box h4 span {text-transform: uppercase;}
-.discount-box .content {padding:15px 0 30px;border-bottom: 1px solid rgb(206 197 191 / 20%);}
-.discount-box .content:first-child {padding:0 0 30px 0;}
-.discount-box .content:last-child {border: 0;padding-bottom: 0;}
-.discount-box .content .image img {display: block;margin: 0 auto;max-width: 100%;}
-.discount-box .content .desc .button {margin: 0 auto;}
+.discount-item {margin-bottom: 30px;}
+.discount-item-inner {
+  display: block;
+}
+
+.discount-head {
+  padding: 30px;
+  background: rgba(0,0,0,.2);
+  border: 1px solid transparent;
+  transition: all .3s;
+}
+.discount-item:hover .discount-head {
+background: rgba(0,0,0,.5);
+border: 1px solid rgb(206 197 191 / 50%);
+}
+.discount-timer {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  text-align: center;
+  background-color: #caa462;
+}
+.discount-timer-counter-item::after {
+  content: '•';
+  display: inline-block;
+  margin-right: 4px;
+}
+.discount-timer-counter-item:last-child:after {
+  display: none;
+}
+.discount-percent {
+  display: block;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  color: #caa462;
+}
+.discount-name {
+  margin-bottom: 0;
+  text-align: center;
+}
+.discount-off {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: rgb(0 0 0 / 50%);
+} 
 
 /*! Новости ***/
 .news-box .htmlDataBlock a {text-decoration: underline;}
@@ -2671,7 +2712,6 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 
 @media all and (max-width: 991px) {
 .quickview {display: none !important;}
-.discount-box .content .image {margin-bottom: 15px;}
 }
 
 @media all and (max-width: 767px) {

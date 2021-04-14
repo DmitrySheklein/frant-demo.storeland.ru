@@ -1656,3 +1656,38 @@ function feedbackPage(){
     })    
   })
 }
+
+  // Отсчет даты до окончания акции
+  counterDiscountDate();
+  function counterDiscountDate() {
+    $('.discount-timer').each(function(){
+      var $timerBlock = $(this);
+      // Устанавливаем дату обратного отсчета ММ-ДД-ГГ
+      var end = $timerBlock.attr('end');
+      if(!end) return;
+      var countDownDate = new Date(end).getTime();
+      function drawCounter() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);     
+        // Вывод
+        $timerBlock.find('.days span').text(days);
+        $timerBlock.find('.hours span').text(hours);
+        $timerBlock.find('.minutes span').text(minutes);
+        $timerBlock.find('.seconds span').text(seconds);
+        // Счетчик завершен
+        if (distance < 0) {
+          clearInterval(x);
+          $timerBlock.find('span').text("0");
+        }
+      }
+      // Обновление счетчика каждую секунду
+      var x = setInterval(drawCounter, 1000);      
+      drawCounter();
+
+    })
+
+  }
