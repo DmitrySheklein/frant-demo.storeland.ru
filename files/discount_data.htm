@@ -96,7 +96,7 @@
                   <a class="quickview" href="{goods.URL_MIN_PRICE_NOW}" title="Быстрый просмотр &laquo;{goods.NAME}&raquo;" data-tooltip="Быстрый просмотр" rel="nofollow">
                     <span>Быстрый просмотр</span>
                   </a>
-          
+                  <link itemprop="image" href="{goods.IMAGE_MEDIUM}" />
                   <a href="{goods.URL_MIN_PRICE_NOW | url_amp}"  class="product-img mouseHoverImgCarousel">
                     {% IF goods.IMAGE_EMPTY %}
                     <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=frant" alt="{goods.NAME}" title="{goods.NAME}"  itemprop="image">
@@ -145,6 +145,9 @@
                   <div class="product-name"><a href="{goods.URL_MIN_PRICE_NOW | url_amp}" title="{goods.NAME}" itemprop="url">{goods.NAME}</a></div>
                   <div class="actions">
                     <div class="price-box" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                      <link itemprop="url" href="{goods.URL}" />
+                      <meta itemprop="priceValidUntil" content="{DATE_YEAR | plus('10')}-12-31">
+                      <meta itemprop="availability" content="{% IF goods.MAX_REST_VALUE>0 %}http://schema.org/InStock{% ELSE %}http://schema.org/OutOfStock{% ENDIF %}">                                              
                       <meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}"/>
                         {% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>goods.MIN_PRICE_NOW %}
                           <span class="price old-price {CURRENCY_CHAR_CODE}">{goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT | money_format}</span>
@@ -286,7 +289,7 @@
                   <a class="quickview" href="{goods.URL_MIN_PRICE_NOW}" title="Быстрый просмотр &laquo;{goods.NAME}&raquo;" data-tooltip="Быстрый просмотр" rel="nofollow">
                     <span>Быстрый просмотр</span>
                   </a>
-
+                  <link itemprop="image" href="{goods.IMAGE_MEDIUM}" />
                   <a href="{goods.URL_MIN_PRICE_NOW | url_amp}"  class="product-img">
                     {% IF goods.IMAGE_EMPTY %}
                     <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=frant" alt="{goods.NAME}" title="{goods.NAME}"  itemprop="image">
@@ -487,6 +490,9 @@
                   </div>
                   <div class="product-shop">
                     <div class="price-box" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                      <link itemprop="url" href="{goods.URL}" />
+                      <meta itemprop="priceValidUntil" content="{DATE_YEAR | plus('10')}-12-31">
+                      <meta itemprop="availability" content="{% IF goods.MAX_REST_VALUE>0 %}http://schema.org/InStock{% ELSE %}http://schema.org/OutOfStock{% ENDIF %}">                                              
                       <meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}"/>
                         {% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>goods.MIN_PRICE_NOW %}
                           <span class="price old-price {CURRENCY_CHAR_CODE}">{goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT | money_format}</span>
