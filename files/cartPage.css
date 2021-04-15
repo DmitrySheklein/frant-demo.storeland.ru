@@ -145,6 +145,20 @@ github.com/t1m0n/air-datepicker
 .coupons .couponBlockPrice .couponNum:after {content: "руб.";display: inline-block;margin-left: 5px;line-height: 1.1;font-weight: 600;font-size: 14px}
 .coupons .coupon-btn {margin: 0;margin-left: 15px;-ms-flex-negative: 0;flex-shrink: 0}
 .coupons .coupon-btn._disabled {opacity: .3;pointer-events: none}
+@media (max-width: 991px) {
+  .formfast-col.coupons {
+    margin-bottom: 30px;
+  }  
+}
+@media (max-width: 481px) {
+  .coupons .couponBlockCoupon {
+    flex-wrap: wrap;
+  }
+  .coupons .coupon-btn {
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+}
 .formfast .cart-products-list {margin: 0;padding: 0;list-style: none;max-height: 275px;overflow: auto;
   border: 1px solid rgb(206 197 191 / 50%);
   border-top: 0;}
@@ -270,8 +284,8 @@ github.com/t1m0n/air-datepicker
   .cartTable tbody tr td.name div {display: none}
   .cartTable tbody tr td.cart-price.hide {display: none}
   .cartTable tbody tr td.cart-price {display: block;position: relative;width: 100%;line-height: 38px;text-align: center;border-right: 0;border-left: 0}
-  .cartTable tbody tr td.closetd {position: absolute;right: 0;bottom: 0;line-height: 23px;padding: 0 10px;border-top: none;border-right: 0}
-  .cartTable tbody tr td.cart-qty {position: absolute;left: 0;z-index: 1}
+  .cartTable tbody tr td.closetd {position: absolute;right: 0;bottom: 0;line-height: 21px;padding: 0 10px;border-top: none;}
+  .cartTable tbody tr td.cart-qty {position: absolute;left: 0;z-index: 1;border: none;}
   .cartTable tbody tr td.cart-qty .input {border: 0;background-color: transparent;height: 39px;max-width: 70px}
   .cartTable tbody tr td.cart-qty .qty-set > a {height: 39px;line-height: 39px}
   .cartTable tbody tr td.cart-qty .qty-wrap {border-radius: 0}
@@ -288,16 +302,17 @@ github.com/t1m0n/air-datepicker
   .formfast-col.delivery,
   .formfast-col.payment {width: 100%}
   .formfast .form-list .fields-row._address {-ms-flex-wrap: wrap;flex-wrap: wrap}
-  .formfast .form-list .fields-row._address .fields._big {width: 100%;margin-right: 0;margin-bottom: 10px}
-  .formfast .form-list .fields-row._address .fields._small {width: calc(33.3% - 14px);-webkit-box-flex: 0;-ms-flex-positive: 0;flex-grow: 0}
+  .formfast .form-list .fields-row._address .fields._big {width: 100%;margin-right: 0;margin-bottom: 20px}
+  .formfast .form-list .fields-row._address .fields._small {width: calc(33.3% - 14px);-webkit-box-flex: 0;-ms-flex-positive: 0;flex-grow: 0;margin-bottom: 0px;}
 }
 @media all and (max-width:641px) {
   .delivery .orderStageDeliveryListTable .cell3 {min-width: auto}
 }
-@media all and (max-width:481px) {  
+@media all and (max-width:481px) {    
   .cartTable tbody tr .cart-qty .qty-wrap {border-radius: 0}
-  .formfast .form-list .fields-row._address .fields._small {width: 100%;margin-right: 0}
-  .formfast .fields.deliveryConvenientDate {margin-bottom: 10px}
+  .formfast .form-list .fields-row._address .fields._small {width: 100%;margin-right: 0;margin-bottom: 20px;}
+  .formfast .form-list .fields-row._address .fields._small:last-child {margin-bottom: 0;}
+  .formfast .fields.deliveryConvenientDate {margin-bottom: 20px}
   .formfast .fields.deliveryConvenientDate,
   .formfast .fields.deliveryConvenientTime {width: 100%}
   .cartTable {table-layout: fixed}

@@ -146,7 +146,6 @@ function indexPage() {
         lazyLoad: true,
         nav: true,
         dots: false,
-        slideBy: 2,
         autoplay: false,
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
@@ -160,11 +159,11 @@ function indexPage() {
         responsiveClass: true,
         responsiveRefreshRate: 100,
         responsive: {
-          0:{items:1},
-          320:{items:1},
-          768:{items:1},
-          992:{items:2},
-          1200:{items:2}
+          0:{items:1,slideBy: 1},
+          320:{items:1,slideBy: 1},
+          768:{items:1,slideBy: 1},
+          992:{items:2,slideBy: 2},
+          1200:{items:2, slideBy: 2}
         },          
         onInitialized: changeNavBtn
       });            
@@ -223,7 +222,7 @@ function indexPage() {
       navContainer: '.brands-navigation',
       navText: ['<svg class="slideshow-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.213 476.213"><path d="M476.213 223.106H57.426l34.393-34.393L70.606 167.5 0 238.106l70.606 70.607L91.819 287.5l-34.393-34.394h418.787z"/></svg>', '<svg class="slideshow-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.2 476.2"><path d="M0 253.1h418.8l-34.4 34.4 21.2 21.2 70.6-70.6-70.6-70.6-21.2 21.2 34.4 34.4H0z"/></svg>'],
       dots: false,
-      autoplay: true,
+      autoplay: false,
       autoplayTimeout: 5000,
       autoplayHoverPause: true,
       autoHeight: false,
@@ -313,7 +312,7 @@ function indexPage() {
       lazyLoad: true,
       nav: false,
       dots: false,
-      autoplay: true,
+      autoplay: false,
       autoplayTimeout: 5000,
       autoplayHoverPause: true,
       autoHeight: false,

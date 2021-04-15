@@ -1167,6 +1167,23 @@
                             {% ENDIF %}
                           {% ENDFOR %}
                         {% ENDIF %}
+                        <div class="product-icos">
+                          <!-- Счетчик обратного отсчета. end дата окончания акции в формате Месяц:День:Год Часы:Минуты:Секунды -->
+                          <div class="ico-sale sale-counter" end="{index_page_sale_goods.MAX_DISCOUNT_EXPIRED_AT | date('m/d/Y H:i:s')}" now="{CURRENT_TIME | date('m/d/Y H:i:s')}">                          
+                            <div class="sale-counter-item days">
+                              <span>00</span>д
+                            </div>
+                            <div class="sale-counter-item hours">
+                              <span>00</span>ч
+                            </div>
+                            <div class="sale-counter-item minutes">
+                              <span>00</span>м
+                            </div>
+                            <div class="sale-counter-item seconds">
+                              <span>00</span>с
+                            </div>                          
+                          </div>                          
+                        </div>                        
                       </a>
                       <div class="product-icos" style="display: none;">
                         {% IF index_page_sale_goods.IS_NEW %}
@@ -1179,24 +1196,6 @@
                           <span class="ico-best">Хит</span>
                         {% ENDIF %}
                       </div>
-                      <div class="product-icos">
-                        <!-- Счетчик обратного отсчета. end дата окончания акции в формате Месяц:День:Год Часы:Минуты:Секунды -->
-                        <div class="ico-sale sale-counter" end="{index_page_sale_goods.MAX_DISCOUNT_EXPIRED_AT | date('m/d/Y H:i:s')}" now="{CURRENT_TIME | date('m/d/Y H:i:s')}">                          
-                          <div class="sale-counter-item days">
-                            <span>00</span>д
-                          </div>
-                          <div class="sale-counter-item hours">
-                            <span>00</span>ч
-                          </div>
-                          <div class="sale-counter-item minutes">
-                            <span>00</span>м
-                          </div>
-                          <div class="sale-counter-item seconds">
-                            <span>00</span>с
-                          </div>                          
-                        </div>                          
-                      </div>
-
                     </div>
                     <div class="product-shop">
                       <meta itemprop="name" content="{index_page_sale_goods.NAME}">
