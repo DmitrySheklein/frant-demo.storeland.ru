@@ -1176,27 +1176,43 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 @media (max-width:991px) {.header .header-menu {background-image: linear-gradient(160.47deg,#caa462 11.94%,#fc9758 85.71%)}}
 /*! Каталог в шапке */
 .header-catalogMenu {background-color: #fff;margin: 0;list-style: none;}
-.header-catalog {position: static;}
+.header-catalog {position: relative;}
 .header-catalogBtn {display: flex;align-items: center;padding: 0 15px;width: 100%;text-align: left;font-size: 16px;    color: #caa462;cursor: pointer}
 .header-catalogLink {display: block;padding: 0 20px;    color: #201e22;}
 .header-catalogMenuTitle {display: none}
-.header-catalogLink.active,.header-catalogLink.hover,.header-catalogLink:hover {color: #caa462}
+.header-catalogLink.active,
+.header-catalogLink.hover,
+.header-catalogLink:hover {color: #caa462}
+.header-catalogLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 10px 25px; 
+  text-transform: uppercase;
+}
 .header-catalogIcon {font-size: 16px;line-height: 50px;margin-right: 10px}
 .header-catalogArrow {
-  height: 20px;  
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 40px;
+  margin-left: auto;
 }
-.header-catalogArrow .material-icons {-webkit-transform: rotate(-90deg);transform: rotate(-90deg);transition: -webkit-transform .15s ease-in-out;transition: transform .15s ease-in-out;transition: transform .15s ease-in-out,-webkit-transform .15s ease-in-out}
 .header-catalogArrow .material-icons {
-  font-size: 20px;  
+  font-size: 20px;
+  line-height: 40px;  
 }
 .header-catalogMenu ul {margin: 0;padding: 0;list-style: none;list-style-position: inside}
 .header-catalogMenu .sub {padding-left: 10px}
 .header-subcatalogTitle {display: block;margin-bottom: 10px;font-size: 16px;font-weight: bold;line-height: 1.3;color: #2a3034}
-.header-catalogMenu a.active,.header-catalogMenu a:hover {color: #caa462}
+.header-catalogMenu a.active,
+.header-catalogMenu a:hover {color: #caa462}
 .header-catalogMenu .header-subcatalog-third {list-style: none;padding: 0;margin: 0}
 .header-catalogMenu .header-subcatalog-third .sub li {padding: 5px 0}
 
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
   body.modal-open {overflow:hidden;}
   .header-catalogBtn {padding-left: 0;}
   .header-catalogMenuTitle {display: block;color: #2a3034;}
@@ -1207,28 +1223,25 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   .header-catalogMenu .header-subcatalog {display: none;list-style: none;padding-left: 7px;background-color: #f6f8fa}
   .header-subcatalogTitle {position: relative;padding: 10px 15px 10px 0;font-size: 14px;margin-bottom: 0}
   .header-catalogLink .header-catalogArrow {padding: 9px 15px;position: absolute;top: 0;right: 0;text-align: center;}
-  .header-subcatalog .header-secondArrow {position: absolute;top: 0;right: 0;float: right;padding: 5px 15px;font-size: 12px;transition: -webkit-transform .15s ease-in-out;transition: transform .15s ease-in-out;transition: transform .15s ease-in-out,-webkit-transform .15s ease-in-out}
-  .header-subcatalog .header-secondArrow .material-icons {-webkit-transform: rotate(-90deg);transform: rotate(-90deg);}
+  .header-subcatalog .header-secondArrow {position: absolute;top: 0;right: 0;float: right;padding: 7px 15px;transition: -webkit-transform .15s ease-in-out;transition: transform .15s ease-in-out;transition: transform .15s ease-in-out,-webkit-transform .15s ease-in-out}
+  .header-subcatalog .header-secondArrow .material-icons {-webkit-transform: rotate(-90deg);transform: rotate(-90deg);font-size: 20px;}
   .header-catalogMenu .header-arrow.active .material-icons,
   .header-catalogMenu a.active .header-arrow .material-icons {-webkit-transform: rotate(0deg);transform: rotate(0deg);color: #caa462}
   .header-catalogMenu .header-arrow.header-catalogArrow.active .material-icons,
   .header-catalogMenu .header-catalogLink.active .header-catalogArrow .material-icons {-webkit-transform: rotate(0);transform: rotate(0)}
   .header-catalogMenu .header-subcatalog-third {display: none;padding-left: 10px}
   .header-subcatalog-third .header-subcatalogItem:last-child {padding-bottom: 10px}
-  .header-subcatalog-third .header-subcatalogLink {display: block;position: relative;padding: 7px 15px 7px 0;color: #2a3034;}
+  .header-subcatalog-third .header-subcatalogLink {display: block;position: relative;padding: 7px 15px 7px 0;color: #2a3034;font-size: 14px;}
   .header-catalogMenu {position: fixed;z-index: 3;top: 0;bottom: 0;right: 0;width: 80%;max-width: 30rem;padding-left: 0;overflow-y: auto;overflow-x: hidden;-webkit-transform: translateX(100%);transform: translateX(100%);-webkit-transition: -webkit-transform .3s cubic-bezier(0,1,.63,1);transition: -webkit-transform .3s cubic-bezier(0,1,.63,1);transition: transform .3s cubic-bezier(0,1,.63,1);transition: transform .3s cubic-bezier(0,1,.63,1),-webkit-transform .3s cubic-bezier(0,1,.63,1)}
   .header-catalogMenu._visible {-webkit-transform: translateX(0);transform: translateX(0)}
-  .header-catalogLink {position: relative;padding: 15px;padding-right: 44px;font-size: 14px;color: #2a3034;text-transform: uppercase;}
+  .header-catalogLink {position: relative;padding: 10px;padding-right: 44px;font-size: 16px;color: #2a3034;text-transform: uppercase;}
 }
-@media (min-width: 992px) {  
-  .header-catalogBtn._active {
-    /* background: #e7e2df; */
-    /* color: #201e22; */
-    color: #caa462
-  }  
+*/
+@media (min-width: 768px) {  
+  .header-catalogBtn._active {    color: #caa462  }  
   .header-subcatalogCol .header-subcatalogList,.header-subcatalogItem + .header-subcatalogItem {margin-top: 10px}
   .header-catalogMenu .header-subcatalog {display: block!important;position: absolute;top: 0;left: 100%;min-height:100%;padding: 30px;background-color: #f3f1ef;border-left: 1px solid transparent;opacity: 0;visibility: hidden}
-  .header-catalogMenu .header-subcatalog {width: calc(940px - 280px);}
+  .header-catalogMenu .header-subcatalog {width: calc(720px - 178px);}
   .header-subcatalog._visible {opacity: 1;visibility: visible;z-index: 1;}
   .header-catalogItem:hover {background-color: #f3f1ef}
   .header-subcatalogBanner {float: right;width: 300px}
@@ -1249,17 +1262,16 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
     position: absolute;
     z-index: -1;
     top: 0;
-    left: 0;     
-    width: 940px;
+    left: 0;         
     height: 100%;
     background: #e7e2df;    
+    width: 720px;
   }
-  .header-catalogMenu {margin-top: 10px;;max-width: 280px;z-index: -1;width: 100%;padding: 0;padding-top: 13px;padding-bottom: 13px;-webkit-transform: translateY(-1rem);transform: translateY(-1rem);-webkit-transition: all .15s ease-in-out;transition: all .15s ease-in-out}
+  .header-catalogMenu {margin-top: 10px;width: 178px;z-index: -1;padding: 0;padding-top: 13px;padding-bottom: 13px;-webkit-transform: translateY(-1rem);transform: translateY(-1rem);-webkit-transition: all .15s ease-in-out;transition: all .15s ease-in-out}
   .header-catalogMenu,.header-loginFlyout {position: absolute;left: 0;opacity: 0;visibility: hidden}
   .header-catalogMenu._visible {opacity: 1;visibility: visible;-webkit-transform: translateY(0);transform: translateY(0);z-index: 1;}
   .header-catalogItem .header-secondArrow {display: none}
   .header-catalogItem:hover .header-catalogArrow {color: #caa462;}
-  .header-catalogItem:hover .header-catalogArrow .material-icons {-webkit-transform: translateX(.3rem) rotate(-90deg);transform: translateX(.3rem) rotate(-90deg)}
   
   .header-subcatalogCol {width: 33.33%;float: left;list-style: none}
   /* .header-catalogMenu .header-subcatalog-third {display:none;} */
@@ -1267,7 +1279,6 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
     color: #201e22;
     font-size: 14px;
   }  
-  .header-catalogLink {text-transform: uppercase;line-height: 1.3;padding: 10px 25px;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;}
 }
 
 @media (max-width: 767px) {
@@ -1295,20 +1306,43 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
     border-bottom: 1px solid #cec5bf;
   }
   .header-catalogMenu .header-subcatalog {
+    display: none;
+    list-style: none;
+    padding-left: 7px;
+    padding-top: 10px;
+    padding-bottom: 7px;
     background: #e7e2df;
-  }
-  .header-subcatalogTitle {
-    font-weight: 400;
   }
   .header-catalogLink .header-catalogArrow {
     border-left: 1px solid #cec5bf;
-    font-size: 20px;
-    width: 35px;
-    padding: 9px 0px;
+    text-align: center;
+  }  
+  .header-subcatalogTitle {
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 0;
+  }  
+  .header-subcatalog-third .header-subcatalogLink {display: block;position: relative;padding: 7px 15px 7px 0;color: #2a3034;font-size: 14px;} 
+  .header-subcatalogCol:not(:last-child)  {
+    margin-bottom: 10px;
   }
-  
+  .header-catalogMenu .header-subcatalog-third {
+    display: none;
+    padding-left: 10px;
+  } 
+  .header-arrow.header-secondArrow {
+    display: none;
+  }
 }
 
+@media (min-width: 992px) {  
+  .header-catalogMenu {width: 280px;}
+  .header-catalogMenu .header-subcatalog {width: calc(940px - 280px);}
+  .header-catalog {position: static;}
+  .header-catalogMenu::after {
+    width: 940px;
+  }
+}
 @media (min-width: 1200px) {
   .header-catalogMenu .header-subcatalog {width: calc(1140px - 280px);}
   .header-catalogMenu::after {width: 1140px;}
@@ -1317,12 +1351,6 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .mainnav {position: relative;z-index: 1;}
 .mainnav .mainnav__list {display: flex;width: auto;overflow: hidden;margin: 0;padding: 0;list-style: none}
 .mainnav .mainnav__list.active {overflow: visible;}
-@media (min-width: 1300px) {
-  /* .mainnav .mainnav__list {width: 670px;} */
-}
-@media (min-width: 1200px) {
-  /* .mainnav .mainnav__list {width: 570px;} */
-}
 .mainnav .mainnav__item {text-align: center;padding: 0 15px;height: 100%;display: block;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;font-weight: normal;font-size: 15px; text-transform: none;}
 .mainnav .mainnav__item.active > .mainnav__link,.mainnav .mainnav__item:hover > .mainnav__link{color:#caa462;}
 .mainnav .mainnav__item.mainnav__more.active > .mainnav__link {color: #2e2e2e;}
@@ -1356,7 +1384,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   .mainnav .mainnav__item {display: block;text-align: left;box-shadow: none!important;transition: background .3s ease}
   .mainnav .mainnav__item.active,.mainnav .mainnav__item:hover {background: #caa462}
   .mainnav .mainnav__item + .mainnav__item {border-top: 1px solid rgba(249,249,250, .2)}
-  .mainnav .mainnav__item {line-height: 35px;}
+  .mainnav .mainnav__item {line-height: 35px;text-transform: uppercase;}
   .mainnav .mainnav__item:before {display: none}
 }
 /*! Всплывающие блоки моб версии */
@@ -1369,7 +1397,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 }
 /**/
 .header-overlay {position: fixed;z-index: -2;top: 0;left: 0;right:0;bottom:0;background-color: #2e2e2e;opacity: 0;visibility: hidden;-webkit-transition: opacity .15s ease-in-out;transition: opacity .15s ease-in-out;cursor: pointer}
-.header-overlay._visible {opacity: .5;visibility: visible}
+.header-overlay._visible {opacity: 0;visibility: visible}
 @media (min-width: 992px) {.header-overlay._visible {opacity: 0;}}
 @media (max-width: 991px) {.header-overlay {z-index: 2}}
 

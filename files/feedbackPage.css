@@ -10,11 +10,16 @@
 .contact-info .block-contact .block-contact-workTime {font-family: 'Roboto Condensed', sans-serif;}
 .feedbackForm .feedbackForm-title {
   margin: 25px 0;
-  font-size: 18px;
-  font-weight: 700;  
+  font-weight: normal;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+.feedbackForm b{
+  font-weight: normal;
 }
 .feedbackForm .input,
 .feedbackForm .form-list .fields {max-width: 100%;}
+.feedbackForm .buttons .button:last-child {margin-left: 15px;}
 .feedbackForm .textarea {
   height: 100px;
   padding: 30px;

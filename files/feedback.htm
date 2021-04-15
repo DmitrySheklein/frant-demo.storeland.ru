@@ -3,7 +3,7 @@
     <div class="col-xs-12">
     {% IF FORM_NOTICE %}<div class="message {% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}">{FORM_NOTICE | nl2br}</div>{% ENDIF %}  
     </div>
-    <div class="col-md-4 col-xs-12 second">
+    <div class="col-md-5 col-xs-12 second">
       <div class="col-account" itemscope itemtype="https://schema.org/Organization">
         <meta itemprop="name" content="{SETTINGS_STORE_ORG_NAME}"/>
         <div class="block-contact">
@@ -45,7 +45,7 @@
         </div>
       </div>
     </div>
-    <div class="maps col-md-8 col-xs-12">
+    <div class="maps col-md-7 col-xs-12">
       <iframe class="lozad" data-src="https://api-maps.yandex.ru/frame/v1/-/CZRYYCOw" width="100%" height="400" frameborder="0"></iframe>
     </div>
     {% IFNOT FORM_SEND_OK %}
@@ -56,7 +56,7 @@
           <!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
           {ANTISPAM_CODE}
           <div class="form-list row">
-            <div class="col-md-4 col-xs-12">
+            <div class="col-md-5 col-xs-12">
               <div class="fields">
                 <label for="feedback_name" class="required">Представьтесь, пожалуйста: <em>*</em></label>
                 <input id="feedback_name" placeholder="" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_FEEDBACK_NAME}]"  value="{FORM_FEEDBACK_NAME}" maxlength="50"  class="input required">
@@ -70,7 +70,7 @@
                 <input id="feedback_phone" placeholder="" type="text" name="form[Телефон]"  value="{FORM_FEEDBACK_PHONE}" maxlength="50"  class="input">
               </div>
             </div>
-            <div class="col-md-8 col-xs-12">
+            <div class="col-md-7 col-xs-12">
               <div class="fields">
                 <label for="feedback_message" class="required">Текст сообщения: <em>*</em></label>
                 <textarea id="feedback_message" placeholder="" rows="4" name="form[{ANTISPAM_FORM_FIELD_NAME_FEEDBACK_MESSAGE}]" class="input textarea required">{FORM_FEEDBACK_MESSAGE}</textarea>
@@ -97,11 +97,10 @@
             <button type="submit" title="Отправить" class="button"><span>Отправить</span></button>
             <button type="reset" title="Сбросить" class="button _outline"><span>Сбросить</span></button>
           </div>
-          <div class="pp">
-            <input type="checkbox" id="pp-check" class="pp-checkbox checkbox-hidden" name="pp-check" required="" aria-required="true" checked>
-            <label for="pp-check"  class="pp-label checkbox-name">
+          <div class="pp">            
+            <p class="pp-label">
             Я согласен на <a class="blue-link _underline" href="#" data-fancybox data-src="#fancybox-pp">обработку персональных данных</a>
-            </label>
+            </p>
           </div>
         </form>
     </div>

@@ -1318,7 +1318,7 @@ function headerIcons() {
     var $icon = $(this);
     var id = $icon.attr('data-target');
     var $icons = $icon.siblings();
-    console.log(id, id === '/');
+
     if(id === '#link'){
       document.location.href = $icon.attr('data-link');
 
@@ -1353,8 +1353,7 @@ function headerIcons() {
     var e,
         $headerCatalog = $(".header-catalog"),
         $catalogIcon = $('.header-iconsItem._catalog'),
-        $catalogBtn = $(".header-catalogBtn"),        
-        $catalogBtnIcon = $catalogBtn.find('.header-catalogIcon'),        
+        $catalogBtn = $(".header-catalogBtn"),      
         $catalogMenu = $(".header-catalogMenu"),
         $catalogItem = $(".header-catalogItem"),
         $headerSubcatalog = $(".header-subcatalog"),
@@ -1365,9 +1364,7 @@ function headerIcons() {
           function() {
             if (getClientWidth() > 992) {
               (e = setTimeout(function() {
-                  $catalogBtn.addClass('_active')
-                  // $catalogBtnIcon.text('close')   
-                  blurPage()               
+                  $catalogBtn.addClass('_active')                                 
                   $catalogMenu.add($headerOverlay).addClass("_visible")
               }, 100))                                
             }
@@ -1376,60 +1373,49 @@ function headerIcons() {
           if (getClientWidth() > 992) {
             (clearTimeout(e),
                 setTimeout(function() {
-                    $catalogBtn.removeClass('_active')
-                    $catalogBtnIcon.text('drag_indicator')
-                    unBlurPage()
+                    $catalogBtn.removeClass('_active')                    
                     $catalogMenu.add($headerOverlay).removeClass("_visible")
-                }, 100))                              
+            }, 100))                              
           }
         });
         $catalogItem.hover(
           function() {
-           if (getClientWidth() > 992) {
+           if (getClientWidth() > 768) {
               $(this).find($headerSubcatalog).addClass("_visible");                              
             }
           },
           function() {
-            if (getClientWidth() > 992) {
+            if (getClientWidth() > 768) {
               $headerSubcatalog.removeClass("_visible")                              
             }
         })
       // Мобильная версия
-      $catalogBtn.add($catalogIcon).click(function() {
+      $catalogBtn.add($catalogIcon).click(function(evt) {
         if (getClientWidth() <= 991) {
-          // $catalogBtn.addClass('_blur');
-          blurPage();
+          evt.preventDefault();
           $catalogMenu.add($headerOverlay).addClass("_visible");
           $("body").addClass("modal-open")                         
         }
       }),
       $headerOverlay.add($headerCloseBtn).click(function() {
         if (getClientWidth() <= 991) {
-          // $catalogBtn.removeClass('_blur');
-          unBlurPage();
           $catalogMenu.add($headerOverlay).removeClass("_visible");
           $("body").removeClass("modal-open")                              
         }
       })
-      var $bluredElements = $('body .wrapper > div, .header-logo, .header-main-content__top, .header-main-content__bottom-wrap > div:not(.header-catalog)');
-      function blurPage(){
-        // $bluredElements.addClass('_blur')
-      }
-      function unBlurPage(){
-        // $bluredElements.removeClass('_blur')
-      }
+
       $catalogMenu.on('click', '.parent .header-arrow', function(evt){
-        if (getClientWidth() <= 991) {
-          evt.preventDefault()
-          
-          var $arrow = $(this);
-          var $link = $arrow.parent();
-          
+        evt.preventDefault();
+        
+        var $arrow = $(this);
+        var $link = $arrow.parent();
+        
+        if (getClientWidth() <= 767) {
           if($arrow.hasClass('active')){
-            $arrow.removeClass('active')
+            $arrow.removeClass('active').find('span').text('keyboard_arrow_right')
             $link.removeClass('active').next('.sub').slideUp();
           } else {
-            $arrow.addClass('active')
+            $arrow.addClass('active').find('span').text('keyboard_arrow_down')
             $link.addClass('active').next('.sub').slideDown() ;
           }
           

@@ -294,9 +294,6 @@ function indexPage() {
     $('.block-news').find('.date').each(function(){
       var dateContent = $(this).data('date');
       var date = new Date(dateContent);
-      console.log(
-        dateContent,date
-      );
       var options = {
         month: 'long',
         day: 'numeric',

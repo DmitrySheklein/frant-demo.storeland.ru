@@ -102,12 +102,12 @@
       <!-- Мобильные иконки -->
       <div class="header-icons">
         <button class="header-iconsItem _home" data-target="#link" data-link="/">
-          <svg class="icon">
+          <svg class="icon" width="24" height="24">
             <use xlink:href="/design/sprite.svg#home"></use>
           </svg>
         </button>
         <button class="header-iconsItem _menu" data-target="#headerMobileContent">
-          <svg class="icon">
+          <svg class="icon" width="24" height="24">
             <use xlink:href="/design/sprite.svg#search-catalog"></use>
           </svg>          
         </button>
@@ -569,11 +569,11 @@
                                       <a href="{catalog_full.URL}" class="{% IF catalog_full.LEVEL = 0 %}header-catalogLink {% ENDIF %}{% IF catalog_full.LEVEL = 1 %}header-subcatalogTitle {% ENDIF %}{% IF catalog_full.LEVEL >= 2 %}header-subcatalogLink {% ENDIF %}{% IF catalog_full.CURRENT %} active{% ENDIF %}" title="{catalog_full.NAME}" itemprop="url">
                                         {catalog_full.NAME}
                                         {% IF catalog_full.ISSET_VISIBLE_SUB &&  catalog_full.LEVEL = 0 %}<span class="header-arrow header-catalogArrow {% IF catalog_full.CURRENT_PARENT || catalog_full.CURRENT %}active{% ENDIF %}">
-                                          <span class="material-icons">keyboard_arrow_down</span>
+                                          <span class="material-icons">keyboard_arrow_right</span>
                                         </span>
                                         {% ENDIF %}
                                         {% IF catalog_full.ISSET_VISIBLE_SUB &&  catalog_full.LEVEL != 0 %}<span class="header-arrow header-secondArrow {% IF catalog_full.CURRENT_PARENT || catalog_full.CURRENT %}active{% ENDIF %}">
-                                          <span class="material-icons">keyboard_arrow_down</span>
+                                          <span class="material-icons">keyboard_arrow_right</span>
                                         </span>
                                         {% ENDIF %}
                                       </a>
