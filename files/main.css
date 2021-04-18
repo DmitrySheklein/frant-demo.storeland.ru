@@ -2439,7 +2439,10 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 .fancybox-container._modification .product-view .product-order .add-to-box .add-to-cart {padding-top: 0;flex-wrap: nowrap;margin-top: 30px;}
 .fancybox-container._modification .product-view .product-order .add-to-box .add-to-cart .button {max-width: 50%;margin-top: 0;;height: 50px;line-height: 50px;}
 
-.fancybox-container._modification .product-view .product-order .add-to-box .add-to-cart .button.goodsDataMainModificationEmpty:hover {color: #caa462}
+.fancybox-container._modification .product-view .product-order .add-to-box .add-to-cart .button.goodsDataMainModificationEmpty:hover {
+  color: #fff;
+  background: #c7a161;  
+}
 .fancybox-container._modification .product-view .product-order .add-to-box .add-to-cart .button.goodsDataMainModificationEmpty {
   background: #cec5bf;color: #fff;
 }
@@ -2537,15 +2540,15 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
   height: 50px;
   width: 50px;
 }
-.fancybox-container._modification .product-view .product-order .actions .qty-set > a:hover {
-  background: #cec5bf;
-}
 .fancybox-container._modification .product-view .product-order .actions input.quantity {
   color: #2e2e2e;
 }
 .fancybox-container._modification .product-view .product-order .actions .qty-set .material-icons {
   line-height: 50px;
-  color: #2d2d2d;  
+  color: #cec5bf;  
+}
+.fancybox-container._modification .product-view .product-order .actions a:hover .material-icons {
+  color: #2e2e2e;  
 }
 .fancybox-container._modification .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox__select {
   background: #f3f1ef;
@@ -2573,13 +2576,15 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
   margin-top: 10px;
 }
 .fancybox-container._modification .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox li:first-child {
-  margin-top: 1px;
+  /* margin-top: 1px; */
+  border-top: 1px solid #cec5bf;
 }
 .fancybox-container._modification .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox li {
   background-color: #fff;
   border: 1px solid #cec5bf;
+  border-top: 0;
   padding: 15px;
-  margin-bottom: -1px;
+  /* margin-bottom: -1px; */
   color: #2d2d2d;
 }
 .fancybox-container._modification .product-view .product-order .goodsDataMainModificationsBlock .goodsDataMainModificationsBlockProperty .jq-selectbox li:hover:not(.disabled) {

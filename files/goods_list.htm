@@ -61,8 +61,22 @@
             <label>Сортировать по:</label>
             <select name="goods_search_field_id" class="selectBox" title="Сортировать по:" onchange="this.form.submit();">
               {% FOR goods_order_fields %}
-                <option value="{goods_order_fields.ID}" {% IF goods_order_fields.SELECTED %}selected="selected"{% ENDIF %}>{goods_order_fields.NAME}</option>
-              {% ENDFOR %}
+              {% IF goods_order_fields.ID = 1 || goods_order_fields.ID = 2 || goods_order_fields.ID = 5 || goods_order_fields.ID = 11 || goods_order_fields.ID = 13 %}
+              <option value="{goods_order_fields.ID}" title="{goods_order_fields.NAME}" {% IF goods_order_fields.SELECTED %}selected="selected"{% ENDIF %}>
+                {% IF goods_order_fields.ID = 1%}
+                  Цена ↓
+                {% ELSEIF goods_order_fields.ID = 2 %}
+                  Цена ↑
+                {% ELSEIF goods_order_fields.ID = 5 %}
+                  Наличие
+                {% ELSEIF goods_order_fields.ID = 11 %}
+                  Рейтинг
+                {% ELSEIF goods_order_fields.ID = 13 %}
+                  Отзывы
+                {% ENDIF %}
+              </option>
+              {% ENDIF %}
+            {% ENDFOR %}
             </select>
           </div>
           <!-- /END Сортировать по: -->
@@ -123,9 +137,9 @@
     
     <!-- Блок навигации по категориям, вложенным в текущую категорию -->
     {% IFNOT nested_categories_list_empty %}
-    <div class="categories clear">
+    <div class="categories row">
       {% FOR nested_categories_list %}
-        <div class="item">
+        <div class="item col-md-4 col-sm-4 col-xs-6">
           <div class="item-inner">
             <div class="cat-image">
               <a href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
