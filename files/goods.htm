@@ -405,7 +405,9 @@
                 {% ENDIF %}
               {% ENDIF %}
               <!--Нет в наличии-->
-              {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}<div class="goodsDataMainModificationEmpty button" title="Уведомить" data-fancybox="" data-src="#fancybox-notify" {% IF GOODS_MOD_REST_VALUE!=0 %}style="display:none;"{% ENDIF %}><span>Уведомить</span></div>{% ENDIF %}
+              {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}
+                <div class="goodsDataMainModificationEmpty button" title="Уведомить" data-fancybox="" data-src="#fancybox-notify" {% IF GOODS_MOD_REST_VALUE!=0 %}style="display:none;"{% ENDIF %}><span>Уведомить</span></div>
+              {% ENDIF %}
               <!-- <a href="{GOODS_URL}" class="button button2 more" title="Подробнее">Подробнее</a> -->
             </div>
             <!-- /END Добавление товара в корзину -->
@@ -720,7 +722,7 @@
                                 <span>Добавить отзыв</span>
                               </button>
                               <div class="pp">
-                                Нажимая на кнопку <a class="blue-link" href="#" data-fancybox="" data-src="#fancybox-pp">Добавить отзыв</a> Вы соглашаетесь с правилами обработки данных                                
+                                Нажимая на кнопку "Добавить отзыв" Вы соглашаетесь с <a class="blue-link" href="#" data-fancybox="" data-src="#fancybox-pp">правилами обработки данных</a>                                
                               </div>                              
                             </div>
                           </div>

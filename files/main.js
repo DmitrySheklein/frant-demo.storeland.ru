@@ -315,7 +315,7 @@ function mainFunctions() {
     $('#fancy-notify-goods-mod').val(goodsMod)
   })
   // Валидация формы на странице оформления заказа, а так же формы на страницы связи с администрацией  
-  $("#myform, .feedbackForm,.clientForm, .clientForm._login, .clientForm._reg,.clientForm._recovery, .goodsDataOpinionAddForm, .callbackForm").each(function(){
+  $("#myform, .feedbackForm,.clientForm, .clientForm._login, .clientForm._reg, .clientForm._recovery, .goodsDataOpinionAddForm, .callbackForm").each(function(){
     $(this).validate()
   });
   // Формы логина и регистрации 
@@ -1357,8 +1357,8 @@ function headerIcons() {
         $catalogMenu = $(".header-catalogMenu"),
         $catalogItem = $(".header-catalogItem"),
         $headerSubcatalog = $(".header-subcatalog"),
-        $headerOverlay = $(".header-overlay");                          
-        $headerCloseBtn = $('.header-closeBtn')
+        $headerOverlay = $(".header-overlay"),                         
+        $headerCloseBtn = $('.header-closeBtn');
         
         $headerCatalog.hover(
           function() {
@@ -1380,12 +1380,12 @@ function headerIcons() {
         });
         $catalogItem.hover(
           function() {
-           if (getClientWidth() > 768) {
+           if (getClientWidth() >= 768) {
               $(this).find($headerSubcatalog).addClass("_visible");                              
             }
           },
           function() {
-            if (getClientWidth() > 768) {
+            if (getClientWidth() >= 768) {
               $headerSubcatalog.removeClass("_visible")                              
             }
         })

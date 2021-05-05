@@ -7,8 +7,16 @@
     <!-- Фильтры таблицы сравнения -->
     <div class="CompareGoodsTable">
       <ul class="CompareNavigation navigation" {% IF COMPARE_GOODS_COUNT < 5 %}style="display:none;"{% ENDIF %}>
-        <li class="CompareGoodsTablePrev"><a href="#" class="prev disable" title="Предыдущий товар"><i class="fal fa-angle-left"></i></a></li>
-        <li class="CompareGoodsTableNext"><a href="#" class="next {% IF COMPARE_GOODS_COUNT < 5 %}disable{% ENDIF %}" title="Следующий товар"><i class="fal fa-angle-right"></i></a></li>
+        <li class="CompareGoodsTablePrev">
+          <a href="#" class="prev disable" title="Предыдущий товар">
+            <i class="material-icons">keyboard_arrow_left</i>
+          </a>
+        </li>
+        <li class="CompareGoodsTableNext">
+          <a href="#" class="next {% IF COMPARE_GOODS_COUNT < 5 %}disable{% ENDIF %}" title="Следующий товар">
+            <i class="material-icons">keyboard_arrow_right</i>
+          </a>
+        </li>
       </ul>
       <div class="CompareGoodsTableFilter">
         <span class="">Отображать: </span>
@@ -86,7 +94,11 @@
                     В корзину
                   </span>
                 </button>
-                <div class="compare-empty" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}{% IF goods_mod_info.REST_VALUE=0 %}style="display:block;"{% ENDIF %}{% ENDIF %}>Нет в наличии</div>
+                <div class="compare-empty button _disabled" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}{% IF goods_mod_info.REST_VALUE=0 %}style="display:block;"{% ENDIF %}{% ENDIF %}>
+                  <span>
+                    Нет в наличии
+                  </span>
+                </div>
                 <!--button type="submit" class="button button2 small add-cart quick" title="Быстро оформить заказ">Купить</button-->
               </form>
             </div>

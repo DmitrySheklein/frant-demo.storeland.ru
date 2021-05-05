@@ -221,7 +221,6 @@
               <!-- /Контакты  -->
 
               <!-- Логин -->
-              {% IFNOT MOD_LNAME = user %}
               <div class="header-login {% IF CLIENT_IS_LOGIN %}isLogin{% ENDIF %}" id="headerLogin">
                 {% IFNOT CLIENT_IS_LOGIN %}
                   <a class="header-loginLink" href="/user/login" title="Вход в личный кабинет" rel="nofollow" data-src="#fancybox-login"> 
@@ -365,15 +364,14 @@
                     <i class="material-icons">person_outline</i>
                   </a>              
                 {% ENDIF %}              
-              </div>
-              {% ENDIF %}  
+              </div> 
               <!-- /Логин -->
 
               <!-- Инструменты -->
               <div class="header-tools">
                 <!-- Сравнение -->
+                {% IF MOD_LNAME != compare && SETTINGS_COMPARE_DISABLE=0 %}
                 <div class="header-toolsCol {% IF MOD_LNAME = compare %}_page{% ENDIF %}">
-                  {% IF TARIFF_FEATURE_GOODS_COMPARE && SETTINGS_COMPARE_DISABLE=0 %}
                   <div class="compare {% IF MOD_LNAME = compare %}page{% ENDIF %}">
                     <a  href="{COMPARE_URL}" title="Перейти к Сравнению" class="header-toolsLink title">
                       <span class="header-toolsIcon _compare">
@@ -419,8 +417,8 @@
                       </div>
                     </div>
                   </div>
-                  {% ENDIF %}                  
                 </div>                                
+                {% ENDIF %}                  
                 <!-- Избранное -->
                 <div class="header-toolsCol _favorite {% IF MOD_LNAME = user && ACT = favorites %}_page{% ENDIF %}">
                   <div class="favorites {% IF MOD_LNAME = user && ACT = favorites %}page{% ENDIF %}">
@@ -2409,17 +2407,25 @@
       <div class="container">
         <div class="row">
           <div class="block col-lg-3 col-md-3 col-sm-12 col-sms-6 col-xs-12">
-            <!-- Логотип -->
-            <div class="footer-logo">
-              <a href="{INDEX_PAGE_URL}" title="{SETTINGS_STORE_NAME}">
-                <img class="footer-logoImg" src="{ASSETS_IMAGES_PATH}logo.png" alt="{SETTINGS_STORE_NAME}">
-               </a>
+            <div class="footer-content">
+              <!-- Логотип -->
+              <div class="footer-logo">
+                <a href="{INDEX_PAGE_URL}" title="{SETTINGS_STORE_NAME}">
+                  <img class="footer-logoImg" src="{ASSETS_IMAGES_PATH}logo.png" alt="{SETTINGS_STORE_NAME}">
+                 </a>
+              </div>
+              <!-- /Лого -->   
+              {% IF HTTP_HOST = frant-demo.storeland.ru %}
+              <p class="footer-site-desr">
+                Франт - это интернет - бутик, мужской одежды и аксессуаров, созданный с любовью к моде и уважением к комфорту.
+              </p> 
+              {% ENDIF %}
+              {% IF SETTINGS_STORE_WORK_TIME %}
+                <div class="footer-work-time">
+                  {SETTINGS_STORE_WORK_TIME | htmlspecialchars_decode}
+                </div>
+              {% ENDIF %}
             </div>
-            <!-- /Лого -->   
-            <p class="footer-site-desr">
-              Франт - это интернет - бутик, мужской одежды и аксессуаров, созданный с любовью к моде и уважением к комфорту.
-            </p>         
-            {% IF SETTINGS_STORE_WORK_TIME %}<div></i><p>{SETTINGS_STORE_WORK_TIME | htmlspecialchars_decode}</p></div>{% ENDIF %}
           </div>
           {% IFNOT menu_footer_links_empty %}
           <div class="block col-lg-3 col-md-2 col-sm-4 col-sms-6 col-xs-12">
@@ -2463,8 +2469,7 @@
                 </span>
               </a> 
               {% IF SETTINGS_STORE_EMAIL_MAIN %}<div itemprop="email"><a href="mailto:{SETTINGS_STORE_EMAIL_MAIN}">{SETTINGS_STORE_EMAIL_MAIN}</a></p></div>{% ENDIF %}
-              {% IF SETTINGS_STORE_REGION %}<div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="addressLocality"><span><i class="fal fa-compass"></i><b>Наш адрес</b></span><p>{SETTINGS_STORE_REGION}</p></span></div>{% ENDIF %}
-             
+              <!-- {% IF SETTINGS_STORE_REGION %}<div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="addressLocality"><span><b>Наш адрес</b></span><p>{SETTINGS_STORE_REGION}</p></span></div>{% ENDIF %}              -->
             </div>
           </div>
           <div class="block col-lg-3 col-md-4 col-sm-4 col-sms-6 col-xs-12">

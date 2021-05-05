@@ -89,10 +89,13 @@
 .product-view .product-toolbar .goodsDataMainModificationAvailable .material-icons {font-size: 16px;margin-right: 5px;}
 .product-view .product-toolbar .goodsDataMainModificationAvailable .available-true .available-value .material-icons{color: #caa462}
 .product-view .product-toolbar .goodsDataMainModificationAvailable .available-false .available-value {color: #cec5bf;opacity: .5;}
-.product-view .short-description {margin-bottom: 15px;font-size: 15px;font-weight: 400;line-height: 1.5;color: #cec5bf;opacity: .5;}
+.product-view .short-description {margin-top: 15px;margin-bottom: 15px;font-size: 15px;font-weight: 400;line-height: 1.5;color: #cec5bf;opacity: .5;}
 .product-view .short-description p {max-height: 110px;overflow: hidden;margin: 0}
 .product-view .short-description-link {display: inline-block;margin-top: 10px;color: #caa462;}
 .product-view .short-description-link:hover {color: #caa462;}
+@media all and (max-width:767px) {
+  .product-view .short-description {margin-top: 0px}
+}
 .product-view .table-features {
   width: 100%;
 }

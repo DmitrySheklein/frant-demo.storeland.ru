@@ -20,6 +20,17 @@
 .feedbackForm .input,
 .feedbackForm .form-list .fields {max-width: 100%;}
 .feedbackForm .buttons .button:last-child {margin-left: 15px;}
+@media all and (max-width: 481px) {
+  .feedbackForm .buttons .button {
+    display: block;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 15px;
+  }
+  .feedbackForm .buttons .button:last-child {
+    margin-left: 0;
+  }
+}
 .feedbackForm .textarea {
   height: 100px;
   padding: 30px;
