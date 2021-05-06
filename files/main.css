@@ -32,7 +32,7 @@ select:focus, textarea:focus {outline: 0;border-color: #2e2e2e;}
 .input {display: block;width: 100%;max-width: 450px;background: transparent;border: 1px solid rgb(206 197 191 / 30%);border-radius: 0;box-shadow: none;color: #cec5bf;height: 40px;font-size: 16px;padding: 0 15px;}
 .input:hover {border-color: rgb(206 197 191 / 50%)}
 .input:focus {border-color:#caa462;}
-.input.input--error,.input.invalidInput {border-color: #caa462}
+.input.error,.input.input--error,.input.invalidInput {border-color: #caa462}
 select.invalidInput + label,
 .input.invalidInput + label {display: block;color: #caa462;font-size: 12px;text-align: left;margin-top: 5px}
 select.invalidInput + label {margin-top: 0;margin-bottom: 5px;}
@@ -2309,8 +2309,8 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 }
 
 /*! Кнопки в Корзину  */
+#viewed .item .actions .add-cart {height: 36px;position: relative;z-index: 2;display: flex;justify-content: center;align-items: center;background: transparent;padding: 0px;color: #fff;text-align: center;border-radius: 0px;font-size: 14px;overflow: hidden;margin-left: 8px;}
 #viewed .item .actions .add-cart span:last-child {display: none;}
-#viewed .item .actions .add-cart {height: 36px;position: relative;z-index: 2;display: flex;justify-content: center;align-items: center;background: transparent;padding: 0px;color: #fff;text-align: center;border-radius: 0px;font-size: 14px;overflow: hidden;}
 #viewed .item .actions .add-cart span {color: #caa462;transition: all .5s ease-in-out;}
 /* .products-grid .item .product-shop .actions .add-cart:hover {background: #fff;border-color: #caa462} */
 #viewed .item .actions .add-cart:hover span {color: #caa462;}

@@ -230,16 +230,35 @@
                   {% IF order_lines.ART_NUMBER %}{order_lines.ART_NUMBER}{%ELSE%}&nbsp;{%ENDIF%}
                 {% ENDIF %}
               </td>
-              <td>{% IF order_lines.GOODS_URL %}<a href="{order_lines.GOODS_URL}">{order_lines.NAME}</a>{% ELSE %}{order_lines.NAME}{% ENDIF %}</td> 
-              <td class="a-left" width="130"><span class="price-excl-tax"><span class="cart-price"><span class="price _light {CURRENCY_CHAR_CODE}">
-                <!-- Товарная позиция либо доставка -->
-                {% IF order_lines.TYPE_ID=1 || order_lines.TYPE_ID=2 || order_lines.TYPE_ID=3 && order_lines.MEASURE_NAME!=% %}
-                  {order_lines.LINE_PRICE | money}
-                <!-- Скидка -->
-                {% ELSEIF order_lines.TYPE_ID = 3%}
-                  <span class="num">{order_lines.LINE_PRICE_NUMBER_FORMAT}</span> {order_lines.MEASURE_NAME}
-                {%ENDIF%}
-                </span></span></span>
+              <td>
+                {% IF order_lines.GOODS_URL %}
+                  <a href="{order_lines.GOODS_URL}">{order_lines.NAME}</a>
+                {% ELSE %}
+                  {order_lines.NAME}
+                {% ENDIF %}
+              </td> 
+              <td class="a-left" width="130">
+                <span class="price-excl-tax">
+                  <span class="cart-price">
+                    <!-- Товарная позиция либо доставка -->
+                    {% IF order_lines.TYPE_ID=1 || order_lines.TYPE_ID=2 %}
+                    <span class="price _light {CURRENCY_CHAR_CODE}">
+                      {order_lines.LINE_PRICE | money}
+                    </span>
+                    {% ENDIF %}
+                    {% IF order_lines.TYPE_ID = 3 %}
+                      {% IF order_lines.MEASURE_NAME = % %}
+                        <span class="price _light">
+                          {order_lines.LINE_PRICE_NUMBER_FORMAT} {order_lines.MEASURE_NAME}
+                        </span>
+                      {%ELSE%}
+                        <span class="price _light {CURRENCY_CHAR_CODE}">
+                          {order_lines.LINE_PRICE_NUMBER_FORMAT | money}
+                        </span>
+                      {%ENDIF%}                      
+                    {% ENDIF %}                    
+                  </span>
+                </span>
               </td> 
               <td class="a-center" width="100">
                 <!-- Товарная позиция -->
@@ -250,12 +269,19 @@
                   1 шт
                 <!-- Скидка -->
                 {% ELSEIF order_lines.TYPE_ID = 3%}
-                  <span title="{order_lines.MEASURE_TITLE}">{order_lines.MEASURE_NAME}</span>
+                  <!-- <span title="{order_lines.MEASURE_TITLE}">{order_lines.MEASURE_NAME}</span> -->
                 {%ENDIF%}
               </td> 
               <td class="a-left" width="100"> 
                 <span class="price-excl-tax"> 
-                <span class="cart-price"><span class="price _light {CURRENCY_CHAR_CODE}">{order_lines.LINE_SUM | money}</span></span></span> 
+                <span class="cart-price">
+                  <!-- Скидка -->
+                  {% IF order_lines.TYPE_ID = 3%}                  
+                    <span class="price _light {CURRENCY_CHAR_CODE}">-{order_lines.LINE_SUM | money}</span></span>
+                  {% ELSE %}
+                    <span class="price _light {CURRENCY_CHAR_CODE}">{order_lines.LINE_SUM | money}</span></span>
+                  {%ENDIF%}
+                </span> 
               </td> 
             </tr> 
           {% ENDFOR %}

@@ -56,6 +56,12 @@ github.com/t1m0n/air-datepicker
 .formfast .fields.deliveryConvenientDate,
 .formfast .fields.deliveryConvenientTime {width: calc(50% - 7px);margin: 0}
 .formfast .quickform-select-convenient {font-size: 16px}
+.formfast .quickform-select-convenient.error + label.error {
+  display: none !important;
+}
+.formfast .quickform-select-convenient.error + .jq-selectbox__select {
+  border-color: #caa462;
+}
 #deliveryConvenientDate {font-family: 'Roboto Condensed',sans-serif}
 #quickDeliveryCountry-styler {flex-wrap: wrap;}
 
@@ -71,9 +77,10 @@ github.com/t1m0n/air-datepicker
   padding: 15px;
   white-space: pre-wrap  
 }
+.formfast .input-box .input + label.error {display: none!important;}
 .formfast .button {margin: 10px 0}
 .formfast-row {display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap}
-.formfast-row._spase-benween {-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between}
+.formfast-row._spase-between {-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between}
 .formfast-col {background: rgba(0,0,0,.2);margin-bottom: 30px;border-radius: 0px}
 .formfast-col.coupons {margin-bottom: 0;}
 .formfast-col._products {border-bottom-right-radius: 0}
@@ -288,7 +295,11 @@ github.com/t1m0n/air-datepicker
   .cartTable tbody tr td.name a {margin-bottom: 0}
   .cartTable tbody tr td.name div {display: none}
   .cartTable tbody tr td.cart-price.hide {display: none}
-  .cartTable tbody tr td.cart-price {display: block;position: relative;width: 100%;line-height: 38px;text-align: center;border-right: 0;border-left: 0}
+  .cartTable tbody tr td.cart-price {
+    display: block;position: relative;width: 100%;line-height: 38px;text-align: center;border-right: 0;border-left: 0;
+    padding-left: 105px;
+    padding-right: 55px;
+  }
   .cartTable tbody tr td.closetd {position: absolute;right: 0;bottom: 0;line-height: 21px;padding: 0 10px;border-top: none;}
   .cartTable tbody tr td.cart-qty {position: absolute;left: 0;z-index: 1;border: none;}
   .cartTable tbody tr td.cart-qty .input {border: 0;background-color: transparent;height: 39px;max-width: 70px}
@@ -301,6 +312,9 @@ github.com/t1m0n/air-datepicker
   .cartTable tfoot tr.actions td {display: block;width: 100%}
   .cartTable tfoot tr.discounttr td,
   .cartTable tfoot tr.total td {border-bottom: 0}
+  .cartTable tfoot tr.total {background: rgba(0,0,0,.2);}
+  .cartTable tfoot tr.total td.disc-name {background: transparent;}
+  .cartTable tfoot tr.total td.disc-name + td {background: transparent;}  
   #OrderAjaxBlock .formfast .buttons {width: 100%}
 }
 @media all and (max-width:767px) {

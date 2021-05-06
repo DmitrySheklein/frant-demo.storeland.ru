@@ -67,12 +67,12 @@
       <span class="price total-sum {CURRENCY_CHAR_CODE}">{CART_SUM_NOW | money_format}</span>
     </div>
     <div class="actions">
-      <a class="button-link" href="{CART_TRUNCATE_URL}" data-href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))">Очистить корзину</a>
       <a class="button" title="Перейти к оформлению заказа" href="{CART_URL}">
         <span>
           В корзину
         </span>
       </a>
+      <a class="button-link" href="{CART_TRUNCATE_URL}" data-href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))">Очистить корзину</a>
     </div>
     {% ENDIF %}
   </div>

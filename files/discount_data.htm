@@ -537,6 +537,14 @@
                         {% ENDIF %}
                       {% ENDIF %}
                       <!-- /END Добавление товара в корзину -->
+                      {% IF goods.COUNT_MODIFICATION = 1 %}
+                      <div class="total-good" style="display: none;">
+                        <span class="total-good-title">Общая стоимость</span>
+                        <span class="total-good-price">
+                          <span class="price {CURRENCY_CHAR_CODE}" data-price="{goods.MIN_PRICE_NOW}">{goods.MIN_PRICE_NOW | money_format}</span>                          
+                        </span>
+                      </div>
+                      {% ENDIF %}                      
                     </div>
                   </div>
                 </div>

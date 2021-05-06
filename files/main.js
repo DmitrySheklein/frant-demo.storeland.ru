@@ -1025,7 +1025,7 @@ function quantity() {
   var getTotalGoodPrice = function ($el, goodsCount) {
     var $goodPriceBlock = $el.closest('.item').find('.total-good');
     var $priceBlock = $goodPriceBlock.find('.price')
-    var goodPrice = $priceBlock.data('price');
+    var goodPrice = Math.ceil($priceBlock.data('price'));
 
     $priceBlock.find('.num').text(addSpaces(goodPrice * goodsCount));
 

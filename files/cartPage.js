@@ -84,7 +84,7 @@ function startOrder() {
       $('.formfast-cart').css('display', 'block');
       closeOrder.css('display', 'block');
       cartTable.toggleClass('disable');
-      q = cartTable.find('.cartqty');
+      // q = cartTable.find('.cartqty');
       // if(q.prop('disabled') == true){q.prop('disabled',false)}else{q.prop('disabled',true)}
       quickOrderScripts();
       OrderScripts();
@@ -133,7 +133,8 @@ function address() {
       if ($quickDeliveryAddress.val().match(/(.*)(улица)+(.*)/i)) {
         $quickDeliveryAddress.val(null);
       }
-      $quickDeliveryAddress.val('Улица: ' + quickDeliveryAddressStreetValue + ', Дом/Корпус: ' + quickDeliveryAddressHomeValue + ', Квартира: ' + quickDeliveryAddressFlatValue);      
+      $quickDeliveryAddress.val('Улица: ' + quickDeliveryAddressStreetValue + ', Дом/Корпус: ' + quickDeliveryAddressHomeValue + ', Квартира: ' + quickDeliveryAddressFlatValue);
+      
       return false;
     }
   });
@@ -692,7 +693,7 @@ function quickOrderScripts() {
 
 
     // Валидация формы на странице оформления заказа
-    $("#quickform").off('submit').on('submit', function () {
+    $("#quickform").on('submit', function () {
       // Если форма невалидна не отправляем её на сервер
       if (!$(this).valid()) {
         return false;
@@ -715,7 +716,7 @@ function quickOrderScripts() {
         data: formData,
         timeout: 5000,
         beforeSend: function(){
-          $orderBtns.addClass('_disabled').html('<i class="fal fa-spin fa-spinner"></i> Оформляется')
+          $orderBtns.addClass('_disabled').html('<span>Оформляется</span>')
         },        
         success: function (data) {
           // Если заказ был успешно создан
@@ -723,13 +724,13 @@ function quickOrderScripts() {
             window.location = data.location;
           } else if (data.status == 'error') {
             alert(data.message);
-            $orderBtns.removeClass('_disabled').html('Оформить заказ')
+            $orderBtns.removeClass('_disabled').html('<span>Оформить заказ</span>')
           } else {
             alert('Во время оформления заказа возникла неизвестная ошибка. Пожалуйста, обратитесь в службу технической поддержки.');
           }
         },
         error: function(){
-          $orderBtns.removeClass('_disabled').html('Оформить заказ')
+          $orderBtns.removeClass('_disabled').html('<span>Оформить заказ</span>')
         }         
       });
       return false;

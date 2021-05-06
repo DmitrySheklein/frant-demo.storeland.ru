@@ -592,9 +592,15 @@
                         <div class="empty" title="Уведомить" data-fancybox="" data-src="#fancybox-notify"><span>Уведомить</span></div>
                       {% ELSE %}
                         {% IF goods.COUNT_MODIFICATION > 1 %}
-                          <a class="quickviewmod button" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{goods.URL_MIN_PRICE_NOW}"><span>В корзину</span></a>
+                          <a class="quickviewmod button" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{goods.URL_MIN_PRICE_NOW}">
+                            <span class="material-icons-outlined">shopping_cart</span>
+                            <span>В корзину</span>
+                          </a>
                         {% ELSE %}                                                     
-                          <a class="add-cart button" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>В корзину</span></a>
+                          <a class="add-cart button" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}">
+                            <span class="material-icons-outlined">shopping_cart</span>
+                            <span>В корзину</span>
+                          </a>
                           <a class="add-cart quick" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Купить в 1 клик</span></a>
                         {% ENDIF %}
                       {% ENDIF %}
@@ -684,4 +690,3 @@
   </div>
 {% ENDIF %}
 <!-- /END Вывод всех видов описания категории -->
-<!-- {print_r} -->
