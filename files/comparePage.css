@@ -67,9 +67,6 @@
 }
 @media all and (min-width: 1200px) {.CompareGoodsTableTbody.table-box {table-layout: fixed;}}
 @media all and (max-width: 768px) {.CompareGoodsTableFilter .button {margin-bottom: 5px;}}
-/* @media all and (max-width: 481px) {.CompareGoodsTable {-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center}} */
-
-
 @media all and (max-width: 641px) {
   .CompareGoodsTableFilter > span {
     display: none;
