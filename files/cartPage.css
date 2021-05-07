@@ -301,10 +301,17 @@ github.com/t1m0n/air-datepicker
     padding-right: 55px;
   }
   .cartTable tbody tr td.closetd {position: absolute;right: 0;bottom: 0;line-height: 21px;padding: 0 10px;border-top: none;}
-  .cartTable tbody tr td.cart-qty {position: absolute;left: 0;z-index: 1;border: none;}
+  .cartTable tbody tr td.cart-qty {position: absolute;left: 0;z-index: 1;border: none;bottom: 0px;}
   .cartTable tbody tr td.cart-qty .input {border: 0;background-color: transparent;height: 39px;max-width: 70px}
   .cartTable tbody tr td.cart-qty .qty-set > a {height: 39px;line-height: 39px}
-  .cartTable tbody tr td.cart-qty .qty-wrap {border-radius: 0}
+  .cartTable tbody tr td.cart-qty .qty-wrap {
+    border-radius: 0;
+    border-top: none;
+    border-bottom: none;    
+    margin-bottom: 0;
+    height: 38px;
+    line-height: 38px;    
+  }
   .cartTable tfoot tr {display: block;float: left;width: 100%;border-bottom: 1px solid rgb(206 197 191 / 50%)}
   .cartTable tfoot tr > td {float: left}
   .cartTable tfoot tr > td:last-child {float: right}

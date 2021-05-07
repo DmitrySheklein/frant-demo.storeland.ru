@@ -115,7 +115,7 @@
         </td>
         {% FOR goods_mod_info %}
           <td class="compare-td compare-td-{goods_mod_info.index} _price" {% IF goods_mod_info.index>4 %}style="display:none;"{% ENDIF %}>
-            <span class="price {CURRENCY_CHAR_CODE}">{goods_mod_info.PRICE_NOW | money}</span> за {goods_mod_info.MEASURE_NAME}            
+            <span class="price {CURRENCY_CHAR_CODE}">{goods_mod_info.PRICE_NOW | money}</span>     
           </td>
         {% ENDFOR %}
       </tr>

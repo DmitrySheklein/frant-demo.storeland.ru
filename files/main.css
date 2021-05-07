@@ -205,7 +205,7 @@ dt, dd {line-height: 1.4;}
 .attention {background-color:#caa462;color: #fff;}
 .information {background-color: #118AB2;color: #fff;}
 .success .close, .warning .close, .attention .close, .information .close {float: right;padding-top: 4px;padding-right: 4px;cursor: pointer;}
-.success a, .warning a, .attention a, .information a {font-weight: 600;font-size:16px;text-decoration:underline;}
+.success a, .warning a, .attention a, .information a {font-weight: 600;text-decoration:underline;}
 label.invalidInput {color: #eb5c5e;font-size: 90%;}
 .name-error, .phone-error {display: block;position: relative;color: #ffffff;background: #caa462;width: 100%;text-align: left;margin: 0 auto;padding: 3px 15px;}
 /*! Tippy */
@@ -536,9 +536,9 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover {color: #fff;}
 
 /*! Навигация */
-.navigation .prev, .navigation .next {display: inline-block;width: 20px;font-size: 40px;line-height: 1;color: #777;margin: 0 5px;padding: 0;overflow: hidden;text-align: center;cursor: pointer;z-index: 2;}
+.navigation .prev, .navigation .next {display: inline-block;width: 20px;font-size: 40px;line-height: 1;color: #777;margin: 0 5px;padding: 0;overflow: hidden;text-align: center;cursor: pointer;z-index: 2; user-select: none;}
 .navigation .prev:hover, .navigation .next:hover, .navigation .owl-prev:hover, .navigation .owl-next:hover {color:#caa462;cursor: pointer;}
-.navigation .prev.disable, .navigation .next.disable, .navigation .prev.disable:hover, .navigation .next.disable:hover {color: #e1e1e1;cursor: default;}
+.navigation .prev.disable, .navigation .next.disable, .navigation .prev.disable:hover, .navigation .next.disable:hover {cursor: default;opacity: .4;pointer-events: none;}
 
 /*! Счётчик акции */
 .sale-counter {
@@ -1735,8 +1735,12 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   padding-top: 70px;
   padding-bottom: 70px;  
 }
+@media(max-width: 481px){
+  .products-container.index.pdt-sale {
+    padding: 35px 0;
+  }  
+}
 .products-container.index {margin-bottom: 0;width: 100%}
-/* .products-container.index .block-title {display: none} */
 .products-container.section.index .block-title {display: -webkit-box;display: -ms-flexbox;display: flex}
 .products-container {position: relative}
 .products-container .content {width: 100%;position: relative}
@@ -2247,6 +2251,11 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 #viewed .content .viewed-items .item {display: inline-block;float: none;width: 100%;height: 100%;padding: 0;    border: 1px solid transparent;    transition: box-shadow,border-color .3s,-webkit-box-shadow;}
 #viewed .content .viewed-items .item:hover {border: 1px solid rgb(206 197 191 / 50%);background: rgba(0,0,0,.5);}
 #viewed .content .viewed-items .item-inner {position: relative;width: 100%;height: 100%;background-color: rgba(0,0,0,.2);box-shadow: none;border: 0;border-radius: 0;padding: 5px;display: flex;flex-direction: column;align-items: center;border-radius: 0;}
+#viewed .content .viewed-items .goodsListForm {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 #viewed .content .viewed-items .product-image {width: 100%;height: 155px;padding: 0;margin-bottom: 15px;}
 #viewed .content .viewed-items .product-image a {display: flex;position: relative;width: 100%;height: 100%;min-height: 60px;z-index: 0;overflow: hidden;border-radius: 0;background: #fff;text-align: center;}
 #viewed .content .viewed-items .product-image a img {width: auto;margin: auto;transition: opacity .3s;max-height: 100%;}

@@ -4,7 +4,15 @@
 .CompareGoodsTable {float: left;width: 100%;display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;margin-bottom: 15px;}
 .CompareGoodsTableFilter {float: right;display: flex;align-items: center;flex-wrap: wrap;}
 .CompareGoodsTableFilter .button {margin-bottom: 0;margin-left: 11px;max-width: fit-content;}
-.CompareGoodsTable .CompareNavigation {float: left;margin: 0;padding: 0;list-style: none;list-style-position: inside}
+.CompareGoodsTable .CompareNavigation {
+  float: left;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-position: inside;
+  display: flex;
+  align-items: center;
+}
 .CompareGoodsTable .CompareNavigation li {display: inline-block;vertical-align: middle}
 .CompareGoodsTable .CompareNavigation .next,
 .CompareGoodsTable .CompareNavigation .prev {font-size: 30px;vertical-align: middle;} 
@@ -58,17 +66,26 @@
   white-space: nowrap;
 }
 @media all and (min-width: 1200px) {.CompareGoodsTableTbody.table-box {table-layout: fixed;}}
-@media all and (max-width: 768px) {.CompareGoodsTableFilter .button {margin-bottom: 5px;margin-left: 0;}}
-@media all and (max-width: 481px) {.CompareGoodsTable {-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center}}
+@media all and (max-width: 768px) {.CompareGoodsTableFilter .button {margin-bottom: 5px;}}
+/* @media all and (max-width: 481px) {.CompareGoodsTable {-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center}} */
 
 
 @media all and (max-width: 641px) {
-  .CompareGoodsTableFilter {line-height: 1;}
-  .CompareGoodsTableFilter span {margin-bottom: 10px;}
-  .CompareGoodsTable .CompareNavigation {float: none;text-align: center;}
+  .CompareGoodsTableFilter > span {
+    display: none;
+  }
 }
 @media all and (max-width: 481px) {
-  .CompareGoodsTableFilter {float: left;}
+  .CompareGoodsTable .CompareNavigation {
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  .CompareGoodsTableFilter {float: left;    width: 100%;}
   .CompareGoodsTableFilter span {float: left;width: 100%;}
   .CompareGoodsTableFilter .button {width: 100%;}
+  .CompareGoodsTableFilter .button.CompareGoodsTableFilterShowAll {margin-left: 0;}
+  .CompareGoodsTableFilter .button {
+    max-width: 100%;
+    margin-left: 0;
+  }  
 }
