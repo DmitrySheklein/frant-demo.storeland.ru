@@ -16,9 +16,9 @@
   {% FOR nested_categories_list %}
     <div class="item col-md-4 col-sm-4 col-xs-6">
       <div class="item-inner">
-        <div class="cat-image">
+        <div class="cat-image {% IF nested_categories_list.IMAGE_EMPTY %}_empty{% ENDIF %}">
         <a href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
-        <img class="goods-cat-image-medium lozad" data-src="{% IF nested_categories_list.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-medium.png?design=frant{% ELSE %}{nested_categories_list.IMAGE_MEDIUM}{% ENDIF %}">
+        <img class="lozad" data-src="{% IF nested_categories_list.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-medium.png?design=frant{% ELSE %}{nested_categories_list.IMAGE_MEDIUM}{% ENDIF %}">
         </a>
         </div>
         <div class="cat-name" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
@@ -141,7 +141,7 @@
       {% FOR nested_categories_list %}
         <div class="item col-md-4 col-sm-4 col-xs-6">
           <div class="item-inner">
-            <div class="cat-image">
+            <div class="cat-image {% IF nested_categories_list.IMAGE_EMPTY %}_empty{% ENDIF %}">
               <a href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
                 <img class="goods-cat-image-medium lozad" data-src="{% IF nested_categories_list.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=frant{% ELSE %}{nested_categories_list.IMAGE_MEDIUM}{% ENDIF %}">  
               </a>
