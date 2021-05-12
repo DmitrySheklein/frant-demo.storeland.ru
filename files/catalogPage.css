@@ -437,17 +437,20 @@
   margin: 0;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
 }
+
 .filters._toolbar .filter-item {
-  height: 27px;
+  min-height: 27px;
   background-color: #1e1d21;
   border: 1px solid rgb(206 197 191 / 50%);
   padding: 5px 11px;
+  margin-bottom: 5px;
   font-size: 14px;
   transition: all .3s;
   cursor: pointer;
 }
-.filters._toolbar .filter-item:not(:first-child){margin-left: 5px;}
+.filters._toolbar .filter-item:not(:last-child){margin-right: 5px;}
 .filters._toolbar .filter-item:hover {
   border: 1px solid rgb(206 197 191 / 100%);
 }
@@ -473,6 +476,7 @@
   height: 27px;
   background-color: #caa462;
   color: #ffffff;
+  margin-right: 5px;
 }
 .filters-btn-text {
   font-size: 14px;  
@@ -492,12 +496,13 @@
     display: none;
   }
 }
+
 @media(max-width: 1199px){
   .filters._toolbar {
-    display: block!important;
+    display: flex!important;
   }
   .filters._toolbar._active .filters-btn {
-    position: relative;
+    margin-bottom: 10px;
   }
   .filters._toolbar._active .filters-btn::before {
     content: '';
@@ -507,10 +512,33 @@
     left: 1px;
     width: 7px;
     height: 7px;
-    background: #365e87;
+    background: #145349;
     border-radius: 50%;
   }
 }
+@media(max-width: 550px){
+  .filters-btn {
+    height: 40px;
+  }
+}
+@media all and (max-width: 481px) {
+  .filters._toolbar .filter-inner {
+    flex-wrap: wrap;
+  }
+  .filters._toolbar._active .filter-inner {
+    margin-top: 0px;
+  }
+  .filters._toolbar .filter-item:first-child {
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  .filters._toolbar .filter-item:not(:first-child) {
+    margin-left: 0;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+}
+
 /*! Товары списком **/
 .products-list {margin: 0;padding: 0;list-style: none;list-style-position: inside}
 .products-list .item {position: relative;overflow: hidden;margin-bottom: 30px;}
@@ -676,6 +704,9 @@
   }
 }
 
+.products-list .item.empty .qty-wrap {
+  display: none;
+}
 .products-list .qty-wrap {
   width: 100%;
   height: 40px;
@@ -901,6 +932,7 @@
   }
   .filters._toolbar._active .filters-btn {
     bottom: calc(100% + 27px);
+    margin-bottom: 0;
   }
   .filters-btn {
     position: absolute;

@@ -2710,7 +2710,7 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
   margin-bottom: 0;
 }
 /*! Личный кабинет (Избранное) ***/
-.account.cart-info .buttons .button {margin-right: 11px;margin-bottom:5px;max-width: fit-content;}
+.account.cart-info .buttons .button {margin-right: 11px;margin-bottom:5px;max-width: fit-content;max-width: -moz-fit-content;}
 .account .favorites-empty{display:none;width:100%;white-space: nowrap;text-align:center;margin:0;cursor:default;border-radius: 0;height: 40px;line-height: 36px;padding: 0 5px;font-size: 16px;border: 1px solid rgb(206 197 191 / 20%);background-color: transparent;}
 .account.cart-info .price {white-space: nowrap;color: #cec5bf;}
 /** Платежные системы на странице просмотра заказа **/

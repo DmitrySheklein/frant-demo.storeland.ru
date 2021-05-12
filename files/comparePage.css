@@ -1,9 +1,9 @@
 /*! Сравнение ***/
 .compare-info .buttons {margin: 20px 0 30px}
-.compare-info .buttons .button {margin-bottom: 5px;margin-right: 15px;    max-width: fit-content;}
+.compare-info .buttons .button {margin-bottom: 5px;margin-right: 15px;    max-width: fit-content;max-width: -moz-fit-content;}
 .CompareGoodsTable {float: left;width: 100%;display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;margin-bottom: 15px;}
-.CompareGoodsTableFilter {float: right;display: flex;align-items: center;flex-wrap: wrap;}
-.CompareGoodsTableFilter .button {margin-bottom: 0;margin-left: 11px;max-width: fit-content;}
+.CompareGoodsTableFilter {float: right;display: flex;align-items: center;flex-wrap: wrap;width: 100%;}
+.CompareGoodsTableFilter .button {margin-bottom: 0;margin-left: 11px;max-width: fit-content;max-width: -moz-fit-content;}
 .CompareGoodsTable .CompareNavigation {
   float: left;
   margin: 0;

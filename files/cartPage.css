@@ -256,7 +256,7 @@ github.com/t1m0n/air-datepicker
 .cartTable tfoot tr.total td {padding: 15px;border-bottom: 1px solid rgb(206 197 191 / 50%)}
 .cartTable tfoot tr.total td.disc-name {border-left: 1px solid rgb(206 197 191 / 50%);    background: rgba(0,0,0,.2);}
 .cartTable tfoot tr.total td.disc-name + td {border-right: 1px solid rgb(206 197 191 / 50%);    background: rgba(0,0,0,.2);}
-.cartTable tfoot tr.total .title {vertical-align: -webkit-baseline-middle}
+.cartTable tfoot tr.total .title {vertical-align: middle}
 .cartTable .price {font-size: 18px;white-space: nowrap;    color: #cec5bf;}
 .cartTable .goods-image-other {max-width: 100px;max-height: 100px}
 .cartTable .TotalSum .price {font-size: 22px}
@@ -320,7 +320,7 @@ github.com/t1m0n/air-datepicker
   .cartTable tfoot tr.discounttr td,
   .cartTable tfoot tr.total td {border-bottom: 0}
   .cartTable tfoot tr.total {background: rgba(0,0,0,.2);}
-  .cartTable tfoot tr.total td.disc-name {background: transparent;}
+  .cartTable tfoot tr.total td.disc-name {background: transparent;height: 54px;}
   .cartTable tfoot tr.total td.disc-name + td {background: transparent;}  
   #OrderAjaxBlock .formfast .buttons {width: 100%}
 }
