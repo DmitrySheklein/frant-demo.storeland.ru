@@ -470,6 +470,7 @@
 .filters._toolbar .filter-item .counter {display: none;}
 .filters._toolbar .filter-inner .filter-item:not(:last-child) {padding-bottom: 0;}
 .filters-btn {
+  position: relative;
   display: inline-block;
   vertical-align: middle;
   width: 95px;
@@ -477,6 +478,8 @@
   background-color: #caa462;
   color: #ffffff;
   margin-right: 5px;
+  flex-shrink: 0;    
+  align-self: center;
 }
 .filters-btn-text {
   font-size: 14px;  
