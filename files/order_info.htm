@@ -243,17 +243,17 @@
                     <!-- Товарная позиция либо доставка -->
                     {% IF order_lines.TYPE_ID=1 || order_lines.TYPE_ID=2 %}
                     <span class="price _light {CURRENCY_CHAR_CODE}">
-                      {order_lines.LINE_PRICE | money}
+                      {order_lines.LINE_PRICE | money_format}
                     </span>
                     {% ENDIF %}
                     {% IF order_lines.TYPE_ID = 3 %}
                       {% IF order_lines.MEASURE_NAME = % %}
                         <span class="price _light">
-                          {order_lines.LINE_PRICE_NUMBER_FORMAT} {order_lines.MEASURE_NAME}
+                          {order_lines.LINE_PRICE} {order_lines.MEASURE_NAME}
                         </span>
                       {%ELSE%}
                         <span class="price _light {CURRENCY_CHAR_CODE}">
-                          {order_lines.LINE_PRICE_NUMBER_FORMAT | money}
+                          {order_lines.LINE_PRICE | money_format}
                         </span>
                       {%ENDIF%}                      
                     {% ENDIF %}                    

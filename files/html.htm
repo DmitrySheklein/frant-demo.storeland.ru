@@ -1762,7 +1762,7 @@
                             </span>
                             <span class="filter-arrow"></span>
                           </div>
-                          <input class="filter-search" type="text" placeholder="Я ищу">                          
+                          <input class="filter-search" type="text" placeholder="Я ищу" {% FOR values %}{% IF filter_attr_list.values.index > 10 %}crop{break}{% ENDIF %}{% ENDFOR %}" {% IF filter_attr_list.index > 3 %}style="display:none"{% ENDIF %}>                          
                           <ul class="filter-inner {% FOR values %}{% IF filter_attr_list.values.index > 10 %}crop{break}{% ENDIF %}{% ENDFOR %}" {% IF filter_attr_list.index > 3 %}style="display:none"{% ENDIF %}>
                           {% FOR values %}
                             <li class="filter-item">
@@ -1791,7 +1791,7 @@
                             </span>
                             <span class="filter-arrow"></span>
                           </div>
-                          <input class="filter-search" type="text" placeholder="Я ищу">
+                          <input class="filter-search" type="text" placeholder="Я ищу" {% FOR values %}{% IF filter_prop_list.values.index > 10 %}crop{break}{% ENDIF %}{% ENDFOR %}" {% IF filter_prop_list.index > 3 %}style="display:none"{% ENDIF %}>
                           <ul class="filter-inner {% FOR values %}{% IF filter_prop_list.values.index > 10 %}crop{break}{% ENDIF %}{% ENDFOR %}" {% IF filter_prop_list.index > 3 %}style="display:none"{% ENDIF %}>                          
                           {% FOR values %}
                             <li class="filter-item">

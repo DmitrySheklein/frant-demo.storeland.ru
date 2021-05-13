@@ -2720,7 +2720,12 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 .order-info .paymentQiwi .PhoneLabel, .order-info .paymentQiwi .PhoneInput {float: none;}
 .order-info .paymentQiwi .PhoneInput {padding: 10px 0 0;}
 .order-info .paymentQiwi #form_phone {width: 130px;text-align: center;}
-
+@media(max-width: 481px){
+  .order-info .button {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+}
 /*! Страница Поиск ***/
 .page-content .search {padding: 15px;}
 .page-content .search h4 {margin-bottom: 10px;}
