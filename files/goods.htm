@@ -159,13 +159,14 @@
           <meta itemprop="availability" content="{% IF GOODS_MOD_REST_VALUE>0 %}http://schema.org/InStock{%ELSE %}http://schema.org/OutOfStock{% ENDIF %}">
           <!-- информация для поисковика о валюте товара -->
           <meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}"/>
-          <span class="price goodsDataMainModificationPriceNow {CURRENCY_CHAR_CODE}" itemprop="price" content="{GOODS_MOD_PRICE_NOW}">{GOODS_MOD_PRICE_NOW | money_format}</span>
-          {% IF GOODS_MOD_PRICE_NOW_WITHOUT_DISCOUNT>GOODS_MOD_PRICE_NOW %}
-              <span class="price old-price goodsDataMainModificationPriceOld {CURRENCY_CHAR_CODE}">{GOODS_MOD_PRICE_NOW_WITHOUT_DISCOUNT | money_format}</span>
-          {% ELSEIF GOODS_MOD_PRICE_OLD>GOODS_MOD_PRICE_NOW %}
-              <span class="price old-price goodsDataMainModificationPriceOld {CURRENCY_CHAR_CODE}">{GOODS_MOD_PRICE_OLD | money_format}</span>
-          {% ENDIF %}
-
+          <span class="price goodsDataMainModificationPriceNow {CURRENCY_CHAR_CODE}" itemprop="price" content="{GOODS_MOD_PRICE_NOW}">{GOODS_MOD_PRICE_NOW | money_format}</span>          
+          <span class="price old-price goodsDataMainModificationPriceOld {CURRENCY_CHAR_CODE}">
+            {% IF GOODS_MOD_PRICE_NOW_WITHOUT_DISCOUNT>GOODS_MOD_PRICE_NOW %}
+              {GOODS_MOD_PRICE_NOW_WITHOUT_DISCOUNT | money_format}
+            {% ELSEIF GOODS_MOD_PRICE_OLD>GOODS_MOD_PRICE_NOW %}
+              {GOODS_MOD_PRICE_OLD | money_format}
+            {% ENDIF %}
+          </span>
           <!-- Блок информации по акции действующей на товар, если таковая есть -->
           {% IF GOODS_MOD_MAX_DISCOUNT_ID %}
             <span class="goodsDataMainModificationPriceDiscount">

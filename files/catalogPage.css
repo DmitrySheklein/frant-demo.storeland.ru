@@ -675,6 +675,7 @@
 .products-list .item .product-shop .price-box .price > span:after {
   font-size: 22px;
 }
+/* .products-list .item .product-shop .price-box .price:before {content: 'от';margin-right: 4px;font-size: 0.8em;} */
 .products-list .item .product-shop .price-box .old-price {
   color: #cec5bf;
   font-size: 16px;
