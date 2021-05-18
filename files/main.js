@@ -219,7 +219,7 @@ function mainFunctions() {
         $(window).on('scroll', function () {
           var scrollTop = $(window).scrollTop();
           
-          if (!isHeaderFixed && getClientWidth() > 1200) {
+          if (!isHeaderFixed && getClientWidth() > 768) {
             if ((scrollTop > headerNormalHeight) && headerCanFix) {
               isHeaderFixed = true;
 
