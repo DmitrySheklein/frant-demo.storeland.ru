@@ -22,6 +22,9 @@ github.com/t1m0n/air-datepicker
 .fancybox-container._quickOrder .form-list {margin-bottom: 0}
 .fancybox-container._quickOrder .formfast-cart {display: block;position: static;width: 100%;padding: 0}
 .fancybox-container._quickOrder #closeOrder {display: none;}
+.fancybox-container._quickOrder .formfast-col.coupons {
+  margin-bottom: 30px;
+}
 /*!*/
 #OrderAjaxBlock .formfast .buttons {margin: 30px 0;padding: 0 15px;width: 50%;margin-left: auto}
 #OrderAjaxBlock.row {-webkit-box-align: start;-ms-flex-align: start;align-items: flex-start}
@@ -154,6 +157,9 @@ github.com/t1m0n/air-datepicker
 .coupons .couponBlockSale.active {    color: #caa462;}
 .coupons .couponBlockSale .couponNum {font-family: 'Roboto Condensed';font-weight: 700}
 .coupons .couponBlocLabel {font-size: 12px}
+.couponBlockPrice p {
+  margin-bottom: 0;
+}
 .coupons .couponBlockPrice .couponNum:after {content: "руб.";display: inline-block;margin-left: 5px;line-height: 1.1;font-weight: 600;font-size: 14px}
 .coupons .coupon-btn {margin: 0;margin-left: 15px;-ms-flex-negative: 0;flex-shrink: 0}
 .coupons .coupon-btn._disabled {opacity: .3;pointer-events: none}
@@ -173,19 +179,20 @@ github.com/t1m0n/air-datepicker
 }
 .formfast .cart-products-list {margin: 0;padding: 0;list-style: none;max-height: 275px;overflow: auto;
   border: 1px solid rgb(206 197 191 / 50%);
-  border-top: 0;}
-.formfast .cart-products-list .cart-products-item {display: -webkit-box;display: -ms-flexbox;display: flex;border-bottom: 1px solid rgb(206 197 191 / 50%);margin-bottom: 0;padding: 0 10px}
-.formfast .cart-products-list .cart-products-item:last-child {border-bottom: 0}
+  border-top: 0;
+}
+.formfast .cart-products-list .cart-products-item {display: -webkit-box;display: -ms-flexbox;display: flex;margin-bottom: 0;padding: 0 0px}
+.formfast .cart-products-list .cart-products-item:last-child div {border-bottom: 0!important}
 .formfast .cart-products-list .cart-products-item > div {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;border-right: 1px solid rgb(206 197 191 / 50%);-ms-flex-item-align: stretch;align-self: stretch}
 .formfast .cart-products-list .cart-products-item > div:last-child {border-right: 0}
-.formfast .cart-products-list .cart-products-item .product-image {width: 95px;text-align: center;padding-right: 10px;padding-top: 10px;padding-bottom: 10px;-ms-flex-negative: 0;flex-shrink: 0}
+.formfast .cart-products-list .cart-products-item .product-image {width: 95px;text-align: center;padding-right: 10px;padding-left: 10px;;padding-top: 10px;padding-bottom: 10px;-ms-flex-negative: 0;flex-shrink: 0;border-bottom: 1px solid rgb(206 197 191 / 50%);}
 .formfast .cart-products-list .cart-products-item .product-image img {margin: auto;max-width: 100%;max-height: 80px}
-.formfast .cart-products-list .cart-products-item .product-name {overflow: hidden;white-space: normal;-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;padding: 0 10px;-ms-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-negative: 0;flex-shrink: 0;width: 15%}
-.formfast .cart-products-list .cart-products-item .product-price {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center}
+.formfast .cart-products-list .cart-products-item .product-name {overflow: hidden;white-space: normal;-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;padding: 0 10px;-ms-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-negative: 0;flex-shrink: 0;width: 15%;border-bottom: 1px solid rgb(206 197 191 / 50%);}
+.formfast .cart-products-list .cart-products-item .product-price {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;border-bottom: 1px solid rgb(206 197 191 / 50%);}
 .formfast .cart-products-list .cart-products-item .price {font-size: 15px;    color: #cec5bf;}
 .formfast .cart-products-list .cart-products-item .product-price,
 .formfast .cart-products-list .cart-products-item .product-quantity,
-.formfast .cart-products-list .cart-products-item .product-total-price {width: 15%;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;padding: 0 10px}
+.formfast .cart-products-list .cart-products-item .product-total-price {width: 15%;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;padding: 0 10px;border-bottom: 1px solid rgb(206 197 191 / 50%);}
 .formfast-cart {display: none;position: -webkit-sticky;position: sticky;top: 80px;padding-left: 15px}
 .formfast-cart > .title {position: relative;overflow: hidden;margin: 0;padding: 10px;text-align: center;
   background-color: #caa462;
@@ -247,8 +254,8 @@ github.com/t1m0n/air-datepicker
 .cartTable tbody tr td.closetd {padding: 0}
 .cartTable tbody tr .cartTable-remove-item {padding: 8px}
 .cartTable tfoot tr.discounttr td {padding: 15px;border-bottom: 1px solid rgb(206 197 191 / 50%)}
-.cartTable tfoot tr.discounttr td.disc-name {border-left: 1px solid rgb(206 197 191 / 50%)}
-.cartTable tfoot tr.discounttr td.disc-name + td {border-right: 1px solid rgb(206 197 191 / 50%)}
+.cartTable tfoot tr.discounttr td.disc-name {border-left: 1px solid rgb(206 197 191 / 50%);    background: rgba(0,0,0,.2);}
+.cartTable tfoot tr.discounttr td.disc-name + td {border-right: 1px solid rgb(206 197 191 / 50%);background: rgba(0,0,0,.2);}
 .cartTable tfoot tr.discounttr .disc-name .title {vertical-align: middle}
 .cartTable tfoot tr.discounttr .disc-name .num {display: inline-block;width: 36px;height: 36px;line-height: 36px;text-align: center;vertical-align: middle;background: #f50056;color: #fff;font-size: 12px;border-radius: 50%}
 .cartTable tfoot tr.discounttr .hide,
@@ -279,7 +286,7 @@ github.com/t1m0n/air-datepicker
   .cartTable tbody tr .cart-name .image {display: block;text-align: center;margin: 0 0 15px 0}
   .cartTable tbody tr .cart-name .name {width: 100%}
 }
-@media all and (max-width:991px) {
+@media all and (max-width:768px) {
   .cartTable thead {display: none}
   .cartTable td.hide {display: none}
   .cartTable tbody tr td,
@@ -289,9 +296,9 @@ github.com/t1m0n/air-datepicker
   .cartTable tbody tr > td {display: inline-block}
   .cartTable tbody tr .cart-qty-mesure {display: none}
   .cartTable tbody tr .cart-name {display: block;text-align: center;margin-bottom: 0}
-  .cartTable tbody tr td.image {display: block;text-align: center;border-right: 0;border-left: 0}
+  .cartTable tbody tr td.image {display: block;text-align: center;border-right: 1px solid rgb(206 197 191 / 50%);}
   .cartTable tbody tr td.image img {margin: 10px}
-  .cartTable tbody tr td.name {display: block;border-top: 0;padding: 10px;border-right: 0;border-left: 0}
+  .cartTable tbody tr td.name {display: block;border-top: 0;padding: 10px;border-left: 1px solid rgb(206 197 191 / 50%);}
   .cartTable tbody tr td.name a {margin-bottom: 0}
   .cartTable tbody tr td.name div {display: none}
   .cartTable tbody tr td.cart-price.hide {display: none}
@@ -317,6 +324,9 @@ github.com/t1m0n/air-datepicker
   .cartTable tfoot tr > td:last-child {float: right}
   .cartTable tfoot tr.actions {border-bottom: 0}
   .cartTable tfoot tr.actions td {display: block;width: 100%}
+  .cartTable tfoot tr.discounttr {background: rgba(0,0,0,.2);}
+  .cartTable tfoot tr.discounttr td.disc-name {background: transparent;}
+  .cartTable tfoot tr.discounttr td.disc-name + td {background: transparent;}
   .cartTable tfoot tr.discounttr td,
   .cartTable tfoot tr.total td {border-bottom: 0}
   .cartTable tfoot tr.total {background: rgba(0,0,0,.2);}

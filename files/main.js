@@ -677,12 +677,12 @@ function addto() {
                   $('.compare').addClass('have-items');
                   $('.compare .compare-items .empty').hide();
                   $('.compare .compare-items .actions').show();     
-                  $compareBlock.addClass('_active')         
+                  $compareBlock.addClass('_added')         
                 }else{
                   $('.compare').removeClass('have-items');
                   $('.compare .compare-items .empty').show();
                   $('.compare .compare-items .actions').hide();  
-                  $compareBlock.removeClass('_active')                
+                  $compareBlock.removeClass('_added')                
                 }
               }).animate({display: "inline"} , 500 );
             }
@@ -814,12 +814,12 @@ function addto() {
                   $('.favorites').addClass('have-items');
                   $('.favorites .favorites-items .empty').hide();
                   $('.favorites .favorites-items .actions').show();
-                  $favoritesBlock.addClass('_active')           
+                  $favoritesBlock.addClass('_added')           
                 }else{
                   $('.favorites').removeClass('have-items');
                   $('.favorites .favorites-items .empty').show();
                   $('.favorites .favorites-items .actions').hide();     
-                  $favoritesBlock.removeClass('_active')               
+                  $favoritesBlock.removeClass('_added')               
                 }
               }).animate({display: "inline"} , 500 );
             }

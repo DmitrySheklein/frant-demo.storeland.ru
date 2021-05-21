@@ -194,58 +194,6 @@
       {% ENDFOR %}
       <!-- END Строки №8 и т.д - Характеристики товаров -->
 
-      <!-- Строка №9 Описание товара -->
-      <!-- В зависимости от настроек на сайте покажем либо полное описание товарной модификации, либо краткое -->
-      {% IF SETTINGS_COMPARE_DESCRIPTION_DISPLAY_TYPE=1%}
-        <!-- Строка с полным описанием товара покажется, если оно заполнено хотя бы для одной товарной модификации -->
-        {% IFNOT GOODS_GOODS_DESC_LARGE_IS_EMPTY_FOR_ALL %}
-          <tr class="CompareGoodsTableTbodyComparisonLine {% IF GOODS_GOODS_DESC_LARGE_IS_SAME %}same{% ENDIF %}">
-            <td class="cell vtop">
-              <input class="CompareCheckbox checkbox-hidden" type="checkbox" id="compare_tb_check_description_large" />
-              <label class="checkbox-name" for="compare_tb_check_description_large">Описание</label>
-            </td>
-            {% FOR goods_mod_info %}
-              <td class="compare-td compare-td-{goods_mod_info.index} vtop" {% IF goods_mod_info.index>4 %}style="display:none;"{% ENDIF %}>
-                {% IF goods_mod_info.GOODS_DESCRIPTION_LARGE %}
-                  <div class="htmlDataBlock">
-                    {goods_mod_info.GOODS_DESCRIPTION_LARGE}
-                  </div>
-                {% ENDIF %}
-                {% IF goods_mod_info.GOODS_DESCRIPTION_SHORT %}
-                  <div class="htmlDataBlock">
-                    {goods_mod_info.GOODS_DESCRIPTION_SHORT}
-                  </div>
-                {% ENDIF %}
-              </td>
-            {% ENDFOR %}
-          </tr>
-        {% ENDIF %}
-      {% ELSE %}
-        <!-- Строка с кратким описанием товара покажется, если оно заполнено хотя бы для одной товарной модификации -->
-        {% IFNOT GOODS_GOODS_DESC_SHORT_IS_EMPTY_FOR_ALL %}
-          <tr class="CompareGoodsTableTbodyComparisonLine {% IF GOODS_GOODS_DESC_SHORT_IS_SAME %}same{% ENDIF %}">
-            <td class="cell vtop">
-              <input class="CompareCheckbox checkbox-hidden" type="checkbox" id="compare_tb_check_description_short" />
-              <label class="checkbox-name" for="compare_tb_check_description_short">Описание</label>
-            </td>
-            {% FOR goods_mod_info %}
-              <td class="compare-td compare-td-{goods_mod_info.index} vtop" {% IF goods_mod_info.index>4 %}style="display:none;"{% ENDIF %}>
-                {% IF goods_mod_info.GOODS_DESCRIPTION_SHORT %}
-                  <div class="htmlDataBlock">
-                    {goods_mod_info.GOODS_DESCRIPTION_SHORT}
-                  </div>
-                {% ENDIF %}
-                {% IF goods_mod_info.GOODS_DESCRIPTION_LARGE%}
-                  <div class="htmlDataBlock">
-                    {goods_mod_info.GOODS_DESCRIPTION_LARGE}
-                  </div>
-                {% ENDIF %}
-              </td>
-            {% ENDFOR %}
-          </tr>
-        {% ENDIF %}
-      {% ENDIF %}
-      <!-- END Строка №9 Описание товара -->
     </table>
     <!-- END Тело таблицы сравнения товаров -->
 

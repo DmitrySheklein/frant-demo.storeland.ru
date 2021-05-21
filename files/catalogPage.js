@@ -210,7 +210,7 @@ function catalogFunctions(){
 
 // Боковое меню сохранение открытой вложенности
 function accordion() {
-    $('.block.catalog .parent:not(".active") a').next('.sub').css('display', 'none');
+    $('.block.catalog .parent:not(".active"):not("._current") a').next('.sub').css('display', 'none');
     $('.block.catalog .parent a .open-sub').click(function(event){
     event.preventDefault();
       if ($(this).closest('.parent').hasClass('active')) {

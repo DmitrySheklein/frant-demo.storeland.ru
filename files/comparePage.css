@@ -33,8 +33,12 @@
   font-size: 14px;
   cursor:default;
 }
-.CompareGoodsTableTbody .compare-td._image {
+.CompareGoodsTableTbody .compare-td._image .image {
   background: #fff;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;  
 }
 .CompareGoodsTableTbody .compare-td._price .price {
   font-size: 16px;
