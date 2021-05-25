@@ -574,6 +574,7 @@
   .products-list .item .product-name > a {
     text-transform: none;
     font-size: 16px;
+    max-height: initial;
   }
 }
 .products-list .item .product-name-content {margin-top: 15px;;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;}
@@ -853,6 +854,7 @@
   .products-list .item .product-content {
     flex-direction: column;
     position: relative;
+    max-width: calc(100% - 140px);
   }
   .products-list .item .product-name {
     margin-right: 0;

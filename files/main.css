@@ -37,10 +37,10 @@ select.invalidInput + label,
 .input.invalidInput + label {display: block;color: #caa462;font-size: 12px;text-align: left;margin-top: 5px}
 select.invalidInput + label {margin-top: 0;margin-bottom: 5px;}
 
-.input::-webkit-input-placeholder {color: #cec5bf;font-size: 16px;}
-.input::-moz-placeholder {color: #cec5bf;font-size: 16px;}
-.input:-ms-input-placeholder {color: #cec5bf;font-size: 16px;}
-.input:-moz-placeholder {color: #cec5bf;font-size: 16px;}
+.input::-webkit-input-placeholder {color: #6f5b4d;font-size: 16px;}
+.input::-moz-placeholder {color: #6f5b4d;font-size: 16px;}
+.input:-ms-input-placeholder {color: #6f5b4d;font-size: 16px;}
+.input:-moz-placeholder {color: #6f5b4d;font-size: 16px;}
 
 .input-material.error + .error {
   display: none!important;
@@ -116,12 +116,6 @@ label.input-material-label {
 }
 /**/
 select.input {-webkit-appearance: menulist;cursor: pointer;}
-/*! Цвет плейсхолдера */
-/* ::-webkit-input-placeholder {color: #cacaca}
-::-moz-placeholder {color: #cacaca}
-:-moz-placeholder {color: #cacaca}
-:-ms-input-placeholder {color: #cacaca} */
-
 :focus::-webkit-input-placeholder {color: transparent}
 :focus::-moz-placeholder          {color: transparent}
 :focus:-moz-placeholder           {color: transparent}
@@ -845,9 +839,9 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   justify-content: center;
 }
 .header .header-search .search #search_mini_form .search-close:hover {color: #caa462}
-.header .header-search .search #search_mini_form input::-webkit-input-placeholder {color: #cbc2bc;}
-.header .header-search .search #search_mini_form input::-moz-placeholder {color: #cbc2bc;}
-.header .header-search .search #search_mini_form input:-ms-input-placeholder {color: #cbc2bc;}
+.header .header-search .search #search_mini_form input::-webkit-input-placeholder {color: #6f5b4d;}
+.header .header-search .search #search_mini_form input::-moz-placeholder {color: #6f5b4d;}
+.header .header-search .search #search_mini_form input:-ms-input-placeholder {color: #6f5b4d;}
 
 .header-searchBtn {position: absolute;top: 0;right: 0;height: 40px;padding: 0 15px;font-size: 16px}
 .header .header-search .search #search_mini_form .search-submit:hover .header-searchIcon {color: #caa462}
@@ -911,9 +905,9 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
     background: #caa462;
     box-shadow: none;
   }
-  .header .header-search .search #search_mini_form input::-webkit-input-placeholder {color: #e7e2df}
-  .header .header-search .search #search_mini_form input::-moz-placeholder {color: #e7e2df}
-  .header .header-search .search #search_mini_form input:-ms-input-placeholder {color: #e7e2df}  
+  .header .header-search .search #search_mini_form input::-webkit-input-placeholder {color: #6f5b4d}
+  .header .header-search .search #search_mini_form input::-moz-placeholder {color: #6f5b4d}
+  .header .header-search .search #search_mini_form input:-ms-input-placeholder {color: #6f5b4d}  
 }
 /** Поисковая выдача **/
 #search-result {display: none;position: absolute;left: 0;width: 100%;margin-top: 0;padding: 25px;-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);box-shadow: 0 1px 2px rgba(0,0,0,.2);background-color: #e7e2df;z-index: 3;}
@@ -1401,7 +1395,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .header-fixed .header-contacts .header-phoneCallback {
   background: #000;
 }
-@media (max-width: 768px){
+@media (max-width: 767px){
   .header-fixed._fixed {display: none;}
 }
 /*! Подвал ***/
@@ -1520,7 +1514,7 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
 .feedbackForm .form-list .fields > label {display: block;margin-bottom: 10px;text-align: left;}
 /*! Перезвоните мне */
 .callbackForm .callback-input {margin-bottom: 15px;display: flex;}
-.callbackForm .callback-input .input::-webkit-input-placeholder {font-size: 14px;color: #cec5bf;}
+.callbackForm .callback-input .input::-webkit-input-placeholder {font-size: 14px;color: #6f5b4d;}
 .callbackForm .callback-input .callback-label {display:block;margin-bottom: 10px;cursor:pointer;}
 .callbackForm .callback-btn {display: block;margin: 30px auto 15px;}
 .callbackForm .pp-label {
@@ -1776,10 +1770,12 @@ a, .button, .button:hover, .remove, .navigation .prev, .navigation .next, .pages
   line-height: 250px;
   
 }
-.related-goods .products-grid .item .product-image .product-img ,
-.related-views .products-grid .item .product-image .product-img {
-  height: 206px;
-  line-height: 206px;
+@media(min-width: 1200px){
+  .related-goods .products-grid .item .product-image .product-img,
+  .related-views .products-grid .item .product-image .product-img {
+    height: 206px;
+    line-height: 206px;
+  }
 }
 .related-goods .products-grid .item .product-ico:first-child,
 .related-views .products-grid .item .product-ico:first-child {
@@ -2249,6 +2245,15 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
 #viewed .content .viewed-items .product-image {width: 100%;height: 155px;padding: 0;margin-bottom: 15px;}
 #viewed .content .viewed-items .product-image a {display: flex;position: relative;width: 100%;height: 100%;min-height: 60px;z-index: 0;overflow: hidden;border-radius: 0;background: #fff;text-align: center;}
 #viewed .content .viewed-items .product-image a img {width: auto;margin: auto;transition: opacity .3s;max-height: 100%;}
+@media(max-width: 991px){
+  #viewed .content .viewed-items .product-image {height: 206px;line-height: 206px}
+}
+@media(max-width: 481px){
+  #viewed .content .viewed-items .product-image {height: 192px;line-height: 192px}
+}
+@media(max-width: 375px){
+  #viewed .content .viewed-items .product-image {height: 130px;line-height: 130px}
+}
 #viewed .content .viewed-items .product-info {
   display: flex;
   flex-direction: column;
@@ -2350,12 +2355,7 @@ input.quantity, input.cartqty {display: inline-block;vertical-align: middle;widt
   .col-left .page-sidebar #viewed .content._active {right: 0}
   .col-left .block .content .content-title {display: block;padding-bottom: 10px;font-size: 22px;border-bottom: 1px solid #edf1f4;margin-bottom: 15px;font-weight: 700}
 }
-@media all and (max-width: 481px) {
-  #viewed .content .viewed-items .product-image {
-    height: 206px;
-    line-height: 206px;
-  }
-}
+
 .nojs #viewed .content .viewed-items {overflow: hidden}
 .nojs #viewed .content .viewed-items .item {width: 20%;-ms-flex-negative: 0;flex-shrink: 0}
 
