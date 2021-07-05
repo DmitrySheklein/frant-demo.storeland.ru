@@ -175,12 +175,12 @@
                   <link itemprop="image" href="{goods.IMAGE_MEDIUM}" />
                   <a href="{goods.URL_MIN_PRICE_NOW | url_amp}"  class="product-img mouseHoverImgCarousel">
                     {% IF goods.IMAGE_EMPTY %}
-                    <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=frant" alt="{goods.NAME}" title="{goods.NAME}"  itemprop="image">
+                    <img class="lozad" src="{ASSETS_IMAGES_PATH}loader-min.gif" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=frant" alt="{goods.NAME}" title="{goods.NAME}">
                     {% ELSE %}
-                      <img class="lozad" src="{ASSETS_IMAGES_PATH}loader-min.gif"  data-src="{goods.IMAGE_MEDIUM}" alt="{goods.NAME}" title="{goods.NAME}"  itemprop="image">
+                      <img class="lozad" src="{ASSETS_IMAGES_PATH}loader-min.gif"  data-src="{goods.IMAGE_MEDIUM}" alt="{goods.NAME}" title="{goods.NAME}">
                       {% FOR images %}
                         {% IF goods.IMAGE_MEDIUM != goods.images.MEDIUM %}
-                        <img class="lozad" src="{ASSETS_IMAGES_PATH}loader-min.gif"  data-src="{goods.images.MEDIUM}" alt="{goods.NAME}" title="{goods.NAME}"  itemprop="image">
+                        <img class="lozad" src="{ASSETS_IMAGES_PATH}loader-min.gif"  data-src="{goods.images.MEDIUM}" alt="{goods.NAME}" title="{goods.NAME}">
                         {% ENDIF %}
                       {% ENDFOR %}
                     {% ENDIF %}
@@ -368,9 +368,9 @@
                   <link itemprop="image" href="{goods.IMAGE_MEDIUM}" />
                   <a href="{goods.URL_MIN_PRICE_NOW | url_amp}"  class="product-img">
                     {% IF goods.IMAGE_EMPTY %}
-                    <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=frant" alt="{goods.NAME}" title="{goods.NAME}"  itemprop="image">
+                    <img class="lozad" data-src="{ASSETS_IMAGES_PATH}no-photo-medium.png?design=frant" alt="{goods.NAME}" title="{goods.NAME}">
                     {% ELSE %}
-                      <img class="lozad" src="{ASSETS_IMAGES_PATH}loader-min.gif"  data-src="{goods.IMAGE_MEDIUM}" alt="{goods.NAME}" title="{goods.NAME}"  itemprop="image">
+                      <img class="lozad" src="{ASSETS_IMAGES_PATH}loader-min.gif"  data-src="{goods.IMAGE_MEDIUM}" alt="{goods.NAME}" title="{goods.NAME}">
                     {% ENDIF %}
 
                     
