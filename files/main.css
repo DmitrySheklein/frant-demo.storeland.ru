@@ -139,7 +139,7 @@ select.input {-webkit-appearance: menulist;cursor: pointer;}
 .checkbox-name:after {position: absolute;top: 2px;left: 1px;width: 14px;height: 10px;background-position: -70px -40px;opacity: 0;visibility: hidden;-webkit-transform: translateY(-10px);transform: translateY(-10px);-webkit-transition: all .15s ease-in-out;transition: all .15s ease-in-out;}
 .checkbox-hidden:checked + .checkbox-name:before,.checkbox-hidden[checked=checked] + .checkbox-name:before {background-color: #caa462;border-color: #caa462}
 .checkbox-hidden:checked + .checkbox-name:after,.checkbox-hidden[checked=checked] + .checkbox-name:after {content: 'done';color: #000;opacity: 1;visibility: visible;-webkit-transform: translateY(0);transform: translateY(0);font-family: 'Material Icons Outlined';font-weight: normal;font-style: normal;font-size: 12px;line-height: 14px;}
-.checkbox-hidden:disabled + .checkbox-name {color: #cec5bf;opacity: .5;cursor: default}
+.checkbox-hidden:disabled + .checkbox-name {color: #cec5bf;cursor: default}
 /*! Показать пароль */
 .showPassBlock {position: absolute;top: 0;right: 0;}
 .showPassBlock .showPass,
